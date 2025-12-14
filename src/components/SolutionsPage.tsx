@@ -19,6 +19,7 @@ export interface Service {
   glowColor?: string;
   audioSrc?: string;
   subtitles?: Array<{ start: number; text: string }>;
+  demoType?: 'whatsapp' | 'instagram' | 'video' | 'image' | 'voice';
 }
 
 interface SolutionsPageProps {

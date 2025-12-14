@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef, useCallback } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useCallback, useState } from 'react';
 
 interface SoundEffectContextType {
   playHoverSound: () => void;
@@ -6,6 +6,8 @@ interface SoundEffectContextType {
   playBackSound: () => void;
   playHoldSound: () => void;
   stopHoldSound: () => void;
+  isMuted: boolean;
+  toggleMute: () => void;
 }
 
 const SoundEffectContext = createContext<SoundEffectContextType | null>(null);
@@ -23,6 +25,11 @@ interface SoundEffectProviderProps {
 }
 
 export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ children }) => {
+  const [isMuted, setIsMuted] = useState(() => {
+    // Check localStorage for saved preference
+    const saved = localStorage.getItem('allync-sound-muted');
+    return saved === 'true';
+  });
   const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
   const clickAudioRef = useRef<HTMLAudioElement | null>(null);
   const backAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -35,45 +42,56 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
   const CLICK_DEBOUNCE_MS = 100;
   const BACK_DEBOUNCE_MS = 100;
   const HOLD_FADE_DURATION = 500; // Fade in over 500ms
-  const HOLD_TARGET_VOLUME = 0.5;
+  const HOLD_TARGET_VOLUME = 0.7;
+
+  const toggleMute = useCallback(() => {
+    setIsMuted(prev => {
+      const newValue = !prev;
+      localStorage.setItem('allync-sound-muted', String(newValue));
+      return newValue;
+    });
+  }, []);
 
   // Initialize audio on mount
   useEffect(() => {
     // Hover sound
     hoverAudioRef.current = new Audio('/audio/sound_effects/hover.mp3');
-    hoverAudioRef.current.volume = 0.9;
+    hoverAudioRef.current.volume = 1.0;
     hoverAudioRef.current.preload = 'auto';
     hoverAudioRef.current.load();
 
     // Click sound
     clickAudioRef.current = new Audio('/audio/sound_effects/click.mp3');
-    clickAudioRef.current.volume = 0.4;
+    clickAudioRef.current.volume = 0.6;
     clickAudioRef.current.preload = 'auto';
     clickAudioRef.current.load();
 
     // Back sound
     backAudioRef.current = new Audio('/audio/sound_effects/back.mp3');
-    backAudioRef.current.volume = 0.4;
+    backAudioRef.current.volume = 0.6;
     backAudioRef.current.preload = 'auto';
     backAudioRef.current.load();
 
     // Hold sound
     holdAudioRef.current = new Audio('/audio/sound_effects/hold.mp3');
-    holdAudioRef.current.volume = 0.5;
+    holdAudioRef.current.volume = 0.7;
     holdAudioRef.current.preload = 'auto';
     holdAudioRef.current.load();
 
     return () => {
       if (hoverAudioRef.current) {
         hoverAudioRef.current.pause();
+        hoverAudioRef.current.src = ''; // Release audio resource
         hoverAudioRef.current = null;
       }
       if (clickAudioRef.current) {
         clickAudioRef.current.pause();
+        clickAudioRef.current.src = ''; // Release audio resource
         clickAudioRef.current = null;
       }
       if (backAudioRef.current) {
         backAudioRef.current.pause();
+        backAudioRef.current.src = ''; // Release audio resource
         backAudioRef.current = null;
       }
       if (holdFadeIntervalRef.current) {
@@ -82,12 +100,14 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
       }
       if (holdAudioRef.current) {
         holdAudioRef.current.pause();
+        holdAudioRef.current.src = ''; // Release audio resource
         holdAudioRef.current = null;
       }
     };
   }, []);
 
   const playHoverSound = useCallback(() => {
+    if (isMuted) return;
     const now = Date.now();
     if (now - lastHoverPlayedRef.current < HOVER_DEBOUNCE_MS) return;
     lastHoverPlayedRef.current = now;
@@ -96,9 +116,10 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
       hoverAudioRef.current.currentTime = 0;
       hoverAudioRef.current.play().catch(() => {});
     }
-  }, []);
+  }, [isMuted]);
 
   const playClickSound = useCallback(() => {
+    if (isMuted) return;
     const now = Date.now();
     if (now - lastClickPlayedRef.current < CLICK_DEBOUNCE_MS) return;
     lastClickPlayedRef.current = now;
@@ -107,9 +128,10 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
       clickAudioRef.current.currentTime = 0;
       clickAudioRef.current.play().catch(() => {});
     }
-  }, []);
+  }, [isMuted]);
 
   const playBackSound = useCallback(() => {
+    if (isMuted) return;
     const now = Date.now();
     if (now - lastBackPlayedRef.current < BACK_DEBOUNCE_MS) return;
     lastBackPlayedRef.current = now;
@@ -118,9 +140,10 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
       backAudioRef.current.currentTime = 0;
       backAudioRef.current.play().catch(() => {});
     }
-  }, []);
+  }, [isMuted]);
 
   const playHoldSound = useCallback(() => {
+    if (isMuted) return;
     if (holdAudioRef.current) {
       // Clear any existing fade interval
       if (holdFadeIntervalRef.current) {
@@ -161,7 +184,7 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
         }
       }, fadeStep);
     }
-  }, []);
+  }, [isMuted]);
 
   const stopHoldSound = useCallback(() => {
     // Clear fade interval
@@ -218,7 +241,7 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
   }, [playClickSound]);
 
   return (
-    <SoundEffectContext.Provider value={{ playHoverSound, playClickSound, playBackSound, playHoldSound, stopHoldSound }}>
+    <SoundEffectContext.Provider value={{ playHoverSound, playClickSound, playBackSound, playHoldSound, stopHoldSound, isMuted, toggleMute }}>
       {children}
     </SoundEffectContext.Provider>
   );

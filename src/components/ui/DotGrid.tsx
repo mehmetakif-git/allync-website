@@ -86,14 +86,19 @@ const DotGrid: React.FC<DotGridProps> = ({
   }, [popup.visible]);
 
   useEffect(() => {
-    gsap.to({ val: 0 }, {
+    const fadeTarget = { val: 0 };
+    const fadeTween = gsap.to(fadeTarget, {
       val: 1,
       duration: 2,
       ease: 'power2.inOut',
       onUpdate: function() {
-        setGlobalAlpha(this.targets()[0].val);
+        setGlobalAlpha(fadeTarget.val);
       }
     });
+
+    return () => {
+      fadeTween.kill();
+    };
   }, []);
   // --- End of Easter Egg Logic ---
 
@@ -267,6 +272,10 @@ const DotGrid: React.FC<DotGridProps> = ({
     return () => {
       window.removeEventListener('mousemove', throttledMove);
       window.removeEventListener('click', onClick);
+      // Kill all GSAP tweens on dots to prevent memory leaks
+      for (const dot of dotsRef.current) {
+        gsap.killTweensOf(dot);
+      }
     };
   }, [shockRadius, shockStrength, returnDuration]);
 

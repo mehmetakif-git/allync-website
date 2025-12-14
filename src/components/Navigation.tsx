@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronUp, Phone, ArrowLeft } from 'lucide-react';
+import { Menu, X, ChevronUp, Phone, ArrowLeft, Volume2, VolumeX } from 'lucide-react';
 import { translations } from '../utils/translations';
 import logoSvg from '../assets/logo.svg';
 import { useSoundEffect } from '../contexts/SoundEffectContext';
@@ -13,7 +13,7 @@ interface NavigationProps {
 
 export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageToggle, viewMode, onBackToSelection }) => {
   const t = translations[language];
-  const { playBackSound } = useSoundEffect();
+  const { playBackSound, isMuted, toggleMute } = useSoundEffect();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(true);
@@ -153,6 +153,15 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
                 ))
               )}
               
+              {/* Sound Toggle */}
+              <button
+                onClick={toggleMute}
+                className="flex items-center p-2 bg-white/5 border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-300"
+                title={isMuted ? (language === 'tr' ? 'Sesi Aç' : 'Unmute') : (language === 'tr' ? 'Sesi Kapat' : 'Mute')}
+              >
+                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+              </button>
+
               {/* Language Toggle */}
               <button
                 onClick={onLanguageToggle}
@@ -163,14 +172,22 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center space-x-4">
+            <div className="md:hidden flex items-center space-x-2">
+              <button
+                onClick={toggleMute}
+                className="flex items-center p-2 bg-white/5 border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-300"
+                title={isMuted ? (language === 'tr' ? 'Sesi Aç' : 'Unmute') : (language === 'tr' ? 'Sesi Kapat' : 'Mute')}
+              >
+                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+              </button>
+
               <button
                 onClick={onLanguageToggle}
                 className="flex items-center px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-300"
               >
                 <span className="text-sm font-medium">{language === 'tr' ? 'EN' : 'TR'}</span>
               </button>
-              
+
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 bg-white/5 border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-300"

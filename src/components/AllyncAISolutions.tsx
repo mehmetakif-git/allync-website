@@ -23,6 +23,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       glowColor: 'rgba(34, 197, 94, 0.5)',
       extendedContent: 'WhatsApp Automation ile işletmeniz 7/24 müşterilerinize anında yanıt verebilir. Gelişmiş yapay zeka teknolojisi sayesinde müşteri sorgularını anlayıp, randevu oluşturabilir, sık sorulan soruları yanıtlayabilir ve müşteri memnuniyetini artırabilirsiniz.\n\nÖzellikler:\n- Otomatik müşteri hizmetleri\n- Randevu yönetim sistemi\n- Çoklu dil desteği\n- CRM entegrasyonu\n- Detaylı raporlama ve analitik\n\nBu hizmet ile işletmeniz operasyonel maliyetleri düşürürken müşteri memnuniyetini maksimize edebilir.',
       galleryImages: [waImg1, waImg2, waImg3],
+      demoType: 'whatsapp',
       audioSrc: language === 'en' ? '/audio/en/english-whatsapp-automations.mp3' : undefined,
       subtitles: language === 'en' ? [
         { start: 0, text: "Imagine never missing" },
@@ -68,7 +69,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-pink-500 to-purple-600',
       glowColor: 'rgba(236, 72, 153, 0.5)',
       extendedContent: 'Instagram Automation ile sosyal medya yönetiminizi otomatikleştirin. DM\'lere otomatik yanıt verin, yorumları yönetin ve potansiyel müşterileri yakalayın.\n\nÖzellikler:\n- Otomatik DM yanıtları\n- Yorum yönetimi\n- Hashtag analizi\n- Etkileşim raporları\n- Lead generation\n\nSosyal medya varlığınızı güçlendirin ve etkileşiminizi artırın.',
-      galleryImages: ['Instagram Dashboard', 'Auto-Reply System', 'Engagement Analytics']
+      galleryImages: ['Instagram Dashboard', 'Auto-Reply System', 'Engagement Analytics'],
+      demoType: 'instagram',
     },
     {
       icon: Video,
@@ -78,7 +80,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-blue-500 to-cyan-600',
       glowColor: 'rgba(59, 130, 246, 0.5)',
       extendedContent: 'Text-to-Video AI ile metinlerinizi profesyonel videolara dönüştürün. Pazarlama içeriklerinizi, eğitim materyallerinizi veya sosyal medya gönderilerinizi birkaç dakika içinde video formatına çevirin.\n\nÖzellikler:\n- Otomatik video oluşturma\n- Çoklu format desteği (4K, HD)\n- Voiceover entegrasyonu\n- Özel template\'ler\n- Hızlı render\n\nİçerik üretiminizi hızlandırın ve profesyonel videolar oluşturun.',
-      galleryImages: ['Video Editor Interface', 'Template Gallery', 'Export Options']
+      galleryImages: ['Video Editor Interface', 'Template Gallery', 'Export Options'],
+      demoType: 'text-to-video',
     },
     {
       icon: ImageIcon,
@@ -88,7 +91,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-violet-500 to-purple-600',
       glowColor: 'rgba(139, 92, 246, 0.5)',
       extendedContent: 'Text-to-Image AI ile hayal ettiğiniz görselleri oluşturun. Marketing materyalleri, sosyal medya içerikleri veya web tasarımı için benzersiz görseller üretin.\n\nÖzellikler:\n- Yüksek çözünürlüklü görsel üretimi\n- Çoklu stil seçenekleri\n- Ticari kullanım hakları\n- Toplu üretim\n- API entegrasyonu\n\nYaratıcılığınızı sınırsız hale getirin.',
-      galleryImages: ['AI Image Generator', 'Style Options', 'Generated Gallery']
+      galleryImages: ['AI Image Generator', 'Style Options', 'Generated Gallery'],
+      demoType: 'text-to-image',
     },
     {
       icon: Mic,
@@ -98,7 +102,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-orange-500 to-red-600',
       glowColor: 'rgba(249, 115, 22, 0.5)',
       extendedContent: 'Voice Cloning teknolojisi ile gerçekçi ses klonları oluşturun. Sesli asistanlar, reklam seslendirmeleri veya eğitim içerikleri için profesyonel ses üretimi.\n\nÖzellikler:\n- Gerçekçi ses klonlama\n- Çoklu dil ve aksan desteği\n- Emotion control\n- Hızlı üretim\n- Yüksek kalite\n\nSeslendirme projelerinizi bir üst seviyeye taşıyın.',
-      galleryImages: ['Voice Studio', 'Cloning Interface', 'Audio Library']
+      galleryImages: ['Voice Studio', 'Cloning Interface', 'Audio Library'],
+      demoType: 'voice-cloning',
     },
     {
       icon: FileText,
@@ -108,7 +113,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-gray-500 to-gray-700',
       glowColor: 'rgba(107, 114, 128, 0.5)',
       extendedContent: 'Document AI ile belgelerinizi otomatik olarak işleyin ve analiz edin. OCR, veri çıkarma ve akıllı kategorizasyon özellikleri ile iş süreçlerinizi hızlandırın.\n\nÖzellikler:\n- OCR ve metin tanıma\n- Otomatik veri çıkarma\n- Belge sınıflandırma\n- Doğrulama ve onay\n- Güvenli depolama\n\nDokümantasyon süreçlerinizi dijitalleştirin.',
-      galleryImages: ['Document Scanner', 'Data Extraction', 'Classification System']
+      galleryImages: ['Document Scanner', 'Data Extraction', 'Classification System'],
+      demoType: 'document-ai',
     },
     {
       icon: Play,

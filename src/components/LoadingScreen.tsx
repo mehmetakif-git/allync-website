@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logoSvg from '../assets/logo.svg';
 import { ANIMATION_DELAYS } from '../constants/animations';
 import { MultiStepLoader } from './ui/MultiStepLoader';
@@ -14,6 +14,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete,
   const [sloganText, setSloganText] = useState('');
   const [showSkip, setShowSkip] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  const typeIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const sloganTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const fullSlogan = "Beyond Human Automation";
 
@@ -29,14 +31,17 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete,
     setTimeout(() => setLogoVisible(true), ANIMATION_DELAYS.MODAL_ANIMATION);
 
     // Slogan typewriter effect
-    setTimeout(() => {
+    sloganTimeoutRef.current = setTimeout(() => {
       let index = 0;
-      const typeInterval = setInterval(() => {
+      typeIntervalRef.current = setInterval(() => {
         if (index < fullSlogan.length) {
           setSloganText(fullSlogan.slice(0, index + 1));
           index++;
         } else {
-          clearInterval(typeInterval);
+          if (typeIntervalRef.current) {
+            clearInterval(typeIntervalRef.current);
+            typeIntervalRef.current = null;
+          }
         }
       }, ANIMATION_DELAYS.TYPING_SPEED);
     }, 1200);
@@ -58,6 +63,15 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete,
 
     return () => {
       clearInterval(progressInterval);
+      // Clean up typewriter interval and timeout
+      if (typeIntervalRef.current) {
+        clearInterval(typeIntervalRef.current);
+        typeIntervalRef.current = null;
+      }
+      if (sloganTimeoutRef.current) {
+        clearTimeout(sloganTimeoutRef.current);
+        sloganTimeoutRef.current = null;
+      }
     };
   }, [onLoadingComplete]);
 
