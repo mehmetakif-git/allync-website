@@ -19,7 +19,7 @@ export interface Service {
   glowColor?: string;
   audioSrc?: string;
   subtitles?: Array<{ start: number; text: string }>;
-  demoType?: 'whatsapp' | 'instagram' | 'video' | 'image' | 'voice';
+  demoType?: 'whatsapp' | 'instagram' | 'text-to-video' | 'text-to-image' | 'voice-cloning' | 'document-ai' | 'image-to-video' | 'video-to-video' | 'data-analysis' | 'custom-ai';
 }
 
 interface SolutionsPageProps {

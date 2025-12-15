@@ -16,6 +16,11 @@ import { TextToVideoDemo } from '../ui/TextToVideoDemo';
 import { TextToImageDemo } from '../ui/TextToImageDemo';
 import { VoiceCloningDemo } from '../ui/VoiceCloningDemo';
 import { DocumentAIDemo } from '../ui/DocumentAIDemo';
+import { ImageToVideoDemo } from '../ui/ImageToVideoDemo';
+import { VideoToVideoDemo } from '../ui/VideoToVideoDemo';
+import { DataAnalysisDemo } from '../ui/DataAnalysisDemo';
+import { CustomAIDemo } from '../ui/CustomAIDemo';
+import { getDemoThumbnail } from '../../assets/demo-thumbnails';
 
 // Helper function to convert hex color to hue rotation
 const getHueRotation = (hexColor: string): number => {
@@ -60,7 +65,7 @@ interface Service {
   glowColor?: string;
   audioSrc?: string;
   subtitles?: Array<{ start: number; text: string }>;
-  demoType?: 'whatsapp' | 'instagram' | 'video' | 'image' | 'voice';
+  demoType?: 'whatsapp' | 'instagram' | 'text-to-video' | 'text-to-image' | 'voice-cloning' | 'document-ai' | 'image-to-video' | 'video-to-video' | 'data-analysis' | 'custom-ai';
 }
 
 interface ServiceCardProps {
@@ -521,6 +526,56 @@ const AnimatedIcon = ({ IconComponent, glowColor }: { IconComponent: any, glowCo
                 }}
               />
             );
+          } else if (tagName === 'polygon') {
+            const points = element.getAttribute('points') || '';
+            return (
+              <motion.polygon
+                key={index}
+                points={points}
+                variants={{
+                  hidden: {
+                    pathLength: 0,
+                    opacity: 0
+                  },
+                  visible: {
+                    pathLength: 1,
+                    opacity: 1,
+                    transition: {
+                      pathLength: { duration: 1.5, ease: "easeInOut", delay: index * 0.1 },
+                      opacity: { duration: 0.3, delay: index * 0.1 }
+                    }
+                  }
+                }}
+              />
+            );
+          } else if (tagName === 'ellipse') {
+            const cx = element.getAttribute('cx') || '0';
+            const cy = element.getAttribute('cy') || '0';
+            const rx = element.getAttribute('rx') || '0';
+            const ry = element.getAttribute('ry') || '0';
+            return (
+              <motion.ellipse
+                key={index}
+                cx={cx}
+                cy={cy}
+                rx={rx}
+                ry={ry}
+                variants={{
+                  hidden: {
+                    pathLength: 0,
+                    opacity: 0
+                  },
+                  visible: {
+                    pathLength: 1,
+                    opacity: 1,
+                    transition: {
+                      pathLength: { duration: 1.5, ease: "easeInOut", delay: index * 0.1 },
+                      opacity: { duration: 0.3, delay: index * 0.1 }
+                    }
+                  }
+                }}
+              />
+            );
           }
           return null;
         })}
@@ -898,12 +953,21 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Background gradient with theme color */}
+                {/* Thumbnail image if available */}
+                {getDemoThumbnail(service.demoType) && (
+                  <img
+                    src={getDemoThumbnail(service.demoType)!}
+                    alt={`${service.title} demo`}
+                    className="absolute inset-0 w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:opacity-80"
+                  />
+                )}
+
+                {/* Overlay gradient */}
                 <div
-                  className="absolute inset-0 opacity-20"
-                  style={{
+                  className={`absolute inset-0 ${getDemoThumbnail(service.demoType) ? 'bg-black/40 group-hover:bg-black/50' : 'opacity-20'}`}
+                  style={!getDemoThumbnail(service.demoType) ? {
                     background: `radial-gradient(circle at center, ${service.glowColor || '#00d9ff'}40 0%, transparent 70%)`
-                  }}
+                  } : undefined}
                 />
 
                 {/* Play icon */}
@@ -912,7 +976,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   style={{
                     background: `linear-gradient(135deg, ${service.glowColor || '#00d9ff'}30, ${service.glowColor || '#00d9ff'}10)`,
                     border: `2px solid ${service.glowColor || '#00d9ff'}50`,
-                    boxShadow: `0 0 30px ${service.glowColor || '#00d9ff'}30`
+                    boxShadow: `0 0 30px ${service.glowColor || '#00d9ff'}30`,
+                    backdropFilter: 'blur(8px)'
                   }}
                   animate={{
                     boxShadow: [
@@ -923,14 +988,21 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <Play className="w-8 h-8 text-white ml-1" fill="white" />
+                  <Play
+                    className="w-8 h-8 ml-1"
+                    style={{
+                      color: service.glowColor?.replace('0.5)', '1)') || '#00d9ff',
+                      filter: `drop-shadow(0 0 8px ${service.glowColor || '#00d9ff'})`
+                    }}
+                    fill={service.glowColor?.replace('0.5)', '1)') || '#00d9ff'}
+                  />
                 </motion.div>
 
                 {/* Text */}
-                <p className="relative z-10 text-white font-semibold text-lg">
+                <p className="relative z-10 text-white font-semibold text-lg drop-shadow-lg">
                   {language === 'tr' ? 'Aksiyonda Gör' : 'View in Action'}
                 </p>
-                <p className="relative z-10 text-gray-400 text-sm mt-1">
+                <p className="relative z-10 text-gray-300 text-sm mt-1 drop-shadow-lg">
                   {language === 'tr' ? 'Canlı demo izle' : 'Watch live demo'}
                 </p>
               </motion.button>
@@ -1505,6 +1577,310 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                 className="mt-6 text-gray-500 text-sm text-center"
               >
                 {language === 'tr' ? 'Belge türü seçin ve izleyin' : 'Select document type and watch'}
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Demo Modal - Image to Video Demo */}
+      <AnimatePresence>
+        {isDemoModalOpen && service.demoType === 'image-to-video' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
+            onClick={() => {
+              playBackSound();
+              setIsDemoModalOpen(false);
+            }}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+
+            {/* Close button */}
+            <motion.button
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              onClick={() => {
+                playBackSound();
+                setIsDemoModalOpen(false);
+              }}
+              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
+            >
+              <X className="w-6 h-6 text-white" />
+            </motion.button>
+
+            {/* Modal Content */}
+            <motion.div
+              ref={demoModalRef}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative z-[100000] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Title */}
+              <motion.h3
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
+              >
+                {language === 'tr' ? 'Görselden Videoya AI Demo' : 'Image to Video AI Demo'}
+              </motion.h3>
+
+              {/* iPhone Mockup with Image to Video Demo */}
+              <IPhoneMockup className="max-w-[360px] w-full">
+                <ImageToVideoDemo
+                  language={language}
+                  onContactClick={() => {
+                    setIsDemoModalOpen(false);
+                    onContactClick();
+                  }}
+                />
+              </IPhoneMockup>
+
+              {/* Bottom hint */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                transition={{ delay: 0.5 }}
+                className="mt-6 text-gray-500 text-sm text-center"
+              >
+                {language === 'tr' ? 'Animasyon türü seçin ve izleyin' : 'Select animation type and watch'}
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Demo Modal - Video to Video Demo */}
+      <AnimatePresence>
+        {isDemoModalOpen && service.demoType === 'video-to-video' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
+            onClick={() => {
+              playBackSound();
+              setIsDemoModalOpen(false);
+            }}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+
+            {/* Close button */}
+            <motion.button
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              onClick={() => {
+                playBackSound();
+                setIsDemoModalOpen(false);
+              }}
+              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
+            >
+              <X className="w-6 h-6 text-white" />
+            </motion.button>
+
+            {/* Modal Content */}
+            <motion.div
+              ref={demoModalRef}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative z-[100000] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Title */}
+              <motion.h3
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
+              >
+                {language === 'tr' ? 'Videodan Videoya AI Demo' : 'Video to Video AI Demo'}
+              </motion.h3>
+
+              {/* iPhone Mockup with Video to Video Demo */}
+              <IPhoneMockup className="max-w-[360px] w-full">
+                <VideoToVideoDemo
+                  language={language}
+                  onContactClick={() => {
+                    setIsDemoModalOpen(false);
+                    onContactClick();
+                  }}
+                />
+              </IPhoneMockup>
+
+              {/* Bottom hint */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                transition={{ delay: 0.5 }}
+                className="mt-6 text-gray-500 text-sm text-center"
+              >
+                {language === 'tr' ? 'Dönüşüm türü seçin ve izleyin' : 'Select transformation type and watch'}
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Demo Modal - Data Analysis Demo */}
+      <AnimatePresence>
+        {isDemoModalOpen && service.demoType === 'data-analysis' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
+            onClick={() => {
+              playBackSound();
+              setIsDemoModalOpen(false);
+            }}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+
+            {/* Close button */}
+            <motion.button
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              onClick={() => {
+                playBackSound();
+                setIsDemoModalOpen(false);
+              }}
+              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
+            >
+              <X className="w-6 h-6 text-white" />
+            </motion.button>
+
+            {/* Modal Content */}
+            <motion.div
+              ref={demoModalRef}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative z-[100000] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Title */}
+              <motion.h3
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
+              >
+                {language === 'tr' ? 'Veri Analizi AI Demo' : 'Data Analysis AI Demo'}
+              </motion.h3>
+
+              {/* iPhone Mockup with Data Analysis Demo */}
+              <IPhoneMockup className="max-w-[360px] w-full">
+                <DataAnalysisDemo
+                  language={language}
+                  onContactClick={() => {
+                    setIsDemoModalOpen(false);
+                    onContactClick();
+                  }}
+                />
+              </IPhoneMockup>
+
+              {/* Bottom hint */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                transition={{ delay: 0.5 }}
+                className="mt-6 text-gray-500 text-sm text-center"
+              >
+                {language === 'tr' ? 'Analiz türü seçin ve izleyin' : 'Select analysis type and watch'}
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Demo Modal - Custom AI Demo */}
+      <AnimatePresence>
+        {isDemoModalOpen && service.demoType === 'custom-ai' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
+            onClick={() => {
+              playBackSound();
+              setIsDemoModalOpen(false);
+            }}
+          >
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+
+            {/* Close button */}
+            <motion.button
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              onClick={() => {
+                playBackSound();
+                setIsDemoModalOpen(false);
+              }}
+              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
+            >
+              <X className="w-6 h-6 text-white" />
+            </motion.button>
+
+            {/* Modal Content */}
+            <motion.div
+              ref={demoModalRef}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative z-[100000] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Title */}
+              <motion.h3
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
+              >
+                {language === 'tr' ? 'Özel AI Çözümleri Demo' : 'Custom AI Solutions Demo'}
+              </motion.h3>
+
+              {/* iPhone Mockup with Custom AI Demo */}
+              <IPhoneMockup className="max-w-[360px] w-full">
+                <CustomAIDemo
+                  language={language}
+                  onContactClick={() => {
+                    setIsDemoModalOpen(false);
+                    onContactClick();
+                  }}
+                />
+              </IPhoneMockup>
+
+              {/* Bottom hint */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                transition={{ delay: 0.5 }}
+                className="mt-6 text-gray-500 text-sm text-center"
+              >
+                {language === 'tr' ? 'Sektör ve özellik seçin' : 'Select industry and features'}
               </motion.p>
             </motion.div>
           </motion.div>

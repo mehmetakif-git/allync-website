@@ -124,7 +124,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-teal-500 to-cyan-600',
       glowColor: 'rgba(20, 184, 166, 0.5)',
       extendedContent: 'Image-to-Video AI ile statik görsellerinizi dinamik içeriğe dönüştürün. AI destekli animasyonlar ve efektler ile sosyal medya içeriklerinizi canlandırın.\n\nÖzellikler:\n- Otomatik animasyon\n- Transition efektleri\n- Music ve ses ekleme\n- Sosyal medya formatları\n- Toplu işlem\n\nGörsellerinize hayat verin.',
-      galleryImages: ['Animation Studio', 'Effect Library', 'Preview Screen']
+      galleryImages: ['Animation Studio', 'Effect Library', 'Preview Screen'],
+      demoType: 'image-to-video',
     },
     {
       icon: Film,
@@ -134,7 +135,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-indigo-500 to-blue-600',
       glowColor: 'rgba(99, 102, 241, 0.5)',
       extendedContent: 'Video-to-Video AI ile videolarınızı dönüştürün. Stil transferi, yüz değiştirme ve gelişmiş düzenleme özellikleri ile videolarınızı yeniden oluşturun.\n\nÖzellikler:\n- AI video dönüşümü\n- Stil transferi\n- Kalite iyileştirme\n- Renklendir ve restorasy\n- Toplu düzenleme\n\nVideo üretim sürecinizi optimize edin.',
-      galleryImages: ['Video Editor', 'Style Transfer', 'Enhancement Tools']
+      galleryImages: ['Video Editor', 'Style Transfer', 'Enhancement Tools'],
+      demoType: 'video-to-video',
     },
     {
       icon: BarChart3,
@@ -144,7 +146,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-yellow-500 to-orange-600',
       glowColor: 'rgba(245, 158, 11, 0.5)',
       extendedContent: 'Data Analysis AI ile büyük veri setlerinizi analiz edin ve değerli içgörüler elde edin. Tahmine dayalı analizler ve görselleştirme araçları ile iş kararlarınızı destekleyin.\n\nÖzellikler:\n- Büyük veri analizi\n- Tahmine dayalı modeller\n- Görselleştirme araçları\n- Otomatik raporlama\n- Real-time analytics\n\nVeriye dayalı kararlar alın.',
-      galleryImages: ['Analytics Dashboard', 'Data Visualization', 'Report Generator']
+      galleryImages: ['Analytics Dashboard', 'Data Visualization', 'Report Generator'],
+      demoType: 'data-analysis',
     },
     {
       icon: Sparkles,
@@ -154,7 +157,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-fuchsia-500 to-pink-600',
       glowColor: 'rgba(217, 70, 239, 0.5)',
       extendedContent: 'Custom AI Solutions ile işletmenize özel yapay zeka çözümleri geliştirin. İhtiyaçlarınıza göre özelleştirilmiş AI sistemleri ile rekabet avantajı elde edin.\n\nÖzellikler:\n- Tam özelleştirilebilir\n- İş süreçlerine entegrasyon\n- Özel model eğitimi\n- Dedicated destek\n- Scalable altyapı\n\nHayalinizdeki AI çözümünü gerçekleştirin.',
-      galleryImages: ['Custom AI Platform', 'Integration Options', 'Training Dashboard']
+      galleryImages: ['Custom AI Platform', 'Integration Options', 'Training Dashboard'],
+      demoType: 'custom-ai'
     }
   ];
 
