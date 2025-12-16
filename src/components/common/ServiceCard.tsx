@@ -740,7 +740,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
 
   return (
     <motion.div
-      className={`flex flex-col ${isOdd ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+      className={`flex flex-col ${isOdd ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-6 sm:gap-8 lg:gap-12 items-center`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
@@ -941,8 +941,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
         </AnimatePresence>
       </div>
 
-      <div className="flex-1 w-full">
-        <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-[6px] border border-white/10 rounded-3xl p-8 hover:border-white/20 w-full h-full relative pointer-events-auto cursor-pointer overflow-hidden">
+      <div className="flex-1 w-full min-w-0 overflow-hidden">
+        <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-[6px] border border-white/10 rounded-2xl sm:rounded-3xl p-3 sm:p-5 lg:p-6 hover:border-white/20 w-full relative pointer-events-auto cursor-pointer overflow-hidden">
           <GlowingEffect
             color={service.glowColor}
             blur={0}
@@ -954,13 +954,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             inactiveZone={0.7}
             movementDuration={2}
           />
-          <div className="relative z-10 w-full h-full aspect-video">
+          <div className="relative z-10 w-full overflow-hidden rounded-lg sm:rounded-xl" style={{ paddingBottom: '56.25%' }}>
             {/* Demo View for services with demoType */}
             {service.demoType ? (
               <motion.button
                 onClick={() => setIsDemoModalOpen(true)}
-                className="w-full h-full rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center cursor-pointer overflow-hidden relative group md:hover:scale-105 transition-transform duration-300"
-                whileHover={{ scale: 1.02 }}
+                className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center cursor-pointer overflow-hidden rounded-lg sm:rounded-xl"
                 whileTap={{ scale: 0.98 }}
               >
                 {/* Thumbnail image if available */}
@@ -968,13 +967,13 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   <img
                     src={getDemoThumbnail(service.demoType)!}
                     alt={`${service.title} demo`}
-                    className="absolute inset-0 w-full h-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:opacity-80"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                 )}
 
                 {/* Overlay gradient */}
                 <div
-                  className={`absolute inset-0 ${getDemoThumbnail(service.demoType) ? 'bg-black/40 group-hover:bg-black/50' : 'opacity-20'}`}
+                  className={`absolute inset-0 ${getDemoThumbnail(service.demoType) ? 'bg-black/40' : 'opacity-20'}`}
                   style={!getDemoThumbnail(service.demoType) ? {
                     background: `radial-gradient(circle at center, ${service.glowColor || '#00d9ff'}40 0%, transparent 70%)`
                   } : undefined}
@@ -982,7 +981,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
 
                 {/* Play icon */}
                 <motion.div
-                  className="relative z-10 w-20 h-20 rounded-full flex items-center justify-center mb-4"
+                  className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mb-2"
                   style={{
                     background: `linear-gradient(135deg, ${service.glowColor || '#00d9ff'}30, ${service.glowColor || '#00d9ff'}10)`,
                     border: `2px solid ${service.glowColor || '#00d9ff'}50`,
@@ -999,7 +998,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 >
                   <Play
-                    className="w-8 h-8 ml-1"
+                    className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ml-0.5"
                     style={{
                       color: service.glowColor?.replace('0.5)', '1)') || '#00d9ff',
                       filter: `drop-shadow(0 0 8px ${service.glowColor || '#00d9ff'})`
@@ -1009,10 +1008,10 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                 </motion.div>
 
                 {/* Text */}
-                <p className="relative z-10 text-white font-semibold text-lg drop-shadow-lg">
+                <p className="relative z-10 text-white font-semibold text-sm sm:text-base lg:text-lg drop-shadow-lg">
                   {language === 'tr' ? 'Aksiyonda Gör' : 'View in Action'}
                 </p>
-                <p className="relative z-10 text-gray-300 text-sm mt-1 drop-shadow-lg">
+                <p className="relative z-10 text-gray-300 text-xs sm:text-sm mt-1 drop-shadow-lg">
                   {language === 'tr' ? 'Canlı demo izle' : 'Watch live demo'}
                 </p>
               </motion.button>
@@ -1020,22 +1019,22 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               <motion.button
                 layoutId={`gallery-${service.title}-0`}
                 onClick={() => handleThumbnailClick(0)}
-                className="w-full h-full rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer overflow-hidden relative group md:hover:scale-105 transition-transform duration-300"
+                className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer overflow-hidden rounded-lg sm:rounded-xl group"
               >
                 <img
                   src={service.galleryImages[0]}
                   alt={`${service.title} preview`}
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 md:group-hover:opacity-70"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-black/30 md:group-hover:bg-black/50 transition-all flex items-center justify-center">
-                  <p className="text-white font-semibold text-lg opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                  <p className="text-white font-semibold text-xs sm:text-sm lg:text-base opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                     {language === 'tr' ? 'Galeriyi Görüntüle' : 'View Gallery'}
                   </p>
                 </div>
               </motion.button>
             ) : (
-              <div className="w-full h-full rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                <p className="text-gray-500">{language === 'tr' ? 'Görsel Yok' : 'No Image'}</p>
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center rounded-lg sm:rounded-xl">
+                <p className="text-gray-500 text-xs sm:text-sm">{language === 'tr' ? 'Görsel Yok' : 'No Image'}</p>
               </div>
             )}
           </div>
