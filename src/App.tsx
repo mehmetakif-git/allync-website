@@ -1,18 +1,17 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LoadingScreen } from './components/LoadingScreen';
 import { Navigation } from './components/Navigation';
 import { SelectionScreen } from './components/SelectionScreen';
 import { HelmetManager } from './components/HelmetManager';
-import DotGrid from './components/ui/DotGrid';
+import FloatingLines from './components/ui/FloatingLines';
 import Lanyard from './components/Lanyard';
 import { InactivityWarning } from './components/InactivityWarning';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { SoundEffectProvider } from './contexts/SoundEffectContext';
-
-const AllyncAISolutions = lazy(() => import('./components/AllyncAISolutions').then(module => ({ default: module.AllyncAISolutions })));
-const DigitalSolutions = lazy(() => import('./components/DigitalSolutions').then(module => ({ default: module.DigitalSolutions })));
+import { AllyncAISolutions } from './components/AllyncAISolutions';
+import { DigitalSolutions } from './components/DigitalSolutions';
 
 function App() {
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
@@ -42,8 +41,9 @@ function App() {
   };
 
   const handleBackToSelection = () => {
+    // Instant scroll to top before transition
+    window.scrollTo(0, 0);
     setViewMode('selection');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -84,6 +84,24 @@ function App() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Prevent scroll flash during ALL view transitions
+  useEffect(() => {
+    // Lock body scroll during transition
+    document.body.style.overflow = 'hidden';
+
+    const timer = setTimeout(() => {
+      // Only unlock if not on selection screen
+      if (viewMode !== 'selection') {
+        document.body.style.overflow = '';
+      }
+    }, 600); // Match animation duration
+
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = '';
+    };
+  }, [viewMode]);
 
   // Effect to show warning at 80 seconds and Lanyard after 90 seconds of inactivity
   useEffect(() => {
@@ -136,12 +154,6 @@ function App() {
     setShowLanyard(false);
   };
 
-  const showBackground = viewMode !== 'loading';
-
-  if (viewMode === 'loading') {
-    return <LoadingScreen onLoadingComplete={handleLoadingComplete} language={language} />;
-  }
-
   const renderLanyard = () => (
     <AnimatePresence>
       {showLanyard && (
@@ -162,7 +174,25 @@ function App() {
     <HelmetProvider>
       <SoundEffectProvider>
         <div className={`min-h-screen bg-black app-loaded ${animationsEnabled ? 'animations-enabled' : 'animations-disabled'}`}>
-          {showBackground && !isMobile && <DotGrid />}
+          {/* FloatingLines - Always visible including during loading */}
+          {!isMobile && (
+            <FloatingLines
+              enabledWaves={['top', 'middle', 'bottom']}
+              lineCount={5}
+              lineDistance={5}
+              bendRadius={5.0}
+              bendStrength={-0.5}
+              interactive={viewMode !== 'loading'}
+              parallax={false}
+              mixBlendMode="normal"
+            />
+          )}
+
+          {/* Loading Screen */}
+          {viewMode === 'loading' && (
+            <LoadingScreen onLoadingComplete={handleLoadingComplete} language={language} />
+          )}
+
           <HelmetManager language={language} activeSection={activeSection} />
           <Navigation
             language={language}
@@ -177,13 +207,14 @@ function App() {
               language={language}
             />
           )}
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={viewMode}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="relative z-10"
             >
               {viewMode === 'selection' && (
                 <SelectionScreen
@@ -193,14 +224,10 @@ function App() {
                 />
               )}
               {viewMode === 'ai-view' && (
-                <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
-                  <AllyncAISolutions language={language} />
-                </Suspense>
+                <AllyncAISolutions language={language} />
               )}
               {viewMode === 'digital-view' && (
-                <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
-                  <DigitalSolutions language={language} />
-                </Suspense>
+                <DigitalSolutions language={language} />
               )}
             </motion.div>
           </AnimatePresence>

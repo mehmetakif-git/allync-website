@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronUp, Phone, ArrowLeft, Volume2, VolumeX } from 'lucide-react';
 import { translations } from '../utils/translations';
-import logoSvg from '../assets/logo.svg';
+import logoNavbar from '../assets/logo-navbar.svg';
 import { useSoundEffect } from '../contexts/SoundEffectContext';
 
 interface NavigationProps {
@@ -100,11 +100,13 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrollingUp ? 'translate-y-0' : '-translate-y-full'
       } ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-      style={{ 
+      style={{
         paddingTop: 'max(1rem, env(safe-area-inset-top))',
-        background: 'rgba(0, 0, 0, 0.9)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        background: 'rgba(255, 255, 255, 0.05)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
         willChange: 'transform',
         transform: 'translate3d(0, 0, 0)'
       }}>
@@ -113,12 +115,16 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
             {/* Logo */}
             <div
               className="flex items-center cursor-pointer group"
-              onClick={() => scrollToSection('hero')}
+              onClick={() => {
+                if (onBackToSelection) {
+                  playBackSound();
+                  onBackToSelection();
+                } else {
+                  scrollToSection('hero');
+                }
+              }}
             >
-              <img src={logoSvg} alt="Allync" className="h-8 w-auto mr-3 transition-transform duration-300 group-hover:scale-110" />
-              <span className="text-xl font-bold text-white transition-colors duration-300 group-hover:text-gray-300">
-                Allync
-              </span>
+              <img src={logoNavbar} alt="Allync" className="h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
             </div>
 
             {/* Desktop Navigation */}
@@ -200,7 +206,7 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-black/90 backdrop-blur-lg border-t border-white/10">
+          <div className="md:hidden bg-white/5 backdrop-blur-xl border-t border-white/15">
             <div className="px-4 py-4 space-y-2">
               {(viewMode === 'ai-view' || viewMode === 'digital-view') && onBackToSelection ? (
                 <button

@@ -66,12 +66,12 @@ export function LayoutTextFlip({
       className={cn("flex flex-wrap items-center justify-center", className)}
     >
       <div className="flex items-center justify-center gap-2 md:gap-3">
-        <motion.span
-          layoutId="subtext"
-          className={cn("font-bold text-white", className)}
+        <span
+          className={cn("font-bold", className)}
+          style={{ color: 'white' }}
         >
           {text}
-        </motion.span>
+        </span>
         <motion.span
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}

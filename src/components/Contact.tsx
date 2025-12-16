@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Phone, Mail, Calendar, ChevronDown } from 'lucide-react';
+import { Send, Phone, Mail, Calendar } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { InputGlow, LabelGlow, LabelInputContainer, BottomGradient } from './ui/InputGlow';
 import confetti from 'canvas-confetti';
@@ -130,10 +130,10 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
     formData.message && formData.message.trim() !== '' && !errors.message;
 
   return (
-    <section className="py-8 md:py-12 relative bg-black contact-section" id="contact" style={{ display: 'block', opacity: 1, visibility: 'visible' }}>
+    <section className="py-12 md:py-16 relative bg-black contact-section" id="contact">
 
-      <div className="max-w-1200px mx-auto px-5 sm:px-6 lg:px-8" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', display: 'block', visibility: 'visible', opacity: 1 }}>
-        <div className="text-center mb-8 md:mb-16 section-reveal">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 md:mb-12 section-reveal">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent block">
               {t.contactTitle}
@@ -142,9 +142,9 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">{t.contactSubtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
           {/* Contact Form */}
-          <div className="w-full bg-white/5 backdrop-blur-[6px] border border-white/10 rounded-2xl p-6 lg:p-8 fade-in-left contact-form relative" style={{ display: 'block', visibility: 'visible', opacity: 1 }}>
+          <div className="w-full bg-white/5 backdrop-blur-[6px] border border-white/10 rounded-2xl p-5 sm:p-6 lg:p-8 contact-form relative">
             <h3 className="text-2xl font-bold text-white mb-6">{t.getCustomDemo}</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6 form-grid">
@@ -193,36 +193,32 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
 
                 <LabelInputContainer>
                   <LabelGlow htmlFor="business">{t.businessType} *</LabelGlow>
-                  <div className="relative">
-                    <select
+                  <select
                     id="business"
                     name="business"
                     required
                     value={formData.business}
                     onChange={handleChange}
-                      className="w-full h-11 px-4 py-3 bg-gray-800 border-none rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-transparent transition-all duration-300 appearance-none pr-10 text-base"
-                      style={{ zIndex: 100 }}
-                    >
-                    <option value="" className="bg-gray-800 text-neutral-500">{t.selectIndustry}</option>
-                      <option value="salon" className="bg-gray-800 text-white">{t.salon}</option>
-                      <option value="law" className="bg-gray-800 text-white">{t.law}</option>
-                      <option value="healthcare" className="bg-gray-800 text-white">{t.healthcare}</option>
-                      <option value="retail" className="bg-gray-800 text-white">{t.retail}</option>
-                      <option value="restaurant" className="bg-gray-800 text-white">{t.restaurant}</option>
-                      <option value="fitness" className="bg-gray-800 text-white">{t.fitness}</option>
-                      <option value="veterinarian" className="bg-gray-800 text-white">{language === 'tr' ? 'Veteriner' : 'Veterinarian'}</option>
-                      <option value="psychologist" className="bg-gray-800 text-white">{language === 'tr' ? 'Psikolog' : 'Psychologist'}</option>
-                      <option value="dentist" className="bg-gray-800 text-white">{language === 'tr' ? 'Diş Hekimi' : 'Dentist'}</option>
-                      <option value="photographer" className="bg-gray-800 text-white">{language === 'tr' ? 'Fotoğrafçı' : 'Photographer'}</option>
-                      <option value="tailor" className="bg-gray-800 text-white">{language === 'tr' ? 'Terzi' : 'Tailor'}</option>
-                      <option value="autoservice" className="bg-gray-800 text-white">{language === 'tr' ? 'Oto Servis' : 'Auto Service'}</option>
-                      <option value="cleaning" className="bg-gray-800 text-white">{language === 'tr' ? 'Temizlik' : 'Cleaning'}</option>
-                      <option value="electrician" className="bg-gray-800 text-white">{language === 'tr' ? 'Elektrikçi' : 'Electrician'}</option>
-                      <option value="education" className="bg-gray-800 text-white">{language === 'tr' ? 'Eğitim' : 'Education'}</option>
-                      <option value="other" className="bg-gray-800 text-white">{t.other}</option>
-                    </select>
-                    <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
-                  </div>
+                    className="w-full h-11 px-4 bg-gray-800 border-none rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-gray-600 transition-all duration-300 text-sm sm:text-base cursor-pointer"
+                  >
+                    <option value="">{t.selectIndustry}</option>
+                    <option value="salon">{t.salon}</option>
+                    <option value="law">{t.law}</option>
+                    <option value="healthcare">{t.healthcare}</option>
+                    <option value="retail">{t.retail}</option>
+                    <option value="restaurant">{t.restaurant}</option>
+                    <option value="fitness">{t.fitness}</option>
+                    <option value="veterinarian">{language === 'tr' ? 'Veteriner' : 'Veterinarian'}</option>
+                    <option value="psychologist">{language === 'tr' ? 'Psikolog' : 'Psychologist'}</option>
+                    <option value="dentist">{language === 'tr' ? 'Diş Hekimi' : 'Dentist'}</option>
+                    <option value="photographer">{language === 'tr' ? 'Fotoğrafçı' : 'Photographer'}</option>
+                    <option value="tailor">{language === 'tr' ? 'Terzi' : 'Tailor'}</option>
+                    <option value="autoservice">{language === 'tr' ? 'Oto Servis' : 'Auto Service'}</option>
+                    <option value="cleaning">{language === 'tr' ? 'Temizlik' : 'Cleaning'}</option>
+                    <option value="electrician">{language === 'tr' ? 'Elektrikçi' : 'Electrician'}</option>
+                    <option value="education">{language === 'tr' ? 'Eğitim' : 'Education'}</option>
+                    <option value="other">{t.other}</option>
+                  </select>
                 </LabelInputContainer>
               </div>
 
@@ -244,19 +240,21 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
               <button
                 type="submit"
                 disabled={isSubmitting || !isFormValid}
-                className="group/btn relative h-12 w-full rounded-md bg-gradient-to-br from-gray-700 to-gray-800 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] hover:shadow-xl transition-all duration-300 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group/btn relative h-12 sm:h-14 w-full rounded-md bg-gradient-to-br from-gray-700 to-gray-800 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
               >
-{isSubmitting ? (
-                  <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                ) : (
-                  <span className="flex items-center justify-center gap-2">
-                    <span>{t.requestCustomQuote}</span>
-                    <Send className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                  </span>
-                )}
+                <span className="absolute inset-0 flex items-center justify-center">
+                  {isSubmitting ? (
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  ) : (
+                    <span className="flex items-center justify-center gap-2 whitespace-nowrap text-sm sm:text-base px-4">
+                      <span>{t.requestCustomQuote}</span>
+                      <Send className="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
+                    </span>
+                  )}
+                </span>
                 <BottomGradient />
               </button>
               {statusMessage && (
@@ -268,59 +266,58 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
           </div>
 
           {/* Contact Info */}
-          <div className="w-full flex flex-col gap-8 fade-in-right contact-info" style={{ display: 'block', visibility: 'visible', opacity: 1 }}>
-            <div className="bg-gradient-to-br from-gray-500/10 to-gray-400/10 backdrop-blur-[6px] border border-gray-500/20 rounded-2xl p-6 lg:p-8 relative">
-              <h3 className="text-2xl font-bold text-white mb-6">{t.whyChooseAI}</h3>
+          <div className="w-full flex flex-col gap-5 sm:gap-6 contact-info">
+            <div className="bg-gradient-to-br from-gray-500/10 to-gray-400/10 backdrop-blur-[6px] border border-gray-500/20 rounded-2xl p-5 sm:p-6 lg:p-8 relative">
+              <h3 className="text-xl sm:text-2xl font-bold text-white pb-4 sm:pb-6 border-b border-white/10 mb-5 sm:mb-6">{t.whyChooseAI}</h3>
 
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-500 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 border border-gray-500">
-                    <Calendar className="w-6 h-6 text-white" />
+              <div className="space-y-5 sm:space-y-6">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/20">
+                    <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-gray-300" />
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-2">{t.quickSetup}</h4>
-                    <p className="text-gray-400">{t.quickSetupDesc}</p>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{t.quickSetup}</h4>
+                    <p className="text-gray-400 text-sm sm:text-base">{t.quickSetupDesc}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-gradient-to-r from-gray-700 to-gray-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 border border-gray-500">
-                    <Phone className="w-6 h-6 text-white" />
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/20">
+                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-gray-300" />
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-2">{t.dedicatedSupport}</h4>
-                    <p className="text-gray-400">{t.dedicatedSupportDesc}</p>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{t.dedicatedSupport}</h4>
+                    <p className="text-gray-400 text-sm sm:text-base">{t.dedicatedSupportDesc}</p>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 border border-gray-500">
-                    <Mail className="w-6 h-6 text-white" />
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0 border border-white/20">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-gray-300" />
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white mb-2">{t.provenResults}</h4>
-                    <p className="text-gray-400">{t.provenResultsDesc}</p>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{t.provenResults}</h4>
+                    <p className="text-gray-400 text-sm sm:text-base">{t.provenResultsDesc}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-white/5 backdrop-blur-[6px] border border-white/10 rounded-xl p-6 text-center counter-animate relative">
-                <p className="text-3xl font-bold text-gray-300">500+</p>
-                <p className="text-gray-400 text-sm">{t.businessesAutomated}</p>
+            {/* Stats & Guarantee - consistent spacing */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white/5 backdrop-blur-[6px] border border-white/10 rounded-xl p-4 text-center relative">
+                <p className="text-2xl sm:text-3xl font-bold text-gray-300">500+</p>
+                <p className="text-gray-400 text-xs sm:text-sm">{t.businessesAutomated}</p>
               </div>
-              <div className="bg-white/5 backdrop-blur-[6px] border border-white/10 rounded-xl p-6 text-center counter-animate stagger-1 relative">
-                <p className="text-3xl font-bold text-gray-400">98.5%</p>
-                <p className="text-gray-400 text-sm">{t.clientSatisfaction}</p>
+              <div className="bg-white/5 backdrop-blur-[6px] border border-white/10 rounded-xl p-4 text-center relative">
+                <p className="text-2xl sm:text-3xl font-bold text-gray-400">98.5%</p>
+                <p className="text-gray-400 text-xs sm:text-sm">{t.clientSatisfaction}</p>
               </div>
-            </div>
-
-            {/* Guarantee */}
-            <div className="bg-gradient-to-r from-gray-500/10 to-gray-400/10 backdrop-blur-[6px] border border-gray-500/20 rounded-xl p-6 text-center relative">
-              <h4 className="text-lg font-semibold text-white mb-2">{t.guarantee}</h4>
-              <p className="text-gray-400 text-sm">{t.guaranteeDesc}</p>
+              {/* Guarantee - spans full width */}
+              <div className="col-span-2 bg-gradient-to-r from-gray-500/10 to-gray-400/10 backdrop-blur-[6px] border border-gray-500/20 rounded-xl p-4 text-center relative">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{t.guarantee}</h4>
+                <p className="text-gray-400 text-xs sm:text-sm">{t.guaranteeDesc}</p>
+              </div>
             </div>
 
           </div>

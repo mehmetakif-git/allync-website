@@ -14,7 +14,7 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
   const t = translations[language];
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-x-hidden">
+    <div className="h-screen min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden">
 
       <button
         onClick={onLanguageToggle}

@@ -12,6 +12,16 @@ import videoToVideoThumb from './video-to-video.webp';
 import dataAnalysisThumb from './data-analysis.webp';
 import customAiThumb from './custom-ai.webp';
 
+// Digital Solutions thumbnails
+import ecommerceThumb from './ecommerce.webp';
+import corporateThumb from './corporate.webp';
+import mobileAppThumb from './mobile-app.webp';
+import digitalMarketingThumb from './digital-marketing.webp';
+import iotThumb from './iot.webp';
+import cloudThumb from './cloud.webp';
+import uiuxThumb from './uiux.webp';
+import maintenanceThumb from './maintenance.webp';
+
 export const demoThumbnails: Record<string, string | null> = {
   'whatsapp': whatsappThumb,
   'instagram': instagramThumb,
@@ -23,6 +33,15 @@ export const demoThumbnails: Record<string, string | null> = {
   'video-to-video': videoToVideoThumb,
   'data-analysis': dataAnalysisThumb,
   'custom-ai': customAiThumb,
+  // Digital Solutions thumbnails
+  'ecommerce': ecommerceThumb,
+  'corporate': corporateThumb,
+  'mobile-app': mobileAppThumb,
+  'digital-marketing': digitalMarketingThumb,
+  'iot': iotThumb,
+  'cloud': cloudThumb,
+  'uiux': uiuxThumb,
+  'maintenance': maintenanceThumb,
 };
 
 // Helper function to get thumbnail by demo type

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import logoSvg from '../assets/logo.svg';
 import { ANIMATION_DELAYS } from '../constants/animations';
 import { MultiStepLoader } from './ui/MultiStepLoader';
@@ -53,7 +54,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete,
           clearInterval(progressInterval);
           setTimeout(() => {
             setIsExiting(true);
-            setTimeout(onLoadingComplete, ANIMATION_DELAYS.LOADING_COMPLETE);
+            // Wait for fade animation to complete
+            setTimeout(onLoadingComplete, 800);
           }, ANIMATION_DELAYS.ENABLE_ANIMATIONS);
           return 100;
         }
@@ -63,7 +65,6 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete,
 
     return () => {
       clearInterval(progressInterval);
-      // Clean up typewriter interval and timeout
       if (typeIntervalRef.current) {
         clearInterval(typeIntervalRef.current);
         typeIntervalRef.current = null;
@@ -77,30 +78,33 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete,
 
   const handleSkip = () => {
     setIsExiting(true);
-    setTimeout(onLoadingComplete, ANIMATION_DELAYS.MODAL_ANIMATION);
+    setTimeout(onLoadingComplete, 800);
   };
 
   return (
-    <div className={`fixed inset-0 z-50 loading-screen ${isExiting ? 'loading-exit' : ''}`}>
-      {/* Background */}
-      <div className="absolute inset-0 bg-black">
+    <motion.div
+      className="fixed inset-0 z-50"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: isExiting ? 0 : 1 }}
+      transition={{ duration: 0.8, ease: 'easeInOut' }}
+    >
+      {/* Glassmorphism Background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'rgba(0, 0, 0, 0.7)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)'
+        }}
+      >
         <div className="loading-gradient"></div>
-        <div className="loading-particles">
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className="loading-particle" style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`
-            }}></div>
-          ))}
-        </div>
       </div>
 
       {/* Skip Button */}
       {showSkip && (
         <button
           onClick={handleSkip}
-          className="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors duration-300 text-sm"
+          className="absolute top-6 right-6 z-20 text-gray-400 hover:text-white transition-colors duration-300 text-sm"
         >
           Skip →
         </button>
@@ -143,6 +147,6 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete,
           <div className="loading-shape loading-shape-3"></div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
