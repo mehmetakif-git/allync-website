@@ -941,8 +941,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
         </AnimatePresence>
       </div>
 
-      <div className="flex-1 w-full min-w-0 overflow-hidden">
-        <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-[6px] border border-white/10 rounded-2xl sm:rounded-3xl p-3 sm:p-5 lg:p-6 hover:border-white/20 w-full relative pointer-events-auto cursor-pointer overflow-hidden">
+      <div className="flex-1 w-full min-w-0">
+        <div className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-[6px] border border-white/10 rounded-2xl sm:rounded-3xl p-3 sm:p-5 lg:p-6 hover:border-white/20 w-full relative pointer-events-auto cursor-pointer">
           <GlowingEffect
             color={service.glowColor}
             blur={0}
@@ -954,22 +954,23 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             inactiveZone={0.7}
             movementDuration={2}
           />
-          <div className="relative z-10 w-full overflow-hidden rounded-lg sm:rounded-xl" style={{ paddingBottom: '56.25%' }}>
+          <div className="relative z-10 w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden">
             {/* Demo View for services with demoType */}
             {service.demoType ? (
-              <motion.button
-                onClick={() => setIsDemoModalOpen(true)}
-                className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center cursor-pointer overflow-hidden rounded-lg sm:rounded-xl"
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* Thumbnail image if available */}
-                {getDemoThumbnail(service.demoType) && (
-                  <img
-                    src={getDemoThumbnail(service.demoType)!}
-                    alt={`${service.title} demo`}
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                  />
-                )}
+              <div className="absolute inset-0 w-full h-full">
+                <motion.button
+                  onClick={() => setIsDemoModalOpen(true)}
+                  className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center cursor-pointer rounded-lg sm:rounded-xl relative overflow-hidden"
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Thumbnail image if available */}
+                  {getDemoThumbnail(service.demoType) && (
+                    <img
+                      src={getDemoThumbnail(service.demoType)!}
+                      alt={`${service.title} demo`}
+                      className="absolute inset-0 w-full h-full object-cover object-center"
+                    />
+                  )}
 
                 {/* Overlay gradient */}
                 <div
@@ -1014,7 +1015,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                 <p className="relative z-10 text-gray-300 text-xs sm:text-sm mt-1 drop-shadow-lg">
                   {language === 'tr' ? 'Canlı demo izle' : 'Watch live demo'}
                 </p>
-              </motion.button>
+                </motion.button>
+              </div>
             ) : service.galleryImages && service.galleryImages.length > 0 ? (
               <motion.button
                 layoutId={`gallery-${service.title}-0`}
