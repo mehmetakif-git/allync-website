@@ -188,14 +188,21 @@ body.dwd-modal-open {
   backface-visibility: hidden;
 }
 
-/* Hover state - only when not expanded */
-.dwd-dynamic-island:hover:not(.dwd-di-expanded) {
+/* Hover state - only when collapsed */
+.dwd-dynamic-island.dwd-di-state-collapsed:hover {
   width: 140px;
   height: 40px;
 }
 
-/* Expanded state */
-.dwd-dynamic-island.dwd-di-expanded {
+/* Compact state - When WhatsApp is open but music playing */
+.dwd-dynamic-island.dwd-di-state-compact {
+  width: 220px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+/* Expanded state - Full music player on home screen */
+.dwd-dynamic-island.dwd-di-state-expanded {
   width: 340px;
   height: 90px;
   border-radius: 40px;
@@ -218,8 +225,8 @@ body.dwd-modal-open {
   z-index: 10;
 }
 
-/* Collapsed content */
-.dwd-di-collapsed {
+/* Collapsed content - Camera & Sensor */
+.dwd-di-collapsed-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -229,10 +236,99 @@ body.dwd-modal-open {
   transition: opacity 0.25s ease;
 }
 
-.dwd-dynamic-island.dwd-di-expanded .dwd-di-collapsed {
+/* Hide collapsed content when expanded or compact */
+.dwd-dynamic-island.dwd-di-state-expanded .dwd-di-collapsed-content,
+.dwd-dynamic-island.dwd-di-state-compact .dwd-di-collapsed-content {
   opacity: 0;
   pointer-events: none;
   position: absolute;
+}
+
+/* Compact content - Album + small waveform only */
+.dwd-di-compact-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 8px 14px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.3s ease 0.15s,
+    transform 0.3s ease 0.15s;
+  position: absolute;
+  pointer-events: none;
+}
+
+.dwd-dynamic-island.dwd-di-state-compact .dwd-di-compact-content {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Hide compact content when expanded */
+.dwd-dynamic-island.dwd-di-state-expanded .dwd-di-compact-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Compact left side - Album + Track Info */
+.dwd-di-compact-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dwd-di-compact-album {
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+  flex-shrink: 0;
+}
+
+.dwd-di-compact-album .dwd-di-album-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Compact Track Info */
+.dwd-di-compact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.dwd-di-compact-title {
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+
+.dwd-di-compact-artist {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 10px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+
+.dwd-di-compact-waves {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
 }
 
 .dwd-di-camera {
@@ -271,10 +367,39 @@ body.dwd-modal-open {
   pointer-events: none;
 }
 
-.dwd-dynamic-island.dwd-di-expanded .dwd-di-expanded-content {
+.dwd-dynamic-island.dwd-di-state-expanded .dwd-di-expanded-content {
   opacity: 1;
   transform: scale(1);
   pointer-events: auto;
+}
+
+/* Hide expanded content when compact */
+.dwd-dynamic-island.dwd-di-state-compact .dwd-di-expanded-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Kapanırken - içerik hızlıca ve delay olmadan kaybolsun */
+.dwd-dynamic-island.dwd-di-state-collapsed .dwd-di-expanded-content {
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.dwd-dynamic-island.dwd-di-state-collapsed .dwd-di-compact-content {
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+/* Collapsed content - delay ile görünsün */
+.dwd-dynamic-island.dwd-di-state-collapsed .dwd-di-collapsed-content {
+  opacity: 1;
+  transition: opacity 0.2s ease 0.1s;
 }
 
 /* Music left side */
@@ -293,7 +418,7 @@ body.dwd-modal-open {
   transition: transform 0.3s ease;
 }
 
-.dwd-dynamic-island.dwd-di-expanded:hover .dwd-di-album {
+.dwd-dynamic-island.dwd-di-state-expanded:hover .dwd-di-album {
   transform: scale(1.05);
 }
 
@@ -346,6 +471,16 @@ body.dwd-modal-open {
   0%, 100% { transform: scaleY(1); }
   50% { transform: scaleY(0.4); }
 }
+
+/* Compact waves - smaller version */
+.dwd-di-compact-waves .dwd-di-wave-bar {
+  width: 3px;
+  height: 100%;
+}
+
+.dwd-di-compact-waves .dwd-di-wave-bar:nth-child(1) { height: 40%; animation-delay: 0s; }
+.dwd-di-compact-waves .dwd-di-wave-bar:nth-child(2) { height: 100%; animation-delay: 0.2s; }
+.dwd-di-compact-waves .dwd-di-wave-bar:nth-child(3) { height: 60%; animation-delay: 0.4s; }
 
 /* Wallpaper */
 .dwd-wallpaper {
@@ -641,10 +776,46 @@ body.dwd-modal-open {
   transform: scale(0.95);
 }
 
-/* Network Icon */
-.dwd-network-icon {
+/* Safari Icon */
+.dwd-safari-icon {
   background: linear-gradient(135deg, #007AFF, #5AC8FA);
   padding: 10px;
+  position: relative;
+}
+
+/* Safari Tooltip */
+.dwd-safari-tooltip {
+  position: absolute;
+  bottom: calc(100% + 18px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #007AFF, #5AC8FA);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.5);
+  animation: dwd-tooltipBounce 2s ease-in-out infinite;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.dwd-safari-icon:hover .dwd-safari-tooltip {
+  opacity: 1;
+}
+
+.dwd-safari-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-top-color: #5AC8FA;
 }
 
 /* Call Icon */
@@ -1008,6 +1179,39 @@ body.dwd-modal-open {
   font-size: 28px;
 }
 
+.dwd-scenario-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dwd-scenario-icon-wrapper.appointment {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+.dwd-scenario-icon-wrapper.pricing {
+  background: linear-gradient(135deg, #10b981, #14b8a6);
+}
+
+.dwd-scenario-icon-wrapper.greeting {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+
+.dwd-scenario-icon-wrapper.company {
+  background: linear-gradient(135deg, #ec4899, #f43f5e);
+}
+
+.dwd-scenario-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 .dwd-scenario-item .dwd-text h4 {
   color: white;
   font-size: 16px;
@@ -1311,4 +1515,129 @@ body.dwd-modal-open {
   width: 115%;
   height: auto;
   display: block;
+}
+
+/* ==================== */
+/* VOLUME HUD - iPhone Style (Inside Screen) */
+/* ==================== */
+.dwd-volume-hud {
+  position: absolute;
+  top: 280px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  z-index: 80;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dwd-volume-hud.dwd-volume-hud-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dwd-volume-hud-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(30, 30, 35, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 16px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  min-width: 280px;
+}
+
+.dwd-volume-hud-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dwd-volume-hud-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+  opacity: 0.9;
+}
+
+.dwd-volume-hud-slider {
+  position: relative;
+  flex: 1;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.dwd-volume-hud-track {
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dwd-volume-hud-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b 0%, #ee5a24 100%);
+  border-radius: 4px;
+  transition: width 0.1s ease;
+}
+
+.dwd-volume-hud-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 10;
+}
+
+.dwd-volume-hud-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.dwd-volume-hud-input::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* Subtle glow animation */
+.dwd-volume-hud-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(238, 90, 36, 0.2));
+  opacity: 0;
+  animation: dwd-volumeHudPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes dwd-volumeHudPulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
 }

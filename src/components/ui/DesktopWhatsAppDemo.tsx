@@ -14,6 +14,19 @@ import sendMessageBar from '../../assets/demo-icons/Send Message.svg';
 import sunIcon from '../../assets/demo-icons/Sun_1_Fill.svg';
 import musicIcon from '../../assets/demo-icons/music.svg';
 import albumCover from '../../assets/demo-icons/The_Weeknd_-_Blinding_Lights.png';
+import blindingLightsAudio from '../../assets/demo-icons/The Weeknd - Blinding Lights.mp3';
+import calendarIcon from '../../assets/demo-icons/Calendar_Plus.svg';
+import cardIcon from '../../assets/demo-icons/Card_Fill.svg';
+import pinIcon from '../../assets/demo-icons/Pin_Fill.svg';
+import handIcon from '../../assets/demo-icons/Hand_Sparcles_Fill.svg';
+
+// Senaryo ikonları mapping
+const scenarioIcons: Record<string, string> = {
+  appointment: calendarIcon,
+  pricing: cardIcon,
+  greeting: handIcon,
+  company: pinIcon
+};
 
 interface DesktopWhatsAppDemoProps {
   language: 'tr' | 'en';
@@ -120,6 +133,7 @@ const uiText = {
     tooltip: "Demo'yu Başlat!",
     weather: 'Hava Durumu',
     music: 'Müzik',
+    playNow: 'Şimdi Çal',
     nowPlaying: 'Şimdi Çalıyor'
   },
   en: {
@@ -132,6 +146,7 @@ const uiText = {
     tooltip: 'Start Demo!',
     weather: 'Weather',
     music: 'Music',
+    playNow: 'Play Now',
     nowPlaying: 'Now Playing'
   }
 };
@@ -153,10 +168,106 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [isDynamicIslandExpanded, setIsDynamicIslandExpanded] = useState(false);
+  // Dynamic Island states: 'collapsed' | 'compact' | 'expanded'
+  const [dynamicIslandState, setDynamicIslandState] = useState<'collapsed' | 'compact' | 'expanded'>('collapsed');
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.7);
+  const [showVolumeControl, setShowVolumeControl] = useState(false);
   const chatAreaRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const volumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Initialize audio
+  useEffect(() => {
+    audioRef.current = new Audio(blindingLightsAudio);
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0;
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+      if (volumeTimeoutRef.current) {
+        clearTimeout(volumeTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Handle music play/pause based on isMusicPlaying state
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    if (isMusicPlaying) {
+      // Play music with fade in
+      audioRef.current.volume = 0;
+      audioRef.current.play().catch(console.error);
+
+      // Fade in
+      let currentVolume = 0;
+      const fadeIn = setInterval(() => {
+        currentVolume += 0.05;
+        if (currentVolume >= volume) {
+          currentVolume = volume;
+          clearInterval(fadeIn);
+        }
+        if (audioRef.current) {
+          audioRef.current.volume = currentVolume;
+        }
+      }, 50);
+
+      // Show volume control when on home screen
+      if (!isWhatsAppOpen) {
+        setShowVolumeControl(true);
+      }
+    } else {
+      // Fade out and pause
+      let currentVolume = audioRef.current.volume;
+      const fadeOut = setInterval(() => {
+        currentVolume -= 0.05;
+        if (currentVolume <= 0) {
+          currentVolume = 0;
+          clearInterval(fadeOut);
+          if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+          }
+        }
+        if (audioRef.current) {
+          audioRef.current.volume = currentVolume;
+        }
+      }, 50);
+
+      // Hide volume control with delay
+      volumeTimeoutRef.current = setTimeout(() => {
+        setShowVolumeControl(false);
+      }, 500);
+    }
+  }, [isMusicPlaying, volume, isWhatsAppOpen]);
+
+  // Handle Dynamic Island state changes based on WhatsApp open/close
+  useEffect(() => {
+    if (isMusicPlaying) {
+      if (isWhatsAppOpen) {
+        // WhatsApp açıldığında compact moda geç
+        setDynamicIslandState('compact');
+        setShowVolumeControl(false);
+      } else {
+        // WhatsApp kapandığında expanded moda dön
+        setDynamicIslandState('expanded');
+        setShowVolumeControl(true);
+      }
+    }
+  }, [isWhatsAppOpen, isMusicPlaying]);
+
+  // Update volume when slider changes
+  useEffect(() => {
+    if (audioRef.current && isMusicPlaying) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume, isMusicPlaying]);
 
   // Trigger entrance animation
   useEffect(() => {
@@ -337,7 +448,7 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        
+
         <div
           className="dwd-iphone-frame"
           ref={phoneRef}
@@ -355,16 +466,44 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
 
             {/* Dynamic Island */}
             <div
-              className={`dwd-dynamic-island ${isDynamicIslandExpanded ? 'dwd-di-expanded' : ''}`}
-              onClick={() => setIsDynamicIslandExpanded(!isDynamicIslandExpanded)}
+              className={`dwd-dynamic-island dwd-di-state-${dynamicIslandState}`}
+              onClick={() => {
+                if (dynamicIslandState === 'collapsed') {
+                  // Müziği başlat ve expanded yap
+                  setIsMusicPlaying(true);
+                  setDynamicIslandState('expanded');
+                } else {
+                  // Müziği durdur ve collapsed yap
+                  setIsMusicPlaying(false);
+                  setDynamicIslandState('collapsed');
+                }
+              }}
             >
-              {/* Collapsed Content */}
-              <div className="dwd-di-collapsed">
+              {/* Collapsed Content - Camera & Sensor */}
+              <div className="dwd-di-collapsed-content">
                 <div className="dwd-di-camera" />
                 <div className="dwd-di-sensor" />
               </div>
 
-              {/* Expanded Content - Music Player */}
+              {/* Compact Content - Album, Track Info & Waveform (when WhatsApp is open) */}
+              <div className="dwd-di-compact-content">
+                <div className="dwd-di-compact-left">
+                  <div className="dwd-di-compact-album">
+                    <img src={albumCover} alt="Album" className="dwd-di-album-img" />
+                  </div>
+                  <div className="dwd-di-compact-info">
+                    <span className="dwd-di-compact-title">Blinding Lights</span>
+                    <span className="dwd-di-compact-artist">The Weeknd</span>
+                  </div>
+                </div>
+                <div className="dwd-di-compact-waves">
+                  <div className="dwd-di-wave-bar" />
+                  <div className="dwd-di-wave-bar" />
+                  <div className="dwd-di-wave-bar" />
+                </div>
+              </div>
+
+              {/* Expanded Content - Full Music Player */}
               <div className="dwd-di-expanded-content">
                 <div className="dwd-di-music-left">
                   <div className="dwd-di-album">
@@ -405,6 +544,40 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
 
             {/* Home Screen */}
             <div className={`dwd-home-screen ${isWhatsAppOpen ? 'dwd-hidden' : ''}`}>
+              {/* iPhone Volume HUD - Inside Screen */}
+              <div className={`dwd-volume-hud ${showVolumeControl ? 'dwd-volume-hud-visible' : ''}`}>
+                <div className="dwd-volume-hud-container">
+                  <div className="dwd-volume-hud-icon">
+                    <svg viewBox="0 0 24 24" fill="white">
+                      {volume === 0 ? (
+                        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                      ) : volume < 0.5 ? (
+                        <path d="M7 9v6h4l5 5V4l-5 5H7z"/>
+                      ) : (
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                      )}
+                    </svg>
+                  </div>
+                  <div className="dwd-volume-hud-slider">
+                    <div className="dwd-volume-hud-track">
+                      <div
+                        className="dwd-volume-hud-fill"
+                        style={{ width: `${volume * 100}%` }}
+                      />
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.01"
+                      value={volume}
+                      onChange={(e) => setVolume(parseFloat(e.target.value))}
+                      className="dwd-volume-hud-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* Time Widget */}
               <div className="dwd-time-widget">
                 <div className="dwd-time">{currentTime}</div>
@@ -423,7 +596,19 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
                   <div className="dwd-weather-temp">18°</div>
                   <div className="dwd-weather-desc">{language === 'tr' ? 'Açık, H:22° L:14°' : 'Clear, H:72° L:57°'}</div>
                 </div>
-                <div className="dwd-widget dwd-widget-hover">
+                <div
+                  className="dwd-widget dwd-widget-hover"
+                  onClick={() => {
+                    if (!isMusicPlaying) {
+                      setIsMusicPlaying(true);
+                      setDynamicIslandState('expanded');
+                    } else {
+                      setIsMusicPlaying(false);
+                      setDynamicIslandState('collapsed');
+                    }
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
                   <div className="dwd-widget-header">
                     <div className="dwd-widget-icon dwd-music-icon">
                       <img src={musicIcon} alt="Music" className="dwd-widget-icon-img" />
@@ -435,7 +620,7 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
                       <img src={albumCover} alt="Blinding Lights" className="dwd-album-img" />
                     </div>
                     <div className="dwd-music-info">
-                      <h4>{t.nowPlaying}</h4>
+                      <h4>{isMusicPlaying ? t.nowPlaying : t.playNow}</h4>
                       <p>Blinding Lights</p>
                     </div>
                   </div>
@@ -448,14 +633,15 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
                   <span className="dwd-close-tooltip">{language === 'tr' ? 'Çıkış' : 'Exit'} ✕</span>
                   <img src={closeIcon} alt="Close" className="dwd-close-img" />
                 </div>
-                <div className="dwd-dock-icon dwd-network-icon dwd-dock-hover" onClick={handleContactNavigation}>
-                  <img src={networkIcon} alt="Network" className="dwd-icon-img" />
+                <div className="dwd-dock-icon dwd-safari-icon dwd-dock-hover" onClick={handleContactNavigation}>
+                  <span className="dwd-safari-tooltip">{language === 'tr' ? 'İletişime Geçin' : 'Contact Us'}</span>
+                  <img src={networkIcon} alt="Contact" className="dwd-icon-img" />
                 </div>
                 <div className="dwd-dock-icon dwd-call-icon dwd-dock-hover" onClick={handleContactNavigation}>
                   <img src={callIcon} alt="Call" className="dwd-icon-img" />
                 </div>
                 <div className="dwd-dock-icon dwd-whatsapp-icon dwd-dock-hover" onClick={openWhatsApp}>
-                  <span className="dwd-whatsapp-tooltip">{t.tooltip} 🚀</span>
+                  <span className="dwd-whatsapp-tooltip">{t.tooltip}</span>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
@@ -486,7 +672,9 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
                         className="dwd-scenario-item"
                         onClick={() => selectScenario(key)}
                       >
-                        <span className="dwd-icon">{scenario.icon}</span>
+                        <div className={`dwd-scenario-icon-wrapper ${key}`}>
+                          <img src={scenarioIcons[key]} alt={scenario.title} className="dwd-scenario-icon" />
+                        </div>
                         <div className="dwd-text">
                           <h4>{scenario.title}</h4>
                           <p>{scenario.count}</p>
