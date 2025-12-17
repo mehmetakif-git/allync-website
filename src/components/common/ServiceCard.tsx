@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo, memo } from 'react';
-import { Video as LucideIcon, X, ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { Video as LucideIcon, X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Lottie from 'lottie-react';
 import { GlowingEffect } from '../ui/GlowingEffect';
@@ -29,7 +29,9 @@ import { IoTDemo } from '../ui/IoTDemo';
 import { CloudDemo } from '../ui/CloudDemo';
 import { UIUXDemo } from '../ui/UIUXDemo';
 import { MaintenanceDemo } from '../ui/MaintenanceDemo';
-import { IPhoneMockup as MobileIPhoneMockup } from '../ui/IPhoneMockup';
+import { MobileIPhoneMockup } from '../ui/MobileIPhoneMockup';
+import { MobileWhatsAppDemo } from '../ui/MobileWhatsAppDemo';
+import { DesktopWhatsAppDemo } from '../ui/DesktopWhatsAppDemo';
 import { getDemoThumbnail } from '../../assets/demo-thumbnails';
 
 // Helper function to convert hex color to hue rotation
@@ -617,6 +619,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isAudioModalOpen, setIsAudioModalOpen] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isPlayHovered, setIsPlayHovered] = useState(false);
   const leftSectionRef = useRef<HTMLDivElement>(null);
   const demoModalRef = useRef<HTMLDivElement>(null);
   const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -651,12 +654,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
   }, []);
 
   useEffect(() => {
-    if (expandedIndex !== null) {
+    if (expandedIndex !== null || isDemoModalOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [expandedIndex]);
+  }, [expandedIndex, isDemoModalOpen]);
 
   const handleThumbnailClick = (idx: number) => {
     setExpandedIndex(idx);
@@ -954,86 +957,133 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             inactiveZone={0.7}
             movementDuration={2}
           />
-          <div className="relative z-10 w-full rounded-lg sm:rounded-xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          <div
+            className="relative z-10 w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden bg-gray-900"
+            onMouseEnter={() => isDesktop && setIsPlayHovered(true)}
+            onMouseLeave={() => isDesktop && setIsPlayHovered(false)}
+          >
             {/* Demo View for services with demoType */}
             {service.demoType ? (
-              <motion.button
-                onClick={() => setIsDemoModalOpen(true)}
-                className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center cursor-pointer overflow-hidden"
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* Thumbnail image if available */}
+              <>
+                {/* Thumbnail image - absolutely positioned background */}
                 {getDemoThumbnail(service.demoType) && (
                   <img
                     src={getDemoThumbnail(service.demoType)!}
                     alt={`${service.title} demo`}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'transform 0.4s ease-out',
+                      transform: isPlayHovered ? 'scale(1.08)' : 'scale(1)'
+                    }}
                   />
                 )}
-
                 {/* Overlay gradient */}
                 <div
-                  className={`absolute top-0 left-0 right-0 bottom-0 ${getDemoThumbnail(service.demoType) ? 'bg-black/40' : 'opacity-20'}`}
+                  className={`absolute inset-0 ${getDemoThumbnail(service.demoType) ? 'bg-black/40' : 'opacity-20'}`}
                   style={!getDemoThumbnail(service.demoType) ? {
                     background: `radial-gradient(circle at center, ${service.glowColor || '#00d9ff'}40 0%, transparent 70%)`
                   } : undefined}
                 />
-
-                {/* Play icon */}
-                <motion.div
-                  className="relative z-10 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mb-2"
-                  style={{
-                    background: `linear-gradient(135deg, ${service.glowColor || '#00d9ff'}30, ${service.glowColor || '#00d9ff'}10)`,
-                    border: `2px solid ${service.glowColor || '#00d9ff'}50`,
-                    boxShadow: `0 0 30px ${service.glowColor || '#00d9ff'}30`,
-                    backdropFilter: 'blur(8px)'
-                  }}
-                  animate={{
-                    boxShadow: [
-                      `0 0 20px ${service.glowColor || '#00d9ff'}20`,
-                      `0 0 40px ${service.glowColor || '#00d9ff'}40`,
-                      `0 0 20px ${service.glowColor || '#00d9ff'}20`,
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                {/* Clickable overlay with centered content */}
+                <motion.button
+                  onClick={() => setIsDemoModalOpen(true)}
+                  style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 10 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <Play
-                    className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ml-0.5"
+                {/* Backdrop container for play icon and text */}
+                <div className="flex flex-col items-center justify-center px-6 py-4 rounded-2xl bg-black/40 backdrop-blur-sm">
+                  {/* Play/Pause icon */}
+                  <motion.div
+                    className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mb-3 relative overflow-hidden"
                     style={{
-                      color: service.glowColor?.replace('0.5)', '1)') || '#00d9ff',
-                      filter: `drop-shadow(0 0 8px ${service.glowColor || '#00d9ff'})`
+                      background: `linear-gradient(135deg, ${service.glowColor || '#00d9ff'}30, ${service.glowColor || '#00d9ff'}10)`,
+                      border: `2px solid ${service.glowColor || '#00d9ff'}50`,
+                      boxShadow: `0 0 30px ${service.glowColor || '#00d9ff'}30`,
+                      backdropFilter: 'blur(8px)'
                     }}
-                    fill={service.glowColor?.replace('0.5)', '1)') || '#00d9ff'}
-                  />
-                </motion.div>
+                    animate={{
+                      boxShadow: [
+                        `0 0 20px ${service.glowColor || '#00d9ff'}20`,
+                        `0 0 40px ${service.glowColor || '#00d9ff'}40`,
+                        `0 0 20px ${service.glowColor || '#00d9ff'}20`,
+                      ],
+                      scale: isPlayHovered ? 1.1 : 1
+                    }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  >
+                    <AnimatePresence mode="wait">
+                      {isPlayHovered ? (
+                        <motion.div
+                          key="pause"
+                          initial={{ scale: 0, rotate: -90 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          exit={{ scale: 0, rotate: 90 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <Pause
+                            className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
+                            style={{
+                              color: service.glowColor?.replace('0.5)', '1)') || '#00d9ff',
+                              filter: `drop-shadow(0 0 8px ${service.glowColor || '#00d9ff'})`
+                            }}
+                            fill={service.glowColor?.replace('0.5)', '1)') || '#00d9ff'}
+                          />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="play"
+                          initial={{ scale: 0, rotate: 90 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          exit={{ scale: 0, rotate: -90 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <Play
+                            className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ml-0.5"
+                            style={{
+                              color: service.glowColor?.replace('0.5)', '1)') || '#00d9ff',
+                              filter: `drop-shadow(0 0 8px ${service.glowColor || '#00d9ff'})`
+                            }}
+                            fill={service.glowColor?.replace('0.5)', '1)') || '#00d9ff'}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
 
-                {/* Text */}
-                <p className="relative z-10 text-white font-semibold text-sm sm:text-base lg:text-lg drop-shadow-lg">
-                  {language === 'tr' ? 'Aksiyonda Gör' : 'View in Action'}
-                </p>
-                <p className="relative z-10 text-gray-300 text-xs sm:text-sm mt-1 drop-shadow-lg">
-                  {language === 'tr' ? 'Canlı demo izle' : 'Watch live demo'}
-                </p>
-              </motion.button>
+                  {/* Text */}
+                  <p className="text-white font-semibold text-sm sm:text-base lg:text-lg">
+                    {language === 'tr' ? 'Aksiyonda Gör' : 'View in Action'}
+                  </p>
+                  <p className="text-gray-300 text-xs sm:text-sm mt-1">
+                    {language === 'tr' ? 'Canlı demo izle' : 'Watch live demo'}
+                  </p>
+                </div>
+                </motion.button>
+              </>
             ) : service.galleryImages && service.galleryImages.length > 0 ? (
               <motion.button
                 layoutId={`gallery-${service.title}-0`}
                 onClick={() => handleThumbnailClick(0)}
-                className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer overflow-hidden group"
+                className="absolute inset-0 flex items-center justify-center cursor-pointer"
               >
                 <img
                   src={service.galleryImages[0]}
                   alt={`${service.title} preview`}
-                  className="absolute top-0 left-0 w-full h-full object-cover"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                 />
-                <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/30 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                   <p className="text-white font-semibold text-xs sm:text-sm lg:text-base opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                     {language === 'tr' ? 'Galeriyi Görüntüle' : 'View Gallery'}
                   </p>
                 </div>
               </motion.button>
             ) : (
-              <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center">
                 <p className="text-gray-500 text-xs sm:text-sm">{language === 'tr' ? 'Görsel Yok' : 'No Image'}</p>
               </div>
             )}
@@ -1139,76 +1189,37 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
       {/* Demo Modal - WhatsApp Demo */}
       <AnimatePresence>
         {isDemoModalOpen && service.demoType === 'whatsapp' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
-          >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+          <>
+            {/* Mobile Version - Full iPhone experience */}
+            {!isDesktop && (
+              <MobileWhatsAppDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
 
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
-              >
-                {language === 'tr' ? 'WhatsApp Otomasyon Demo' : 'WhatsApp Automation Demo'}
-              </motion.h3>
-
-              {/* iPhone Mockup with WhatsApp Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
-                <WhatsAppDemo
-                  language={language}
-                  onContactClick={() => {
-                    setIsDemoModalOpen(false);
-                    onContactClick();
-                  }}
-                />
-              </IPhoneMockup>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 text-gray-500 text-sm text-center"
-              >
-                {language === 'tr' ? 'Demo otomatik olarak oynatılıyor' : 'Demo plays automatically'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopWhatsAppDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
+          </>
         )}
       </AnimatePresence>
 
@@ -1220,51 +1231,33 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
+            className="fixed inset-0 z-[99999] bg-black flex items-center justify-center"
           >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
-
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
             <motion.div
               ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
+              className="relative w-full h-full flex items-center justify-center"
             >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                onClick={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors z-[100001]"
               >
-                {language === 'tr' ? 'Instagram Otomasyon Demo' : 'Instagram Automation Demo'}
-              </motion.h3>
+                <X className="w-5 h-5 text-white" />
+              </motion.button>
 
-              {/* iPhone Mockup with Instagram Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup
+                className="h-[90vh] w-auto"
+                style={{ maxHeight: '90vh', width: 'auto' }}
+              >
                 <InstagramDemo
                   language={language}
                   onContactClick={() => {
@@ -1273,16 +1266,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   }}
                 />
               </IPhoneMockup>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 text-gray-500 text-sm text-center"
-              >
-                {language === 'tr' ? 'Demo otomatik olarak oynatılıyor' : 'Demo plays automatically'}
-              </motion.p>
             </motion.div>
           </motion.div>
         )}
@@ -1340,7 +1323,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               </motion.h3>
 
               {/* iPhone Mockup with Text-to-Video Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
                 <TextToVideoDemo
                   language={language}
                   onContactClick={() => {
@@ -1416,7 +1399,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               </motion.h3>
 
               {/* iPhone Mockup with Text-to-Image Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
                 <TextToImageDemo
                   language={language}
                   onContactClick={() => {
@@ -1492,7 +1475,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               </motion.h3>
 
               {/* iPhone Mockup with Voice Cloning Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
                 <VoiceCloningDemo
                   language={language}
                   onContactClick={() => {
@@ -1568,7 +1551,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               </motion.h3>
 
               {/* iPhone Mockup with Document AI Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
                 <DocumentAIDemo
                   language={language}
                   onContactClick={() => {
@@ -1644,7 +1627,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               </motion.h3>
 
               {/* iPhone Mockup with Image to Video Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
                 <ImageToVideoDemo
                   language={language}
                   onContactClick={() => {
@@ -1720,7 +1703,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               </motion.h3>
 
               {/* iPhone Mockup with Video to Video Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
                 <VideoToVideoDemo
                   language={language}
                   onContactClick={() => {
@@ -1796,7 +1779,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               </motion.h3>
 
               {/* iPhone Mockup with Data Analysis Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
                 <DataAnalysisDemo
                   language={language}
                   onContactClick={() => {
@@ -1872,7 +1855,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               </motion.h3>
 
               {/* iPhone Mockup with Custom AI Demo */}
-              <IPhoneMockup className="max-w-[360px] w-full">
+              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
                 <CustomAIDemo
                   language={language}
                   onContactClick={() => {

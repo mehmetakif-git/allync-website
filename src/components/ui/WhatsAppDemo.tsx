@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, Video, MoreVertical, Smile, Paperclip, Mic, ArrowLeft, RotateCcw } from 'lucide-react';
+import { Phone, Video, MoreVertical, Smile, Paperclip, Mic, ArrowLeft, RotateCcw, X } from 'lucide-react';
 import { ChatBubble, TypingIndicator } from './ChatBubble';
 import { whatsappDemoScenarios, whatsappUIText, DemoMessage, DemoScenario } from '../../data/whatsappDemoScenarios';
 import { useSoundEffect } from '../../contexts/SoundEffectContext';
@@ -11,9 +11,10 @@ import demoLogo from '../../assets/whatsapp-demo-logo.png';
 interface WhatsAppDemoProps {
   language: 'tr' | 'en';
   onContactClick?: () => void;
+  onClose?: () => void;
 }
 
-export const WhatsAppDemo: React.FC<WhatsAppDemoProps> = ({ language, onContactClick }) => {
+export const WhatsAppDemo: React.FC<WhatsAppDemoProps> = ({ language, onContactClick, onClose }) => {
   const [selectedScenario, setSelectedScenario] = useState<DemoScenario | null>(null);
   const [visibleMessages, setVisibleMessages] = useState<DemoMessage[]>([]);
   const [isTyping, setIsTyping] = useState(false);
@@ -114,8 +115,8 @@ export const WhatsAppDemo: React.FC<WhatsAppDemoProps> = ({ language, onContactC
   if (!selectedScenario) {
     return (
       <div className="h-full flex flex-col bg-[#111b21]">
-        {/* Header - with Dynamic Island padding */}
-        <div className="bg-[#202c33] px-4 py-3 pt-12 flex items-center gap-3">
+        {/* Header - pt-12 for desktop (Dynamic Island space), pt-3 for mobile */}
+        <div className={`bg-[#202c33] px-4 py-3 flex items-center gap-3 ${onClose ? '' : 'pt-12'}`}>
           <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden ring-2 ring-[#00a884]">
             <img
               src={demoLogo}
@@ -127,6 +128,15 @@ export const WhatsAppDemo: React.FC<WhatsAppDemoProps> = ({ language, onContactC
             <h3 className="text-white text-[15px] font-medium">{t.headerTitle}</h3>
             <p className="text-[#8696a0] text-[12px]">{t.selectScenario}</p>
           </div>
+          {/* Close button */}
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-white/10 rounded-full transition-colors"
+            >
+              <X className="w-5 h-5 text-[#aebac1]" />
+            </button>
+          )}
         </div>
 
         {/* Scenario List */}
@@ -160,8 +170,8 @@ export const WhatsAppDemo: React.FC<WhatsAppDemoProps> = ({ language, onContactC
   // Chat Screen
   return (
     <div className="h-full flex flex-col bg-[#0b141a]">
-      {/* WhatsApp Header - with Dynamic Island padding */}
-      <div className="bg-[#202c33] px-2 py-2 flex items-center gap-2 pt-12">
+      {/* WhatsApp Header - pt-12 for desktop (Dynamic Island space) */}
+      <div className={`bg-[#202c33] px-2 py-2 flex items-center gap-2 ${onClose ? '' : 'pt-12'}`}>
         <button
           onClick={handleBack}
           className="p-1 hover:bg-white/10 rounded-full transition-colors"
@@ -196,6 +206,15 @@ export const WhatsAppDemo: React.FC<WhatsAppDemoProps> = ({ language, onContactC
           <button className="p-2 hover:bg-white/10 rounded-full transition-colors">
             <MoreVertical className="w-5 h-5 text-[#aebac1]" />
           </button>
+          {/* Close button */}
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-2 hover:bg-white/10 rounded-full transition-colors ml-1"
+            >
+              <X className="w-5 h-5 text-[#aebac1]" />
+            </button>
+          )}
         </div>
       </div>
 

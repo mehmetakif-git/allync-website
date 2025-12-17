@@ -124,7 +124,7 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
                 }
               }}
             >
-              <img src={logoNavbar} alt="Allync" className="h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
+              <img src={logoNavbar} alt="Allync" className="h-10 sm:h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
             </div>
 
             {/* Desktop Navigation */}

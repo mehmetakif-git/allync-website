@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Send, Phone, Mail, Calendar } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { InputGlow, LabelGlow, LabelInputContainer, BottomGradient } from './ui/InputGlow';
+import GradientText from './ui/GradientText';
 import confetti from 'canvas-confetti';
 
 interface ContactProps {
@@ -134,11 +135,14 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 md:mb-12 section-reveal">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent block">
-              {t.contactTitle}
-            </span>
-          </h2>
+          <GradientText
+            colors={["#22d3ee", "#3b82f6", "#22d3ee", "#3b82f6", "#22d3ee"]}
+            animationSpeed={4}
+            showBorder={false}
+            className="text-4xl md:text-5xl font-bold mb-6"
+          >
+            {t.contactTitle}
+          </GradientText>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">{t.contactSubtitle}</p>
         </div>
 
