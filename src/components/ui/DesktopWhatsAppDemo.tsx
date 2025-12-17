@@ -153,6 +153,7 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [isDynamicIslandExpanded, setIsDynamicIslandExpanded] = useState(false);
   const chatAreaRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -353,9 +354,35 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
             <div className="dwd-wallpaper" />
 
             {/* Dynamic Island */}
-            <div className="dwd-dynamic-island">
-              <div className="dwd-di-camera" />
-              <div className="dwd-di-sensor" />
+            <div
+              className={`dwd-dynamic-island ${isDynamicIslandExpanded ? 'dwd-di-expanded' : ''}`}
+              onClick={() => setIsDynamicIslandExpanded(!isDynamicIslandExpanded)}
+            >
+              {/* Collapsed Content */}
+              <div className="dwd-di-collapsed">
+                <div className="dwd-di-camera" />
+                <div className="dwd-di-sensor" />
+              </div>
+
+              {/* Expanded Content - Music Player */}
+              <div className="dwd-di-expanded-content">
+                <div className="dwd-di-music-left">
+                  <div className="dwd-di-album">
+                    <img src={albumCover} alt="Album" className="dwd-di-album-img" />
+                  </div>
+                  <div className="dwd-di-track-info">
+                    <h4>Blinding Lights</h4>
+                    <p>The Weeknd</p>
+                  </div>
+                </div>
+                <div className="dwd-di-music-right">
+                  <div className="dwd-di-wave-bar" />
+                  <div className="dwd-di-wave-bar" />
+                  <div className="dwd-di-wave-bar" />
+                  <div className="dwd-di-wave-bar" />
+                  <div className="dwd-di-wave-bar" />
+                </div>
+              </div>
             </div>
 
             {/* Status Bar */}
