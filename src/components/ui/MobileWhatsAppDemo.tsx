@@ -14,6 +14,20 @@ import sendMessageBar from '../../assets/demo-icons/Send Message.svg';
 import sunIcon from '../../assets/demo-icons/Sun_1_Fill.svg';
 import musicIcon from '../../assets/demo-icons/music.svg';
 import albumCover from '../../assets/demo-icons/The_Weeknd_-_Blinding_Lights.png';
+import blindingLightsAudio from '../../assets/demo-icons/The Weeknd - Blinding Lights.mp3';
+import checkIcon from '../../assets/demo-icons/Check.svg';
+import calendarIcon from '../../assets/demo-icons/Calendar_Plus.svg';
+import cardIcon from '../../assets/demo-icons/Card_Fill.svg';
+import pinIcon from '../../assets/demo-icons/Pin_Fill.svg';
+import handIcon from '../../assets/demo-icons/Hand_Sparcles_Fill.svg';
+
+// Senaryo ikonları mapping
+const scenarioIcons: Record<string, string> = {
+  appointment: calendarIcon,
+  pricing: cardIcon,
+  greeting: handIcon,
+  company: pinIcon
+};
 
 interface MobileWhatsAppDemoProps {
   language: 'tr' | 'en';
@@ -120,6 +134,7 @@ const uiText = {
     tooltip: "Demo'yu Başlat!",
     weather: 'Hava Durumu',
     music: 'Müzik',
+    playNow: 'Şimdi Çal',
     nowPlaying: 'Şimdi Çalıyor'
   },
   en: {
@@ -132,6 +147,7 @@ const uiText = {
     tooltip: 'Start Demo!',
     weather: 'Weather',
     music: 'Music',
+    playNow: 'Play Now',
     nowPlaying: 'Now Playing'
   }
 };
@@ -141,6 +157,8 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
   onClose,
   onContactClick
 }) => {
+  // Siteye giriş zamanını kaydet (bir kere)
+  const [entryTime] = useState(() => new Date());
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
@@ -149,34 +167,34 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
   const [messages, setMessages] = useState<Array<{type: string; content: string}>>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [demoCompleted, setDemoCompleted] = useState(false);
+  // Dynamic Island states: 'collapsed' | 'compact' | 'expanded'
+  const [dynamicIslandState, setDynamicIslandState] = useState<'collapsed' | 'compact' | 'expanded'>('collapsed');
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.7);
+  const [showVolumeControl, setShowVolumeControl] = useState(false);
   const chatAreaRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const volumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const t = uiText[language];
   const scenarioData = scenarios[language];
 
-  // Update time
+  // Giriş zamanını baz alarak tarih ve saati ayarla (bir kere)
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      setCurrentTime(`${hours}:${minutes}`);
+    const hours = entryTime.getHours().toString().padStart(2, '0');
+    const minutes = entryTime.getMinutes().toString().padStart(2, '0');
+    setCurrentTime(`${hours}:${minutes}`);
 
-      const days = language === 'tr'
-        ? ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
-        : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      const months = language === 'tr'
-        ? ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
-        : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const days = language === 'tr'
+      ? ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
+      : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = language === 'tr'
+      ? ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+      : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-      setCurrentDate(`${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, [language]);
+    setCurrentDate(`${days[entryTime.getDay()]}, ${entryTime.getDate()} ${months[entryTime.getMonth()]}`);
+  }, [language, entryTime]);
 
   // Disable body scroll and hide other elements
   useEffect(() => {
@@ -196,6 +214,103 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
+
+  // Initialize audio
+  useEffect(() => {
+    audioRef.current = new Audio(blindingLightsAudio);
+    audioRef.current.loop = false;
+    audioRef.current.volume = 0;
+
+    // Müzik bitince collapsed moda dön
+    const handleEnded = () => {
+      setIsMusicPlaying(false);
+      setDynamicIslandState('collapsed');
+    };
+
+    audioRef.current.addEventListener('ended', handleEnded);
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.removeEventListener('ended', handleEnded);
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+      if (volumeTimeoutRef.current) {
+        clearTimeout(volumeTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Handle music play/pause based on isMusicPlaying state
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    if (isMusicPlaying) {
+      // Play music with fade in
+      audioRef.current.volume = 0;
+      audioRef.current.play().catch(console.error);
+
+      // Fade in
+      let currentVolume = 0;
+      const fadeIn = setInterval(() => {
+        currentVolume += 0.05;
+        if (currentVolume >= volume) {
+          currentVolume = volume;
+          clearInterval(fadeIn);
+        }
+        if (audioRef.current) {
+          audioRef.current.volume = currentVolume;
+        }
+      }, 50);
+
+      // Show volume control
+      setShowVolumeControl(true);
+    } else {
+      // Fade out and pause
+      let currentVolume = audioRef.current.volume;
+      const fadeOut = setInterval(() => {
+        currentVolume -= 0.05;
+        if (currentVolume <= 0) {
+          currentVolume = 0;
+          clearInterval(fadeOut);
+          if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+          }
+        }
+        if (audioRef.current) {
+          audioRef.current.volume = currentVolume;
+        }
+      }, 50);
+
+      // Hide volume control with delay
+      volumeTimeoutRef.current = setTimeout(() => {
+        setShowVolumeControl(false);
+      }, 500);
+    }
+  }, [isMusicPlaying, volume]);
+
+  // Handle Dynamic Island state changes based on WhatsApp open/close
+  useEffect(() => {
+    if (isMusicPlaying) {
+      if (isWhatsAppOpen) {
+        // WhatsApp açıldığında compact moda geç
+        setDynamicIslandState('compact');
+        setShowVolumeControl(false);
+      } else {
+        // WhatsApp kapandığında expanded moda dön
+        setDynamicIslandState('expanded');
+        setShowVolumeControl(true);
+      }
+    }
+  }, [isWhatsAppOpen, isMusicPlaying]);
+
+  // Update volume when it changes
+  useEffect(() => {
+    if (audioRef.current && isMusicPlaying) {
+      audioRef.current.volume = volume;
+    }
+  }, [volume, isMusicPlaying]);
 
   // Auto scroll chat
   useEffect(() => {
@@ -218,12 +333,19 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
   };
 
   const handleClose = () => {
+    // Müziği durdur
+    setIsMusicPlaying(false);
+    setDynamicIslandState('collapsed');
     if (onClose) {
       onClose();
     }
   };
 
   const handleContactNavigation = () => {
+    // Müziği durdur
+    setIsMusicPlaying(false);
+    setDynamicIslandState('collapsed');
+
     // Remove modal class first
     document.body.classList.remove('mwd-modal-open');
     document.body.style.top = '';
@@ -292,9 +414,12 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
     }
   };
 
-  const getTimeString = () => {
-    const now = new Date();
-    return now.toLocaleTimeString(language === 'tr' ? 'tr-TR' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+  // Mesaj zamanını hesapla - her mesaj için 1 dakika ekle
+  const getMessageTime = (messageIndex: number) => {
+    const msgTime = new Date(entryTime.getTime() + messageIndex * 60000); // Her mesaj 1 dakika sonra
+    const hours = msgTime.getHours().toString().padStart(2, '0');
+    const minutes = msgTime.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
   };
 
   return createPortal(
@@ -312,9 +437,67 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
             <div className="mwd-wallpaper" />
 
             {/* Dynamic Island */}
-            <div className="mwd-dynamic-island">
-              <div className="mwd-di-camera" />
-              <div className="mwd-di-sensor" />
+            <div
+              className={`mwd-dynamic-island mwd-di-state-${dynamicIslandState}`}
+              onClick={() => {
+                if (dynamicIslandState === 'collapsed') {
+                  // Collapsed'dan müziği başlat ve expanded yap
+                  setIsMusicPlaying(true);
+                  setDynamicIslandState('expanded');
+                } else if (dynamicIslandState === 'expanded') {
+                  // Expanded'dan: müzik çalıyorsa ve WhatsApp açıksa compact'a
+                  if (isMusicPlaying && isWhatsAppOpen) {
+                    setDynamicIslandState('compact');
+                  }
+                } else if (dynamicIslandState === 'compact') {
+                  // Compact'tan expanded'a geç
+                  setDynamicIslandState('expanded');
+                }
+              }}
+            >
+              {/* Collapsed Content - Camera & Sensor */}
+              <div className="mwd-di-collapsed-content">
+                <div className="mwd-di-camera" />
+                <div className="mwd-di-sensor" />
+              </div>
+
+              {/* Compact Content - Album, Track Info & Waveform */}
+              <div className="mwd-di-compact-content">
+                <div className="mwd-di-compact-left">
+                  <div className="mwd-di-compact-album">
+                    <img src={albumCover} alt="Album" className="mwd-di-album-img" />
+                  </div>
+                  <div className="mwd-di-compact-info">
+                    <span className="mwd-di-compact-title">Blinding Lights</span>
+                    <span className="mwd-di-compact-artist">The Weeknd</span>
+                  </div>
+                </div>
+                <div className="mwd-di-compact-waves">
+                  <div className="mwd-di-wave-bar" />
+                  <div className="mwd-di-wave-bar" />
+                  <div className="mwd-di-wave-bar" />
+                </div>
+              </div>
+
+              {/* Expanded Content - Full Music Player */}
+              <div className="mwd-di-expanded-content">
+                <div className="mwd-di-music-left">
+                  <div className="mwd-di-album">
+                    <img src={albumCover} alt="Album" className="mwd-di-album-img" />
+                  </div>
+                  <div className="mwd-di-track-info">
+                    <h4>Blinding Lights</h4>
+                    <p>The Weeknd</p>
+                  </div>
+                </div>
+                <div className="mwd-di-music-right">
+                  <div className="mwd-di-wave-bar" />
+                  <div className="mwd-di-wave-bar" />
+                  <div className="mwd-di-wave-bar" />
+                  <div className="mwd-di-wave-bar" />
+                  <div className="mwd-di-wave-bar" />
+                </div>
+              </div>
             </div>
 
             {/* Status Bar */}
@@ -337,6 +520,40 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
 
             {/* Home Screen */}
             <div className={`mwd-home-screen ${isWhatsAppOpen ? 'mwd-hidden' : ''}`}>
+              {/* iPhone Volume HUD - Inside Screen */}
+              <div className={`mwd-volume-hud ${showVolumeControl ? 'mwd-volume-hud-visible' : ''}`}>
+                <div className="mwd-volume-hud-container">
+                  <div className="mwd-volume-hud-icon">
+                    <svg viewBox="0 0 24 24" fill="white">
+                      {volume === 0 ? (
+                        <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                      ) : volume < 0.5 ? (
+                        <path d="M7 9v6h4l5 5V4l-5 5H7z"/>
+                      ) : (
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                      )}
+                    </svg>
+                  </div>
+                  <div className="mwd-volume-hud-slider">
+                    <div className="mwd-volume-hud-track">
+                      <div
+                        className="mwd-volume-hud-fill"
+                        style={{ width: `${volume * 100}%` }}
+                      />
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.01"
+                      value={volume}
+                      onChange={(e) => setVolume(parseFloat(e.target.value))}
+                      className="mwd-volume-hud-input"
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* Time Widget */}
               <div className="mwd-time-widget">
                 <div className="mwd-time">{currentTime}</div>
@@ -355,7 +572,19 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
                   <div className="mwd-weather-temp">18°</div>
                   <div className="mwd-weather-desc">{language === 'tr' ? 'Açık, H:22° L:14°' : 'Clear, H:72° L:57°'}</div>
                 </div>
-                <div className="mwd-widget">
+                <div
+                  className="mwd-widget"
+                  onClick={() => {
+                    if (!isMusicPlaying) {
+                      setIsMusicPlaying(true);
+                      setDynamicIslandState('expanded');
+                    } else {
+                      setIsMusicPlaying(false);
+                      setDynamicIslandState('collapsed');
+                    }
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
                   <div className="mwd-widget-header">
                     <div className="mwd-widget-icon mwd-music-icon">
                       <img src={musicIcon} alt="Music" className="mwd-widget-icon-img" />
@@ -367,7 +596,7 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
                       <img src={albumCover} alt="Blinding Lights" className="mwd-album-img" />
                     </div>
                     <div className="mwd-music-info">
-                      <h4>{t.nowPlaying}</h4>
+                      <h4>{isMusicPlaying ? t.nowPlaying : t.playNow}</h4>
                       <p>Blinding Lights</p>
                     </div>
                   </div>
@@ -418,7 +647,9 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
                         className="mwd-scenario-item"
                         onClick={() => selectScenario(key)}
                       >
-                        <span className="mwd-icon">{scenario.icon}</span>
+                        <div className={`mwd-scenario-icon-wrapper ${key}`}>
+                          <img src={scenarioIcons[key]} alt={scenario.title} className="mwd-scenario-icon" />
+                        </div>
                         <div className="mwd-text">
                           <h4>{scenario.title}</h4>
                           <p>{scenario.count}</p>
@@ -460,16 +691,18 @@ export const MobileWhatsAppDemo: React.FC<MobileWhatsAppDemoProps> = ({
                     {messages.map((msg, idx) => (
                       <div key={idx} className={`mwd-message mwd-${msg.type}`}>
                         <div className="mwd-bubble">
-                          {msg.content.split('\n').map((line, i) => (
-                            <React.Fragment key={i}>
-                              {line}
-                              {i < msg.content.split('\n').length - 1 && <br />}
-                            </React.Fragment>
-                          ))}
-                        </div>
-                        <div className="mwd-time">
-                          {getTimeString()}
-                          {msg.type === 'user' && <span className="mwd-check">✓✓</span>}
+                          <div className="mwd-bubble-content">
+                            {msg.content.split('\n').map((line, i) => (
+                              <React.Fragment key={i}>
+                                {line}
+                                {i < msg.content.split('\n').length - 1 && <br />}
+                              </React.Fragment>
+                            ))}
+                          </div>
+                          <span className="mwd-msg-time">
+                            {getMessageTime(idx)}
+                            {msg.type === 'user' && <img src={checkIcon} alt="sent" className="mwd-check" />}
+                          </span>
                         </div>
                       </div>
                     ))}

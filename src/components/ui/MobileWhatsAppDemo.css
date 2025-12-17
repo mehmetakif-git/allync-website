@@ -137,8 +137,13 @@ body.mwd-modal-open .mwd-overlay {
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 12px;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
 .mwd-dynamic-island::before {
@@ -149,9 +154,47 @@ body.mwd-modal-open .mwd-overlay {
   border-radius: inherit;
 }
 
+/* Collapsed State (default) */
+.mwd-dynamic-island.mwd-di-state-collapsed {
+  width: var(--mwd-dynamic-island-width);
+  height: var(--mwd-dynamic-island-height);
+}
+
+/* Compact state - When WhatsApp is open but music playing */
+.mwd-dynamic-island.mwd-di-state-compact {
+  width: 180px;
+  height: 42px;
+  border-radius: 21px;
+}
+
+/* Expanded state - Full music player on home screen */
+.mwd-dynamic-island.mwd-di-state-expanded {
+  width: 280px;
+  height: 75px;
+  border-radius: 30px;
+}
+
+/* Collapsed Content */
+.mwd-di-collapsed-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 12px;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.mwd-dynamic-island.mwd-di-state-compact .mwd-di-collapsed-content,
+.mwd-dynamic-island.mwd-di-state-expanded .mwd-di-collapsed-content {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
 .mwd-di-camera {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background: radial-gradient(circle at 30% 30%, #1a1a2e 0%, #0a0a0e 100%);
   border-radius: 50%;
   border: 1.5px solid #1a1a2e;
@@ -159,10 +202,201 @@ body.mwd-modal-open .mwd-overlay {
 }
 
 .mwd-di-sensor {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background: radial-gradient(circle, #0f1a2e 0%, #050a15 100%);
   border-radius: 50%;
+}
+
+/* Compact Content */
+.mwd-di-compact-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 6px 12px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.2s ease 0.1s,
+    transform 0.2s ease 0.1s;
+  position: absolute;
+  pointer-events: none;
+}
+
+.mwd-dynamic-island.mwd-di-state-compact .mwd-di-compact-content {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.mwd-dynamic-island.mwd-di-state-expanded .mwd-di-compact-content {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.mwd-di-compact-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mwd-di-compact-album {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+  flex-shrink: 0;
+}
+
+.mwd-di-compact-album .mwd-di-album-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mwd-di-compact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.mwd-di-compact-title {
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 65px;
+}
+
+.mwd-di-compact-artist {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 9px;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 65px;
+}
+
+.mwd-di-compact-waves {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+}
+
+/* Expanded Content */
+.mwd-di-expanded-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 12px 16px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.2s ease 0.1s,
+    transform 0.2s ease 0.1s;
+  position: absolute;
+  pointer-events: none;
+}
+
+.mwd-dynamic-island.mwd-di-state-expanded .mwd-di-expanded-content {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.mwd-dynamic-island.mwd-di-state-compact .mwd-di-expanded-content {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.mwd-dynamic-island.mwd-di-state-collapsed .mwd-di-expanded-content,
+.mwd-dynamic-island.mwd-di-state-collapsed .mwd-di-compact-content {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.mwd-di-music-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mwd-di-album {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+  flex-shrink: 0;
+}
+
+.mwd-di-album .mwd-di-album-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mwd-di-track-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mwd-di-track-info h4 {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.mwd-di-track-info p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 11px;
+  margin: 0;
+}
+
+.mwd-di-music-right {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 30px;
+}
+
+/* Wave Animation */
+.mwd-di-wave-bar {
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to top, #ff6b6b, #ff8e8e);
+  border-radius: 2px;
+  animation: mwd-waveAnimation 0.8s ease-in-out infinite;
+}
+
+.mwd-di-wave-bar:nth-child(1) { animation-delay: 0s; height: 60%; }
+.mwd-di-wave-bar:nth-child(2) { animation-delay: 0.1s; height: 100%; }
+.mwd-di-wave-bar:nth-child(3) { animation-delay: 0.2s; height: 40%; }
+.mwd-di-wave-bar:nth-child(4) { animation-delay: 0.3s; height: 80%; }
+.mwd-di-wave-bar:nth-child(5) { animation-delay: 0.4s; height: 50%; }
+
+@keyframes mwd-waveAnimation {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1); }
 }
 
 /* Wallpaper */
@@ -766,6 +1000,38 @@ body.mwd-modal-open .mwd-overlay {
   margin: 0;
 }
 
+.mwd-scenario-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mwd-scenario-icon-wrapper.appointment {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+.mwd-scenario-icon-wrapper.pricing {
+  background: linear-gradient(135deg, #10b981, #14b8a6);
+}
+
+.mwd-scenario-icon-wrapper.greeting {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+}
+
+.mwd-scenario-icon-wrapper.company {
+  background: linear-gradient(135deg, #ec4899, #f43f5e);
+}
+
+.mwd-scenario-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
 /* Chat Screen */
 .mwd-chat-screen {
   display: flex;
@@ -941,19 +1207,33 @@ body.mwd-modal-open .mwd-overlay {
   border-top-left-radius: 2px;
 }
 
-.mwd-time {
+.mwd-bubble {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.mwd-bubble-content {
+  padding-right: 55px;
+  min-height: 1.2em;
+}
+
+.mwd-msg-time {
   font-size: 10px;
-  color: rgba(255,255,255,0.6);
-  text-align: right;
-  margin-top: 4px;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  right: 6px;
+  bottom: 3px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 4px;
+  gap: 3px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .mwd-check {
-  color: #53bdeb;
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
 }
 
 /* Typing Indicator */
@@ -1070,4 +1350,130 @@ body.mwd-modal-open .mwd-overlay {
   padding: 8px 14px;
   color: #8696a0;
   font-size: 13px;
+}
+
+/* ==================== */
+/* VOLUME HUD - iPhone Style (Inside Screen) */
+/* ==================== */
+.mwd-volume-hud {
+  position: absolute;
+  top: 220px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  z-index: 80;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mwd-volume-hud.mwd-volume-hud-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.mwd-volume-hud-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(30, 30, 35, 0.85);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 14px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  min-width: 220px;
+  position: relative;
+}
+
+.mwd-volume-hud-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mwd-volume-hud-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+  opacity: 0.9;
+}
+
+.mwd-volume-hud-slider {
+  position: relative;
+  flex: 1;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.mwd-volume-hud-track {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.mwd-volume-hud-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b6b 0%, #ee5a24 100%);
+  border-radius: 3px;
+  transition: width 0.1s ease;
+}
+
+.mwd-volume-hud-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 10;
+}
+
+.mwd-volume-hud-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.mwd-volume-hud-input::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* Subtle glow animation */
+.mwd-volume-hud-container::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(238, 90, 36, 0.2));
+  opacity: 0;
+  animation: mwd-volumeHudPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes mwd-volumeHudPulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
 }

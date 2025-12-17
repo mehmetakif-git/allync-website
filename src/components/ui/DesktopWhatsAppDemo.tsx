@@ -19,6 +19,7 @@ import calendarIcon from '../../assets/demo-icons/Calendar_Plus.svg';
 import cardIcon from '../../assets/demo-icons/Card_Fill.svg';
 import pinIcon from '../../assets/demo-icons/Pin_Fill.svg';
 import handIcon from '../../assets/demo-icons/Hand_Sparcles_Fill.svg';
+import checkIcon from '../../assets/demo-icons/Check.svg';
 
 // Senaryo ikonları mapping
 const scenarioIcons: Record<string, string> = {
@@ -156,6 +157,8 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
   onClose,
   onContactClick
 }) => {
+  // Siteye giriş zamanını kaydet (bir kere)
+  const [entryTime] = useState(() => new Date());
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [isWhatsAppOpen, setIsWhatsAppOpen] = useState(false);
@@ -182,11 +185,20 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
   // Initialize audio
   useEffect(() => {
     audioRef.current = new Audio(blindingLightsAudio);
-    audioRef.current.loop = true;
+    audioRef.current.loop = false;
     audioRef.current.volume = 0;
+
+    // Müzik bitince collapsed moda dön
+    const handleEnded = () => {
+      setIsMusicPlaying(false);
+      setDynamicIslandState('collapsed');
+    };
+
+    audioRef.current.addEventListener('ended', handleEnded);
 
     return () => {
       if (audioRef.current) {
+        audioRef.current.removeEventListener('ended', handleEnded);
         audioRef.current.pause();
         audioRef.current = null;
       }
@@ -218,10 +230,8 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
         }
       }, 50);
 
-      // Show volume control when on home screen
-      if (!isWhatsAppOpen) {
-        setShowVolumeControl(true);
-      }
+      // Show volume control
+      setShowVolumeControl(true);
     } else {
       // Fade out and pause
       let currentVolume = audioRef.current.volume;
@@ -245,7 +255,7 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
         setShowVolumeControl(false);
       }, 500);
     }
-  }, [isMusicPlaying, volume, isWhatsAppOpen]);
+  }, [isMusicPlaying, volume]);
 
   // Handle Dynamic Island state changes based on WhatsApp open/close
   useEffect(() => {
@@ -279,28 +289,21 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
   const t = uiText[language];
   const scenarioData = scenarios[language];
 
-  // Update time
+  // Giriş zamanını baz alarak tarih ve saati ayarla (bir kere)
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      setCurrentTime(`${hours}:${minutes}`);
+    const hours = entryTime.getHours().toString().padStart(2, '0');
+    const minutes = entryTime.getMinutes().toString().padStart(2, '0');
+    setCurrentTime(`${hours}:${minutes}`);
 
-      const days = language === 'tr'
-        ? ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
-        : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      const months = language === 'tr'
-        ? ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
-        : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const days = language === 'tr'
+      ? ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
+      : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = language === 'tr'
+      ? ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
+      : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-      setCurrentDate(`${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]}`);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, [language]);
+    setCurrentDate(`${days[entryTime.getDay()]}, ${entryTime.getDate()} ${months[entryTime.getMonth()]}`);
+  }, [language, entryTime]);
 
   // Disable body scroll
   useEffect(() => {
@@ -354,6 +357,9 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
   const handleClose = () => {
     if (isClosing) return;
     setIsClosing(true);
+    // Müziği durdur
+    setIsMusicPlaying(false);
+    setDynamicIslandState('collapsed');
     setTimeout(() => {
       if (onClose) {
         onClose();
@@ -364,6 +370,9 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
   const handleContactNavigation = () => {
     if (isClosing) return;
     setIsClosing(true);
+    // Müziği durdur
+    setIsMusicPlaying(false);
+    setDynamicIslandState('collapsed');
     setTimeout(() => {
       if (onClose) {
         onClose();
@@ -427,9 +436,12 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
     }
   };
 
-  const getTimeString = () => {
-    const now = new Date();
-    return now.toLocaleTimeString(language === 'tr' ? 'tr-TR' : 'en-US', { hour: '2-digit', minute: '2-digit' });
+  // Mesaj zamanını hesapla - her mesaj için 1 dakika ekle
+  const getMessageTime = (messageIndex: number) => {
+    const msgTime = new Date(entryTime.getTime() + messageIndex * 60000); // Her mesaj 1 dakika sonra
+    const hours = msgTime.getHours().toString().padStart(2, '0');
+    const minutes = msgTime.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
   };
 
   // Calculate 3D transform based on mouse position (reduced rotation for subtlety)
@@ -469,13 +481,18 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
               className={`dwd-dynamic-island dwd-di-state-${dynamicIslandState}`}
               onClick={() => {
                 if (dynamicIslandState === 'collapsed') {
-                  // Müziği başlat ve expanded yap
+                  // Collapsed'dan müziği başlat ve expanded yap
                   setIsMusicPlaying(true);
                   setDynamicIslandState('expanded');
-                } else {
-                  // Müziği durdur ve collapsed yap
-                  setIsMusicPlaying(false);
-                  setDynamicIslandState('collapsed');
+                } else if (dynamicIslandState === 'expanded') {
+                  // Expanded'dan: müzik çalıyorsa ve WhatsApp açıksa compact'a, değilse expanded kal
+                  if (isMusicPlaying && isWhatsAppOpen) {
+                    setDynamicIslandState('compact');
+                  }
+                  // Ana ekrandaysa ve müzik çalıyorsa expanded kalır (bir şey yapma)
+                } else if (dynamicIslandState === 'compact') {
+                  // Compact'tan expanded'a geç
+                  setDynamicIslandState('expanded');
                 }
               }}
             >
@@ -716,16 +733,18 @@ export const DesktopWhatsAppDemo: React.FC<DesktopWhatsAppDemoProps> = ({
                     {messages.map((msg, idx) => (
                       <div key={idx} className={`dwd-message dwd-${msg.type}`}>
                         <div className="dwd-bubble">
-                          {msg.content.split('\n').map((line, i) => (
-                            <React.Fragment key={i}>
-                              {line}
-                              {i < msg.content.split('\n').length - 1 && <br />}
-                            </React.Fragment>
-                          ))}
-                        </div>
-                        <div className="dwd-time">
-                          {getTimeString()}
-                          {msg.type === 'user' && <span className="dwd-check">✓✓</span>}
+                          <div className="dwd-bubble-content">
+                            {msg.content.split('\n').map((line, i) => (
+                              <React.Fragment key={i}>
+                                {line}
+                                {i < msg.content.split('\n').length - 1 && <br />}
+                              </React.Fragment>
+                            ))}
+                          </div>
+                          <span className="dwd-msg-time">
+                            {getMessageTime(idx)}
+                            {msg.type === 'user' && <img src={checkIcon} alt="sent" className="dwd-check" />}
+                          </span>
                         </div>
                       </div>
                     ))}

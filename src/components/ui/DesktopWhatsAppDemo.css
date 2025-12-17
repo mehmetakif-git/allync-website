@@ -255,10 +255,12 @@ body.dwd-modal-open {
   opacity: 0;
   transform: scale(0.9);
   transition:
-    opacity 0.3s ease 0.15s,
-    transform 0.3s ease 0.15s;
+    opacity 0.2s ease 0.1s,
+    transform 0.2s ease 0.1s;
   position: absolute;
   pointer-events: none;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .dwd-dynamic-island.dwd-di-state-compact .dwd-di-compact-content {
@@ -267,10 +269,14 @@ body.dwd-modal-open {
   pointer-events: auto;
 }
 
-/* Hide compact content when expanded */
+/* Hide compact content when expanded - fast fade out */
 .dwd-dynamic-island.dwd-di-state-expanded .dwd-di-compact-content {
   opacity: 0;
+  transform: scale(0.92);
   pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 
 /* Compact left side - Album + Track Info */
@@ -361,10 +367,12 @@ body.dwd-modal-open {
   opacity: 0;
   transform: scale(0.9);
   transition:
-    opacity 0.3s ease 0.15s,
-    transform 0.3s ease 0.15s;
+    opacity 0.2s ease 0.1s,
+    transform 0.2s ease 0.1s;
   position: absolute;
   pointer-events: none;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 .dwd-dynamic-island.dwd-di-state-expanded .dwd-di-expanded-content {
@@ -373,10 +381,14 @@ body.dwd-modal-open {
   pointer-events: auto;
 }
 
-/* Hide expanded content when compact */
+/* Hide expanded content when compact - fast fade out */
 .dwd-dynamic-island.dwd-di-state-compact .dwd-di-expanded-content {
   opacity: 0;
+  transform: scale(0.92);
   pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 
 /* Kapanırken - içerik hızlıca ve delay olmadan kaybolsun */
@@ -1409,19 +1421,33 @@ body.dwd-modal-open {
   border-top-left-radius: 3px;
 }
 
-.dwd-time {
+.dwd-bubble {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.dwd-bubble-content {
+  padding-right: 60px;
+  min-height: 1.2em;
+}
+
+.dwd-msg-time {
   font-size: 11px;
-  color: rgba(255,255,255,0.6);
-  text-align: right;
-  margin-top: 5px;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  right: 8px;
+  bottom: 4px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 5px;
+  gap: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .dwd-check {
-  color: #53bdeb;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
 }
 
 /* Typing Indicator */
