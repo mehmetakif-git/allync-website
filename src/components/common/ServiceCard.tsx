@@ -954,27 +954,26 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             inactiveZone={0.7}
             movementDuration={2}
           />
-          <div className="relative z-10 w-full aspect-video rounded-lg sm:rounded-xl overflow-hidden">
+          <div className="relative z-10 w-full rounded-lg sm:rounded-xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
             {/* Demo View for services with demoType */}
             {service.demoType ? (
-              <div className="absolute inset-0 w-full h-full">
-                <motion.button
-                  onClick={() => setIsDemoModalOpen(true)}
-                  className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center cursor-pointer rounded-lg sm:rounded-xl relative overflow-hidden"
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {/* Thumbnail image if available */}
-                  {getDemoThumbnail(service.demoType) && (
-                    <img
-                      src={getDemoThumbnail(service.demoType)!}
-                      alt={`${service.title} demo`}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                    />
-                  )}
+              <motion.button
+                onClick={() => setIsDemoModalOpen(true)}
+                className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-gray-800 to-gray-900 flex flex-col items-center justify-center cursor-pointer overflow-hidden"
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Thumbnail image if available */}
+                {getDemoThumbnail(service.demoType) && (
+                  <img
+                    src={getDemoThumbnail(service.demoType)!}
+                    alt={`${service.title} demo`}
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                  />
+                )}
 
                 {/* Overlay gradient */}
                 <div
-                  className={`absolute inset-0 ${getDemoThumbnail(service.demoType) ? 'bg-black/40' : 'opacity-20'}`}
+                  className={`absolute top-0 left-0 right-0 bottom-0 ${getDemoThumbnail(service.demoType) ? 'bg-black/40' : 'opacity-20'}`}
                   style={!getDemoThumbnail(service.demoType) ? {
                     background: `radial-gradient(circle at center, ${service.glowColor || '#00d9ff'}40 0%, transparent 70%)`
                   } : undefined}
@@ -1015,27 +1014,26 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                 <p className="relative z-10 text-gray-300 text-xs sm:text-sm mt-1 drop-shadow-lg">
                   {language === 'tr' ? 'Canlı demo izle' : 'Watch live demo'}
                 </p>
-                </motion.button>
-              </div>
+              </motion.button>
             ) : service.galleryImages && service.galleryImages.length > 0 ? (
               <motion.button
                 layoutId={`gallery-${service.title}-0`}
                 onClick={() => handleThumbnailClick(0)}
-                className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer overflow-hidden rounded-lg sm:rounded-xl group"
+                className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center cursor-pointer overflow-hidden group"
               >
                 <img
                   src={service.galleryImages[0]}
                   alt={`${service.title} preview`}
-                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  className="absolute top-0 left-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <div className="absolute top-0 left-0 right-0 bottom-0 bg-black/30 flex items-center justify-center">
                   <p className="text-white font-semibold text-xs sm:text-sm lg:text-base opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                     {language === 'tr' ? 'Galeriyi Görüntüle' : 'View Gallery'}
                   </p>
                 </div>
               </motion.button>
             ) : (
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center rounded-lg sm:rounded-xl">
+              <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
                 <p className="text-gray-500 text-xs sm:text-sm">{language === 'tr' ? 'Görsel Yok' : 'No Image'}</p>
               </div>
             )}
