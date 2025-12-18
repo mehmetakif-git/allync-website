@@ -175,7 +175,7 @@ function App() {
       <SoundEffectProvider>
         <div className={`min-h-screen bg-black app-loaded ${animationsEnabled ? 'animations-enabled' : 'animations-disabled'}`}>
           {/* FloatingLines - Always visible including during loading */}
-          {!isMobile && (
+          {!isMobile ? (
             <FloatingLines
               enabledWaves={['top', 'middle', 'bottom']}
               lineCount={5}
@@ -185,6 +185,17 @@ function App() {
               interactive={viewMode !== 'loading'}
               parallax={false}
               mixBlendMode="normal"
+            />
+          ) : (
+            <FloatingLines
+              enabledWaves={['bottom']}
+              lineCount={2}
+              lineDistance={8}
+              animationSpeed={0.5}
+              interactive={false}
+              parallax={false}
+              mixBlendMode="normal"
+              pixelRatio={1}
             />
           )}
 

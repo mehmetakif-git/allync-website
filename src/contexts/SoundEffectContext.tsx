@@ -22,7 +22,15 @@ interface SoundEffectProviderProps {
   children: React.ReactNode;
 }
 
+// Check if device is mobile
+const isMobileDevice = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  return window.innerWidth <= 768 ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
 export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ children }) => {
+  const [isMobile] = useState(() => isMobileDevice());
   const [isMuted, setIsMuted] = useState(() => {
     // Check localStorage for saved preference
     const saved = localStorage.getItem('allync-sound-muted');
@@ -46,8 +54,10 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
     });
   }, []);
 
-  // Initialize audio on mount
+  // Initialize audio on mount (skip on mobile)
   useEffect(() => {
+    if (isMobile) return;
+
     // Hover sound
     hoverAudioRef.current = new Audio('/audio/sound_effects/hover.mp3');
     hoverAudioRef.current.volume = 1.0;
@@ -86,7 +96,7 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
   }, []);
 
   const playHoverSound = useCallback(() => {
-    if (isMuted) return;
+    if (isMobile || isMuted) return;
     const now = Date.now();
     if (now - lastHoverPlayedRef.current < HOVER_DEBOUNCE_MS) return;
     lastHoverPlayedRef.current = now;
@@ -98,7 +108,7 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
   }, [isMuted]);
 
   const playClickSound = useCallback(() => {
-    if (isMuted) return;
+    if (isMobile || isMuted) return;
     const now = Date.now();
     if (now - lastClickPlayedRef.current < CLICK_DEBOUNCE_MS) return;
     lastClickPlayedRef.current = now;
@@ -110,7 +120,7 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
   }, [isMuted]);
 
   const playBackSound = useCallback(() => {
-    if (isMuted) return;
+    if (isMobile || isMuted) return;
     const now = Date.now();
     if (now - lastBackPlayedRef.current < BACK_DEBOUNCE_MS) return;
     lastBackPlayedRef.current = now;
@@ -135,8 +145,10 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
     );
   };
 
-  // Global event listener for hover on interactive elements
+  // Global event listener for hover on interactive elements (skip on mobile)
   useEffect(() => {
+    if (isMobile) return;
+
     const handleMouseEnter = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       if (isInteractiveElement(target)) {
@@ -146,10 +158,12 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
 
     document.addEventListener('mouseenter', handleMouseEnter, true);
     return () => document.removeEventListener('mouseenter', handleMouseEnter, true);
-  }, [playHoverSound]);
+  }, [isMobile, playHoverSound]);
 
-  // Global event listener for click on interactive elements
+  // Global event listener for click on interactive elements (skip on mobile)
   useEffect(() => {
+    if (isMobile) return;
+
     const handleClick = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       if (isInteractiveElement(target)) {
@@ -159,7 +173,7 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
 
     document.addEventListener('click', handleClick, true);
     return () => document.removeEventListener('click', handleClick, true);
-  }, [playClickSound]);
+  }, [isMobile, playClickSound]);
 
   return (
     <SoundEffectContext.Provider value={{ playHoverSound, playClickSound, playBackSound, isMuted, toggleMute }}>
