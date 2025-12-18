@@ -29,6 +29,8 @@ import { MaintenanceDemo } from '../ui/MaintenanceDemo';
 import { MobileIPhoneMockup } from '../ui/MobileIPhoneMockup';
 import { MobileWhatsAppDemo } from '../ui/MobileWhatsAppDemo';
 import { DesktopWhatsAppDemo } from '../ui/DesktopWhatsAppDemo';
+import { MobileInstagramDemo } from '../ui/MobileInstagramDemo';
+import { DesktopInstagramDemo } from '../ui/DesktopInstagramDemo';
 import { getDemoThumbnail } from '../../assets/demo-thumbnails';
 
 interface Service {
@@ -752,48 +754,37 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
       {/* Demo Modal - Instagram Demo */}
       <AnimatePresence>
         {isDemoModalOpen && service.demoType === 'instagram' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] bg-black flex items-center justify-center"
-          >
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full h-full flex items-center justify-center"
-            >
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                onClick={() => {
+          <>
+            {/* Mobile Version - Full iPhone experience */}
+            {!isDesktop && (
+              <MobileInstagramDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
                   playBackSound();
                   setIsDemoModalOpen(false);
                 }}
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors z-[100001]"
-              >
-                <X className="w-5 h-5 text-white" />
-              </motion.button>
+              />
+            )}
 
-              <IPhoneMockup
-                className="h-[90vh] w-auto"
-                style={{ maxHeight: '90vh', width: 'auto' }}
-              >
-                <InstagramDemo
-                  language={language}
-                  onContactClick={() => {
-                    setIsDemoModalOpen(false);
-                    onContactClick();
-                  }}
-                />
-              </IPhoneMockup>
-            </motion.div>
-          </motion.div>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopInstagramDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
+          </>
         )}
       </AnimatePresence>
 

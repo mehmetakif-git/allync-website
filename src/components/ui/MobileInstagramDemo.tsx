@@ -18,15 +18,15 @@ import checkIcon from '../../assets/demo-icons/Check.svg';
 
 // Senaryo ikonları
 import shoppingIcon from '../../assets/demo-icons/Card_Fill.svg';
-import cameraIcon from '../../assets/demo-icons/Camera.svg';
-import boxIcon from '../../assets/demo-icons/Pin_Fill.svg';
+import pinIcon from '../../assets/demo-icons/Pin_Fill.svg';
+import calendarIcon from '../../assets/demo-icons/Calendar_Plus.svg';
 import handshakeIcon from '../../assets/demo-icons/Hand_Sparcles_Fill.svg';
 
 // Senaryo ikonları mapping
 const scenarioIcons: Record<string, string> = {
   'product-inquiry': shoppingIcon,
-  'story-mention': cameraIcon,
-  'order-tracking': boxIcon,
+  'story-mention': pinIcon,
+  'order-tracking': calendarIcon,
   'collaboration': handshakeIcon
 };
 

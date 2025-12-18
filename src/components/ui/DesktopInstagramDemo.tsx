@@ -14,17 +14,17 @@ import sunIcon from '../../assets/demo-icons/Sun_1_Fill.svg';
 import musicIcon from '../../assets/demo-icons/music.svg';
 import albumCover from '../../assets/demo-icons/The_Weeknd_-_Blinding_Lights.png';
 import blindingLightsAudio from '../../assets/demo-icons/The Weeknd - Blinding Lights.mp3';
-import bagIcon from '../../assets/demo-icons/Bag_Fill.svg';
-import cameraIcon from '../../assets/demo-icons/Camera.svg';
-import boxIcon from '../../assets/demo-icons/Box_Fill.svg';
+import cardIcon from '../../assets/demo-icons/Card_Fill.svg';
+import pinIcon from '../../assets/demo-icons/Pin_Fill.svg';
+import calendarIcon from '../../assets/demo-icons/Calendar_Plus.svg';
 import handIcon from '../../assets/demo-icons/Hand_Sparcles_Fill.svg';
 import checkIcon from '../../assets/demo-icons/Check.svg';
 
 // Senaryo ikonları mapping
 const scenarioIcons: Record<string, string> = {
-  'product-inquiry': bagIcon,
-  'story-mention': cameraIcon,
-  'order-tracking': boxIcon,
+  'product-inquiry': cardIcon,
+  'story-mention': pinIcon,
+  'order-tracking': calendarIcon,
   'collaboration': handIcon
 };
 
