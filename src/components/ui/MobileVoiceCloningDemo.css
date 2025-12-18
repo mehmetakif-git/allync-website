@@ -683,6 +683,41 @@ body.mvc-modal-open {
   opacity: 0.9;
 }
 
+/* Network Icon */
+.mvc-network-icon {
+  background: linear-gradient(135deg, #007AFF, #5AC8FA);
+  border: none;
+}
+
+/* Call Icon */
+.mvc-call-icon {
+  background: linear-gradient(135deg, #34C759, #30D158);
+  border: none;
+}
+
+/* Close Icon */
+.mvc-close-icon {
+  background: linear-gradient(135deg, #ff3b30, #ff6b6b);
+  border: none;
+  position: relative;
+}
+
+/* Close Pulse Ring */
+.mvc-close-icon::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 19px;
+  background: rgba(255, 59, 48, 0.4);
+  animation: mvc-close-pulse 1.5s ease-out infinite;
+  z-index: -1;
+}
+
+@keyframes mvc-close-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
 /* App Icon - Primary Style */
 .mvc-app-icon {
   background: var(--mvc-gradient);
@@ -700,47 +735,74 @@ body.mvc-modal-open {
   position: absolute;
   inset: -4px;
   border-radius: 20px;
-  background: var(--mvc-gradient);
-  opacity: 0.5;
-  animation: mvc-pulse-ring 2s ease-out infinite;
+  background: rgba(249, 115, 22, 0.4);
+  animation: mvc-pulse-ring 1.5s ease-out infinite;
   z-index: -1;
 }
 
+.mvc-app-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 24px;
+  background: rgba(249, 115, 22, 0.2);
+  animation: mvc-pulse-ring 1.5s ease-out infinite 0.3s;
+  z-index: -2;
+}
+
 @keyframes mvc-pulse-ring {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.3);
-    opacity: 0;
-  }
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
 /* Tooltips */
-.mvc-close-tooltip,
-.mvc-app-tooltip {
+.mvc-close-tooltip {
   position: absolute;
   bottom: calc(100% + 12px);
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: rgba(30, 30, 30, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff3b30, #ff6b6b);
   padding: 8px 14px;
   border-radius: 10px;
   font-size: 12px;
   font-weight: 600;
   color: white;
   white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+  animation: mvc-tooltipBounce 2s ease-in-out infinite;
+  z-index: 100;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: opacity 0.3s ease;
+}
+
+.mvc-app-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--mvc-gradient);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+  animation: mvc-tooltipBounce 2s ease-in-out infinite;
   z-index: 100;
 }
 
-.mvc-close-tooltip::after,
+.mvc-close-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #ff6b6b;
+}
+
 .mvc-app-tooltip::after {
   content: '';
   position: absolute;
@@ -748,13 +810,31 @@ body.mvc-modal-open {
   left: 50%;
   transform: translateX(-50%);
   border: 6px solid transparent;
-  border-top-color: rgba(30, 30, 30, 0.95);
+  border-top-color: var(--mvc-secondary);
 }
 
-.mvc-close-icon:hover .mvc-close-tooltip,
-.mvc-app-icon:hover .mvc-app-tooltip {
+.mvc-app-tooltip::before {
+  content: '👆';
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  animation: mvc-fingerPoint 1s ease-in-out infinite;
+}
+
+@keyframes mvc-tooltipBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-6px); }
+}
+
+@keyframes mvc-fingerPoint {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(4px); }
+}
+
+.mvc-close-icon:hover .mvc-close-tooltip {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
 }
 
 /* ==================== APP SCREEN ==================== */
