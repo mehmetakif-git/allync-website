@@ -26,6 +26,11 @@ const scenarioIcons: Record<string, string> = {
   'assistant': cardIcon
 };
 
+// Ses dosyaları mapping
+const getVoiceAudioPath = (scenario: string, lang: 'tr' | 'en'): string => {
+  return `/audio/voice-cloning/${scenario}-${lang}.mp3`;
+};
+
 interface MobileVoiceCloningDemoProps {
   language: 'tr' | 'en';
   onClose?: () => void;
@@ -174,9 +179,11 @@ export const MobileVoiceCloningDemo: React.FC<MobileVoiceCloningDemoProps> = ({
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [volume, setVolume] = useState(0.7);
   const [showVolumeControl, setShowVolumeControl] = useState(false);
+  const [voiceCurrentTime, setVoiceCurrentTime] = useState(0);
+  const [voiceDuration, setVoiceDuration] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const voiceIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const voiceAudioRef = useRef<HTMLAudioElement | null>(null);
   const volumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const t = uiText[language];
@@ -209,7 +216,9 @@ export const MobileVoiceCloningDemo: React.FC<MobileVoiceCloningDemoProps> = ({
       document.body.style.top = '';
       window.scrollTo(0, scrollY);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      if (voiceIntervalRef.current) clearInterval(voiceIntervalRef.current);
+      if (voiceAudioRef.current) {
+        voiceAudioRef.current.pause();
+      }
     };
   }, []);
 
@@ -302,30 +311,57 @@ export const MobileVoiceCloningDemo: React.FC<MobileVoiceCloningDemoProps> = ({
     }
   }, [volume, isMusicPlaying]);
 
-  // Voice playback simulation
+  // Voice audio initialization and event handlers
   useEffect(() => {
-    if (isVoicePlaying) {
-      voiceIntervalRef.current = setInterval(() => {
-        setVoiceProgress(prev => {
-          if (prev >= 100) {
-            setIsVoicePlaying(false);
-            return 0;
-          }
-          return prev + 2;
-        });
-      }, 100);
-    } else {
-      if (voiceIntervalRef.current) {
-        clearInterval(voiceIntervalRef.current);
-      }
-    }
-
     return () => {
-      if (voiceIntervalRef.current) {
-        clearInterval(voiceIntervalRef.current);
+      if (voiceAudioRef.current) {
+        voiceAudioRef.current.pause();
+        voiceAudioRef.current = null;
       }
     };
-  }, [isVoicePlaying]);
+  }, []);
+
+  // Load voice audio when scenario changes or generation completes
+  useEffect(() => {
+    if (demoPhase === 'complete' && currentScenario) {
+      const audioPath = getVoiceAudioPath(currentScenario, language);
+      voiceAudioRef.current = new Audio(audioPath);
+      voiceAudioRef.current.volume = 1;
+
+      const handleLoadedMetadata = () => {
+        if (voiceAudioRef.current) {
+          setVoiceDuration(voiceAudioRef.current.duration);
+        }
+      };
+
+      const handleTimeUpdate = () => {
+        if (voiceAudioRef.current) {
+          setVoiceCurrentTime(voiceAudioRef.current.currentTime);
+          const progress = (voiceAudioRef.current.currentTime / voiceAudioRef.current.duration) * 100;
+          setVoiceProgress(progress);
+        }
+      };
+
+      const handleEnded = () => {
+        setIsVoicePlaying(false);
+        setVoiceProgress(0);
+        setVoiceCurrentTime(0);
+      };
+
+      voiceAudioRef.current.addEventListener('loadedmetadata', handleLoadedMetadata);
+      voiceAudioRef.current.addEventListener('timeupdate', handleTimeUpdate);
+      voiceAudioRef.current.addEventListener('ended', handleEnded);
+
+      return () => {
+        if (voiceAudioRef.current) {
+          voiceAudioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
+          voiceAudioRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+          voiceAudioRef.current.removeEventListener('ended', handleEnded);
+          voiceAudioRef.current.pause();
+        }
+      };
+    }
+  }, [demoPhase, currentScenario, language]);
 
   const openApp = () => {
     setIsAppOpen(true);
@@ -341,13 +377,21 @@ export const MobileVoiceCloningDemo: React.FC<MobileVoiceCloningDemoProps> = ({
     setProgress(0);
     setIsVoicePlaying(false);
     setVoiceProgress(0);
+    setVoiceCurrentTime(0);
+    setVoiceDuration(0);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    if (voiceIntervalRef.current) clearInterval(voiceIntervalRef.current);
+    if (voiceAudioRef.current) {
+      voiceAudioRef.current.pause();
+      voiceAudioRef.current.currentTime = 0;
+    }
   };
 
   const handleClose = () => {
     setIsMusicPlaying(false);
     setDynamicIslandState('collapsed');
+    if (voiceAudioRef.current) {
+      voiceAudioRef.current.pause();
+    }
     if (onClose) {
       onClose();
     }
@@ -438,29 +482,50 @@ export const MobileVoiceCloningDemo: React.FC<MobileVoiceCloningDemoProps> = ({
     setProgress(0);
     setIsVoicePlaying(false);
     setVoiceProgress(0);
+    setVoiceCurrentTime(0);
+    setVoiceDuration(0);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    if (voiceIntervalRef.current) clearInterval(voiceIntervalRef.current);
+    if (voiceAudioRef.current) {
+      voiceAudioRef.current.pause();
+      voiceAudioRef.current.currentTime = 0;
+    }
   };
 
   const restartDemo = () => {
     if (currentScenario) {
+      if (voiceAudioRef.current) {
+        voiceAudioRef.current.pause();
+        voiceAudioRef.current.currentTime = 0;
+      }
       setDemoPhase('typing');
       setTypedText('');
       setCurrentStep(0);
       setProgress(0);
       setIsVoicePlaying(false);
       setVoiceProgress(0);
+      setVoiceCurrentTime(0);
+      setVoiceDuration(0);
       selectScenario(currentScenario);
     }
   };
 
   const toggleVoicePlayback = () => {
+    if (!voiceAudioRef.current) return;
+
     if (isVoicePlaying) {
+      voiceAudioRef.current.pause();
       setIsVoicePlaying(false);
     } else {
-      setVoiceProgress(0);
+      voiceAudioRef.current.play().catch(console.error);
       setIsVoicePlaying(true);
     }
+  };
+
+  // Format time helper
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   return createPortal(
@@ -818,8 +883,8 @@ export const MobileVoiceCloningDemo: React.FC<MobileVoiceCloningDemoProps> = ({
 
                           {/* Time */}
                           <div className="mvc-player-time">
-                            <span>0:00</span>
-                            <span>{scenarioData[currentScenario as keyof typeof scenarioData].duration}</span>
+                            <span>{formatTime(voiceCurrentTime)}</span>
+                            <span>{formatTime(voiceDuration)}</span>
                           </div>
 
                           {/* Play Button */}
