@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { useLenis } from '../../contexts/LenisContext';
 
 interface ScrollProgressProps {
   showMilestones?: boolean;
@@ -20,6 +21,7 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
   });
 
   const [currentSection, setCurrentSection] = useState(0);
+  const { scrollTo, scrollY } = useLenis();
 
   const aiMilestones = {
     colors: ['#0DA266', '#D542AE', '#2389D6', '#8F43EE', '#E94720', '#4C5564', '#0DA2AD', '#3464ED', '#EA820A', '#0DA266'],
@@ -42,24 +44,18 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
   const config = viewMode === 'ai-view' ? aiMilestones : digitalMilestones;
   const labels = config.labels[language];
 
+  // Track current section based on Lenis scroll position
   useEffect(() => {
-    const updateSection = () => {
-      const scrolled = window.scrollY;
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrolled / totalHeight;
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = totalHeight > 0 ? scrollY / totalHeight : 0;
 
-      for (let i = config.positions.length - 1; i >= 0; i--) {
-        if (progress >= config.positions[i]) {
-          setCurrentSection(i);
-          break;
-        }
+    for (let i = config.positions.length - 1; i >= 0; i--) {
+      if (progress >= config.positions[i]) {
+        setCurrentSection(i);
+        break;
       }
-    };
-
-    window.addEventListener('scroll', updateSection, { passive: true });
-    updateSection();
-    return () => window.removeEventListener('scroll', updateSection);
-  }, [config.positions]);
+    }
+  }, [scrollY, config.positions]);
 
   const progressGradient = viewMode === 'ai-view'
     ? 'linear-gradient(to right, #8F43EE, #2389D6, #0DA2AD)'
@@ -83,7 +79,7 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
               onClick={() => {
                 const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const targetScroll = position * totalHeight;
-                window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+                scrollTo(targetScroll, { duration: 1.2 });
               }}
               className={`group relative transition-all duration-300 ${
                 currentSection === index ? 'scale-110' : 'scale-100 opacity-50 hover:opacity-100'

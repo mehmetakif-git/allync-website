@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LoadingScreen } from './components/LoadingScreen';
@@ -12,6 +12,7 @@ import { ScrollProgress } from './components/ui/ScrollProgress';
 import { SoundEffectProvider } from './contexts/SoundEffectContext';
 import { AllyncAISolutions } from './components/AllyncAISolutions';
 import { DigitalSolutions } from './components/DigitalSolutions';
+import { useLenis } from './contexts/LenisContext';
 
 function App() {
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
@@ -23,6 +24,8 @@ function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
   const [warningCountdown, setWarningCountdown] = useState(10);
+
+  const { scrollTo, stop, start, scrollY } = useLenis();
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'tr' ? 'en' : 'tr');
@@ -37,34 +40,30 @@ function App() {
 
   const handleSelectView = (view: 'ai-view' | 'digital-view') => {
     setViewMode(view);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollTo(0, { duration: 0.8 });
   };
 
   const handleBackToSelection = () => {
     // Instant scroll to top before transition
-    window.scrollTo(0, 0);
+    scrollTo(0, { duration: 0 });
     setViewMode('selection');
   };
 
+  // Track active section based on Lenis scroll position
   useEffect(() => {
-    const handleScroll = () => {
-      if (viewMode === 'ai-view' || viewMode === 'digital-view') {
-        const sections = ['hero', 'chat-demo', 'packages', 'industry-examples', 'features', 'pricing', 'contact'];
-        const scrollPosition = window.scrollY + 100;
+    if (viewMode === 'ai-view' || viewMode === 'digital-view') {
+      const sections = ['hero', 'chat-demo', 'packages', 'industry-examples', 'features', 'pricing', 'contact'];
+      const scrollPosition = scrollY + 100;
 
-        for (let i = sections.length - 1; i >= 0; i--) {
-          const section = document.getElementById(sections[i]);
-          if (section && section.offsetTop <= scrollPosition) {
-            setActiveSection(sections[i]);
-            break;
-          }
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
         }
       }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [viewMode]);
+    }
+  }, [viewMode, scrollY]);
 
   useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
@@ -85,23 +84,23 @@ function App() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Prevent scroll flash during ALL view transitions
+  // Prevent scroll during view transitions using Lenis
   useEffect(() => {
-    // Lock body scroll during transition
-    document.body.style.overflow = 'hidden';
+    // Stop Lenis during transition
+    stop();
 
     const timer = setTimeout(() => {
-      // Only unlock if not on selection screen
+      // Only start if not on selection screen
       if (viewMode !== 'selection') {
-        document.body.style.overflow = '';
+        start();
       }
     }, 600); // Match animation duration
 
     return () => {
       clearTimeout(timer);
-      document.body.style.overflow = '';
+      start();
     };
-  }, [viewMode]);
+  }, [viewMode, stop, start]);
 
   // Effect to show warning at 80 seconds and Lanyard after 90 seconds of inactivity
   useEffect(() => {

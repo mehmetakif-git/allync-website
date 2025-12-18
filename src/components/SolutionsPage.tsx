@@ -7,6 +7,7 @@ import { Footer } from './Footer';
 import { ServiceCard } from './common/ServiceCard';
 import { LayoutTextFlip } from './ui/LayoutTextFlip';
 import { ShinyText } from './ui/ShinyText';
+import { useLenis } from '../contexts/LenisContext';
 
 export interface Service {
   icon: LucideIcon;
@@ -40,6 +41,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
   ctaButtonGradient
 }) => {
   const t = translations[language];
+  const { scrollTo } = useLenis();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const detailRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -47,17 +49,20 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+      scrollTo(contactSection, { offset: -80, duration: 1.2 });
     }
   };
 
   useEffect(() => {
     if (expandedIndex !== null && window.innerWidth < 768) {
       setTimeout(() => {
-        detailRefs.current[expandedIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        const el = detailRefs.current[expandedIndex];
+        if (el) {
+          scrollTo(el, { offset: -100, duration: 0.8 });
+        }
       }, 100);
     }
-  }, [expandedIndex]);
+  }, [expandedIndex, scrollTo]);
 
   return (
     <div className="min-h-screen">

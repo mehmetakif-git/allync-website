@@ -692,9 +692,16 @@ nav {
   transition: all 0.3s ease;
 }
 
-/* Smooth scrolling */
+/* Lenis smooth scrolling */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 80px;
 }
 
@@ -1796,7 +1803,6 @@ select option {
   
   /* Mobile scroll behavior */
   html {
-    scroll-behavior: smooth;
     overscroll-behavior: contain;
   }
   
