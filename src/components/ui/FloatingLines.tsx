@@ -320,6 +320,9 @@ export default function FloatingLines({
     renderer.setPixelRatio(pixelRatio ?? Math.min(window.devicePixelRatio || 1, 2));
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
+    // Safari scroll fix: force canvas to its own layer
+    renderer.domElement.style.transform = 'translate3d(0,0,0)';
+    renderer.domElement.style.webkitTransform = 'translate3d(0,0,0)';
     containerRef.current.appendChild(renderer.domElement);
 
     const uniforms = {
@@ -491,18 +494,22 @@ export default function FloatingLines({
 
   return (
     <div
-      ref={containerRef}
-      className="w-full h-full fixed inset-0 overflow-hidden"
+      className="fixed inset-0 overflow-hidden"
       style={{
-        mixBlendMode: mixBlendMode,
         zIndex: 0,
-        // Safari scroll fix: force GPU layer to prevent flickering
-        transform: 'translateZ(0)',
-        WebkitTransform: 'translateZ(0)',
-        backfaceVisibility: 'hidden',
-        WebkitBackfaceVisibility: 'hidden',
-        willChange: 'transform'
+        isolation: 'isolate',
+        contain: 'strict'
       }}
-    />
+    >
+      <div
+        ref={containerRef}
+        className="absolute inset-0 w-full h-full"
+        style={{
+          mixBlendMode: mixBlendMode,
+          transform: 'translate3d(0,0,0)',
+          WebkitTransform: 'translate3d(0,0,0)'
+        }}
+      />
+    </div>
   );
 }
