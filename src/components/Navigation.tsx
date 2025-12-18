@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronUp, ArrowLeft, Volume2, VolumeX } from 'lucide-react';
+import { Menu, X, ChevronUp, Phone, ArrowLeft, Volume2, VolumeX } from 'lucide-react';
 import { translations } from '../utils/translations';
 import logoNavbar from '../assets/logo-navbar.svg';
 import { useSoundEffect } from '../contexts/SoundEffectContext';
-import { useLenis } from '../contexts/LenisContext';
 
 interface NavigationProps {
   language: 'tr' | 'en';
@@ -15,7 +14,6 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageToggle, viewMode, onBackToSelection }) => {
   const t = translations[language];
   const { playBackSound, isMuted, toggleMute } = useSoundEffect();
-  const { scrollTo, scrollY } = useLenis();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(true);
@@ -33,43 +31,63 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
     { id: 'contact', label: language === 'tr' ? 'İletişim' : 'Contact' }
   ];
 
-  // Track scroll position using Lenis
   useEffect(() => {
-    const sections = navItems.map(item => document.getElementById(item.id));
-    const scrollPosition = scrollY + 100;
+    let ticking = false;
 
-    // Update active section
-    for (let i = sections.length - 1; i >= 0; i--) {
-      const section = sections[i];
-      if (section && section.offsetTop <= scrollPosition) {
-        setActiveSection(navItems[i].id);
-        break;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const sections = navItems.map(item => document.getElementById(item.id));
+          const scrollPosition = currentScrollY + 100;
+
+          // Update active section
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const section = sections[i];
+            if (section && section.offsetTop <= scrollPosition) {
+              setActiveSection(navItems[i].id);
+              break;
+            }
+          }
+
+          // Update scroll direction and visibility
+          if (currentScrollY > lastScrollY) {
+            setIsScrollingUp(false);
+          } else {
+            setIsScrollingUp(true);
+          }
+
+          setLastScrollY(currentScrollY);
+          setIsVisible(currentScrollY < 100 || currentScrollY < lastScrollY);
+          setShowBackToTop(currentScrollY > 300);
+
+          ticking = false;
+        });
+        ticking = true;
       }
-    }
+    };
 
-    // Update scroll direction and visibility
-    if (scrollY > lastScrollY) {
-      setIsScrollingUp(false);
-    } else {
-      setIsScrollingUp(true);
-    }
-
-    setLastScrollY(scrollY);
-    setIsVisible(scrollY < 100 || scrollY < lastScrollY);
-    setShowBackToTop(scrollY > 300);
-  }, [scrollY, lastScrollY, navItems]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY, navItems]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       const offsetTop = sectionId === 'hero' ? 0 : element.offsetTop - 80;
-      scrollTo(offsetTop, { duration: 1.2 });
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
     }
     setIsMenuOpen(false);
   };
 
   const scrollToTop = () => {
-    scrollTo(0, { duration: 1.2 });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   if (!isVisible) return null;

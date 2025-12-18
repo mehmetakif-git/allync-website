@@ -1,8 +1,7 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { Zap, Users, ArrowRight, Sparkles } from 'lucide-react';
 import { translations } from '../utils/translations';
 import logoSvg from '../assets/logo.svg';
-import { useLenis } from '../contexts/LenisContext';
 
 interface HeroProps extends React.HTMLAttributes<HTMLDivElement> {
   language: 'tr' | 'en';
@@ -10,7 +9,6 @@ interface HeroProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Hero: React.FC<HeroProps> = ({ language, ...props }) => {
   const t = translations[language];
-  const { scrollTo } = useLenis();
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-black py-8 md:py-12" {...props}>
@@ -50,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ language, ...props }) => {
               onClick={() => {
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
-                  scrollTo(contactSection, { offset: -80, duration: 1.2 });
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
               className="group btn-premium btn-glow btn-ripple magnetic px-8 py-4 rounded-lg font-semibold text-white flex items-center justify-center"
@@ -62,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({ language, ...props }) => {
               onClick={() => {
                 const demoSection = document.getElementById('chat-demo');
                 if (demoSection) {
-                  scrollTo(demoSection, { offset: -80, duration: 1.2 });
+                  demoSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
               className="px-8 py-4 glass bg-white/5 border border-gray-600 rounded-lg font-semibold text-white hover:bg-white/10 transition-all duration-500 magnetic animated-border"

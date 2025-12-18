@@ -309,13 +309,20 @@ export default function FloatingLines({
     const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     camera.position.z = 1;
 
+    // Safari scroll fix: preserveDrawingBuffer prevents context reset during scroll
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     const renderer = new WebGLRenderer({
-      antialias: true,
+      antialias: !isSafari, // Disable antialiasing on Safari for better performance
       alpha: false,
+      preserveDrawingBuffer: isSafari, // Prevents flickering on Safari scroll
+      powerPreference: isSafari ? 'low-power' : 'default'
     });
     renderer.setPixelRatio(pixelRatio ?? Math.min(window.devicePixelRatio || 1, 2));
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
+    // Safari scroll fix: force canvas to its own layer
+    renderer.domElement.style.transform = 'translate3d(0,0,0)';
+    renderer.domElement.style.webkitTransform = 'translate3d(0,0,0)';
     containerRef.current.appendChild(renderer.domElement);
 
     const uniforms = {
@@ -442,8 +449,32 @@ export default function FloatingLines({
       renderer.domElement.addEventListener('pointerleave', handlePointerLeave);
     }
 
+    // Safari scroll pause: stop rendering during scroll to prevent flickering
+    let isScrolling = false;
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    const handleScroll = () => {
+      if (!isSafari) return;
+      isScrolling = true;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 150); // Resume 150ms after scroll stops
+    };
+
+    if (isSafari) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('touchmove', handleScroll, { passive: true });
+    }
+
     let raf = 0;
     const renderLoop = () => {
+      // Skip rendering during scroll on Safari
+      if (isSafari && isScrolling) {
+        raf = requestAnimationFrame(renderLoop);
+        return;
+      }
+
       uniforms.iTime.value = clock.getElapsedTime();
 
       if (interactive) {
@@ -466,6 +497,7 @@ export default function FloatingLines({
 
     return () => {
       cancelAnimationFrame(raf);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
 
       if (ro && containerRef.current) {
         ro.disconnect();
@@ -474,6 +506,11 @@ export default function FloatingLines({
       if (interactive) {
         renderer.domElement.removeEventListener('pointermove', handlePointerMove);
         renderer.domElement.removeEventListener('pointerleave', handlePointerLeave);
+      }
+
+      if (isSafari) {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('touchmove', handleScroll);
       }
 
       geometry.dispose();
@@ -488,12 +525,22 @@ export default function FloatingLines({
 
   return (
     <div
-      ref={containerRef}
-      className="w-full h-full fixed inset-0 overflow-hidden"
+      className="fixed inset-0 overflow-hidden"
       style={{
-        mixBlendMode: mixBlendMode,
-        zIndex: 0
+        zIndex: 0,
+        isolation: 'isolate',
+        contain: 'strict'
       }}
-    />
+    >
+      <div
+        ref={containerRef}
+        className="absolute inset-0 w-full h-full"
+        style={{
+          mixBlendMode: mixBlendMode,
+          transform: 'translate3d(0,0,0)',
+          WebkitTransform: 'translate3d(0,0,0)'
+        }}
+      />
+    </div>
   );
 }
