@@ -449,8 +449,32 @@ export default function FloatingLines({
       renderer.domElement.addEventListener('pointerleave', handlePointerLeave);
     }
 
+    // Safari scroll pause: stop rendering during scroll to prevent flickering
+    let isScrolling = false;
+    let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    const handleScroll = () => {
+      if (!isSafari) return;
+      isScrolling = true;
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 150); // Resume 150ms after scroll stops
+    };
+
+    if (isSafari) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('touchmove', handleScroll, { passive: true });
+    }
+
     let raf = 0;
     const renderLoop = () => {
+      // Skip rendering during scroll on Safari
+      if (isSafari && isScrolling) {
+        raf = requestAnimationFrame(renderLoop);
+        return;
+      }
+
       uniforms.iTime.value = clock.getElapsedTime();
 
       if (interactive) {
@@ -473,6 +497,8 @@ export default function FloatingLines({
 
     return () => {
       cancelAnimationFrame(raf);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+
       if (ro && containerRef.current) {
         ro.disconnect();
       }
@@ -480,6 +506,11 @@ export default function FloatingLines({
       if (interactive) {
         renderer.domElement.removeEventListener('pointermove', handlePointerMove);
         renderer.domElement.removeEventListener('pointerleave', handlePointerLeave);
+      }
+
+      if (isSafari) {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('touchmove', handleScroll);
       }
 
       geometry.dispose();
