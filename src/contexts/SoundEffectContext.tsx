@@ -4,8 +4,6 @@ interface SoundEffectContextType {
   playHoverSound: () => void;
   playClickSound: () => void;
   playBackSound: () => void;
-  playHoldSound: () => void;
-  stopHoldSound: () => void;
   isMuted: boolean;
   toggleMute: () => void;
 }
@@ -33,16 +31,12 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
   const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
   const clickAudioRef = useRef<HTMLAudioElement | null>(null);
   const backAudioRef = useRef<HTMLAudioElement | null>(null);
-  const holdAudioRef = useRef<HTMLAudioElement | null>(null);
-  const holdFadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const lastHoverPlayedRef = useRef<number>(0);
   const lastClickPlayedRef = useRef<number>(0);
   const lastBackPlayedRef = useRef<number>(0);
   const HOVER_DEBOUNCE_MS = 50;
   const CLICK_DEBOUNCE_MS = 100;
   const BACK_DEBOUNCE_MS = 100;
-  const HOLD_FADE_DURATION = 500; // Fade in over 500ms
-  const HOLD_TARGET_VOLUME = 0.7;
 
   const toggleMute = useCallback(() => {
     setIsMuted(prev => {
@@ -72,12 +66,6 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
     backAudioRef.current.preload = 'auto';
     backAudioRef.current.load();
 
-    // Hold sound
-    holdAudioRef.current = new Audio('/audio/sound_effects/hold.mp3');
-    holdAudioRef.current.volume = 0.7;
-    holdAudioRef.current.preload = 'auto';
-    holdAudioRef.current.load();
-
     return () => {
       if (hoverAudioRef.current) {
         hoverAudioRef.current.pause();
@@ -93,15 +81,6 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
         backAudioRef.current.pause();
         backAudioRef.current.src = ''; // Release audio resource
         backAudioRef.current = null;
-      }
-      if (holdFadeIntervalRef.current) {
-        clearInterval(holdFadeIntervalRef.current);
-        holdFadeIntervalRef.current = null;
-      }
-      if (holdAudioRef.current) {
-        holdAudioRef.current.pause();
-        holdAudioRef.current.src = ''; // Release audio resource
-        holdAudioRef.current = null;
       }
     };
   }, []);
@@ -141,64 +120,6 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
       backAudioRef.current.play().catch(() => {});
     }
   }, [isMuted]);
-
-  const playHoldSound = useCallback(() => {
-    if (isMuted) return;
-    if (holdAudioRef.current) {
-      // Clear any existing fade interval
-      if (holdFadeIntervalRef.current) {
-        clearInterval(holdFadeIntervalRef.current);
-        holdFadeIntervalRef.current = null;
-      }
-
-      // Start at volume 0 for fade-in effect
-      holdAudioRef.current.volume = 0;
-      holdAudioRef.current.currentTime = 0;
-      holdAudioRef.current.play().catch(() => {});
-
-      // Gradually fade in over HOLD_FADE_DURATION
-      const startTime = Date.now();
-      const fadeStep = 16; // ~60fps
-
-      holdFadeIntervalRef.current = setInterval(() => {
-        if (!holdAudioRef.current) {
-          if (holdFadeIntervalRef.current) {
-            clearInterval(holdFadeIntervalRef.current);
-            holdFadeIntervalRef.current = null;
-          }
-          return;
-        }
-
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / HOLD_FADE_DURATION, 1);
-
-        // Ease-out curve for more natural fade in
-        const easedProgress = 1 - Math.pow(1 - progress, 2);
-        holdAudioRef.current.volume = easedProgress * HOLD_TARGET_VOLUME;
-
-        if (progress >= 1) {
-          if (holdFadeIntervalRef.current) {
-            clearInterval(holdFadeIntervalRef.current);
-            holdFadeIntervalRef.current = null;
-          }
-        }
-      }, fadeStep);
-    }
-  }, [isMuted]);
-
-  const stopHoldSound = useCallback(() => {
-    // Clear fade interval
-    if (holdFadeIntervalRef.current) {
-      clearInterval(holdFadeIntervalRef.current);
-      holdFadeIntervalRef.current = null;
-    }
-
-    if (holdAudioRef.current) {
-      holdAudioRef.current.pause();
-      holdAudioRef.current.currentTime = 0;
-      holdAudioRef.current.volume = HOLD_TARGET_VOLUME; // Reset volume for next play
-    }
-  }, []);
 
   // Check if element is interactive
   const isInteractiveElement = (target: HTMLElement): boolean => {
@@ -241,7 +162,7 @@ export const SoundEffectProvider: React.FC<SoundEffectProviderProps> = ({ childr
   }, [playClickSound]);
 
   return (
-    <SoundEffectContext.Provider value={{ playHoverSound, playClickSound, playBackSound, playHoldSound, stopHoldSound, isMuted, toggleMute }}>
+    <SoundEffectContext.Provider value={{ playHoverSound, playClickSound, playBackSound, isMuted, toggleMute }}>
       {children}
     </SoundEffectContext.Provider>
   );

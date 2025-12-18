@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect, useMemo, memo } from 'react';
 import { Video as LucideIcon, X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Lottie from 'lottie-react';
 import { GlowingEffect } from '../ui/GlowingEffect';
 import { useOutsideClick } from '../../hooks/use-outside-click';
 import { ServiceDetailModal } from '../ServiceDetailModal';
 import logoSvg from '../../assets/logo.svg';
-import soundWavesAnimation from '../../assets/sound-waves.json';
-import { TextGenerateEffect } from '../ui/TextGenerateEffect';
 import { useSoundEffect } from '../../contexts/SoundEffectContext';
 import { IPhoneMockup } from '../ui/IPhoneMockup';
 import { WhatsAppDemo } from '../ui/WhatsAppDemo';
@@ -34,38 +31,6 @@ import { MobileWhatsAppDemo } from '../ui/MobileWhatsAppDemo';
 import { DesktopWhatsAppDemo } from '../ui/DesktopWhatsAppDemo';
 import { getDemoThumbnail } from '../../assets/demo-thumbnails';
 
-// Helper function to convert hex color to hue rotation
-const getHueRotation = (hexColor: string): number => {
-  // Remove # if present
-  const hex = hexColor.replace('#', '');
-
-  // Parse RGB values
-  const r = parseInt(hex.substring(0, 2), 16) / 255;
-  const g = parseInt(hex.substring(2, 4), 16) / 255;
-  const b = parseInt(hex.substring(4, 6), 16) / 255;
-
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  let h = 0;
-
-  if (max !== min) {
-    const d = max - min;
-    if (max === r) {
-      h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
-    } else if (max === g) {
-      h = ((b - r) / d + 2) / 6;
-    } else {
-      h = ((r - g) / d + 4) / 6;
-    }
-  }
-
-  // The Lottie animation is likely in a base color (blue/cyan around 180-200 deg)
-  // We need to rotate from that base to the target hue
-  const targetHue = h * 360;
-  const baseHue = 200; // Assuming the original animation is cyan/blue
-  return targetHue - baseHue;
-};
-
 interface Service {
   icon: LucideIcon;
   title: string;
@@ -88,286 +53,6 @@ interface ServiceCardProps {
   onDetailClick: () => void;
   onContactClick: () => void;
 }
-
-// Audio Modal Component - Full screen with logo and waveform
-const AudioModal: React.FC<{
-  isOpen: boolean;
-  onClose: () => void;
-  service: Service;
-  themeColor: string;
-}> = ({ isOpen, onClose, service, themeColor }) => {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const lottieRef = useRef<any>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [currentSubtitleIndex, setCurrentSubtitleIndex] = useState(-1);
-  const { playBackSound, isMuted } = useSoundEffect();
-
-  const handleClose = () => {
-    playBackSound();
-    onClose();
-  };
-
-  useEffect(() => {
-    if (isOpen && audioRef.current && service.audioSrc) {
-      audioRef.current.muted = isMuted;
-      audioRef.current.play().then(() => setIsPlaying(true)).catch(console.error);
-    }
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }
-      // Destroy Lottie animation to prevent memory leak
-      if (lottieRef.current) {
-        lottieRef.current.destroy();
-        lottieRef.current = null;
-      }
-    };
-  }, [isOpen, service.audioSrc, isMuted]);
-
-  // Update muted state when isMuted changes
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.muted = isMuted;
-    }
-  }, [isMuted]);
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) handleClose();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, handleClose]);
-
-  // Control Lottie animation based on isPlaying state
-  useEffect(() => {
-    if (lottieRef.current) {
-      if (isPlaying) {
-        lottieRef.current.play();
-      } else {
-        lottieRef.current.stop();
-      }
-    }
-  }, [isPlaying]);
-
-  const handleTimeUpdate = () => {
-    if (audioRef.current) {
-      const time = audioRef.current.currentTime;
-      setCurrentTime(time);
-
-      if (service.subtitles) {
-        let newIndex = -1;
-        for (let i = service.subtitles.length - 1; i >= 0; i--) {
-          if (time >= service.subtitles[i].start) {
-            newIndex = i;
-            break;
-          }
-        }
-        setCurrentSubtitleIndex(newIndex);
-      }
-    }
-  };
-
-  const handleEnded = () => {
-    setIsPlaying(false);
-    handleClose();
-  };
-
-  const currentSubtitle = service.subtitles && currentSubtitleIndex >= 0
-    ? service.subtitles[currentSubtitleIndex]?.text
-    : '';
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
-          onClick={handleClose}
-        >
-          {/* Backdrop with glass blur */}
-          <div
-            className="absolute inset-0 backdrop-blur-md"
-            style={{
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
-            }}
-          />
-
-          {/* Close button */}
-          <motion.button
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            onClick={handleClose}
-            className="absolute top-8 right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
-          >
-            <X className="w-6 h-6 text-white" />
-          </motion.button>
-
-          {/* Main content */}
-          <div className="relative z-10 flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
-            {/* Audio element */}
-            {service.audioSrc && (
-              <audio
-                ref={audioRef}
-                src={service.audioSrc}
-                onTimeUpdate={handleTimeUpdate}
-                onEnded={handleEnded}
-                preload="auto"
-              />
-            )}
-
-            {/* Logo with waveform inside */}
-            <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: 'spring', damping: 20, stiffness: 200 }}
-              className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center"
-            >
-              {/* Glowing background */}
-              <div
-                className="absolute inset-0 rounded-full opacity-30"
-                style={{
-                  background: `radial-gradient(circle, ${themeColor}60 0%, transparent 70%)`,
-                  filter: 'blur(40px)',
-                }}
-              />
-
-              {/* Logo */}
-              <motion.img
-                src={logoSvg}
-                alt="Allync Logo"
-                className="absolute w-full h-full"
-                style={{
-                  filter: `drop-shadow(0 0 30px ${themeColor}) drop-shadow(0 0 60px ${themeColor}50)`,
-                }}
-                animate={{
-                  filter: isPlaying
-                    ? [
-                        `drop-shadow(0 0 30px ${themeColor}) drop-shadow(0 0 60px ${themeColor}50)`,
-                        `drop-shadow(0 0 50px ${themeColor}) drop-shadow(0 0 80px ${themeColor}70)`,
-                        `drop-shadow(0 0 30px ${themeColor}) drop-shadow(0 0 60px ${themeColor}50)`,
-                      ]
-                    : `drop-shadow(0 0 30px ${themeColor}) drop-shadow(0 0 60px ${themeColor}50)`,
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-
-              {/* Lottie sound waves around logo */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div
-                  className="absolute w-[200%] h-[200%]"
-                  style={{
-                    filter: `drop-shadow(0 0 10px ${themeColor}) drop-shadow(0 0 20px ${themeColor})`,
-                  }}
-                >
-                  <Lottie
-                    lottieRef={lottieRef}
-                    animationData={soundWavesAnimation}
-                    loop={true}
-                    autoplay={false}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      opacity: isPlaying ? 1 : 0.3,
-                      filter: `hue-rotate(${getHueRotation(themeColor)}deg) saturate(1.5)`,
-                    }}
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Subtitle display with text generate effect */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="mt-8 min-h-[100px] max-w-3xl px-4 flex items-center justify-center"
-            >
-              <AnimatePresence mode="wait">
-                {currentSubtitle && (
-                  <motion.div
-                    key={currentSubtitleIndex}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="relative px-8 py-5 rounded-2xl text-center"
-                    style={{
-                      background: `linear-gradient(135deg, ${themeColor}12 0%, ${themeColor}05 100%)`,
-                      border: `1px solid ${themeColor}25`,
-                      boxShadow: `0 8px 32px ${themeColor}15, inset 0 1px 0 ${themeColor}15`,
-                      backdropFilter: 'blur(12px)',
-                    }}
-                  >
-                    {/* Glow effect behind text */}
-                    <div
-                      className="absolute inset-0 rounded-2xl opacity-40"
-                      style={{
-                        background: `radial-gradient(ellipse at center, ${themeColor}15 0%, transparent 70%)`,
-                      }}
-                    />
-                    <div className="relative z-10">
-                      <TextGenerateEffect
-                        words={currentSubtitle}
-                        duration={0.3}
-                        staggerDelay={0.08}
-                        themeColor={themeColor}
-                        className="text-center"
-                      />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-
-            {/* No audio message */}
-            {!service.audioSrc && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="mt-8 text-center text-gray-400"
-              >
-                <p className="text-lg">Audio coming soon...</p>
-              </motion.div>
-            )}
-
-            {/* Exit hint */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              transition={{ delay: 0.5 }}
-              className="mt-8 text-gray-500 text-sm"
-            >
-              Press ESC or click anywhere to close
-            </motion.p>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
 
 const AnimatedIcon = ({ IconComponent, glowColor }: { IconComponent: any, glowColor?: string }) => {
   const iconRef = useRef<SVGSVGElement>(null);
@@ -605,26 +290,16 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
   onContactClick,
 }) => {
   const Icon = service.icon;
-  const { playBackSound, playHoldSound, stopHoldSound } = useSoundEffect();
+  const { playBackSound } = useSoundEffect();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
   const [isCardHovered, setIsCardHovered] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-
-  // Hold-to-listen state
-  const [isHolding, setIsHolding] = useState(false);
-  const [holdProgress, setHoldProgress] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isAudioModalOpen, setIsAudioModalOpen] = useState(false);
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [isPlayHovered, setIsPlayHovered] = useState(false);
-  const leftSectionRef = useRef<HTMLDivElement>(null);
   const demoModalRef = useRef<HTMLDivElement>(null);
-  const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const HOLD_DURATION = 1500;
 
   const closeGalleryModal = () => {
     playBackSound();
@@ -666,80 +341,13 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
     setCurrentIndex(idx);
   };
 
-  // Hold handlers
-  const startHold = () => {
-    if (isAudioModalOpen) return;
-    setIsHolding(true);
-    setHoldProgress(0);
-    playHoldSound();
-
-    const startTime = Date.now();
-    progressIntervalRef.current = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min((elapsed / HOLD_DURATION) * 100, 100);
-      setHoldProgress(progress);
-    }, 16);
-
-    holdTimerRef.current = setTimeout(() => {
-      if (progressIntervalRef.current) {
-        clearInterval(progressIntervalRef.current);
-        progressIntervalRef.current = null;
-      }
-      stopHoldSound();
-      setIsHolding(false);
-      setHoldProgress(0);
-      setIsAudioModalOpen(true);
-    }, HOLD_DURATION);
-  };
-
-  const cancelHold = () => {
-    if (holdTimerRef.current) {
-      clearTimeout(holdTimerRef.current);
-      holdTimerRef.current = null;
-    }
-    if (progressIntervalRef.current) {
-      clearInterval(progressIntervalRef.current);
-      progressIntervalRef.current = null;
-    }
-    stopHoldSound();
-    setIsHolding(false);
-    setHoldProgress(0);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (leftSectionRef.current && isDesktop) {
-      const rect = leftSectionRef.current.getBoundingClientRect();
-      setMousePos({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    }
-  };
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (e.button === 0 && isDesktop) {
-      startHold();
-    }
-  };
-
-  const handleMouseUp = () => {
-    cancelHold();
-  };
-
   const handleMouseEnter = () => {
     setIsCardHovered(true);
   };
 
   const handleMouseLeave = () => {
     setIsCardHovered(false);
-    cancelHold();
   };
-
-  // Calculate card scale based on hold progress
-  const cardScale = 1 + (holdProgress / 100) * 0.05;
-  const tooltipText = language === 'tr' ? 'Dinlemek için basılı tut' : 'Hold to listen';
-  const circumference = 2 * Math.PI * 45;
-  const strokeDashoffset = circumference - (holdProgress / 100) * circumference;
 
   return (
     <motion.div
@@ -750,24 +358,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div
-        ref={leftSectionRef}
         className="flex-1 w-full relative"
-        style={{ cursor: isCardHovered && isDesktop ? 'none' : 'auto' }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onMouseMove={handleMouseMove}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
       >
-        <div
-          className="w-full"
-          style={{
-            transform: `scale(${cardScale})`,
-            transformOrigin: 'center center',
-            transition: 'transform 0.05s linear',
-            willChange: isHolding ? 'transform' : 'auto',
-          }}
-        >
+        <div className="w-full">
           <div
             className="bg-white/5 backdrop-blur-[6px] border border-white/10 rounded-3xl p-8 md:p-12 w-full h-full relative overflow-hidden"
           >
@@ -881,67 +476,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             </div>
           </div>
         </div>
-
-        {/* Mouse-following tooltip with progress circle */}
-        <AnimatePresence>
-          {isCardHovered && isDesktop && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.15 }}
-              className="absolute pointer-events-none z-[99999]"
-              style={{
-                left: mousePos.x,
-                top: mousePos.y,
-                transform: 'translate(-50%, -50%)',
-              }}
-            >
-              {/* Progress circle (visible when holding) */}
-              {isHolding ? (
-                <div className="relative flex items-center justify-center">
-                  <svg width="100" height="100" className="transform -rotate-90">
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="45"
-                      stroke="rgba(255, 255, 255, 0.1)"
-                      strokeWidth="4"
-                      fill="none"
-                    />
-                    <motion.circle
-                      cx="50"
-                      cy="50"
-                      r="45"
-                      stroke={service.glowColor || '#00d9ff'}
-                      strokeWidth="4"
-                      fill="none"
-                      strokeDasharray={circumference}
-                      strokeDashoffset={strokeDashoffset}
-                      strokeLinecap="round"
-                      style={{
-                        filter: `drop-shadow(0 0 8px ${service.glowColor || '#00d9ff'})`,
-                      }}
-                    />
-                  </svg>
-                  <span className="absolute text-white text-2xl">🎧</span>
-                </div>
-              ) : (
-                <div
-                  className="px-4 py-2 rounded-full font-semibold text-sm whitespace-nowrap text-white flex items-center gap-2"
-                  style={{
-                    background: '#1a1a2e',
-                    boxShadow: `0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px ${service.glowColor || '#00d9ff'}40`,
-                    border: `2px solid ${service.glowColor || '#00d9ff'}`,
-                  }}
-                >
-                  <span>🎧</span>
-                  {tooltipText}
-                </div>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       <div className="flex-1 w-full min-w-0">
@@ -1176,14 +710,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
         gradient={service.gradient}
         ctaText={language === 'tr' ? 'Özel Teklif İsteyin' : 'Request Custom Quote'}
         onCtaClick={onContactClick}
-      />
-
-      {/* Audio Modal */}
-      <AudioModal
-        isOpen={isAudioModalOpen}
-        onClose={() => setIsAudioModalOpen(false)}
-        service={service}
-        themeColor={service.glowColor || '#00d9ff'}
       />
 
       {/* Demo Modal - WhatsApp Demo */}
