@@ -309,7 +309,14 @@ export default function FloatingLines({
     const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     camera.position.z = 1;
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: false });
+    // Safari scroll fix: preserveDrawingBuffer prevents context reset during scroll
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const renderer = new WebGLRenderer({
+      antialias: !isSafari, // Disable antialiasing on Safari for better performance
+      alpha: false,
+      preserveDrawingBuffer: isSafari, // Prevents flickering on Safari scroll
+      powerPreference: isSafari ? 'low-power' : 'default'
+    });
     renderer.setPixelRatio(pixelRatio ?? Math.min(window.devicePixelRatio || 1, 2));
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
@@ -488,7 +495,13 @@ export default function FloatingLines({
       className="w-full h-full fixed inset-0 overflow-hidden"
       style={{
         mixBlendMode: mixBlendMode,
-        zIndex: 0
+        zIndex: 0,
+        // Safari scroll fix: force GPU layer to prevent flickering
+        transform: 'translateZ(0)',
+        WebkitTransform: 'translateZ(0)',
+        backfaceVisibility: 'hidden',
+        WebkitBackfaceVisibility: 'hidden',
+        willChange: 'transform'
       }}
     />
   );
