@@ -64,7 +64,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
       <div className="pt-32 pb-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <div className="flex flex-col items-center justify-center mb-6">
+            <div className="flex flex-col items-center justify-center mb-16 md:mb-6">
               <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center overflow-hidden max-w-full px-4">
                 <LayoutTextFlip
                   text={pageTitle}
