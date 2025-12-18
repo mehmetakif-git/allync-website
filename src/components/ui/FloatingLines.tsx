@@ -452,6 +452,8 @@ export default function FloatingLines({
     // Safari scroll pause: stop rendering during scroll to prevent flickering
     let isScrolling = false;
     let scrollTimeout: ReturnType<typeof setTimeout> | null = null;
+    let animationTime = 0; // Custom time that pauses during scroll
+    let lastFrameTime = performance.now();
 
     const handleScroll = () => {
       if (!isSafari) return;
@@ -459,6 +461,7 @@ export default function FloatingLines({
       if (scrollTimeout) clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         isScrolling = false;
+        lastFrameTime = performance.now(); // Reset frame time on resume
       }, 150); // Resume 150ms after scroll stops
     };
 
@@ -469,13 +472,23 @@ export default function FloatingLines({
 
     let raf = 0;
     const renderLoop = () => {
-      // Skip rendering during scroll on Safari
+      const currentFrameTime = performance.now();
+      const deltaTime = (currentFrameTime - lastFrameTime) / 1000; // Convert to seconds
+      lastFrameTime = currentFrameTime;
+
+      // Skip rendering and time update during scroll on Safari
       if (isSafari && isScrolling) {
         raf = requestAnimationFrame(renderLoop);
         return;
       }
 
-      uniforms.iTime.value = clock.getElapsedTime();
+      // Only advance animation time when not scrolling
+      if (isSafari) {
+        animationTime += deltaTime;
+        uniforms.iTime.value = animationTime;
+      } else {
+        uniforms.iTime.value = clock.getElapsedTime();
+      }
 
       if (interactive) {
         currentMouseRef.current.lerp(targetMouseRef.current, mouseDamping);
