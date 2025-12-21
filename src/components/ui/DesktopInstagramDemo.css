@@ -6,6 +6,10 @@
   --did-bezel: 10px;
   --did-dynamic-island-width: 125px;
   --did-dynamic-island-height: 37px;
+  --did-primary: #833ab4;
+  --did-secondary: #fd1d1d;
+  --did-tertiary: #fcb045;
+  --did-gradient: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
 }
 
 .did-overlay {
@@ -68,29 +72,29 @@ body.did-modal-open {
 }
 
 
-/* iPhone Frame - Titanium with 3D effect */
+/* iPhone Frame - Instagram themed with 3D effect */
 .did-iphone-frame {
   position: relative;
   width: var(--did-iphone-width);
   height: var(--did-iphone-height);
-  background: linear-gradient(145deg, #3a3a3e 0%, #1c1c1e 50%, #2a2a2e 100%);
+  background: linear-gradient(145deg, #3d1a4a 0%, #1a0d20 50%, #2d1535 100%);
   border-radius: var(--did-border-radius);
   padding: var(--did-bezel);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.1),
+    0 0 0 1px rgba(131, 58, 180, 0.15),
     0 25px 80px -15px rgba(0, 0, 0, 0.7),
-    0 10px 40px -10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255,255,255,0.15);
+    0 10px 40px -10px rgba(253, 29, 29, 0.2),
+    inset 0 1px 0 rgba(252, 176, 69, 0.1);
   transition: transform 0.15s ease-out, box-shadow 0.3s ease;
   transform-style: preserve-3d;
 }
 
 .did-iphone-frame:hover {
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.15),
+    0 0 0 1px rgba(131, 58, 180, 0.25),
     0 30px 100px -15px rgba(0, 0, 0, 0.8),
-    0 15px 50px -10px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255,255,255,0.2);
+    0 15px 50px -10px rgba(253, 29, 29, 0.3),
+    inset 0 1px 0 rgba(252, 176, 69, 0.15);
 }
 
 .did-iphone-frame::before {
@@ -101,11 +105,11 @@ body.did-modal-open {
   right: -1px;
   bottom: -1px;
   background: linear-gradient(135deg,
-    rgba(255,255,255,0.2) 0%,
-    rgba(255,255,255,0.05) 25%,
+    rgba(131, 58, 180, 0.2) 0%,
+    rgba(253, 29, 29, 0.05) 25%,
     rgba(0,0,0,0.1) 50%,
-    rgba(255,255,255,0.05) 75%,
-    rgba(255,255,255,0.15) 100%);
+    rgba(253, 29, 29, 0.05) 75%,
+    rgba(252, 176, 69, 0.15) 100%);
   border-radius: calc(var(--did-border-radius) + 1px);
   z-index: -1;
 }
@@ -113,13 +117,13 @@ body.did-modal-open {
 /* Side Buttons with hover */
 .did-side-button {
   position: absolute;
-  background: linear-gradient(90deg, #4a4a4c, #2c2c2e, #4a4a4c);
+  background: linear-gradient(90deg, #4a2a5a, #2d1535, #4a2a5a);
   border-radius: 2px;
   transition: background 0.2s ease;
 }
 
 .did-side-button:hover {
-  background: linear-gradient(90deg, #5a5a5c, #3c3c3e, #5a5a5c);
+  background: linear-gradient(90deg, #5a3a6a, #3d1a4a, #5a3a6a);
 }
 
 .did-silent-switch {
@@ -592,7 +596,7 @@ body.did-modal-open {
 .did-battery-level {
   height: 100%;
   width: 80%;
-  background: #30d158;
+  background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
   border-radius: 2px;
 }
 

@@ -6,6 +6,9 @@
   --dtv-bezel: 10px;
   --dtv-dynamic-island-width: 125px;
   --dtv-dynamic-island-height: 37px;
+  --dtv-primary: #3b82f6;
+  --dtv-primary-dark: #06b6d4;
+  --dtv-gradient: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
 }
 
 .dtv-overlay {
@@ -65,28 +68,29 @@ body.dtv-modal-open {
               transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* iPhone Frame - Blue/Cyan themed with 3D effect */
 .dtv-iphone-frame {
   position: relative;
   width: var(--dtv-iphone-width);
   height: var(--dtv-iphone-height);
-  background: linear-gradient(145deg, #3a3a3e 0%, #1c1c1e 50%, #2a2a2e 100%);
+  background: linear-gradient(145deg, #1a3a5a 0%, #0d1f35 50%, #152d45 100%);
   border-radius: var(--dtv-border-radius);
   padding: var(--dtv-bezel);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.1),
+    0 0 0 1px rgba(59, 130, 246, 0.15),
     0 25px 80px -15px rgba(0, 0, 0, 0.7),
-    0 10px 40px -10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255,255,255,0.15);
+    0 10px 40px -10px rgba(6, 182, 212, 0.2),
+    inset 0 1px 0 rgba(59, 130, 246, 0.1);
   transition: transform 0.15s ease-out, box-shadow 0.3s ease;
   transform-style: preserve-3d;
 }
 
 .dtv-iphone-frame:hover {
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.15),
+    0 0 0 1px rgba(59, 130, 246, 0.25),
     0 30px 100px -15px rgba(0, 0, 0, 0.8),
-    0 15px 50px -10px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255,255,255,0.2);
+    0 15px 50px -10px rgba(6, 182, 212, 0.3),
+    inset 0 1px 0 rgba(59, 130, 246, 0.15);
 }
 
 .dtv-iphone-frame::before {
@@ -97,11 +101,11 @@ body.dtv-modal-open {
   right: -1px;
   bottom: -1px;
   background: linear-gradient(135deg,
-    rgba(255,255,255,0.2) 0%,
-    rgba(255,255,255,0.05) 25%,
+    rgba(59, 130, 246, 0.2) 0%,
+    rgba(6, 182, 212, 0.05) 25%,
     rgba(0,0,0,0.1) 50%,
-    rgba(255,255,255,0.05) 75%,
-    rgba(255,255,255,0.15) 100%);
+    rgba(6, 182, 212, 0.05) 75%,
+    rgba(59, 130, 246, 0.15) 100%);
   border-radius: calc(var(--dtv-border-radius) + 1px);
   z-index: -1;
 }
@@ -109,13 +113,13 @@ body.dtv-modal-open {
 /* Side Buttons */
 .dtv-side-button {
   position: absolute;
-  background: linear-gradient(90deg, #4a4a4c, #2c2c2e, #4a4a4c);
+  background: linear-gradient(90deg, #1a4a6a, #0d2840, #1a4a6a);
   border-radius: 2px;
   transition: background 0.2s ease;
 }
 
 .dtv-side-button:hover {
-  background: linear-gradient(90deg, #5a5a5c, #3c3c3e, #5a5a5c);
+  background: linear-gradient(90deg, #1f5a7a, #103550, #1f5a7a);
 }
 
 .dtv-silent-switch { left: -4px; top: 100px; width: 4px; height: 35px; }
@@ -485,7 +489,7 @@ body.dtv-modal-open {
 .dtv-battery-level {
   height: 100%;
   width: 80%;
-  background: #30d158;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
   border-radius: 2px;
 }
 

@@ -6,6 +6,9 @@
   --dwd-bezel: 10px;
   --dwd-dynamic-island-width: 125px;
   --dwd-dynamic-island-height: 37px;
+  --dwd-primary: #25d366;
+  --dwd-primary-dark: #128c7e;
+  --dwd-gradient: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
 }
 
 .dwd-overlay {
@@ -73,24 +76,24 @@ body.dwd-modal-open {
   position: relative;
   width: var(--dwd-iphone-width);
   height: var(--dwd-iphone-height);
-  background: linear-gradient(145deg, #3a3a3e 0%, #1c1c1e 50%, #2a2a2e 100%);
+  background: linear-gradient(145deg, #1a4a3a 0%, #0d2920 50%, #153d2e 100%);
   border-radius: var(--dwd-border-radius);
   padding: var(--dwd-bezel);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.1),
+    0 0 0 1px rgba(37, 211, 102, 0.15),
     0 25px 80px -15px rgba(0, 0, 0, 0.7),
-    0 10px 40px -10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255,255,255,0.15);
+    0 10px 40px -10px rgba(18, 140, 126, 0.3),
+    inset 0 1px 0 rgba(37, 211, 102, 0.1);
   transition: transform 0.15s ease-out, box-shadow 0.3s ease;
   transform-style: preserve-3d;
 }
 
 .dwd-iphone-frame:hover {
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.15),
+    0 0 0 1px rgba(37, 211, 102, 0.25),
     0 30px 100px -15px rgba(0, 0, 0, 0.8),
-    0 15px 50px -10px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255,255,255,0.2);
+    0 15px 50px -10px rgba(18, 140, 126, 0.4),
+    inset 0 1px 0 rgba(37, 211, 102, 0.15);
 }
 
 .dwd-iphone-frame::before {
@@ -101,11 +104,11 @@ body.dwd-modal-open {
   right: -1px;
   bottom: -1px;
   background: linear-gradient(135deg,
-    rgba(255,255,255,0.2) 0%,
-    rgba(255,255,255,0.05) 25%,
+    rgba(37, 211, 102, 0.2) 0%,
+    rgba(37, 211, 102, 0.05) 25%,
     rgba(0,0,0,0.1) 50%,
-    rgba(255,255,255,0.05) 75%,
-    rgba(255,255,255,0.15) 100%);
+    rgba(18, 140, 126, 0.05) 75%,
+    rgba(37, 211, 102, 0.15) 100%);
   border-radius: calc(var(--dwd-border-radius) + 1px);
   z-index: -1;
 }
@@ -113,13 +116,13 @@ body.dwd-modal-open {
 /* Side Buttons with hover */
 .dwd-side-button {
   position: absolute;
-  background: linear-gradient(90deg, #4a4a4c, #2c2c2e, #4a4a4c);
+  background: linear-gradient(90deg, #1a5a48, #0d3528, #1a5a48);
   border-radius: 2px;
   transition: background 0.2s ease;
 }
 
 .dwd-side-button:hover {
-  background: linear-gradient(90deg, #5a5a5c, #3c3c3e, #5a5a5c);
+  background: linear-gradient(90deg, #1f6a55, #10402f, #1f6a55);
 }
 
 .dwd-silent-switch {
@@ -468,7 +471,7 @@ body.dwd-modal-open {
 
 .dwd-di-wave-bar {
   width: 4px;
-  background: linear-gradient(180deg, #ff6b6b 0%, #ee5a24 100%);
+  background: var(--dwd-gradient);
   border-radius: 3px;
   animation: dwd-waveAnim 1s ease-in-out infinite;
 }
@@ -592,7 +595,7 @@ body.dwd-modal-open {
 .dwd-battery-level {
   height: 100%;
   width: 80%;
-  background: #30d158;
+  background: var(--dwd-gradient);
   border-radius: 2px;
 }
 
@@ -1619,7 +1622,7 @@ body.dwd-modal-open {
   left: 0;
   top: 0;
   height: 100%;
-  background: linear-gradient(90deg, #ff6b6b 0%, #ee5a24 100%);
+  background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
   border-radius: 4px;
   transition: width 0.1s ease;
 }
@@ -1657,7 +1660,7 @@ body.dwd-modal-open {
   position: absolute;
   inset: -2px;
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(238, 90, 36, 0.2));
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.2), rgba(18, 140, 126, 0.2));
   opacity: 0;
   animation: dwd-volumeHudPulse 2s ease-in-out infinite;
   z-index: -1;

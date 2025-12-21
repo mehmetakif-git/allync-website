@@ -12,6 +12,7 @@
   --dti-primary: #8b5cf6;
   --dti-primary-dark: #7c3aed;
   --dti-secondary: #a855f7;
+  --dti-gradient: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
 }
 
 .dti-overlay {
@@ -74,29 +75,29 @@ body.dti-modal-open {
 }
 
 
-/* iPhone Frame - Titanium with 3D effect */
+/* iPhone Frame - Purple themed with 3D effect */
 .dti-iphone-frame {
   position: relative;
   width: var(--dti-iphone-width);
   height: var(--dti-iphone-height);
-  background: linear-gradient(145deg, #3a3a3e 0%, #1c1c1e 50%, #2a2a2e 100%);
+  background: linear-gradient(145deg, #3d2a5a 0%, #1a0d2e 50%, #2d1b45 100%);
   border-radius: var(--dti-border-radius);
   padding: var(--dti-bezel);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.1),
+    0 0 0 1px rgba(139, 92, 246, 0.15),
     0 25px 80px -15px rgba(0, 0, 0, 0.7),
-    0 10px 40px -10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255,255,255,0.15);
+    0 10px 40px -10px rgba(168, 85, 247, 0.2),
+    inset 0 1px 0 rgba(139, 92, 246, 0.1);
   transition: transform 0.15s ease-out, box-shadow 0.3s ease;
   transform-style: preserve-3d;
 }
 
 .dti-iphone-frame:hover {
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.15),
+    0 0 0 1px rgba(139, 92, 246, 0.25),
     0 30px 100px -15px rgba(0, 0, 0, 0.8),
-    0 15px 50px -10px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255,255,255,0.2);
+    0 15px 50px -10px rgba(168, 85, 247, 0.3),
+    inset 0 1px 0 rgba(139, 92, 246, 0.15);
 }
 
 .dti-iphone-frame::before {
@@ -107,11 +108,11 @@ body.dti-modal-open {
   right: -1px;
   bottom: -1px;
   background: linear-gradient(135deg,
-    rgba(255,255,255,0.2) 0%,
-    rgba(255,255,255,0.05) 25%,
+    rgba(139, 92, 246, 0.2) 0%,
+    rgba(168, 85, 247, 0.05) 25%,
     rgba(0,0,0,0.1) 50%,
-    rgba(255,255,255,0.05) 75%,
-    rgba(255,255,255,0.15) 100%);
+    rgba(168, 85, 247, 0.05) 75%,
+    rgba(139, 92, 246, 0.15) 100%);
   border-radius: calc(var(--dti-border-radius) + 1px);
   z-index: -1;
 }
@@ -119,13 +120,13 @@ body.dti-modal-open {
 /* Side Buttons with hover */
 .dti-side-button {
   position: absolute;
-  background: linear-gradient(90deg, #4a4a4c, #2c2c2e, #4a4a4c);
+  background: linear-gradient(90deg, #4a2a6a, #2d1545, #4a2a6a);
   border-radius: 2px;
   transition: background 0.2s ease;
 }
 
 .dti-side-button:hover {
-  background: linear-gradient(90deg, #5a5a5c, #3c3c3e, #5a5a5c);
+  background: linear-gradient(90deg, #5a3a7a, #3d1a55, #5a3a7a);
 }
 
 .dti-silent-switch {
@@ -589,7 +590,7 @@ body.dti-modal-open {
 .dti-battery-level {
   height: 100%;
   width: 80%;
-  background: var(--dti-primary);
+  background: linear-gradient(90deg, #8b5cf6, #a855f7);
   border-radius: 2px;
 }
 
@@ -1140,19 +1141,21 @@ body.dti-modal-open {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.1);
   border: none;
-  color: rgba(255, 255, 255, 0.8);
+  color: #aebac1;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 20px;
   transition: all 0.2s ease;
+  transform: rotate(0deg);
 }
 
 .dti-close-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
+  color: white;
   transform: rotate(90deg);
 }
 
