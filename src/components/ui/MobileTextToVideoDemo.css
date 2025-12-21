@@ -550,161 +550,124 @@ body.mtv-modal-open {
 /* ==================== DOCK ==================== */
 .mtv-dock {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: calc(var(--mtv-iphone-width) * 0.055);
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 16px 24px 40px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+  gap: 18px;
+  padding: 12px 20px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,0.1);
   z-index: 50;
 }
 
 .mtv-dock-icon {
-  position: relative;
-  width: 56px;
-  height: 56px;
+  width: calc(var(--mtv-iphone-width) * 0.14);
+  height: calc(var(--mtv-iphone-width) * 0.14);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 24px;
+  color: white;
+  transition: transform 0.2s ease;
   cursor: pointer;
-  transition: all 0.2s ease;
+  position: relative;
 }
 
 .mtv-dock-icon:active {
-  transform: scale(0.92);
-}
-
-.mtv-icon-img,
-.mtv-close-img {
-  width: 26px;
-  height: 26px;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-}
-
-.mtv-dock-icon svg {
-  width: 26px;
-  height: 26px;
-  color: white;
-  opacity: 0.9;
+  transform: scale(0.9);
 }
 
 /* Network Icon */
 .mtv-network-icon {
   background: linear-gradient(135deg, #007AFF, #5AC8FA);
-  border: none;
+  padding: 8px;
+}
+
+.mtv-network-icon .mtv-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Network Tooltip */
+.mtv-network-tooltip {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #007AFF, #5AC8FA);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.4);
+  animation: mtv-tooltipBounce 2s ease-in-out infinite;
+  z-index: 1000;
+}
+
+.mtv-network-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: #5AC8FA;
 }
 
 /* Call Icon */
 .mtv-call-icon {
   background: linear-gradient(135deg, #34C759, #30D158);
-  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* General icon image style */
+.mtv-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 /* Close Icon */
 .mtv-close-icon {
   background: linear-gradient(135deg, #ff3b30, #ff6b6b);
-  border: none;
+  padding: 8px;
   position: relative;
 }
 
-/* Close Pulse Ring */
-.mtv-close-icon::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 19px;
-  background: rgba(255, 59, 48, 0.4);
-  animation: mtv-close-pulse 1.5s ease-out infinite;
-  z-index: -1;
+.mtv-close-icon .mtv-close-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
-@keyframes mtv-close-pulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-/* App Icon - Primary Style (Video) */
-.mtv-app-icon {
-  background: var(--mtv-gradient);
-  border: none;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
-}
-
-.mtv-app-icon svg {
-  opacity: 1;
-}
-
-/* Pulse Animation for App Icon */
-.mtv-app-icon::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 20px;
-  background: rgba(59, 130, 246, 0.4);
-  animation: mtv-pulse-ring 1.5s ease-out infinite;
-  z-index: -1;
-}
-
-.mtv-app-icon::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 24px;
-  background: rgba(59, 130, 246, 0.2);
-  animation: mtv-pulse-ring 1.5s ease-out infinite 0.3s;
-  z-index: -2;
-}
-
-@keyframes mtv-pulse-ring {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.5); opacity: 0; }
-}
-
-/* Tooltips */
+/* Close Tooltip */
 .mtv-close-tooltip {
   position: absolute;
-  bottom: calc(100% + 12px);
+  bottom: calc(100% + 15px);
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #ff3b30, #ff6b6b);
-  padding: 8px 14px;
-  border-radius: 10px;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
   font-size: 12px;
   font-weight: 600;
-  color: white;
   white-space: nowrap;
   box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
   animation: mtv-tooltipBounce 2s ease-in-out infinite;
-  z-index: 100;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.mtv-app-tooltip {
-  position: absolute;
-  bottom: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--mtv-gradient);
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 600;
-  color: white;
-  white-space: nowrap;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-  animation: mtv-tooltipBounce 2s ease-in-out infinite;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .mtv-close-tooltip::after {
@@ -713,8 +676,68 @@ body.mtv-modal-open {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px solid transparent;
+  border: 8px solid transparent;
   border-top-color: #ff6b6b;
+}
+
+.mtv-close-tooltip::before {
+  content: '👆';
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  animation: mtv-fingerPoint 1s ease-in-out infinite;
+}
+
+/* Close Pulse Ring */
+.mtv-close-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 20px;
+  background: rgba(255, 59, 48, 0.4);
+  animation: mtv-closePulseRing 1.5s ease-out infinite;
+  z-index: -1;
+}
+
+.mtv-close-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 24px;
+  background: rgba(255, 59, 48, 0.2);
+  animation: mtv-closePulseRing 1.5s ease-out infinite 0.3s;
+  z-index: -2;
+}
+
+@keyframes mtv-closePulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* App Icon - Video gradient (blue/cyan) */
+.mtv-app-icon {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  position: relative;
+}
+
+/* App Tooltip */
+.mtv-app-tooltip {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  animation: mtv-tooltipBounce 2s ease-in-out infinite;
+  z-index: 1000;
 }
 
 .mtv-app-tooltip::after {
@@ -723,32 +746,54 @@ body.mtv-modal-open {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border: 6px solid transparent;
-  border-top-color: var(--mtv-secondary);
+  border: 8px solid transparent;
+  border-top-color: #06b6d4;
 }
 
 .mtv-app-tooltip::before {
   content: '👆';
   position: absolute;
-  bottom: -24px;
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 14px;
+  font-size: 16px;
   animation: mtv-fingerPoint 1s ease-in-out infinite;
 }
 
 @keyframes mtv-tooltipBounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-6px); }
+  50% { transform: translateX(-50%) translateY(-8px); }
 }
 
 @keyframes mtv-fingerPoint {
   0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(4px); }
+  50% { transform: translateX(-50%) translateY(5px); }
 }
 
-.mtv-close-icon:hover .mtv-close-tooltip {
-  opacity: 1;
+/* Pulse Ring - Video colors */
+.mtv-app-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 20px;
+  background: rgba(59, 130, 246, 0.4);
+  animation: mtv-pulseRing 1.5s ease-out infinite;
+  z-index: -1;
+}
+
+.mtv-app-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 24px;
+  background: rgba(6, 182, 212, 0.2);
+  animation: mtv-pulseRing 1.5s ease-out infinite 0.3s;
+  z-index: -2;
+}
+
+@keyframes mtv-pulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
 }
 
 /* Home Indicator */
