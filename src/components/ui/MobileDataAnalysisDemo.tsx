@@ -586,6 +586,12 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mda-iphone-frame">
+          {/* Side Buttons */}
+          <div className="mda-side-button mda-silent-switch" />
+          <div className="mda-side-button mda-volume-up" />
+          <div className="mda-side-button mda-volume-down" />
+          <div className="mda-side-button mda-power-button" />
+
           <div className="mda-iphone-screen">
             {/* Wallpaper */}
             <div className="mda-wallpaper" />
@@ -964,6 +970,9 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
 
             {/* Home Indicator */}
             <div className="mda-home-indicator" onClick={isAppOpen ? closeApp : handleClose} />
+
+            {/* Screen Reflection */}
+            <div className="mda-screen-reflection" />
           </div>
         </div>
       </div>

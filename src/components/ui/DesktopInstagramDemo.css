@@ -430,7 +430,7 @@ body.did-modal-open {
   height: 52px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  box-shadow: 0 4px 15px rgba(226, 7, 160, 0.3);
   transition: transform 0.3s ease;
 }
 
