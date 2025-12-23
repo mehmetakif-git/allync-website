@@ -48,7 +48,6 @@ body.mec-modal-open {
   position: fixed !important;
   width: 100% !important;
   height: 100% !important;
-  touch-action: none !important;
 }
 
 body.mec-modal-open > *:not(.mec-overlay) {
@@ -891,6 +890,7 @@ body.mec-modal-open .mec-overlay {
   flex-direction: column;
   border-radius: calc(var(--mec-border-radius) - var(--mec-bezel));
   animation: mec-appOpen 0.3s ease;
+  overflow: hidden;
 }
 
 .mec-ecommerce-app.mec-active {
@@ -1134,19 +1134,29 @@ body.mec-modal-open .mec-overlay {
 .mec-products-grid {
   position: relative;
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 16px;
   padding-bottom: 100px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: min-content;
   gap: 14px;
-  align-content: start;
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
   overscroll-behavior: contain;
   z-index: 1;
   touch-action: pan-y;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* GPU acceleration for smooth scroll */
+  will-change: scroll-position;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.mec-products-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .mec-product-card {
@@ -1155,6 +1165,8 @@ body.mec-modal-open .mec-overlay {
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
+  contain: layout style paint;
+  will-change: transform;
 }
 
 .mec-product-card:active {
@@ -1455,6 +1467,8 @@ body.mec-modal-open .mec-overlay {
   overflow: hidden;
   z-index: 100;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
 }
 
 .mec-cart-header {
@@ -1463,6 +1477,7 @@ body.mec-modal-open .mec-overlay {
   justify-content: space-between;
   padding: 14px 16px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
 }
 
 .mec-cart-header h3 {
@@ -1495,6 +1510,8 @@ body.mec-modal-open .mec-overlay {
 }
 
 .mec-cart-items {
+  flex: 1;
+  min-height: 0;
   max-height: 280px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -1502,6 +1519,12 @@ body.mec-modal-open .mec-overlay {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mec-cart-items::-webkit-scrollbar {
+  display: none;
 }
 
 .mec-cart-empty {
@@ -1634,6 +1657,7 @@ body.mec-modal-open .mec-overlay {
 .mec-cart-footer {
   padding: 14px 16px;
   border-top: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
 }
 
 .mec-cart-total {
@@ -1727,6 +1751,12 @@ body.mec-modal-open .mec-overlay {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mec-checkout-content::-webkit-scrollbar {
+  display: none;
 }
 
 .mec-checkout-section {

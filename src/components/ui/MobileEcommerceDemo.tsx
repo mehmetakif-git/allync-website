@@ -376,7 +376,7 @@ export const MobileEcommerceDemo: React.FC<MobileEcommerceDemoProps> = ({
 
   // Shop View Component
   const ShopView = () => (
-    <div className="mec-app-content">
+    <>
       <div className="mec-shop-header">
         <div className="mec-shop-header-top">
           <button className="mec-shop-close-btn" onClick={closeApp}>
@@ -569,7 +569,7 @@ export const MobileEcommerceDemo: React.FC<MobileEcommerceDemoProps> = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 
   // Checkout View Component
