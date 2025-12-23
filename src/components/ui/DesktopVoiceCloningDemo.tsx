@@ -770,7 +770,7 @@ export const DesktopVoiceCloningDemo: React.FC<DesktopVoiceCloningDemoProps> = (
                   <img src={callIcon} alt="Call" className="dvc-icon-img" />
                 </div>
                 <div className="dvc-dock-icon dvc-app-icon dvc-dock-hover" onClick={openApp}>
-                  <span className="dvc-app-tooltip">{t.tooltip} 🚀</span>
+                  <span className="dvc-app-tooltip">{t.tooltip}</span>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                     <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
                     <path d="M19 10v2a7 7 0 0 1-14 0v-2" />

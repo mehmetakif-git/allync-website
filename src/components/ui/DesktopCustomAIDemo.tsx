@@ -625,7 +625,7 @@ export const DesktopCustomAIDemo: React.FC<DesktopCustomAIDemoProps> = ({
                       onClick={startBuilding}
                       disabled={selectedFeatures.length === 0}
                     >
-                      🚀 {t.continue}
+                      {t.continue}
                     </button>
                   </div>
                 </div>

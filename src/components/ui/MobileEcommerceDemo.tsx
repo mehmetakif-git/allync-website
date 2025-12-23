@@ -850,7 +850,7 @@ export const MobileEcommerceDemo: React.FC<MobileEcommerceDemoProps> = ({
                   <img src={callIcon} alt="Call" className="mec-icon-img" />
                 </div>
                 <div className="mec-dock-icon mec-shop-icon" onClick={openApp}>
-                  <span className="mec-shop-tooltip">{t.tooltip} 🚀</span>
+                  <span className="mec-shop-tooltip">{t.tooltip}</span>
                   <ShoppingCart style={{ width: '60%', height: '60%', color: 'white' }} />
                 </div>
               </div>

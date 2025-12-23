@@ -603,7 +603,7 @@ export const MobileTextToImageDemo: React.FC<MobileTextToImageDemoProps> = ({
                   <img src={callOutlineIcon} alt="Call" className="mti-icon-img" />
                 </div>
                 <div className="mti-dock-icon mti-app-icon" onClick={openApp}>
-                  <span className="mti-app-tooltip">{t.tooltip} 🚀</span>
+                  <span className="mti-app-tooltip">{t.tooltip}</span>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <circle cx="8.5" cy="8.5" r="1.5" fill="white" stroke="none" />

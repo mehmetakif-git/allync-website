@@ -651,7 +651,7 @@ export const DesktopTextToImageDemo: React.FC<DesktopTextToImageDemoProps> = ({
                   <img src={callIcon} alt="Call" className="dti-icon-img" />
                 </div>
                 <div className="dti-dock-icon dti-app-icon dti-dock-hover" onClick={openApp}>
-                  <span className="dti-app-tooltip">{t.tooltip} 🚀</span>
+                  <span className="dti-app-tooltip">{t.tooltip}</span>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <circle cx="8.5" cy="8.5" r="1.5" fill="white" stroke="none" />

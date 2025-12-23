@@ -56,7 +56,7 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
     setIsSubmitting(true);
     setStatusMessage('');
 
-    console.log('🚀 Form submission started');
+    console.log('Form submission started');
     console.log('Form data:', formData);
     console.log('Is form valid:', isFormValid);
     console.log('Errors:', errors);

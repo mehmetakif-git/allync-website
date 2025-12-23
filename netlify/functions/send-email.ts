@@ -248,7 +248,7 @@ export const handler: Handler = async (event) => {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;">
                 <tr>
                   <td align="center">
-                    <a href="https://allyncai.com" style="display: inline-block; background: linear-gradient(135deg, #00d9ff 0%, #00b8e6 100%); color: #ffffff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);">🚀 Web Sitemizi Ziyaret Edin</a>
+                    <a href="https://allyncai.com" style="display: inline-block; background: linear-gradient(135deg, #00d9ff 0%, #00b8e6 100%); color: #ffffff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);">Web Sitemizi Ziyaret Edin</a>
                   </td>
                 </tr>
               </table>
@@ -343,7 +343,7 @@ export const handler: Handler = async (event) => {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;">
                 <tr>
                   <td align="center">
-                    <a href="https://allyncai.com" style="display: inline-block; background: linear-gradient(135deg, #00d9ff 0%, #00b8e6 100%); color: #ffffff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);">🚀 Visit Our Website</a>
+                    <a href="https://allyncai.com" style="display: inline-block; background: linear-gradient(135deg, #00d9ff 0%, #00b8e6 100%); color: #ffffff; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);">Visit Our Website</a>
                   </td>
                 </tr>
               </table>
