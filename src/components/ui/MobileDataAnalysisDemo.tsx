@@ -428,10 +428,14 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
 
   // Disable body scroll
   useEffect(() => {
+    const scrollY = window.scrollY;
     document.body.classList.add('mda-modal-open');
+    document.body.style.top = `-${scrollY}px`;
 
     return () => {
       document.body.classList.remove('mda-modal-open');
+      document.body.style.top = '';
+      window.scrollTo(0, scrollY);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
