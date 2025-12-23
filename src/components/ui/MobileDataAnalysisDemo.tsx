@@ -716,7 +716,7 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
                     <span>{t.weather}</span>
                   </div>
                   <div className="mda-weather-temp">18°</div>
-                  <div className="mda-weather-desc">{language === 'tr' ? 'Açık' : 'Clear'}</div>
+                  <div className="mda-weather-desc">{language === 'tr' ? 'Açık, H:22° L:14°' : 'Clear, H:72° L:57°'}</div>
                 </div>
                 <div
                   className="mda-widget"
@@ -751,6 +751,7 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
               {/* Dock */}
               <div className="mda-dock">
                 <div className="mda-dock-icon mda-close-icon" onClick={handleClose}>
+                  <span className="mda-close-tooltip">{language === 'tr' ? 'Çıkış' : 'Exit'} ✕</span>
                   <img src={closeIcon} alt="Close" className="mda-close-img" />
                 </div>
                 <div className="mda-dock-icon mda-network-icon" onClick={handleContactNavigation}>
