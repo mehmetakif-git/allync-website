@@ -309,8 +309,6 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
   const [progress, setProgress] = useState(0);
   const [visibleMetrics, setVisibleMetrics] = useState(0);
   const [visibleInsights, setVisibleInsights] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
   // Dynamic Island states
   const [dynamicIslandState, setDynamicIslandState] = useState<'collapsed' | 'compact' | 'expanded'>('collapsed');
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
@@ -412,13 +410,6 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
     }
   }, [volume, isMusicPlaying]);
 
-  // Trigger entrance animation
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      setIsVisible(true);
-    });
-  }, []);
-
   // Set time and date
   useEffect(() => {
     const hours = entryTime.getHours().toString().padStart(2, '0');
@@ -462,26 +453,28 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
   };
 
   const handleClose = () => {
-    if (isClosing) return;
-    setIsClosing(true);
     setIsMusicPlaying(false);
     setDynamicIslandState('collapsed');
-    setTimeout(() => {
-      if (onClose) onClose();
-    }, 400);
+    if (onClose) {
+      onClose();
+    }
   };
 
   const handleContactNavigation = () => {
-    if (isClosing) return;
-    setIsClosing(true);
     setIsMusicPlaying(false);
     setDynamicIslandState('collapsed');
+    document.body.classList.remove('mda-modal-open');
+    document.body.style.top = '';
+
+    if (onClose) {
+      onClose();
+    }
+
     setTimeout(() => {
-      if (onClose) onClose();
-      setTimeout(() => {
-        if (onContactClick) onContactClick();
-      }, 100);
-    }, 400);
+      if (onContactClick) {
+        onContactClick();
+      }
+    }, 100);
   };
 
   const selectScenario = (scenarioKey: string) => {
@@ -580,11 +573,8 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
   const insights = [t.insight1, t.insight2, t.insight3, t.insight4, t.insight5];
 
   return createPortal(
-    <div className={`mda-overlay ${isVisible ? 'mda-visible' : ''} ${isClosing ? 'mda-closing' : ''}`} onClick={handleClose}>
-      <div
-        className={`mda-iphone-container ${isVisible ? 'mda-visible' : ''} ${isClosing ? 'mda-closing' : ''}`}
-        onClick={(e) => e.stopPropagation()}
-      >
+    <div className="mda-overlay">
+      <div className="mda-iphone-container">
         <div className="mda-iphone-frame">
           {/* Side Buttons */}
           <div className="mda-side-button mda-silent-switch" />

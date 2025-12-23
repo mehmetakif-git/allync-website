@@ -43,16 +43,6 @@
   overflow: hidden;
   z-index: 2147483647;
   isolation: isolate;
-  opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mda-overlay.mda-visible {
-  opacity: 1;
-}
-
-.mda-overlay.mda-closing {
-  opacity: 0;
 }
 
 /* Body scroll lock */
@@ -74,20 +64,10 @@ body.mda-modal-open .mda-overlay {
 /* iPhone Container */
 .mda-iphone-container {
   position: relative;
-  opacity: 0;
-  transform: scale(0.95) translateY(20px);
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.mda-iphone-container.mda-visible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-.mda-iphone-container.mda-closing {
-  opacity: 0;
-  transform: scale(0.95) translateY(20px);
+  width: var(--mda-iphone-width);
+  height: var(--mda-iphone-height);
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* iPhone Frame - Titanium */
