@@ -109,10 +109,10 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
 
   // Disable body scroll
   useEffect(() => {
-    document.body.classList.add('dda-modal-open');
+    document.body.classList.add('ddoc-modal-open');
 
     return () => {
-      document.body.classList.remove('dda-modal-open');
+      document.body.classList.remove('ddoc-modal-open');
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
@@ -381,31 +381,31 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
   };
 
   return createPortal(
-    <div className={`dda-overlay ${isVisible ? 'dda-visible' : ''} ${isClosing ? 'dda-closing' : ''}`} onClick={handleClose}>
+    <div className={`ddoc-overlay ${isVisible ? 'ddoc-visible' : ''} ${isClosing ? 'ddoc-closing' : ''}`} onClick={handleClose}>
       <div
-        className={`dda-iphone-container ${isVisible ? 'dda-visible' : ''} ${isClosing ? 'dda-closing' : ''}`}
+        className={`ddoc-iphone-container ${isVisible ? 'ddoc-visible' : ''} ${isClosing ? 'ddoc-closing' : ''}`}
         onClick={(e) => e.stopPropagation()}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
         <div
-          className="dda-iphone-frame"
+          className="ddoc-iphone-frame"
           ref={phoneRef}
           style={{ transform: getPhoneTransform() }}
         >
           {/* Side Buttons */}
-          <div className="dda-side-button dda-silent-switch" />
-          <div className="dda-side-button dda-volume-up" />
-          <div className="dda-side-button dda-volume-down" />
-          <div className="dda-side-button dda-power-button" />
+          <div className="ddoc-side-button ddoc-silent-switch" />
+          <div className="ddoc-side-button ddoc-volume-up" />
+          <div className="ddoc-side-button ddoc-volume-down" />
+          <div className="ddoc-side-button ddoc-power-button" />
 
-          <div className="dda-iphone-screen">
+          <div className="ddoc-iphone-screen">
             {/* Wallpaper */}
-            <div className="dda-wallpaper" />
+            <div className="ddoc-wallpaper" />
 
             {/* Dynamic Island */}
             <div
-              className={`dda-dynamic-island dda-di-state-${dynamicIslandState}`}
+              className={`ddoc-dynamic-island ddoc-di-state-${dynamicIslandState}`}
               onClick={() => {
                 if (dynamicIslandState === 'collapsed') {
                   setIsMusicPlaying(true);
@@ -420,74 +420,74 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
               }}
             >
               {/* Collapsed Content */}
-              <div className="dda-di-collapsed-content">
-                <div className="dda-di-camera" />
-                <div className="dda-di-sensor" />
+              <div className="ddoc-di-collapsed-content">
+                <div className="ddoc-di-camera" />
+                <div className="ddoc-di-sensor" />
               </div>
 
               {/* Compact Content */}
-              <div className="dda-di-compact-content">
-                <div className="dda-di-compact-left">
-                  <div className="dda-di-compact-album">
-                    <img src={albumCover} alt="Album" className="dda-di-album-img" />
+              <div className="ddoc-di-compact-content">
+                <div className="ddoc-di-compact-left">
+                  <div className="ddoc-di-compact-album">
+                    <img src={albumCover} alt="Album" className="ddoc-di-album-img" />
                   </div>
-                  <div className="dda-di-compact-info">
-                    <span className="dda-di-compact-title">Blinding Lights</span>
-                    <span className="dda-di-compact-artist">The Weeknd</span>
+                  <div className="ddoc-di-compact-info">
+                    <span className="ddoc-di-compact-title">Blinding Lights</span>
+                    <span className="ddoc-di-compact-artist">The Weeknd</span>
                   </div>
                 </div>
-                <div className="dda-di-compact-waves">
-                  <div className="dda-di-wave-bar" />
-                  <div className="dda-di-wave-bar" />
-                  <div className="dda-di-wave-bar" />
+                <div className="ddoc-di-compact-waves">
+                  <div className="ddoc-di-wave-bar" />
+                  <div className="ddoc-di-wave-bar" />
+                  <div className="ddoc-di-wave-bar" />
                 </div>
               </div>
 
               {/* Expanded Content */}
-              <div className="dda-di-expanded-content">
-                <div className="dda-di-music-left">
-                  <div className="dda-di-album">
-                    <img src={albumCover} alt="Album" className="dda-di-album-img" />
+              <div className="ddoc-di-expanded-content">
+                <div className="ddoc-di-music-left">
+                  <div className="ddoc-di-album">
+                    <img src={albumCover} alt="Album" className="ddoc-di-album-img" />
                   </div>
-                  <div className="dda-di-track-info">
+                  <div className="ddoc-di-track-info">
                     <h4>Blinding Lights</h4>
                     <p>The Weeknd</p>
                   </div>
                 </div>
-                <div className="dda-di-music-right">
-                  <div className="dda-di-wave-bar" />
-                  <div className="dda-di-wave-bar" />
-                  <div className="dda-di-wave-bar" />
-                  <div className="dda-di-wave-bar" />
-                  <div className="dda-di-wave-bar" />
+                <div className="ddoc-di-music-right">
+                  <div className="ddoc-di-wave-bar" />
+                  <div className="ddoc-di-wave-bar" />
+                  <div className="ddoc-di-wave-bar" />
+                  <div className="ddoc-di-wave-bar" />
+                  <div className="ddoc-di-wave-bar" />
                 </div>
               </div>
             </div>
 
             {/* Status Bar */}
-            <div className="dda-status-bar">
-              <div className="dda-status-left">
+            <div className="ddoc-status-bar">
+              <div className="ddoc-status-left">
                 <span>{currentTime}</span>
               </div>
-              <div className="dda-status-right">
-                <div className="dda-signal-bars">
+              <div className="ddoc-status-right">
+                <div className="ddoc-signal-bars">
                   <span /><span /><span /><span />
                 </div>
-                <span className="dda-5g">5G</span>
-                <div className="dda-battery">
-                  <div className="dda-battery-body">
-                    <div className="dda-battery-level" />
+                <span className="ddoc-5g">5G</span>
+                <div className="ddoc-battery">
+                  <div className="ddoc-battery-body">
+                    <div className="ddoc-battery-level" />
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Home Screen */}
-            <div className={`dda-home-screen ${isAppOpen ? 'dda-hidden' : ''}`}>
+            <div className={`ddoc-home-screen ${isAppOpen ? 'ddoc-hidden' : ''}`}>
               {/* Volume HUD */}
-              <div className={`dda-volume-hud ${showVolumeControl ? 'dda-volume-hud-visible' : ''}`}>
-                <div className="dda-volume-hud-container">
-                  <div className="dda-volume-hud-icon">
+              <div className={`ddoc-volume-hud ${showVolumeControl ? 'ddoc-volume-hud-visible' : ''}`}>
+                <div className="ddoc-volume-hud-container">
+                  <div className="ddoc-volume-hud-icon">
                     <svg viewBox="0 0 24 24" fill="white">
                       {volume === 0 ? (
                         <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
@@ -498,10 +498,10 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
                       )}
                     </svg>
                   </div>
-                  <div className="dda-volume-hud-slider">
-                    <div className="dda-volume-hud-track">
+                  <div className="ddoc-volume-hud-slider">
+                    <div className="ddoc-volume-hud-track">
                       <div
-                        className="dda-volume-hud-fill"
+                        className="ddoc-volume-hud-fill"
                         style={{ width: `${volume * 100}%` }}
                       />
                     </div>
@@ -512,32 +512,32 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
                       step="0.01"
                       value={volume}
                       onChange={(e) => setVolume(parseFloat(e.target.value))}
-                      className="dda-volume-hud-input"
+                      className="ddoc-volume-hud-input"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Time Widget */}
-              <div className="dda-time-widget">
-                <div className="dda-time">{currentTime}</div>
-                <div className="dda-date">{currentDate}</div>
+              <div className="ddoc-time-widget">
+                <div className="ddoc-time">{currentTime}</div>
+                <div className="ddoc-date">{currentDate}</div>
               </div>
 
               {/* Widgets */}
-              <div className="dda-widgets-container">
-                <div className="dda-widget dda-widget-hover">
-                  <div className="dda-widget-header">
-                    <div className="dda-widget-icon dda-weather-icon">
-                      <img src={sunIcon} alt="Weather" className="dda-widget-icon-img" />
+              <div className="ddoc-widgets-container">
+                <div className="ddoc-widget ddoc-widget-hover">
+                  <div className="ddoc-widget-header">
+                    <div className="ddoc-widget-icon ddoc-weather-icon">
+                      <img src={sunIcon} alt="Weather" className="ddoc-widget-icon-img" />
                     </div>
                     <span>{tExt.weather}</span>
                   </div>
-                  <div className="dda-weather-temp">18</div>
-                  <div className="dda-weather-desc">{language === 'tr' ? 'Acik, H:22 L:14' : 'Clear, H:72 L:57'}</div>
+                  <div className="ddoc-weather-temp">18</div>
+                  <div className="ddoc-weather-desc">{language === 'tr' ? 'Acik, H:22 L:14' : 'Clear, H:72 L:57'}</div>
                 </div>
                 <div
-                  className="dda-widget dda-widget-hover"
+                  className="ddoc-widget ddoc-widget-hover"
                   onClick={() => {
                     if (!isMusicPlaying) {
                       setIsMusicPlaying(true);
@@ -549,17 +549,17 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
                   }}
                   style={{ cursor: 'pointer' }}
                 >
-                  <div className="dda-widget-header">
-                    <div className="dda-widget-icon dda-music-icon">
-                      <img src={musicIcon} alt="Music" className="dda-widget-icon-img" />
+                  <div className="ddoc-widget-header">
+                    <div className="ddoc-widget-icon ddoc-music-icon">
+                      <img src={musicIcon} alt="Music" className="ddoc-widget-icon-img" />
                     </div>
                     <span>{tExt.music}</span>
                   </div>
-                  <div className="dda-music-playing">
-                    <div className="dda-music-album">
-                      <img src={albumCover} alt="Blinding Lights" className="dda-album-img" />
+                  <div className="ddoc-music-playing">
+                    <div className="ddoc-music-album">
+                      <img src={albumCover} alt="Blinding Lights" className="ddoc-album-img" />
                     </div>
-                    <div className="dda-music-info">
+                    <div className="ddoc-music-info">
                       <h4>{isMusicPlaying ? tExt.nowPlaying : tExt.playNow}</h4>
                       <p>Blinding Lights</p>
                     </div>
@@ -568,20 +568,20 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
               </div>
 
               {/* Dock */}
-              <div className="dda-dock">
-                <div className="dda-dock-icon dda-close-icon dda-dock-hover" onClick={handleClose}>
-                  <span className="dda-close-tooltip">{language === 'tr' ? 'Cikis' : 'Exit'} X</span>
-                  <img src={closeIcon} alt="Close" className="dda-close-img" />
+              <div className="ddoc-dock">
+                <div className="ddoc-dock-icon ddoc-close-icon ddoc-dock-hover" onClick={handleClose}>
+                  <span className="ddoc-close-tooltip">{language === 'tr' ? 'Cikis' : 'Exit'} X</span>
+                  <img src={closeIcon} alt="Close" className="ddoc-close-img" />
                 </div>
-                <div className="dda-dock-icon dda-safari-icon dda-dock-hover" onClick={handleContactNavigation}>
-                  <span className="dda-safari-tooltip">{language === 'tr' ? 'Iletisime Gecin' : 'Contact Us'}</span>
-                  <img src={networkIcon} alt="Contact" className="dda-icon-img" />
+                <div className="ddoc-dock-icon ddoc-safari-icon ddoc-dock-hover" onClick={handleContactNavigation}>
+                  <span className="ddoc-safari-tooltip">{language === 'tr' ? 'Iletisime Gecin' : 'Contact Us'}</span>
+                  <img src={networkIcon} alt="Contact" className="ddoc-icon-img" />
                 </div>
-                <div className="dda-dock-icon dda-call-icon dda-dock-hover" onClick={handleContactNavigation}>
-                  <img src={callIcon} alt="Call" className="dda-icon-img" />
+                <div className="ddoc-dock-icon ddoc-call-icon ddoc-dock-hover" onClick={handleContactNavigation}>
+                  <img src={callIcon} alt="Call" className="ddoc-icon-img" />
                 </div>
-                <div className="dda-dock-icon dda-app-icon dda-dock-hover" onClick={openApp}>
-                  <span className="dda-app-tooltip">{tExt.tooltip}</span>
+                <div className="ddoc-dock-icon ddoc-app-icon ddoc-dock-hover" onClick={openApp}>
+                  <span className="ddoc-app-tooltip">{tExt.tooltip}</span>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                     <polyline points="14 2 14 8 20 8" />
@@ -594,36 +594,36 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
             </div>
 
             {/* App */}
-            <div className={`dda-app ${isAppOpen ? 'dda-active' : ''}`}>
+            <div className={`ddoc-app ${isAppOpen ? 'ddoc-active' : ''}`}>
               {/* Scenario Selection Screen */}
               {phase === 'selecting' && (
-                <div className="dda-scenario-screen">
-                  <div className="dda-scenario-header">
-                    <div className="dda-logo">
+                <div className="ddoc-scenario-screen">
+                  <div className="ddoc-scenario-header">
+                    <div className="ddoc-logo">
                       <img src={demoLogo} alt="Allync AI" />
                     </div>
-                    <div className="dda-info">
+                    <div className="ddoc-info">
                       <h3>Allync AI</h3>
                       <p>{t.selectScenario}</p>
                     </div>
-                    <button className="dda-close-btn" onClick={closeApp}>X</button>
+                    <button className="ddoc-close-btn" onClick={closeApp}>✕</button>
                   </div>
 
-                  <div className="dda-scenario-list">
+                  <div className="ddoc-scenario-list">
                     {documentAIDemoScenarios.map((scenario) => (
                       <button
                         key={scenario.id}
-                        className="dda-scenario-item"
+                        className="ddoc-scenario-item"
                         onClick={() => handleScenarioSelect(scenario)}
                       >
-                        <div className={`dda-scenario-icon-wrapper ${scenario.id}`}>
-                          <span className="dda-scenario-emoji">{scenario.icon}</span>
+                        <div className={`ddoc-scenario-icon-wrapper ${scenario.id}`}>
+                          <span className="ddoc-scenario-emoji">{scenario.icon}</span>
                         </div>
-                        <div className="dda-text">
+                        <div className="ddoc-text">
                           <h4>{scenario.title[language]}</h4>
                           <p>{scenario.accuracy} {language === 'tr' ? 'dogruluk' : 'accuracy'}</p>
                         </div>
-                        <svg className="dda-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg className="ddoc-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                           <polyline points="9 18 15 12 9 6" />
                         </svg>
                       </button>
@@ -634,26 +634,26 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
 
               {/* Demo Screen */}
               {phase !== 'selecting' && selectedScenario && (
-                <div className="dda-demo-screen">
-                  <div className="dda-demo-header">
-                    <button className="dda-back-btn" onClick={handleBack}>
-                      <img src={backwardIcon} alt="Back" className="dda-back-img" />
+                <div className="ddoc-demo-screen">
+                  <div className="ddoc-demo-header">
+                    <button className="ddoc-back-btn" onClick={handleBack}>
+                      <img src={backwardIcon} alt="Back" className="ddoc-back-img" />
                     </button>
-                    <div className="dda-profile">
+                    <div className="ddoc-profile">
                       <img src={demoLogo} alt="Allync AI" />
                     </div>
-                    <div className="dda-info">
+                    <div className="ddoc-info">
                       <h3>Allync AI</h3>
                       <p>{selectedScenario.title[language]}</p>
                     </div>
-                    <button className="dda-action-btn" onClick={closeApp}>X</button>
+                    <button className="ddoc-action-btn" onClick={closeApp}>✕</button>
                   </div>
 
-                  <div className="dda-demo-content">
+                  <div className="ddoc-demo-content">
                     {/* Uploading Phase */}
                     {phase === 'uploading' && (
-                      <div className="dda-uploading">
-                        <div className="dda-upload-icon">
+                      <div className="ddoc-uploading">
+                        <div className="ddoc-upload-icon">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                             <polyline points="17 8 12 3 7 8" />
@@ -661,51 +661,51 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
                           </svg>
                         </div>
                         <h4>{t.uploadPrompt}</h4>
-                        <div className="dda-progress-bar">
-                          <div className="dda-progress-fill" style={{ width: `${progress}%` }} />
+                        <div className="ddoc-progress-bar">
+                          <div className="ddoc-progress-fill" style={{ width: `${progress}%` }} />
                         </div>
-                        <p className="dda-progress-text">{progress}%</p>
+                        <p className="ddoc-progress-text">{progress}%</p>
                       </div>
                     )}
 
                     {/* Processing Phase */}
                     {phase === 'processing' && (
-                      <div className="dda-processing">
-                        <div className="dda-scan-animation">
-                          <div className="dda-document">
-                            <div className="dda-doc-lines">
-                              <div className="dda-doc-line" style={{ width: '75%' }} />
-                              <div className="dda-doc-line" style={{ width: '100%' }} />
-                              <div className="dda-doc-line" style={{ width: '85%' }} />
-                              <div className="dda-doc-line" style={{ width: '65%' }} />
-                              <div className="dda-doc-spacer" />
-                              <div className="dda-doc-line" style={{ width: '100%' }} />
-                              <div className="dda-doc-line" style={{ width: '80%' }} />
-                              <div className="dda-doc-line" style={{ width: '70%' }} />
+                      <div className="ddoc-processing">
+                        <div className="ddoc-scan-animation">
+                          <div className="ddoc-document">
+                            <div className="ddoc-doc-lines">
+                              <div className="ddoc-doc-line" style={{ width: '75%' }} />
+                              <div className="ddoc-doc-line" style={{ width: '100%' }} />
+                              <div className="ddoc-doc-line" style={{ width: '85%' }} />
+                              <div className="ddoc-doc-line" style={{ width: '65%' }} />
+                              <div className="ddoc-doc-spacer" />
+                              <div className="ddoc-doc-line" style={{ width: '100%' }} />
+                              <div className="ddoc-doc-line" style={{ width: '80%' }} />
+                              <div className="ddoc-doc-line" style={{ width: '70%' }} />
                             </div>
-                            <div className="dda-scan-line" />
+                            <div className="ddoc-scan-line" />
                           </div>
                         </div>
                         <h4>{t.processing}</h4>
-                        <p className="dda-processing-desc">{t.processingDesc}</p>
+                        <p className="ddoc-processing-desc">{t.processingDesc}</p>
 
-                        <div className="dda-progress-bar">
-                          <div className="dda-progress-fill" style={{ width: `${progress}%` }} />
+                        <div className="ddoc-progress-bar">
+                          <div className="ddoc-progress-fill" style={{ width: `${progress}%` }} />
                         </div>
 
-                        <div className="dda-steps">
+                        <div className="ddoc-steps">
                           {processingSteps.map((step, index) => (
                             <div
                               key={step.key}
-                              className={`dda-step ${index === currentStep ? 'active' : ''} ${index < currentStep ? 'completed' : ''}`}
+                              className={`ddoc-step ${index === currentStep ? 'active' : ''} ${index < currentStep ? 'completed' : ''}`}
                             >
-                              <div className="dda-step-indicator">
+                              <div className="ddoc-step-indicator">
                                 {index < currentStep ? (
                                   <img src={checkIcon} alt="Done" />
                                 ) : index === currentStep ? (
-                                  <div className="dda-step-dot active" />
+                                  <div className="ddoc-step-dot active" />
                                 ) : (
-                                  <div className="dda-step-dot" />
+                                  <div className="ddoc-step-dot" />
                                 )}
                               </div>
                               <span>{t[step.key as keyof typeof t]}</span>
@@ -717,27 +717,27 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
 
                     {/* Complete Phase */}
                     {phase === 'complete' && (
-                      <div className="dda-complete">
-                        <div className="dda-success-icon">
+                      <div className="ddoc-complete">
+                        <div className="ddoc-success-icon">
                           <img src={checkIcon} alt="Success" />
                         </div>
                         <h4>{t.complete}</h4>
 
                         {/* Document Info */}
-                        <div className="dda-doc-info">
-                          <div className="dda-info-card">
-                            <p className="dda-info-label">{t.processingTime}</p>
-                            <p className="dda-info-value">{selectedScenario.processingTime}</p>
+                        <div className="ddoc-doc-info">
+                          <div className="ddoc-info-card">
+                            <p className="ddoc-info-label">{t.processingTime}</p>
+                            <p className="ddoc-info-value">{selectedScenario.processingTime}</p>
                           </div>
-                          <div className="dda-info-card">
-                            <p className="dda-info-label">{t.accuracy}</p>
-                            <p className="dda-info-value dda-green">{selectedScenario.accuracy}</p>
+                          <div className="ddoc-info-card">
+                            <p className="ddoc-info-label">{t.accuracy}</p>
+                            <p className="ddoc-info-value ddoc-green">{selectedScenario.accuracy}</p>
                           </div>
                         </div>
 
                         {/* Extracted Data */}
-                        <div className="dda-extracted-data">
-                          <div className="dda-data-header">
+                        <div className="ddoc-extracted-data">
+                          <div className="ddoc-data-header">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                               <circle cx="12" cy="12" r="10" />
                               <line x1="12" y1="16" x2="12" y2="12" />
@@ -745,16 +745,16 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
                             </svg>
                             <span>{t.extractedData}</span>
                           </div>
-                          <div className="dda-fields">
+                          <div className="ddoc-fields">
                             {selectedScenario.extractedFields.slice(0, visibleFields).map((field: DocumentField, index: number) => (
-                              <div key={index} className="dda-field">
-                                <div className="dda-field-content">
-                                  <p className="dda-field-label">{field.label[language]}</p>
-                                  <p className="dda-field-value">{field.value}</p>
+                              <div key={index} className="ddoc-field">
+                                <div className="ddoc-field-content">
+                                  <p className="ddoc-field-label">{field.label[language]}</p>
+                                  <p className="ddoc-field-value">{field.value}</p>
                                 </div>
-                                <div className="dda-field-confidence">
+                                <div className="ddoc-field-confidence">
                                   <div
-                                    className="dda-confidence-bar"
+                                    className="ddoc-confidence-bar"
                                     style={{ width: `${field.confidence * 0.4}px` }}
                                   />
                                   <span>{field.confidence}%</span>
@@ -765,12 +765,12 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
                         </div>
 
                         {/* Actions */}
-                        <div className="dda-demo-actions">
-                          <button className="dda-restart-btn" onClick={handleRestart}>
+                        <div className="ddoc-demo-actions">
+                          <button className="ddoc-restart-btn" onClick={handleRestart}>
                             {t.restart}
                           </button>
                           {onContactClick && (
-                            <button className="dda-contact-btn" onClick={handleContactNavigation}>
+                            <button className="ddoc-contact-btn" onClick={handleContactNavigation}>
                               {t.contact}
                             </button>
                           )}
@@ -783,15 +783,15 @@ export const DesktopDocumentAIDemo: React.FC<DesktopDocumentAIDemoProps> = ({
             </div>
 
             {/* Home Indicator */}
-            <div className="dda-home-indicator" onClick={isAppOpen ? closeApp : handleClose} />
+            <div className="ddoc-home-indicator" onClick={isAppOpen ? closeApp : handleClose} />
 
             {/* Screen Reflection */}
-            <div className="dda-screen-reflection" />
+            <div className="ddoc-screen-reflection" />
           </div>
         </div>
 
         {/* Click outside hint */}
-        <div className="dda-hint">
+        <div className="ddoc-hint">
           {language === 'tr' ? 'Kapatmak icin disari tiklayin' : 'Click outside to close'}
         </div>
       </div>

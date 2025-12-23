@@ -16,7 +16,7 @@ import { DocumentAIDemo } from '../ui/DocumentAIDemo';
 import { ImageToVideoDemo } from '../ui/ImageToVideoDemo';
 import { VideoToVideoDemo } from '../ui/VideoToVideoDemo';
 import { DataAnalysisDemo } from '../ui/DataAnalysisDemo';
-import { CustomAIDemo } from '../ui/CustomAIDemo';
+// Note: CustomAIDemo import removed - using MobileCustomAIDemo and DesktopCustomAIDemo instead
 import { BrowserMockup } from '../ui/BrowserMockup';
 import { EcommerceDemo } from '../ui/EcommerceDemo';
 import { CorporateDemo } from '../ui/CorporateDemo';
@@ -41,6 +41,12 @@ import { MobileDocumentAIDemo } from '../ui/MobileDocumentAIDemo';
 import { DesktopDocumentAIDemo } from '../ui/DesktopDocumentAIDemo';
 import { MobileImageToVideoDemo } from '../ui/MobileImageToVideoDemo';
 import { DesktopImageToVideoDemo } from '../ui/DesktopImageToVideoDemo';
+import { MobileVideoToVideoDemo } from '../ui/MobileVideoToVideoDemo';
+import { DesktopVideoToVideoDemo } from '../ui/DesktopVideoToVideoDemo';
+import { MobileDataAnalysisDemo } from '../ui/MobileDataAnalysisDemo';
+import { DesktopDataAnalysisDemo } from '../ui/DesktopDataAnalysisDemo';
+import { MobileCustomAIDemo } from '../ui/MobileCustomAIDemo';
+import { DesktopCustomAIDemo } from '../ui/DesktopCustomAIDemo';
 import { getDemoThumbnail } from '../../assets/demo-thumbnails';
 
 interface Service {
@@ -986,228 +992,111 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
       {/* Demo Modal - Video to Video Demo */}
       <AnimatePresence>
         {isDemoModalOpen && service.demoType === 'video-to-video' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
-          >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+          <>
+            {/* Mobile Version - Full iPhone experience */}
+            {!isDesktop && (
+              <MobileVideoToVideoDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
 
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
-              >
-                {language === 'tr' ? 'Videodan Videoya AI Demo' : 'Video to Video AI Demo'}
-              </motion.h3>
-
-              {/* iPhone Mockup with Video to Video Demo */}
-              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
-                <VideoToVideoDemo
-                  language={language}
-                  onContactClick={() => {
-                    setIsDemoModalOpen(false);
-                    onContactClick();
-                  }}
-                />
-              </IPhoneMockup>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 text-gray-500 text-sm text-center"
-              >
-                {language === 'tr' ? 'Dönüşüm türü seçin ve izleyin' : 'Select transformation type and watch'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopVideoToVideoDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
+          </>
         )}
       </AnimatePresence>
 
       {/* Demo Modal - Data Analysis Demo */}
       <AnimatePresence>
         {isDemoModalOpen && service.demoType === 'data-analysis' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
-          >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+          <>
+            {/* Mobile Version - Full iPhone experience */}
+            {!isDesktop && (
+              <MobileDataAnalysisDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
 
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
-              >
-                {language === 'tr' ? 'Veri Analizi AI Demo' : 'Data Analysis AI Demo'}
-              </motion.h3>
-
-              {/* iPhone Mockup with Data Analysis Demo */}
-              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
-                <DataAnalysisDemo
-                  language={language}
-                  onContactClick={() => {
-                    setIsDemoModalOpen(false);
-                    onContactClick();
-                  }}
-                />
-              </IPhoneMockup>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 text-gray-500 text-sm text-center"
-              >
-                {language === 'tr' ? 'Analiz türü seçin ve izleyin' : 'Select analysis type and watch'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopDataAnalysisDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
+          </>
         )}
       </AnimatePresence>
 
       {/* Demo Modal - Custom AI Demo */}
       <AnimatePresence>
         {isDemoModalOpen && service.demoType === 'custom-ai' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
-          >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+          <>
+            {/* Mobile Version - Full iPhone experience */}
+            {!isDesktop && (
+              <MobileCustomAIDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
 
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-6 text-center"
-              >
-                {language === 'tr' ? 'Özel AI Çözümleri Demo' : 'Custom AI Solutions Demo'}
-              </motion.h3>
-
-              {/* iPhone Mockup with Custom AI Demo */}
-              <IPhoneMockup className="max-w-[280px] sm:max-w-[320px] md:max-w-[360px] w-full">
-                <CustomAIDemo
-                  language={language}
-                  onContactClick={() => {
-                    setIsDemoModalOpen(false);
-                    onContactClick();
-                  }}
-                />
-              </IPhoneMockup>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 text-gray-500 text-sm text-center"
-              >
-                {language === 'tr' ? 'Sektör ve özellik seçin' : 'Select industry and features'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopCustomAIDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  playBackSound();
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
+          </>
         )}
       </AnimatePresence>
 

@@ -34,6 +34,14 @@ const scenarioImages: Record<string, string> = {
   'art-illustration': '/images/demo-illustration.webp'
 };
 
+// Senaryo sonuç videoları (mp4 veya gif)
+const scenarioVideos: Record<string, string> = {
+  'product-showcase': '/videos/image-to-video/product-showcase.webm',
+  'portrait-alive': '/videos/image-to-video/portrait-alive.webm',
+  'social-motion': '/videos/image-to-video/social-motion.webm',
+  'art-illustration': '/videos/image-to-video/art-illustration.webm'
+};
+
 interface MobileImageToVideoDemoProps {
   language: 'tr' | 'en';
   onClose?: () => void;
@@ -742,13 +750,15 @@ export const MobileImageToVideoDemo: React.FC<MobileImageToVideoDemoProps> = ({
                         </div>
                         <h4>{t.complete}</h4>
 
-                        {/* Video Preview with animation */}
+                        {/* Video Preview */}
                         <div className="miv-video-preview">
-                          <img
-                            src={scenarioImages[currentScenario]}
-                            alt="Result"
-                            className={`miv-result-image ${isPlaying ? 'playing' : ''}`}
-                            data-animation={currentScenario}
+                          <video
+                            src={scenarioVideos[currentScenario as keyof typeof scenarioVideos]}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="miv-result-video"
                           />
                           <div className="miv-play-indicator">
                             <div className="miv-play-dot" />

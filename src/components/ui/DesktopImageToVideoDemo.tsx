@@ -7,7 +7,7 @@ import demoLogo from '../../assets/whatsapp-demo-logo.png';
 import closeIcon from '../../assets/demo-icons/Close_Cross_Circle.svg';
 import networkIcon from '../../assets/demo-icons/Network.svg';
 import backwardIcon from '../../assets/demo-icons/Backward.svg';
-import callOutlineIcon from '../../assets/demo-icons/Call.svg';
+import callIcon from '../../assets/demo-icons/Call_Fill.svg';
 import sunIcon from '../../assets/demo-icons/Sun_1_Fill.svg';
 import musicIcon from '../../assets/demo-icons/music.svg';
 import albumCover from '../../assets/demo-icons/The_Weeknd_-_Blinding_Lights.png';
@@ -32,6 +32,14 @@ const scenarioImages: Record<string, string> = {
   'portrait-alive': '/images/demo-portrait.webp',
   'social-motion': '/images/demo-social.webp',
   'art-illustration': '/images/demo-illustration.webp'
+};
+
+// Senaryo sonuç videoları (mp4 veya gif)
+const scenarioVideos: Record<string, string> = {
+  'product-showcase': '/videos/image-to-video/product-showcase.webm',
+  'portrait-alive': '/videos/image-to-video/portrait-alive.webm',
+  'social-motion': '/videos/image-to-video/social-motion.webm',
+  'art-illustration': '/videos/image-to-video/art-illustration.webm'
 };
 
 interface DesktopImageToVideoDemoProps {
@@ -631,7 +639,7 @@ export const DesktopImageToVideoDemo: React.FC<DesktopImageToVideoDemoProps> = (
                   <img src={networkIcon} alt="Contact" className="div-icon-img" />
                 </div>
                 <div className="div-dock-icon div-call-icon div-dock-hover" onClick={handleContactNavigation}>
-                  <img src={callOutlineIcon} alt="Call" className="div-icon-img" />
+                  <img src={callIcon} alt="Call" className="div-icon-img" />
                 </div>
                 <div className="div-dock-icon div-app-icon div-dock-hover" onClick={openApp}>
                   <span className="div-app-tooltip">{t.tooltip}</span>
@@ -792,13 +800,15 @@ export const DesktopImageToVideoDemo: React.FC<DesktopImageToVideoDemoProps> = (
                         </div>
                         <h4>{t.complete}</h4>
 
-                        {/* Video Preview with animation */}
+                        {/* Video Preview */}
                         <div className="div-video-preview">
-                          <img
-                            src={scenarioImages[currentScenario]}
-                            alt="Result"
-                            className={`div-result-image ${isPlaying ? 'playing' : ''}`}
-                            data-animation={currentScenario}
+                          <video
+                            src={scenarioVideos[currentScenario as keyof typeof scenarioVideos]}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="div-result-video"
                           />
                           <div className="div-play-indicator">
                             <div className="div-play-dot" />

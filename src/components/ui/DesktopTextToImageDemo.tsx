@@ -7,7 +7,7 @@ import demoLogo from '../../assets/whatsapp-demo-logo.png';
 import closeIcon from '../../assets/demo-icons/Close_Cross_Circle.svg';
 import networkIcon from '../../assets/demo-icons/Network.svg';
 import backwardIcon from '../../assets/demo-icons/Backward.svg';
-import callOutlineIcon from '../../assets/demo-icons/Call.svg';
+import callIcon from '../../assets/demo-icons/Call_Fill.svg';
 import sunIcon from '../../assets/demo-icons/Sun_1_Fill.svg';
 import musicIcon from '../../assets/demo-icons/music.svg';
 import albumCover from '../../assets/demo-icons/The_Weeknd_-_Blinding_Lights.png';
@@ -648,7 +648,7 @@ export const DesktopTextToImageDemo: React.FC<DesktopTextToImageDemoProps> = ({
                   <img src={networkIcon} alt="Contact" className="dti-icon-img" />
                 </div>
                 <div className="dti-dock-icon dti-call-icon dti-dock-hover" onClick={handleContactNavigation}>
-                  <img src={callOutlineIcon} alt="Call" className="dti-icon-img" />
+                  <img src={callIcon} alt="Call" className="dti-icon-img" />
                 </div>
                 <div className="dti-dock-icon dti-app-icon dti-dock-hover" onClick={openApp}>
                   <span className="dti-app-tooltip">{t.tooltip} 🚀</span>
