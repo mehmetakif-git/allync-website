@@ -622,6 +622,10 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
                   <div className="mda-di-compact-album">
                     <img src={albumCover} alt="Album" className="mda-di-album-img" />
                   </div>
+                  <div className="mda-di-compact-info">
+                    <span className="mda-di-compact-title">Blinding Lights</span>
+                    <span className="mda-di-compact-artist">The Weeknd</span>
+                  </div>
                 </div>
                 <div className="mda-di-compact-waves">
                   <div className="mda-di-wave-bar" />
