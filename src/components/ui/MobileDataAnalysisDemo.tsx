@@ -742,6 +742,7 @@ export const MobileDataAnalysisDemo: React.FC<MobileDataAnalysisDemoProps> = ({
                     </div>
                     <div className="mda-music-info">
                       <h4>{isMusicPlaying ? t.nowPlaying : t.playNow}</h4>
+                      <p>Blinding Lights</p>
                     </div>
                   </div>
                 </div>

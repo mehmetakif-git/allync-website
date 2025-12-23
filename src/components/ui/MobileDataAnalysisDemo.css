@@ -726,6 +726,7 @@ body.mda-modal-open .mda-overlay {
 .mda-weather-desc {
   font-size: 12px;
   opacity: 0.8;
+  margin-top: 4px;
 }
 
 .mda-music-playing {
