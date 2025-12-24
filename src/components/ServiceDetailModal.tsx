@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useOutsideClick } from '../hooks/use-outside-click';
-import { useSoundEffect } from '../contexts/SoundEffectContext';
 
 interface ServiceDetailModalProps {
   isOpen: boolean;
@@ -26,10 +25,8 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
   gradient
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
-  const { playBackSound } = useSoundEffect();
 
   const handleClose = () => {
-    playBackSound();
     onClose();
   };
 

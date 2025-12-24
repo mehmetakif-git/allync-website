@@ -84,7 +84,12 @@ export const BrowserMockup: React.FC<BrowserMockupProps> = ({
           {/* Scrollable Content */}
           <div
             className="absolute inset-0 overflow-y-auto overflow-x-hidden custom-scrollbar"
-            style={{ scrollBehavior: 'smooth' }}
+            style={{
+              scrollBehavior: 'smooth',
+              overscrollBehavior: 'contain',
+              touchAction: 'pan-y',
+            }}
+            onWheel={(e) => e.stopPropagation()}
           >
             {children}
           </div>

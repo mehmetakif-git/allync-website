@@ -5,7 +5,6 @@ import { GlowingEffect } from '../ui/GlowingEffect';
 import { useOutsideClick } from '../../hooks/use-outside-click';
 import { ServiceDetailModal } from '../ServiceDetailModal';
 import logoSvg from '../../assets/logo.svg';
-import { useSoundEffect } from '../../contexts/SoundEffectContext';
 import { IPhoneMockup } from '../ui/IPhoneMockup';
 import { WhatsAppDemo } from '../ui/WhatsAppDemo';
 import { InstagramDemo } from '../ui/InstagramDemo';
@@ -50,6 +49,9 @@ import { DesktopCustomAIDemo } from '../ui/DesktopCustomAIDemo';
 import { DesktopEcommerceDemo } from '../ui/DesktopEcommerceDemo';
 import { MobileEcommerceDemo } from '../ui/MobileEcommerceDemo';
 import { DesktopCorporateDemo } from '../ui/DesktopCorporateDemo';
+import { MobileCorporateDemo } from '../ui/MobileCorporateDemo';
+import { DesktopMobileAppDemo } from '../ui/DesktopMobileAppDemo';
+import { MobileMobileAppDemo } from '../ui/MobileMobileAppDemo';
 import { getDemoThumbnail } from '../../assets/demo-thumbnails';
 
 interface Service {
@@ -311,7 +313,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
   onContactClick,
 }) => {
   const Icon = service.icon;
-  const { playBackSound } = useSoundEffect();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -323,7 +324,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
   const demoModalRef = useRef<HTMLDivElement>(null);
 
   const closeGalleryModal = () => {
-    playBackSound();
     setExpandedIndex(null);
   };
 
@@ -746,7 +746,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -761,7 +760,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -783,7 +781,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -798,7 +795,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -820,7 +816,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -835,7 +830,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -857,7 +851,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -872,7 +865,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -894,7 +886,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -909,7 +900,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -931,7 +921,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -946,7 +935,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -968,7 +956,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -983,7 +970,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1005,7 +991,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1020,7 +1005,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1042,7 +1026,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1057,7 +1040,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1079,7 +1061,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1094,7 +1075,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1116,7 +1096,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1131,7 +1110,6 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
@@ -1153,88 +1131,23 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                   onContactClick();
                 }}
                 onClose={() => {
-                  playBackSound();
                   setIsDemoModalOpen(false);
                 }}
               />
             )}
 
-            {/* Mobile Version - Browser Mockup for now */}
+            {/* Mobile Version - Full iPhone experience */}
             {!isDesktop && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-                onClick={() => {
-                  playBackSound();
+              <MobileCorporateDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
                   setIsDemoModalOpen(false);
                 }}
-              >
-                {/* Backdrop - visual only */}
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
-
-                {/* Close button */}
-                <motion.button
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  onClick={() => {
-                    playBackSound();
-                    setIsDemoModalOpen(false);
-                  }}
-                  className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-                >
-                  <X className="w-6 h-6 text-white" />
-                </motion.button>
-
-                {/* Modal Content */}
-                <motion.div
-                  ref={demoModalRef}
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                  className="relative z-[100000] flex flex-col items-center pointer-events-none"
-                >
-                  {/* Title */}
-                  <motion.h3
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-white text-xl md:text-2xl font-bold mb-4 text-center pointer-events-auto"
-                  >
-                    {language === 'tr' ? 'Kurumsal Web Sitesi Demo' : 'Corporate Website Demo'}
-                  </motion.h3>
-
-                  {/* Browser Mockup with Corporate Demo */}
-                  <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
-                    <BrowserMockup
-                      url="commercial.allyncai.com"
-                      themeColor={service.glowColor?.replace('0.5)', '1)') || '#3B82F6'}
-                    >
-                      <CorporateDemo
-                        language={language}
-                        onContactClick={() => {
-                          setIsDemoModalOpen(false);
-                          onContactClick();
-                        }}
-                      />
-                    </BrowserMockup>
-                  </div>
-
-                  {/* Bottom hint */}
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.5 }}
-                    transition={{ delay: 0.5 }}
-                    className="mt-4 text-gray-500 text-sm text-center pointer-events-auto"
-                  >
-                    {language === 'tr' ? 'Sayfalar arasında gezinin ve iletişim formunu deneyin' : 'Navigate between pages and try the contact form'}
-                  </motion.p>
-                </motion.div>
-              </motion.div>
+              />
             )}
           </>
         )}
@@ -1243,80 +1156,35 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
       {/* Demo Modal - Mobile App Demo */}
       <AnimatePresence>
         {isDemoModalOpen && service.demoType === 'mobile-app' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
-          >
-            {/* Backdrop - visual only */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+          <>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopMobileAppDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
 
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center pointer-events-none"
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-4 text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Mobil Uygulama Yapılandırıcı' : 'Mobile App Builder'}
-              </motion.h3>
-
-              {/* iPhone Mockup with Mobile App Demo */}
-              <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
-                <MobileIPhoneMockup
-                  themeColor={service.glowColor?.replace('0.5)', '1)') || '#D946EF'}
-                  hideNotch={false}
-                >
-                  <MobileAppDemo
-                    language={language}
-                    onContactClick={() => {
-                      setIsDemoModalOpen(false);
-                      onContactClick();
-                    }}
-                  />
-                </MobileIPhoneMockup>
-              </div>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-4 text-gray-500 text-sm text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Uygulama tipini ve özellikleri seçerek fiyat tahmini alın' : 'Select app type and features to get a price estimate'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
+            {/* Mobile Version - Full iPhone experience */}
+            {!isDesktop && (
+              <MobileMobileAppDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
+          </>
         )}
       </AnimatePresence>
 
@@ -1329,10 +1197,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
+            onClick={() => setIsDemoModalOpen(false)}
           >
             {/* Backdrop - visual only */}
             <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
@@ -1342,10 +1207,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
+              onClick={() => setIsDemoModalOpen(false)}
               className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
             >
               <X className="w-6 h-6 text-white" />
@@ -1409,10 +1271,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
+            onClick={() => setIsDemoModalOpen(false)}
           >
             {/* Backdrop - visual only */}
             <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
@@ -1422,10 +1281,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
+              onClick={() => setIsDemoModalOpen(false)}
               className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
             >
               <X className="w-6 h-6 text-white" />
@@ -1489,10 +1345,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
+            onClick={() => setIsDemoModalOpen(false)}
           >
             {/* Backdrop - visual only */}
             <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
@@ -1502,10 +1355,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
+              onClick={() => setIsDemoModalOpen(false)}
               className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
             >
               <X className="w-6 h-6 text-white" />
@@ -1569,10 +1419,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
+            onClick={() => setIsDemoModalOpen(false)}
           >
             {/* Backdrop - visual only */}
             <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
@@ -1582,10 +1429,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
+              onClick={() => setIsDemoModalOpen(false)}
               className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
             >
               <X className="w-6 h-6 text-white" />
@@ -1649,10 +1493,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => {
-              playBackSound();
-              setIsDemoModalOpen(false);
-            }}
+            onClick={() => setIsDemoModalOpen(false)}
           >
             {/* Backdrop - visual only */}
             <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
@@ -1662,10 +1503,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              onClick={() => {
-                playBackSound();
-                setIsDemoModalOpen(false);
-              }}
+              onClick={() => setIsDemoModalOpen(false)}
               className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
             >
               <X className="w-6 h-6 text-white" />

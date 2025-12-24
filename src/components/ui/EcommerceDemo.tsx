@@ -24,7 +24,6 @@ import {
   searchProducts
 } from '../../data/ecommerceDemoData';
 import { getProductImage } from '../../assets/ecommerce-demo';
-import { useSoundEffect } from '../../contexts/SoundEffectContext';
 import allyncLogo from '../../assets/logo.svg';
 
 interface EcommerceDemoProps {

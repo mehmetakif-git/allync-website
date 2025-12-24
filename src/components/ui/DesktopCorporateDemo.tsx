@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import './DesktopCorporateDemo.css';
 
@@ -169,6 +169,67 @@ const stats = [
   { value: '99%', label: { tr: 'Musteri Memnuniyeti', en: 'Client Satisfaction' } },
 ];
 
+// Confetti colors matching the theme
+const CONFETTI_COLORS = ['#3b82f6', '#06b6d4', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#ef4444', '#facc15'];
+
+// Pre-generate confetti particles for smooth animation
+const generateConfettiParticles = () => {
+  const particles: Array<{
+    id: number;
+    x: number;
+    y: number;
+    rotation: number;
+    color: string;
+    delay: number;
+    duration: number;
+    size: number;
+  }> = [];
+
+  for (let i = 0; i < 60; i++) {
+    // Spread particles in a fan shape from bottom center
+    const spreadAngle = -90 + (Math.random() - 0.5) * 140; // -160 to -20 degrees (upward fan)
+    const distance = 150 + Math.random() * 200;
+    const radians = (spreadAngle * Math.PI) / 180;
+
+    particles.push({
+      id: i,
+      x: Math.cos(radians) * distance,
+      y: Math.sin(radians) * distance,
+      rotation: Math.random() * 1080 - 540,
+      color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+      delay: Math.random() * 0.15,
+      duration: 1.8 + Math.random() * 0.8,
+      size: 6 + Math.random() * 8,
+    });
+  }
+  return particles;
+};
+
+// Confetti Explosion Component
+const ConfettiExplosion: React.FC = () => {
+  const particles = useMemo(() => generateConfettiParticles(), []);
+
+  return (
+    <div className="dcd-confetti-wrapper">
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className="dcd-confetti-piece"
+          style={{
+            '--end-x': `${particle.x}px`,
+            '--end-y': `${particle.y}px`,
+            '--rotation': `${particle.rotation}deg`,
+            '--delay': `${particle.delay}s`,
+            '--duration': `${particle.duration}s`,
+            '--size': `${particle.size}px`,
+            backgroundColor: particle.color,
+          } as React.CSSProperties}
+        />
+      ))}
+    </div>
+  );
+};
+
 export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
   language,
   onClose,
@@ -196,10 +257,14 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
   // Corporate states
   const [view, setView] = useState<DemoView>('home');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isViewTransitioning, setIsViewTransitioning] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const phoneRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const volumeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const volumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const fadeIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const t = uiText[language];
 
@@ -251,10 +316,21 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
       if (audioRef.current) {
         audioRef.current.removeEventListener('ended', handleEnded);
         audioRef.current.pause();
+        audioRef.current.src = '';
         audioRef.current = null;
       }
+      // Clean up all timeouts and intervals
       if (volumeTimeoutRef.current) {
         clearTimeout(volumeTimeoutRef.current);
+        volumeTimeoutRef.current = null;
+      }
+      if (fadeIntervalRef.current) {
+        clearInterval(fadeIntervalRef.current);
+        fadeIntervalRef.current = null;
+      }
+      if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+        transitionTimeoutRef.current = null;
       }
     };
   }, []);
@@ -263,16 +339,25 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
   useEffect(() => {
     if (!audioRef.current) return;
 
+    // Clear any existing fade interval
+    if (fadeIntervalRef.current) {
+      clearInterval(fadeIntervalRef.current);
+      fadeIntervalRef.current = null;
+    }
+
     if (isMusicPlaying) {
       audioRef.current.volume = 0;
       audioRef.current.play().catch(console.error);
 
       let currentVolume = 0;
-      const fadeIn = setInterval(() => {
+      fadeIntervalRef.current = setInterval(() => {
         currentVolume += 0.05;
         if (currentVolume >= volume) {
           currentVolume = volume;
-          clearInterval(fadeIn);
+          if (fadeIntervalRef.current) {
+            clearInterval(fadeIntervalRef.current);
+            fadeIntervalRef.current = null;
+          }
         }
         if (audioRef.current) {
           audioRef.current.volume = currentVolume;
@@ -282,11 +367,14 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
       setShowVolumeControl(true);
     } else {
       let currentVolume = audioRef.current.volume;
-      const fadeOut = setInterval(() => {
+      fadeIntervalRef.current = setInterval(() => {
         currentVolume -= 0.05;
         if (currentVolume <= 0) {
           currentVolume = 0;
-          clearInterval(fadeOut);
+          if (fadeIntervalRef.current) {
+            clearInterval(fadeIntervalRef.current);
+            fadeIntervalRef.current = null;
+          }
           if (audioRef.current) {
             audioRef.current.pause();
             audioRef.current.currentTime = 0;
@@ -301,6 +389,13 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
         setShowVolumeControl(false);
       }, 500);
     }
+
+    return () => {
+      if (fadeIntervalRef.current) {
+        clearInterval(fadeIntervalRef.current);
+        fadeIntervalRef.current = null;
+      }
+    };
   }, [isMusicPlaying, volume]);
 
   // Handle Dynamic Island state changes
@@ -397,8 +492,16 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
   };
 
   const handleNavigate = (newView: DemoView) => {
+    if (newView === view) return;
+    // Clear any existing transition timeout
+    if (transitionTimeoutRef.current) {
+      clearTimeout(transitionTimeoutRef.current);
+    }
+    setIsViewTransitioning(true);
     setView(newView);
     setFormSubmitted(false);
+    // Reset transition state after animation completes
+    transitionTimeoutRef.current = setTimeout(() => setIsViewTransitioning(false), 400);
   };
 
   // Handle hover state changes
@@ -411,14 +514,14 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
   // Navigation Component
   const Navigation = () => (
     <nav className="dcd-nav">
-      <div className="dcd-nav-logo">
+      <div className="dcd-nav-logo" onClick={() => handleNavigate('home')} style={{ cursor: 'pointer' }}>
         <div className="dcd-nav-logo-icon">
           <img src={allyncLogo} alt="Allync" />
         </div>
         <span className="dcd-nav-logo-text">Allync</span>
       </div>
       <div className="dcd-nav-items">
-        {(['home', 'about', 'services', 'contact'] as DemoView[]).map((v) => (
+        {(['about', 'services', 'contact'] as DemoView[]).map((v) => (
           <button
             key={v}
             className={`dcd-nav-item ${view === v ? 'dcd-nav-active' : ''}`}
@@ -428,7 +531,7 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
           </button>
         ))}
       </div>
-      <button className="dcd-nav-close" onClick={closeApp}>
+      <button className="dcd-nav-close dcd-nav-close-red" onClick={closeApp}>
         <X />
       </button>
     </nav>
@@ -436,7 +539,7 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
 
   // Home View
   const HomeView = () => (
-    <div className="dcd-content">
+    <div className={`dcd-content ${isViewTransitioning ? 'dcd-content-entering' : ''}`}>
       {/* Hero Section */}
       <div className="dcd-hero">
         <div className="dcd-hero-bg" />
@@ -497,7 +600,7 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
 
   // About View
   const AboutView = () => (
-    <div className="dcd-content">
+    <div className={`dcd-content ${isViewTransitioning ? 'dcd-content-entering' : ''}`}>
       <div className="dcd-about-content">
         <h1 className="dcd-about-title">{t.aboutTitle}</h1>
         <p className="dcd-about-desc">{t.aboutDesc}</p>
@@ -551,7 +654,7 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
 
   // Services View
   const ServicesView = () => (
-    <div className="dcd-content">
+    <div className={`dcd-content ${isViewTransitioning ? 'dcd-content-entering' : ''}`}>
       <div className="dcd-services-content">
         <h1 className="dcd-services-title">{t.servicesTitle}</h1>
         <p className="dcd-services-desc">{t.servicesDesc}</p>
@@ -588,7 +691,7 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
 
   // Contact View
   const ContactView = () => (
-    <div className="dcd-content">
+    <div className={`dcd-content ${isViewTransitioning ? 'dcd-content-entering' : ''}`}>
       {!formSubmitted ? (
         <div className="dcd-contact-content">
           <h1 className="dcd-contact-title">{t.contactTitle}</h1>
@@ -633,7 +736,11 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
               <input type="email" className="dcd-form-input" placeholder="Email" />
               <input type="text" className="dcd-form-input" placeholder={t.subject} />
               <textarea className="dcd-form-input dcd-form-textarea" placeholder={t.message} />
-              <button className="dcd-form-submit" onClick={() => setFormSubmitted(true)}>
+              <button className="dcd-form-submit" onClick={() => {
+                  setShowConfetti(true);
+                  setFormSubmitted(true);
+                  setTimeout(() => setShowConfetti(false), 3000);
+                }}>
                 <Send />
                 {t.send}
               </button>
@@ -907,7 +1014,7 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
 
             {/* App */}
             <div className={`dcd-app ${isAppOpen ? 'dcd-active' : ''}`}>
-              <div className="dcd-app-content">
+              <div className="dcd-app-content" onWheel={(e) => e.stopPropagation()}>
                 <Navigation />
                 {view === 'home' && <HomeView />}
                 {view === 'about' && <AboutView />}
@@ -915,6 +1022,9 @@ export const DesktopCorporateDemo: React.FC<DesktopCorporateDemoProps> = ({
                 {view === 'contact' && <ContactView />}
                 {view !== 'contact' || !formSubmitted ? <Footer /> : null}
               </div>
+
+              {/* Confetti Effect */}
+              {showConfetti && <ConfettiExplosion />}
             </div>
 
             {/* Home Indicator */}

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, RotateCcw, Sparkles, Check, ImageIcon, Download, ZoomIn } from 'lucide-react';
 import { textToImageDemoScenarios, textToImageUIText, TextToImageDemoScenario } from '../../data/textToImageDemoScenarios';
-import { useSoundEffect } from '../../contexts/SoundEffectContext';
 
 // Demo Logo - same as other demos
 import demoLogo from '../../assets/whatsapp-demo-logo.png';

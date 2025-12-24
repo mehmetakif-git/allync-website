@@ -12,7 +12,6 @@ import {
   ChevronRight,
   Sparkles
 } from 'lucide-react';
-import { useSoundEffect } from '../../contexts/SoundEffectContext';
 import {
   appTypes,
   features,

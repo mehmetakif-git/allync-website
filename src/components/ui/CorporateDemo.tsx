@@ -16,13 +16,13 @@ import {
   Linkedin,
   Twitter
 } from 'lucide-react';
-import { useSoundEffect } from '../../contexts/SoundEffectContext';
 import allyncLogo from '../../assets/logo.svg';
 import { getTeamImage } from '../../assets/corporate-demo';
 
 interface CorporateDemoProps {
   language: 'tr' | 'en';
   onContactClick?: () => void;
+  onClose?: () => void;
 }
 
 type DemoView = 'home' | 'about' | 'services' | 'contact';
@@ -77,13 +77,15 @@ const Navigation = memo(({
   currentView,
   onNavigate,
   isMobileMenuOpen,
-  setIsMobileMenuOpen
+  setIsMobileMenuOpen,
+  onClose
 }: {
   language: 'tr' | 'en';
   currentView: DemoView;
   onNavigate: (view: DemoView) => void;
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (open: boolean) => void;
+  onClose?: () => void;
 }) => {
   const views: DemoView[] = ['home', 'about', 'services', 'contact'];
 
@@ -113,19 +115,40 @@ const Navigation = memo(({
               {item}
             </button>
           ))}
+          {/* Desktop Close Button */}
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="ml-2 p-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 transition-colors"
+              title={language === 'tr' ? 'Çıkış' : 'Exit'}
+            >
+              <X className="w-4 h-4 text-red-400" />
+            </button>
+          )}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
-        >
-          {isMobileMenuOpen ? (
-            <X className="w-5 h-5 text-white" />
-          ) : (
-            <Menu className="w-5 h-5 text-white" />
+        {/* Mobile Menu Button & Close */}
+        <div className="md:hidden flex items-center gap-2">
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 transition-colors"
+              title={language === 'tr' ? 'Çıkış' : 'Exit'}
+            >
+              <X className="w-5 h-5 text-red-400" />
+            </button>
           )}
-        </button>
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-5 h-5 text-white" />
+            ) : (
+              <Menu className="w-5 h-5 text-white" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -160,15 +183,19 @@ const Navigation = memo(({
   );
 });
 
-export const CorporateDemo: React.FC<CorporateDemoProps> = ({ language, onContactClick }) => {
-  const { playClickSound } = useSoundEffect();
+export const CorporateDemo: React.FC<CorporateDemoProps> = ({ language, onContactClick, onClose }) => {
   const [currentView, setCurrentView] = useState<DemoView>('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleNavigate = (view: DemoView) => {
-    playClickSound();
     setCurrentView(view);
+  };
+
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    }
   };
 
   // Home View - without animations to prevent re-render
@@ -487,10 +514,7 @@ export const CorporateDemo: React.FC<CorporateDemoProps> = ({ language, onContac
                 className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder:text-gray-500 focus:outline-none focus:border-blue-500/50 resize-none"
               />
               <button
-                onClick={() => {
-                  playClickSound();
-                  setFormSubmitted(true);
-                }}
+                onClick={() => setFormSubmitted(true)}
                 className="w-full py-3 bg-gradient-to-r from-blue-500 to-cyan-600 text-white text-sm font-bold rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
               >
                 <Send className="w-4 h-4" />
@@ -525,7 +549,6 @@ export const CorporateDemo: React.FC<CorporateDemoProps> = ({ language, onContac
           <div className="space-y-3">
             <button
               onClick={() => {
-                playClickSound();
                 setFormSubmitted(false);
                 handleNavigate('home');
               }}
@@ -565,16 +588,28 @@ export const CorporateDemo: React.FC<CorporateDemoProps> = ({ language, onContac
   );
 
   return (
-    <div className="h-full flex flex-col">
+    <div
+      className="h-full flex flex-col"
+      style={{
+        overscrollBehavior: 'contain',
+        touchAction: 'pan-y'
+      }}
+      onWheel={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+    >
       <Navigation
         language={language}
         currentView={currentView}
         onNavigate={handleNavigate}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
+        onClose={handleClose}
       />
 
-      <div className="flex-1 overflow-y-auto overflow-x-hidden">
+      <div
+        className="flex-1 overflow-y-auto overflow-x-hidden"
+        style={{ overscrollBehavior: 'contain' }}
+      >
         {currentView === 'home' && <HomeView />}
         {currentView === 'about' && <AboutView />}
         {currentView === 'services' && <ServicesView />}

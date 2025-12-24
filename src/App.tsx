@@ -9,7 +9,6 @@ import FloatingLines from './components/ui/FloatingLines';
 import Lanyard from './components/Lanyard';
 import { InactivityWarning } from './components/InactivityWarning';
 import { ScrollProgress } from './components/ui/ScrollProgress';
-import { SoundEffectProvider } from './contexts/SoundEffectContext';
 import { AllyncAISolutions } from './components/AllyncAISolutions';
 import { DigitalSolutions } from './components/DigitalSolutions';
 
@@ -172,7 +171,6 @@ function App() {
 
   return (
     <HelmetProvider>
-      <SoundEffectProvider>
         <div className={`min-h-screen bg-black app-loaded ${animationsEnabled ? 'animations-enabled' : 'animations-disabled'}`}>
           {/* FloatingLines - Always visible including during loading */}
           {!isMobile ? (
@@ -251,7 +249,6 @@ function App() {
             </>
           )}
         </div>
-      </SoundEffectProvider>
     </HelmetProvider>
   );
 }

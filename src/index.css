@@ -1267,10 +1267,11 @@ select option {
   }
   
   /* Mobile back button arrow icon sizing */
+  /* Exclude demo components with mma-, mcd-, mwd-, med-, dma- etc prefixes */
   .back-to-top button svg,
   .back-button svg,
-  button svg[class*="chevron"],
-  button svg[class*="arrow"] {
+  button:not([class*="mma-"]):not([class*="mcd-"]):not([class*="mwd-"]):not([class*="med-"]):not([class*="dma-"]):not([class*="preview-nav"]) svg[class*="chevron"],
+  button:not([class*="mma-"]):not([class*="mcd-"]):not([class*="mwd-"]):not([class*="med-"]):not([class*="dma-"]) svg[class*="arrow"] {
     width: 20px !important;
     height: 20px !important;
     font-size: 20px !important;

@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Video, MoreVertical, Smile, Paperclip, Mic, ArrowLeft, RotateCcw, X } from 'lucide-react';
 import { ChatBubble, TypingIndicator } from './ChatBubble';
 import { whatsappDemoScenarios, whatsappUIText, DemoMessage, DemoScenario } from '../../data/whatsappDemoScenarios';
-import { useSoundEffect } from '../../contexts/SoundEffectContext';
 
 // WhatsApp Demo Logo - 40x40px display, provide 80x80px for retina
 import demoLogo from '../../assets/whatsapp-demo-logo.png';

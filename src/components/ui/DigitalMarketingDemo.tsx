@@ -19,7 +19,6 @@ import {
   Zap,
   Globe
 } from 'lucide-react';
-import { useSoundEffect } from '../../contexts/SoundEffectContext';
 
 interface DigitalMarketingDemoProps {
   language: 'tr' | 'en';

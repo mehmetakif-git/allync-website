@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronUp, Phone, ArrowLeft, Volume2, VolumeX } from 'lucide-react';
+import { Menu, X, ChevronUp, Phone, ArrowLeft } from 'lucide-react';
 import { translations } from '../utils/translations';
 import logoNavbar from '../assets/logo-navbar.svg';
-import { useSoundEffect } from '../contexts/SoundEffectContext';
 
 interface NavigationProps {
   language: 'tr' | 'en';
@@ -13,7 +12,6 @@ interface NavigationProps {
 
 export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageToggle, viewMode, onBackToSelection }) => {
   const t = translations[language];
-  const { playBackSound, isMuted, toggleMute } = useSoundEffect();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [isVisible, setIsVisible] = useState(true);
@@ -117,7 +115,6 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
               className="flex items-center cursor-pointer group"
               onClick={() => {
                 if (onBackToSelection) {
-                  playBackSound();
                   onBackToSelection();
                 } else {
                   scrollToSection('hero');
@@ -131,10 +128,7 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
             <div className="hidden md:flex items-center space-x-8">
               {(viewMode === 'ai-view' || viewMode === 'digital-view') && onBackToSelection ? (
                 <button
-                  onClick={() => {
-                    playBackSound();
-                    onBackToSelection();
-                  }}
+                  onClick={() => onBackToSelection()}
                   className="flex items-center px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-all duration-300 group"
                 >
                   <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" />
@@ -158,15 +152,6 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
                   </button>
                 ))
               )}
-              
-              {/* Sound Toggle */}
-              <button
-                onClick={toggleMute}
-                className="flex items-center p-2 bg-white/5 border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-300"
-                title={isMuted ? (language === 'tr' ? 'Sesi Aç' : 'Unmute') : (language === 'tr' ? 'Sesi Kapat' : 'Mute')}
-              >
-                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-              </button>
 
               {/* Language Toggle */}
               <button
@@ -179,14 +164,6 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
 
             {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center space-x-2">
-              <button
-                onClick={toggleMute}
-                className="flex items-center p-2 bg-white/5 border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-300"
-                title={isMuted ? (language === 'tr' ? 'Sesi Aç' : 'Unmute') : (language === 'tr' ? 'Sesi Kapat' : 'Mute')}
-              >
-                {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-              </button>
-
               <button
                 onClick={onLanguageToggle}
                 className="flex items-center px-3 py-2 bg-white/5 border border-white/20 rounded-lg text-white hover:bg-white/10 transition-all duration-300"
@@ -211,7 +188,6 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
               {(viewMode === 'ai-view' || viewMode === 'digital-view') && onBackToSelection ? (
                 <button
                   onClick={() => {
-                    playBackSound();
                     onBackToSelection();
                     setIsMenuOpen(false);
                   }}
