@@ -28,10 +28,36 @@ function App() {
   };
 
   const handleLoadingComplete = () => {
-    setViewMode('selection');
-    setTimeout(() => {
-      setAnimationsEnabled(true);
-    }, 500);
+    // Check if there's a hash in the URL for direct section linking (Google Ads etc.)
+    const hash = window.location.hash.replace('#', '');
+    const validSections = ['contact', 'iletisim', 'pricing', 'fiyat', 'features', 'packages', 'hero'];
+
+    if (hash && validSections.includes(hash)) {
+      // Map Turkish aliases to actual section IDs
+      const sectionMap: { [key: string]: string } = {
+        'iletisim': 'contact',
+        'fiyat': 'pricing'
+      };
+      const targetSection = sectionMap[hash] || hash;
+
+      // Skip selection, go directly to ai-view
+      setViewMode('ai-view');
+      setTimeout(() => {
+        setAnimationsEnabled(true);
+        // Scroll to target section after a brief delay
+        setTimeout(() => {
+          const section = document.getElementById(targetSection);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 300);
+      }, 500);
+    } else {
+      setViewMode('selection');
+      setTimeout(() => {
+        setAnimationsEnabled(true);
+      }, 500);
+    }
   };
 
   const handleSelectView = (view: 'ai-view' | 'digital-view') => {
