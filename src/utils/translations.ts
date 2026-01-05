@@ -279,8 +279,6 @@ export const translations = {
     iotSolutionsDesc: "Akıllı cihaz entegrasyonu ve otomasyon için Nesnelerin İnterneti uygulamaları",
     cloudSolutions: "Bulut Çözümleri",
     cloudSolutionsDesc: "Ölçeklenebilir bulut altyapısı, göç hizmetleri ve yönetilen bulut platformları",
-    uiuxDesign: "UI/UX Tasarım",
-    uiuxDesignDesc: "Kullanıcı deneyimini optimize eden, dönüşümleri artıran sezgisel tasarımlar",
     maintenanceSupport: "Bakım ve Destek",
     maintenanceSupportDesc: "Dijital varlıklarınızı sorunsuz çalışır durumda tutan sürekli bakım ve teknik destek",
 
@@ -291,7 +289,6 @@ export const translations = {
     digitalMarketingBenefits: ["SEO ve SEM stratejileri", "Sosyal medya yönetimi", "İçerik pazarlama planları"],
     iotSolutionsBenefits: ["Akıllı cihaz entegrasyonu", "Gerçek zamanlı veri toplama", "Bulut tabanlı yönetim"],
     cloudSolutionsBenefits: ["AWS, Azure, GCP desteği", "Otomatik ölçeklendirme", "Güvenli veri migrasyonu"],
-    uiuxDesignBenefits: ["Kullanıcı araştırması ve testler", "Prototip ve wireframe", "Marka kimliği tasarımı"],
     maintenanceSupportBenefits: ["Proaktif sistem izleme", "Düzenli güvenlik güncellemeleri", "7/24 teknik destek"],
   },
   en: {
@@ -573,8 +570,6 @@ export const translations = {
     iotSolutionsDesc: "Internet of Things implementations for smart device integration and automation",
     cloudSolutions: "Cloud Solutions",
     cloudSolutionsDesc: "Scalable cloud infrastructure, migration services, and managed cloud platforms",
-    uiuxDesign: "UI/UX Design",
-    uiuxDesignDesc: "Intuitive designs that optimize user experience and increase conversions",
     maintenanceSupport: "Maintenance & Support",
     maintenanceSupportDesc: "Ongoing maintenance and technical support to keep your digital assets running smoothly",
 
@@ -585,7 +580,6 @@ export const translations = {
     digitalMarketingBenefits: ["SEO and SEM strategies", "Social media management", "Content marketing plans"],
     iotSolutionsBenefits: ["Smart device integration", "Real-time data collection", "Cloud-based management"],
     cloudSolutionsBenefits: ["AWS, Azure, GCP support", "Auto-scaling capabilities", "Secure data migration"],
-    uiuxDesignBenefits: ["User research and testing", "Prototyping and wireframing", "Brand identity design"],
     maintenanceSupportBenefits: ["Proactive system monitoring", "Regular security updates", "24/7 technical support"],
 
     // New translations for enhanced features

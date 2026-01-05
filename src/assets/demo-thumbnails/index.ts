@@ -19,7 +19,6 @@ import mobileAppThumb from './mobile-app.webp';
 import digitalMarketingThumb from './digital-marketing.webp';
 import iotThumb from './iot.webp';
 import cloudThumb from './cloud.webp';
-import uiuxThumb from './uiux.webp';
 import maintenanceThumb from './maintenance.webp';
 
 export const demoThumbnails: Record<string, string | null> = {
@@ -40,7 +39,6 @@ export const demoThumbnails: Record<string, string | null> = {
   'digital-marketing': digitalMarketingThumb,
   'iot': iotThumb,
   'cloud': cloudThumb,
-  'uiux': uiuxThumb,
   'maintenance': maintenanceThumb,
 };
 

@@ -5,26 +5,7 @@ import { GlowingEffect } from '../ui/GlowingEffect';
 import { useOutsideClick } from '../../hooks/use-outside-click';
 import { ServiceDetailModal } from '../ServiceDetailModal';
 import logoSvg from '../../assets/logo.svg';
-import { IPhoneMockup } from '../ui/IPhoneMockup';
-import { WhatsAppDemo } from '../ui/WhatsAppDemo';
-import { InstagramDemo } from '../ui/InstagramDemo';
-import { TextToVideoDemo } from '../ui/TextToVideoDemo';
-import { TextToImageDemo } from '../ui/TextToImageDemo';
-import { VoiceCloningDemo } from '../ui/VoiceCloningDemo';
-import { DocumentAIDemo } from '../ui/DocumentAIDemo';
-import { ImageToVideoDemo } from '../ui/ImageToVideoDemo';
-import { VideoToVideoDemo } from '../ui/VideoToVideoDemo';
-import { DataAnalysisDemo } from '../ui/DataAnalysisDemo';
-// Note: CustomAIDemo import removed - using MobileCustomAIDemo and DesktopCustomAIDemo instead
-import { BrowserMockup } from '../ui/BrowserMockup';
-// Note: EcommerceDemo import removed - using MobileEcommerceDemo and DesktopEcommerceDemo instead
-import { CorporateDemo } from '../ui/CorporateDemo';
-import { MobileAppDemo } from '../ui/MobileAppDemo';
-import { DigitalMarketingDemo } from '../ui/DigitalMarketingDemo';
-import { IoTDemo } from '../ui/IoTDemo';
 import { CloudDemo } from '../ui/CloudDemo';
-import { UIUXDemo } from '../ui/UIUXDemo';
-import { MaintenanceDemo } from '../ui/MaintenanceDemo';
 import { MobileIPhoneMockup } from '../ui/MobileIPhoneMockup';
 import { MobileWhatsAppDemo } from '../ui/MobileWhatsAppDemo';
 import { DesktopWhatsAppDemo } from '../ui/DesktopWhatsAppDemo';
@@ -53,6 +34,9 @@ import { MobileCorporateDemo } from '../ui/MobileCorporateDemo';
 import { DesktopMobileAppDemo } from '../ui/DesktopMobileAppDemo';
 import { MobileMobileAppDemo } from '../ui/MobileMobileAppDemo';
 import { DesktopIoTDemo } from '../ui/DesktopIoTDemo';
+import { DesktopCloudDemo } from '../ui/DesktopCloudDemo';
+import { DesktopMaintenanceDemo } from '../ui/DesktopMaintenanceDemo';
+import DesktopDigitalMarketingDemo from '../ui/DesktopDigitalMarketingDemo';
 import { getDemoThumbnail } from '../../assets/demo-thumbnails';
 
 interface Service {
@@ -66,7 +50,7 @@ interface Service {
   glowColor?: string;
   audioSrc?: string;
   subtitles?: Array<{ start: number; text: string }>;
-  demoType?: 'whatsapp' | 'instagram' | 'text-to-video' | 'text-to-image' | 'voice-cloning' | 'document-ai' | 'image-to-video' | 'video-to-video' | 'data-analysis' | 'custom-ai' | 'ecommerce' | 'corporate' | 'mobile-app' | 'digital-marketing' | 'iot' | 'cloud' | 'uiux' | 'maintenance';
+  demoType?: 'whatsapp' | 'instagram' | 'text-to-video' | 'text-to-image' | 'voice-cloning' | 'document-ai' | 'image-to-video' | 'video-to-video' | 'data-analysis' | 'custom-ai' | 'ecommerce' | 'corporate' | 'mobile-app' | 'digital-marketing' | 'iot' | 'cloud' | 'maintenance';
 }
 
 interface ServiceCardProps {
@@ -1192,74 +1176,22 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
       {/* Demo Modal - Digital Marketing Demo */}
       <AnimatePresence>
         {isDemoModalOpen && service.demoType === 'digital-marketing' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => setIsDemoModalOpen(false)}
-          >
-            {/* Backdrop - visual only */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+          <>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopDigitalMarketingDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
 
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => setIsDemoModalOpen(false)}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center pointer-events-none"
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-4 text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Dijital Pazarlama Dashboard' : 'Digital Marketing Dashboard'}
-              </motion.h3>
-
-              {/* iPhone Mockup with Digital Marketing Demo */}
-              <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
-                <MobileIPhoneMockup
-                  themeColor={service.glowColor?.replace('0.5)', '1)') || '#F97316'}
-                  hideNotch={false}
-                >
-                  <DigitalMarketingDemo
-                    language={language}
-                    onContactClick={() => {
-                      setIsDemoModalOpen(false);
-                      onContactClick();
-                    }}
-                  />
-                </MobileIPhoneMockup>
-              </div>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-4 text-gray-500 text-sm text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Kampanya metrikleri ve analitik verilerinizi görün' : 'View campaign metrics and analytics data'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
 
@@ -1270,6 +1202,28 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
             {/* Desktop Version - Full iPhone experience with mouse effects */}
             {isDesktop && (
               <DesktopIoTDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
+
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Demo Modal - Cloud Demo */}
+      <AnimatePresence>
+        {isDemoModalOpen && service.demoType === 'cloud' && (
+          <>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopCloudDemo
                 language={language}
                 onContactClick={() => {
                   setIsDemoModalOpen(false);
@@ -1321,16 +1275,16 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                     transition={{ delay: 0.1 }}
                     className="text-white text-xl md:text-2xl font-bold mb-4 text-center pointer-events-auto"
                   >
-                    {language === 'tr' ? 'IoT Akıllı Ev Dashboard' : 'IoT Smart Home Dashboard'}
+                    {language === 'tr' ? 'Cloud Console Dashboard' : 'Cloud Console Dashboard'}
                   </motion.h3>
 
-                  {/* iPhone Mockup with IoT Demo */}
+                  {/* iPhone Mockup with Cloud Demo */}
                   <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
                     <MobileIPhoneMockup
-                      themeColor={service.glowColor?.replace('0.5)', '1)') || '#14B8A6'}
+                      themeColor={service.glowColor?.replace('0.5)', '1)') || '#6366F1'}
                       hideNotch={false}
                     >
-                      <IoTDemo
+                      <CloudDemo
                         language={language}
                         onContactClick={() => {
                           setIsDemoModalOpen(false);
@@ -1347,7 +1301,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                     transition={{ delay: 0.5 }}
                     className="mt-4 text-gray-500 text-sm text-center pointer-events-auto"
                   >
-                    {language === 'tr' ? 'Cihazları kontrol edin ve sensör verilerini görün' : 'Control devices and view sensor data'}
+                    {language === 'tr' ? 'Sunucuları yönetin ve deployment durumunu görün' : 'Manage servers and view deployment status'}
                   </motion.p>
                 </motion.div>
               </motion.div>
@@ -1356,225 +1310,25 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
         )}
       </AnimatePresence>
 
-      {/* Demo Modal - Cloud Demo */}
-      <AnimatePresence>
-        {isDemoModalOpen && service.demoType === 'cloud' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => setIsDemoModalOpen(false)}
-          >
-            {/* Backdrop - visual only */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
-
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => setIsDemoModalOpen(false)}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center pointer-events-none"
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-4 text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Cloud Console Dashboard' : 'Cloud Console Dashboard'}
-              </motion.h3>
-
-              {/* iPhone Mockup with Cloud Demo */}
-              <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
-                <MobileIPhoneMockup
-                  themeColor={service.glowColor?.replace('0.5)', '1)') || '#6366F1'}
-                  hideNotch={false}
-                >
-                  <CloudDemo
-                    language={language}
-                    onContactClick={() => {
-                      setIsDemoModalOpen(false);
-                      onContactClick();
-                    }}
-                  />
-                </MobileIPhoneMockup>
-              </div>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-4 text-gray-500 text-sm text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Sunucuları yönetin ve deployment durumunu görün' : 'Manage servers and view deployment status'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Demo Modal - UI/UX Demo */}
-      <AnimatePresence>
-        {isDemoModalOpen && service.demoType === 'uiux' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => setIsDemoModalOpen(false)}
-          >
-            {/* Backdrop - visual only */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
-
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => setIsDemoModalOpen(false)}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center pointer-events-none"
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-4 text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Design System Önizleme' : 'Design System Preview'}
-              </motion.h3>
-
-              {/* iPhone Mockup with UI/UX Demo */}
-              <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
-                <MobileIPhoneMockup
-                  themeColor={service.glowColor?.replace('0.5)', '1)') || '#C026D3'}
-                  hideNotch={false}
-                >
-                  <UIUXDemo
-                    language={language}
-                    onContactClick={() => {
-                      setIsDemoModalOpen(false);
-                      onContactClick();
-                    }}
-                  />
-                </MobileIPhoneMockup>
-              </div>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-4 text-gray-500 text-sm text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Renk paletleri, tipografi ve bileşenleri keşfedin' : 'Explore color palettes, typography and components'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Demo Modal - Maintenance Demo */}
       <AnimatePresence>
         {isDemoModalOpen && service.demoType === 'maintenance' && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-            onClick={() => setIsDemoModalOpen(false)}
-          >
-            {/* Backdrop - visual only */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
+          <>
+            {/* Desktop Version - Full iPhone experience with mouse effects */}
+            {isDesktop && (
+              <DesktopMaintenanceDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
 
-            {/* Close button */}
-            <motion.button
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              onClick={() => setIsDemoModalOpen(false)}
-              className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-            >
-              <X className="w-6 h-6 text-white" />
-            </motion.button>
-
-            {/* Modal Content */}
-            <motion.div
-              ref={demoModalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative z-[100000] flex flex-col items-center pointer-events-none"
-            >
-              {/* Title */}
-              <motion.h3
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white text-xl md:text-2xl font-bold mb-4 text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Bakım ve Destek Paneli' : 'Maintenance & Support Panel'}
-              </motion.h3>
-
-              {/* iPhone Mockup with Maintenance Demo */}
-              <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
-                <MobileIPhoneMockup
-                  themeColor={service.glowColor?.replace('0.5)', '1)') || '#6B7280'}
-                  hideNotch={false}
-                >
-                  <MaintenanceDemo
-                    language={language}
-                    onContactClick={() => {
-                      setIsDemoModalOpen(false);
-                      onContactClick();
-                    }}
-                  />
-                </MobileIPhoneMockup>
-              </div>
-
-              {/* Bottom hint */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 0.5 }}
-                className="mt-4 text-gray-500 text-sm text-center pointer-events-auto"
-              >
-                {language === 'tr' ? 'Sistem durumu ve destek taleplerini yönetin' : 'Manage system status and support tickets'}
-              </motion.p>
-            </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
 

@@ -31,12 +31,12 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
   };
 
   const digitalMilestones = {
-    colors: ['#13AC63', '#2588D9', '#C938A5', '#E84520', '#0C9FAD', '#3D65EE', '#AE3AEC', '#4F5867'],
+    colors: ['#13AC63', '#2588D9', '#C938A5', '#E84520', '#0C9FAD', '#3D65EE', '#4F5867'],
     labels: {
-      tr: ['E-Ticaret', 'Kurumsal', 'Mobil App', 'Dijital Paz.', 'IoT', 'Bulut', 'UI/UX', 'Bakım'],
-      en: ['E-Commerce', 'Corporate', 'Mobile App', 'Digital Mkt', 'IoT', 'Cloud', 'UI/UX', 'Support']
+      tr: ['E-Ticaret', 'Kurumsal', 'Mobil App', 'Dijital Paz.', 'IoT', 'Bulut', 'Bakım'],
+      en: ['E-Commerce', 'Corporate', 'Mobile App', 'Digital Mkt', 'IoT', 'Cloud', 'Support']
     },
-    positions: [0, 0.14, 0.28, 0.42, 0.56, 0.70, 0.84, 0.98]
+    positions: [0, 0.17, 0.33, 0.5, 0.67, 0.83, 0.99]
   };
 
   const config = viewMode === 'ai-view' ? aiMilestones : digitalMilestones;

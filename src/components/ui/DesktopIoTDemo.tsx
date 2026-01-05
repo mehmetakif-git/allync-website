@@ -131,10 +131,15 @@ const uiText = {
 };
 
 // Animated sensor value hook
-const useAnimatedValue = (target: number, duration: number = 1000) => {
+const useAnimatedValue = (target: number, duration: number = 1000, trigger?: boolean) => {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
+    // Reset value when trigger changes to true
+    if (trigger) {
+      setValue(0);
+    }
+
     let startTime: number;
     let animationFrame: number;
 
@@ -149,7 +154,7 @@ const useAnimatedValue = (target: number, duration: number = 1000) => {
 
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
-  }, [target, duration]);
+  }, [target, duration, trigger]);
 
   return value;
 };
@@ -173,7 +178,7 @@ export const DesktopIoTDemo: React.FC<DesktopIoTDemoProps> = ({
   const [isClosing, setIsClosing] = useState(false);
 
   // Dynamic Island states
-  const [dynamicIslandState, setDynamicIslandState] = useState<'collapsed' | 'expanded'>('collapsed');
+  const [dynamicIslandState, setDynamicIslandState] = useState<'collapsed' | 'compact' | 'expanded'>('collapsed');
 
   // IoT App states
   const [activeTab, setActiveTab] = useState<TabType>('devices');
@@ -183,10 +188,11 @@ export const DesktopIoTDemo: React.FC<DesktopIoTDemoProps> = ({
     return initial;
   });
 
-  // Animated sensor values
-  const temperature = useAnimatedValue(24, 1200);
-  const humidity = useAnimatedValue(65, 1400);
-  const energy = useAnimatedValue(32, 1600);
+  // Animated sensor values - trigger when Dynamic Island expands
+  const isExpanded = dynamicIslandState === 'expanded';
+  const temperature = useAnimatedValue(24, 1200, isExpanded);
+  const humidity = useAnimatedValue(65, 1400, isExpanded);
+  const energy = useAnimatedValue(32, 1600, isExpanded);
   const activeDevices = Object.values(deviceStates).filter(Boolean).length;
 
   const phoneRef = useRef<HTMLDivElement>(null);
@@ -267,11 +273,13 @@ export const DesktopIoTDemo: React.FC<DesktopIoTDemoProps> = ({
 
   const openApp = () => {
     setIsAppOpen(true);
+    setDynamicIslandState('compact');
   };
 
   const closeApp = () => {
     setIsAppOpen(false);
     setActiveTab('devices');
+    setDynamicIslandState('collapsed');
   };
 
   const handleClose = () => {
@@ -580,8 +588,14 @@ export const DesktopIoTDemo: React.FC<DesktopIoTDemoProps> = ({
               onClick={() => {
                 if (dynamicIslandState === 'collapsed') {
                   setDynamicIslandState('expanded');
-                } else {
-                  setDynamicIslandState('collapsed');
+                } else if (dynamicIslandState === 'expanded') {
+                  if (isAppOpen) {
+                    setDynamicIslandState('compact');
+                  } else {
+                    setDynamicIslandState('collapsed');
+                  }
+                } else if (dynamicIslandState === 'compact') {
+                  setDynamicIslandState('expanded');
                 }
               }}
             >
@@ -589,6 +603,22 @@ export const DesktopIoTDemo: React.FC<DesktopIoTDemoProps> = ({
               <div className="diot-di-collapsed-content">
                 <div className="diot-di-camera" />
                 <div className="diot-di-sensor" />
+              </div>
+
+              {/* Compact Content - shown when app is open */}
+              <div className="diot-di-compact-content">
+                <div className="diot-di-compact-left">
+                  <div className="diot-di-compact-icon">
+                    <Home />
+                  </div>
+                  <div className="diot-di-compact-info">
+                    <span className="diot-di-compact-title">{t.smartHome}</span>
+                    <span className="diot-di-compact-subtitle">{activeDevices} {t.devicesActive}</span>
+                  </div>
+                </div>
+                <div className="diot-di-compact-right">
+                  <span className="diot-di-compact-temp">{temperature}°</span>
+                </div>
               </div>
 
               {/* Expanded Content */}
@@ -681,7 +711,7 @@ export const DesktopIoTDemo: React.FC<DesktopIoTDemoProps> = ({
                 {/* Devices Widget */}
                 <div
                   className="diot-widget diot-widget-hover"
-                  onClick={openApp}
+                  onClick={() => setDynamicIslandState(dynamicIslandState === 'expanded' ? 'collapsed' : 'expanded')}
                   style={{ cursor: 'pointer' }}
                 >
                   <div className="diot-widget-header">
@@ -718,6 +748,7 @@ export const DesktopIoTDemo: React.FC<DesktopIoTDemoProps> = ({
                   <img src={closeIcon} alt="Close" className="diot-close-img" />
                 </div>
                 <div className="diot-dock-icon diot-contact-icon diot-dock-hover" onClick={handleContactNavigation}>
+                  <span className="diot-contact-tooltip">{t.contact}</span>
                   <img src={networkIcon} alt="Contact" className="diot-icon-img" />
                 </div>
                 <div className="diot-dock-icon diot-call-icon diot-dock-hover" onClick={handleContactNavigation}>

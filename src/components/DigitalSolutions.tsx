@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, Monitor, Smartphone, Target, Wifi, Cloud, Palette, Wrench } from 'lucide-react';
+import { ShoppingCart, Monitor, Smartphone, Target, Wifi, Cloud, Wrench } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { SolutionsPage, Service } from './SolutionsPage';
 import eCommerceImg1 from '../assets/gallery/ecommerce/1.png';
@@ -80,17 +80,6 @@ export const DigitalSolutions: React.FC<DigitalSolutionsProps> = ({ language }) 
       extendedContent: 'Cloud Solutions ile AWS, Azure ve GCP üzerinde ölçeklenebilir altyapılar kurun. Otomatik scaling, güvenli data migration ve yönetilen servisler ile bulut avantajlarından yararlanın.\n\nÖzellikler:\n- Multi-cloud support\n- Auto-scaling\n- Load balancing\n- Backup ve disaster recovery\n- Cost optimization\n\nBulut teknolojileri ile büyüyün.',
       galleryImages: ['Cloud Architecture', 'Deployment Pipeline', 'Monitoring Dashboard'],
       demoType: 'cloud'
-    },
-    {
-      icon: Palette,
-      title: t.uiuxDesign,
-      description: t.uiuxDesignDesc,
-      benefits: t.uiuxDesignBenefits,
-      gradient: 'from-fuchsia-500 to-purple-600',
-      glowColor: 'rgba(192, 38, 211, 0.5)',
-      extendedContent: 'UI/UX Design hizmetleri ile kullanıcı deneyimini optimize edin. Kullanıcı araştırması, prototipleme ve marka kimliği tasarımı ile dijital ürünlerinizi mükemmelleştirin.\n\nÖzellikler:\n- User research\n- Wireframing\n- High-fidelity mockups\n- Prototyping\n- Usability testing\n\nKullanıcı odaklı tasarımlar yaratın.',
-      galleryImages: ['Design System', 'Wireframes', 'Final Mockups'],
-      demoType: 'uiux'
     },
     {
       icon: Wrench,
