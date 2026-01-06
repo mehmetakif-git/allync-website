@@ -9,7 +9,7 @@ export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSe
   const getSectionTitle = () => {
     const baseTitles: Record<string, Record<string, string>> = {
       tr: {
-        hero: 'Allync - AI & Digital Business Automation | AllyncAI',
+        hero: 'Allync - WhatsApp AI Asistanları & Özel SaaS Çözümleri | AllyncAI',
         features: 'Allync | Özellikler',
         pricing: 'Allync | Fiyatlandırma',
         contact: 'Allync | İletişim',
@@ -18,7 +18,7 @@ export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSe
         'industry-examples': 'Allync | Sektörler'
       },
       en: {
-        hero: 'Allync - AI & Digital Business Automation | AllyncAI',
+        hero: 'Allync - WhatsApp AI Assistants & Custom SaaS Solutions | AllyncAI',
         features: 'Allync | Features',
         pricing: 'Allync | Pricing',
         contact: 'Allync | Contact Us',
