@@ -3,7 +3,7 @@
 > Allync provides business automation solutions including AI assistants, web development, mobile apps, and digital marketing services.
 
 ## Company Overview
-Allync is a technology company based in Turkey specializing in AI-powered business automation and digital transformation solutions. We help businesses streamline operations through intelligent automation.
+Allync (also known as AllyncAI) is a technology company based in Turkey with operations in Qatar, specializing in AI-powered business automation and digital transformation solutions. We help businesses streamline operations through intelligent automation.
 
 ## Services
 
@@ -24,9 +24,17 @@ Allync is a technology company based in Turkey specializing in AI-powered busine
 
 ## Contact
 - Website: https://www.allyncai.com
-- Languages: Turkish, English
+- Languages: Turkish, English, Arabic
+- Social: @allync_ai (X/Twitter), @allyncai (Instagram)
 
 ## Technical Details
 - Single Page Application (React)
 - Sections: AI Solutions, Digital Solutions, Pricing, Contact
-- Target Market: Turkey, expanding globally
+- Target Markets: Turkey, Qatar, Middle East, Global
+
+## Alternative Names
+- Allync
+- AllyncAI
+- Allync AI
+- Allync Türkiye
+- Allync Qatar
