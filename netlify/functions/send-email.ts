@@ -174,7 +174,7 @@ export const handler: Handler = async (event) => {
               </table>
 
               <p style="margin: 20px 0 5px 0; color: #999999; font-size: 13px;">
-                © 2025 Allync AI. Tüm hakları saklıdır.
+                © 2026 Allync AI. Tüm hakları saklıdır.
               </p>
               <p style="margin: 5px 0 0 0; color: #bbbbbb; font-size: 12px;">
                 Bu email, web sitemizdeki iletişim formundan gönderilmiştir.
@@ -287,7 +287,7 @@ export const handler: Handler = async (event) => {
               </table>
 
               <p style="margin: 20px 0 5px 0; color: #999999; font-size: 13px;">
-                © 2025 Allync AI. Tüm hakları saklıdır.
+                © 2026 Allync AI. Tüm hakları saklıdır.
               </p>
               <p style="margin: 5px 0 0 0; color: #bbbbbb; font-size: 12px;">
                 Bu email, web sitemizdeki iletişim formundan gönderilmiştir.
@@ -382,7 +382,7 @@ export const handler: Handler = async (event) => {
               </table>
 
               <p style="margin: 20px 0 5px 0; color: #999999; font-size: 13px;">
-                © 2025 Allync AI. All rights reserved.
+                © 2026 Allync AI. All rights reserved.
               </p>
               <p style="margin: 5px 0 0 0; color: #bbbbbb; font-size: 12px;">
                 This email was sent from our website contact form.

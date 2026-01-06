@@ -73,8 +73,8 @@ export const documentAIDemoScenarios: DocumentAIDemoScenario[] = [
     extractedFields: [
       { label: { tr: 'Sözleşme Türü', en: 'Contract Type' }, value: 'Hizmet Sözleşmesi', confidence: 96 },
       { label: { tr: 'Taraflar', en: 'Parties' }, value: 'ABC Ltd. - XYZ A.Ş.', confidence: 95 },
-      { label: { tr: 'Başlangıç', en: 'Start Date' }, value: '01.01.2025', confidence: 99 },
-      { label: { tr: 'Bitiş', en: 'End Date' }, value: '31.12.2025', confidence: 99 },
+      { label: { tr: 'Başlangıç', en: 'Start Date' }, value: '01.01.2026', confidence: 99 },
+      { label: { tr: 'Bitiş', en: 'End Date' }, value: '31.12.2026', confidence: 99 },
       { label: { tr: 'Değer', en: 'Value' }, value: '₺150,000.00', confidence: 97 }
     ],
     processingTime: '2.8s',
