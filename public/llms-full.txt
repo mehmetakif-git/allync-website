@@ -404,12 +404,12 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
    URL: https://www.allyncai.com/blog/eticaret-basari.html
    Topic: E-commerce success strategies
 
-5. **Mobil Uygulama Geliştirme Rehberi 2025** (Turkish)
+5. **Mobil Uygulama Geliştirme Rehberi 2026** (Turkish)
    URL: https://www.allyncai.com/blog/mobil-uygulama-rehberi.html
    Topic: Mobile app development guide
 
-6. **2025 Dijital Pazarlama Trendleri** (Turkish)
-   URL: https://www.allyncai.com/blog/dijital-pazarlama-2025.html
+6. **2026 Dijital Pazarlama Trendleri** (Turkish)
+   URL: https://www.allyncai.com/blog/dijital-pazarlama-2026.html
    Topic: Digital marketing trends
 
 ---
@@ -436,6 +436,78 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
 - Mobile: React Native, Flutter
 - Cloud: AWS, Google Cloud, Azure
 - Database: PostgreSQL, MongoDB, Redis
+
+---
+
+## CASE STUDIES & RESULTS
+
+### Restaurant Chain - Turkey
+- Problem: 500+ daily customer calls overwhelming staff
+- Solution: WhatsApp AI assistant
+- Results:
+  - 70% call reduction in 2 months
+  - 95% customer satisfaction
+  - 3-month ROI
+
+### E-commerce - Qatar
+- Problem: 24/7 order tracking support needed
+- Solution: Multilingual AI chatbot
+- Results:
+  - 80% ticket reduction
+  - <30 second response time
+  - $50K annual savings
+
+---
+
+## PRICING RANGES (Indicative)
+
+**WhatsApp AI Assistant:**
+- Basic: Starting from competitive rates
+- Professional: Custom quote
+- Enterprise: Volume pricing
+
+**Web Development:**
+- Landing page: 1-2 weeks delivery
+- Corporate website: 2-4 weeks
+- Custom web app: Custom quote
+
+**Mobile Apps:**
+- MVP: 8-12 weeks
+- Full-featured: 12-16 weeks
+- Custom quote based on features
+
+All projects include free consultation and detailed proposal.
+
+---
+
+## PARTNERSHIPS & CERTIFICATIONS
+
+- WhatsApp Business API Official Partner
+- AWS Partner
+- Google Cloud Partner
+- ISO 27001 Compliant
+- GDPR Compliant
+- SOC 2 Compliant
+
+---
+
+## WHY CHOOSE ALLYNC?
+
+| Feature | Allync | Typical Competitors |
+|---------|--------|-------------------|
+| Customization | Fully custom | Template-based |
+| Languages | TR/EN/AR native | Limited |
+| Support | 24/7 local | Business hours |
+| Integration | Deep CRM/ERP | Basic |
+| Timeline | 1-2 weeks start | 4-8 weeks |
+| Pricing | Transparent | Hidden costs |
+
+---
+
+## DEMOS & VIDEOS
+
+- WhatsApp AI Demo: https://youtu.be/x3DzVg6dlvM
+- YouTube Channel: https://www.youtube.com/@allyncai
 
 ---
 
@@ -473,4 +545,4 @@ Contact for inquiries: https://www.allyncai.com/#contact
 
 ---
 
-Last Updated: January 2025
+Last Updated: January 2026

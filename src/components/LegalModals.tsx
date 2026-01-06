@@ -44,7 +44,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
 
   const privacyContent = language === 'tr' ? {
     title: 'Gizlilik Politikası',
-    lastUpdated: 'Son Güncelleme: 15 Ocak 2025',
+    lastUpdated: 'Son Güncelleme: 15 Ocak 2026',
     content: [
       {
         heading: '1. Veri Sorumlusu',
@@ -85,7 +85,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
     ]
   } : {
     title: 'Privacy Policy',
-    lastUpdated: 'Last Updated: January 15, 2025',
+    lastUpdated: 'Last Updated: January 15, 2026',
     content: [
       {
         heading: '1. Data Controller',
@@ -128,7 +128,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
 
   const termsContent = language === 'tr' ? {
     title: 'Hizmet Şartları',
-    lastUpdated: 'Son Güncelleme: 15 Ocak 2025',
+    lastUpdated: 'Son Güncelleme: 15 Ocak 2026',
     content: [
       {
         heading: '1. Hizmet Kapsamı',
@@ -169,7 +169,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
     ]
   } : {
     title: 'Terms of Service',
-    lastUpdated: 'Last Updated: January 15, 2025',
+    lastUpdated: 'Last Updated: January 15, 2026',
     content: [
       {
         heading: '1. Service Scope',
@@ -212,7 +212,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
 
   const cookieContent = language === 'tr' ? {
     title: 'Çerez Politikası',
-    lastUpdated: 'Son Güncelleme: 15 Ocak 2025',
+    lastUpdated: 'Son Güncelleme: 15 Ocak 2026',
     content: [
       {
         heading: '1. Çerez Nedir?',
@@ -253,7 +253,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
     ]
   } : {
     title: 'Cookie Policy',
-    lastUpdated: 'Last Updated: January 15, 2025',
+    lastUpdated: 'Last Updated: January 15, 2026',
     content: [
       {
         heading: '1. What are Cookies?',

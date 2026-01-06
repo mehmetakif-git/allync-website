@@ -135,7 +135,7 @@ export const Footer: React.FC<FooterProps> = ({ language }) => {
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
             <p className="text-gray-400 text-xs sm:text-sm">
-              © 2025 Allync. {t.allRightsReserved}
+              © 2026 Allync. {t.allRightsReserved}
             </p>
             <LegalModals language={language} />
           </div>

@@ -464,7 +464,7 @@ export const MobileCorporateDemo: React.FC<MobileCorporateDemoProps> = ({
         <span className="mcd-footer-logo-text">Allync</span>
       </div>
       <p className="mcd-footer-copyright">
-        2025 Allync. {language === 'tr' ? 'Tum haklari saklidir.' : 'All rights reserved.'}
+        2026 Allync. {language === 'tr' ? 'Tum haklari saklidir.' : 'All rights reserved.'}
       </p>
     </footer>
   );
