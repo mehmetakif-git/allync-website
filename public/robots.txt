@@ -1,3 +1,38 @@
+# Robots.txt for Allync
+# https://www.allyncai.com
+
 User-agent: *
 Allow: /
 Sitemap: https://www.allyncai.com/sitemap.xml
+
+# AI Crawlers - Explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+# LLMs.txt - AI-readable site information
+# See: https://www.allyncai.com/llms.txt
+# Full version: https://www.allyncai.com/llms-full.txt

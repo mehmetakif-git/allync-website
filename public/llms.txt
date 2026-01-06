@@ -1,0 +1,32 @@
+# Allync - AI & Digital Solutions
+
+> Allync provides business automation solutions including AI assistants, web development, mobile apps, and digital marketing services.
+
+## Company Overview
+Allync is a technology company based in Turkey specializing in AI-powered business automation and digital transformation solutions. We help businesses streamline operations through intelligent automation.
+
+## Services
+
+### AI Solutions
+- **WhatsApp AI Assistants**: Intelligent chatbots for customer service automation
+- **Custom AI Chatbots**: Tailored conversational AI for specific business needs
+- **Voice AI & Cloning**: Advanced voice synthesis and cloning technology
+- **Document AI**: Intelligent document processing and analysis
+- **Data Analysis AI**: AI-powered business intelligence and analytics
+
+### Digital Solutions
+- **Web Development**: Modern, responsive websites and web applications
+- **Mobile App Development**: iOS and Android native and cross-platform apps
+- **E-commerce Solutions**: Online store development and optimization
+- **Digital Marketing**: SEO, social media, and online advertising
+- **Cloud Solutions**: Cloud infrastructure and migration services
+- **IoT Solutions**: Internet of Things implementation and integration
+
+## Contact
+- Website: https://www.allyncai.com
+- Languages: Turkish, English
+
+## Technical Details
+- Single Page Application (React)
+- Sections: AI Solutions, Digital Solutions, Pricing, Contact
+- Target Market: Turkey, expanding globally
