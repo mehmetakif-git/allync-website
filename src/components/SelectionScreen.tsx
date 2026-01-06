@@ -2,10 +2,11 @@ import React from 'react';
 import { translations } from '../utils/translations';
 import { TextRevealCard, TextRevealCardTitle, TextRevealCardDescription } from './ui/TextRevealCard';
 import { CometCard } from './ui/CometCard';
+import HologramCard from './ui/HologramCard';
 
-// Category Icons
-import aiIcon from '../assets/Icon/ai.png';
-import digitalIcon from '../assets/Icon/digital.png';
+// Category Icons (SVG for hologram mask)
+import aiIcon from '../assets/Icon/ai.svg';
+import digitalIcon from '../assets/Icon/digital.svg';
 
 interface SelectionScreenProps {
   language: 'tr' | 'en';
@@ -58,53 +59,77 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
         </div>
 
         <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 w-full">
-          <CometCard className="w-full max-w-sm mx-auto md:max-w-none">
-            <button
-              onClick={() => onSelectView('ai-view')}
-              className="group relative bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl md:rounded-3xl p-6 md:p-10 lg:p-12 hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 animate-scale-in w-full min-h-[220px] md:min-h-0"
-              style={{ animationDelay: '0.2s' }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-transparent rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              <div className="relative z-10">
-                <div className="icon-container ai-icon w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 mx-auto transition-all duration-500 group-hover:scale-110">
-                  <img src={aiIcon} alt="Allync AI" className="w-full h-full object-contain transition-all duration-500" />
+          {/* Mobile: CometCard */}
+          <div className="block md:hidden">
+            <CometCard className="w-full max-w-sm mx-auto">
+              <button
+                onClick={() => onSelectView('ai-view')}
+                className="group relative bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 animate-scale-in w-full min-h-[220px]"
+                style={{ animationDelay: '0.2s' }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="icon-container ai-icon w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                    <img src={aiIcon} alt="Allync AI" className="w-full h-full object-contain" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300 whitespace-nowrap">
+                    {t.aiPillarTitle}
+                  </h2>
+                  <p className="text-lg text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                    {t.aiPillarSlogan}
+                  </p>
                 </div>
+              </button>
+            </CometCard>
+          </div>
 
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300 whitespace-nowrap">
-                  {t.aiPillarTitle}
-                </h2>
+          {/* Desktop: HologramCard */}
+          <div className="hidden md:block animate-scale-in" style={{ animationDelay: '0.2s' }}>
+            <HologramCard theme="ai" onClick={() => onSelectView('ai-view')} iconUrl={aiIcon}>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 whitespace-nowrap">
+                {t.aiPillarTitle}
+              </h2>
+              <p className="text-xl text-gray-400">
+                {t.aiPillarSlogan}
+              </p>
+            </HologramCard>
+          </div>
 
-                <p className="text-lg md:text-xl text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                  {t.aiPillarSlogan}
-                </p>
-              </div>
-            </button>
-          </CometCard>
-
-          <CometCard className="w-full max-w-sm mx-auto md:max-w-none">
-            <button
-              onClick={() => onSelectView('digital-view')}
-              className="group relative bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl md:rounded-3xl p-6 md:p-10 lg:p-12 hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 animate-scale-in w-full min-h-[220px] md:min-h-0"
-              style={{ animationDelay: '0.4s' }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-green-600/20 to-transparent rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              <div className="relative z-10">
-                <div className="icon-container digital-icon w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 mx-auto transition-all duration-500 group-hover:scale-110">
-                  <img src={digitalIcon} alt="Allync Digital" className="w-full h-full object-contain transition-all duration-500" />
+          {/* Mobile: CometCard */}
+          <div className="block md:hidden">
+            <CometCard className="w-full max-w-sm mx-auto">
+              <button
+                onClick={() => onSelectView('digital-view')}
+                className="group relative bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 animate-scale-in w-full min-h-[220px]"
+                style={{ animationDelay: '0.4s' }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-green-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="icon-container digital-icon w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+                    <img src={digitalIcon} alt="Allync Digital" className="w-full h-full object-contain" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap">
+                    {t.digitalPillarTitle}
+                  </h2>
+                  <p className="text-lg text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                    {t.digitalPillarSlogan}
+                  </p>
                 </div>
+              </button>
+            </CometCard>
+          </div>
 
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap">
-                  {t.digitalPillarTitle}
-                </h2>
-
-                <p className="text-lg md:text-xl text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                  {t.digitalPillarSlogan}
-                </p>
-              </div>
-            </button>
-          </CometCard>
+          {/* Desktop: HologramCard */}
+          <div className="hidden md:block animate-scale-in" style={{ animationDelay: '0.4s' }}>
+            <HologramCard theme="digital" onClick={() => onSelectView('digital-view')} iconUrl={digitalIcon}>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 whitespace-nowrap">
+                {t.digitalPillarTitle}
+              </h2>
+              <p className="text-xl text-gray-400">
+                {t.digitalPillarSlogan}
+              </p>
+            </HologramCard>
+          </div>
         </div>
       </div>
 
