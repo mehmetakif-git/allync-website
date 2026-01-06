@@ -714,7 +714,7 @@ export const DesktopCustomAIDemo: React.FC<DesktopCustomAIDemoProps> = ({
                         <div className="dca-capabilities-list">
                           {currentScenario.result.capabilities.map((cap, index) => (
                             <div key={index} className="dca-capability-item">
-                              <img src={checkIcon} alt="" className="dca-cap-check" />
+                              <img src={checkIcon} alt="Capability included" className="dca-cap-check" />
                               <span>{cap[language]}</span>
                             </div>
                           ))}

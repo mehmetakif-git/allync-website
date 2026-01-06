@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LoadingScreen } from './components/LoadingScreen';
@@ -9,8 +9,10 @@ import FloatingLines from './components/ui/FloatingLines';
 import Lanyard from './components/Lanyard';
 import { InactivityWarning } from './components/InactivityWarning';
 import { ScrollProgress } from './components/ui/ScrollProgress';
-import { AllyncAISolutions } from './components/AllyncAISolutions';
-import { DigitalSolutions } from './components/DigitalSolutions';
+
+// Lazy load heavy components - only loaded when user navigates to them
+const AllyncAISolutions = React.lazy(() => import('./components/AllyncAISolutions').then(m => ({ default: m.AllyncAISolutions })));
+const DigitalSolutions = React.lazy(() => import('./components/DigitalSolutions').then(m => ({ default: m.DigitalSolutions })));
 
 function App() {
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
@@ -258,12 +260,18 @@ function App() {
                   onLanguageToggle={toggleLanguage}
                 />
               )}
-              {viewMode === 'ai-view' && (
-                <AllyncAISolutions language={language} />
-              )}
-              {viewMode === 'digital-view' && (
-                <DigitalSolutions language={language} />
-              )}
+              <Suspense fallback={
+                <div className="flex items-center justify-center min-h-screen">
+                  <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              }>
+                {viewMode === 'ai-view' && (
+                  <AllyncAISolutions language={language} />
+                )}
+                {viewMode === 'digital-view' && (
+                  <DigitalSolutions language={language} />
+                )}
+              </Suspense>
             </motion.div>
           </AnimatePresence>
           {!isMobile && (

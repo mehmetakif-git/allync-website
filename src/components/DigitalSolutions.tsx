@@ -2,10 +2,6 @@ import React from 'react';
 import { ShoppingCart, Monitor, Smartphone, Target, Wifi, Cloud, Wrench } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { SolutionsPage, Service } from './SolutionsPage';
-import eCommerceImg1 from '../assets/gallery/ecommerce/1.png';
-import eCommerceImg2 from '../assets/gallery/ecommerce/2.png';
-import eCommerceImg3 from '../assets/gallery/ecommerce/3.png';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface DigitalSolutionsProps {
   language: 'tr' | 'en';
@@ -23,7 +19,7 @@ export const DigitalSolutions: React.FC<DigitalSolutionsProps> = ({ language }) 
       gradient: 'from-green-500 to-emerald-600',
       glowColor: 'rgba(34, 197, 94, 0.5)',
       extendedContent: 'E-Ticaret Web Siteleri ile online satış yapmanızı sağlayan profesyonel platformlar oluşturun. Stripe ve PayPal entegrasyonu, envanter yönetimi ve SEO optimize altyapı ile işletmenizi dijital dünyaya taşıyın.\n\nÖzellikler:\n- Güvenli ödeme sistemleri\n- Mobil uyumlu tasarım\n- Gerçek zamanlı stok takibi\n- Sipariş yönetimi\n- Analitik ve raporlama\n\nE-ticaret başarınızı garantileyin.',
-      galleryImages: [eCommerceImg1, eCommerceImg2, eCommerceImg3],
+      galleryImages: ['E-commerce Dashboard', 'Product Catalog', 'Shopping Cart'],
       demoType: 'ecommerce'
     },
     {

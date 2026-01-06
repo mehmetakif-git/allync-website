@@ -2,9 +2,6 @@ import React from 'react';
 import { MessageCircle, Instagram, Video, Image as ImageIcon, Mic, FileText, Play, Film, BarChart3, Sparkles } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { SolutionsPage, Service } from './SolutionsPage';
-import waImg1 from '../assets/gallery/wa/1.png';
-import waImg2 from '../assets/gallery/wa/2.png';
-import waImg3 from '../assets/gallery/wa/3.png';
 
 interface AllyncAISolutionsProps {
   language: 'tr' | 'en';
@@ -22,7 +19,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       gradient: 'from-green-500 to-emerald-600',
       glowColor: 'rgba(34, 197, 94, 0.5)',
       extendedContent: 'WhatsApp Automation ile işletmeniz 7/24 müşterilerinize anında yanıt verebilir. Gelişmiş yapay zeka teknolojisi sayesinde müşteri sorgularını anlayıp, randevu oluşturabilir, sık sorulan soruları yanıtlayabilir ve müşteri memnuniyetini artırabilirsiniz.\n\nÖzellikler:\n- Otomatik müşteri hizmetleri\n- Randevu yönetim sistemi\n- Çoklu dil desteği\n- CRM entegrasyonu\n- Detaylı raporlama ve analitik\n\nBu hizmet ile işletmeniz operasyonel maliyetleri düşürürken müşteri memnuniyetini maksimize edebilir.',
-      galleryImages: [waImg1, waImg2, waImg3],
+      galleryImages: ['WhatsApp Chat', 'AI Response', 'Customer Support'],
       demoType: 'whatsapp',
       audioSrc: language === 'en' ? '/audio/en/english-whatsapp-automations.mp3' : undefined,
       subtitles: language === 'en' ? [

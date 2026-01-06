@@ -664,7 +664,7 @@ export const MobileCustomAIDemo: React.FC<MobileCustomAIDemoProps> = ({
                         <div className="mca-capabilities-list">
                           {currentScenario.result.capabilities.map((cap, index) => (
                             <div key={index} className="mca-capability-item">
-                              <img src={checkIcon} alt="" className="mca-cap-check" />
+                              <img src={checkIcon} alt="Capability included" className="mca-cap-check" />
                               <span>{cap[language]}</span>
                             </div>
                           ))}
