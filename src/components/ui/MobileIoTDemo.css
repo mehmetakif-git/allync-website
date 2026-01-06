@@ -1,0 +1,1597 @@
+/* Mobile IoT Demo - Responsive iPhone Experience */
+/* Prefix: miot- (Mobile IoT Demo) */
+/* Theme: Teal/Cyan gradient - matches DesktopIoTDemo */
+
+:root {
+  --miot-iphone-width: min(375px, 90vw);
+  --miot-max-height: calc(100svh - 40px);
+  --miot-iphone-height: min(calc(var(--miot-iphone-width) * 2.16), var(--miot-max-height));
+  --miot-border-radius: calc(var(--miot-iphone-width) * 0.14);
+  --miot-bezel: calc(var(--miot-iphone-width) * 0.025);
+  --miot-dynamic-island-width: calc(var(--miot-iphone-width) * 0.32);
+  --miot-dynamic-island-height: calc(var(--miot-iphone-width) * 0.095);
+  --miot-primary: #14b8a6;
+  --miot-primary-dark: #0d9488;
+  --miot-secondary: #06b6d4;
+  --miot-gradient: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%);
+}
+
+@supports not (height: 100svh) {
+  :root {
+    --miot-max-height: calc(100vh - 40px);
+  }
+}
+
+.miot-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  height: 100vh; /* Fallback */
+  min-height: -webkit-fill-available;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #042f2e 0%, #134e4a 50%, #115e59 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+  overflow: hidden;
+  z-index: 2147483647;
+  isolation: isolate;
+}
+
+body.miot-modal-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.miot-iphone-container {
+  position: relative;
+  cursor: default;
+}
+
+/* iPhone Frame - Teal themed */
+.miot-iphone-frame {
+  position: relative;
+  width: var(--miot-iphone-width);
+  height: var(--miot-iphone-height);
+  background: linear-gradient(145deg, #0d3d3d 0%, #0a2a2a 50%, #0d3535 100%);
+  border-radius: var(--miot-border-radius);
+  padding: var(--miot-bezel);
+  box-shadow:
+    0 0 0 1px rgba(20, 184, 166, 0.15),
+    0 25px 80px -15px rgba(0, 0, 0, 0.7),
+    0 10px 40px -10px rgba(6, 182, 212, 0.2),
+    inset 0 1px 0 rgba(20, 184, 166, 0.1);
+}
+
+.miot-iphone-frame::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(135deg,
+    rgba(20, 184, 166, 0.2) 0%,
+    rgba(6, 182, 212, 0.05) 25%,
+    rgba(0,0,0,0.1) 50%,
+    rgba(6, 182, 212, 0.05) 75%,
+    rgba(20, 184, 166, 0.15) 100%);
+  border-radius: calc(var(--miot-border-radius) + 1px);
+  z-index: -1;
+}
+
+/* Side Buttons */
+.miot-side-button {
+  position: absolute;
+  background: linear-gradient(90deg, #0d3d3d, #0a2a2a, #0d3d3d);
+  border-radius: 2px;
+}
+
+.miot-silent-switch {
+  left: -3px;
+  top: calc(var(--miot-iphone-height) * 0.12);
+  width: 3px;
+  height: calc(var(--miot-iphone-height) * 0.04);
+}
+
+.miot-volume-up {
+  left: -3px;
+  top: calc(var(--miot-iphone-height) * 0.19);
+  width: 3px;
+  height: calc(var(--miot-iphone-height) * 0.08);
+}
+
+.miot-volume-down {
+  left: -3px;
+  top: calc(var(--miot-iphone-height) * 0.28);
+  width: 3px;
+  height: calc(var(--miot-iphone-height) * 0.08);
+}
+
+.miot-power-button {
+  right: -3px;
+  top: calc(var(--miot-iphone-height) * 0.21);
+  width: 3px;
+  height: calc(var(--miot-iphone-height) * 0.12);
+}
+
+/* Screen */
+.miot-iphone-screen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: calc(var(--miot-border-radius) - var(--miot-bezel));
+  overflow: hidden;
+  position: relative;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  isolation: isolate;
+}
+
+/* Wallpaper */
+.miot-wallpaper {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg,
+    #051515 0%,
+    #0d3535 30%,
+    #0f4040 50%,
+    #0d3535 70%,
+    #051515 100%
+  );
+}
+
+.miot-wallpaper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(20, 184, 166, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 70%, rgba(6, 182, 212, 0.2) 0%, transparent 40%);
+}
+
+/* Screen Reflection */
+.miot-screen-reflection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ==================== DYNAMIC ISLAND ==================== */
+.miot-dynamic-island {
+  position: absolute;
+  top: calc(var(--miot-iphone-width) * 0.03);
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--miot-dynamic-island-width);
+  height: var(--miot-dynamic-island-height);
+  background: #000;
+  border-radius: calc(var(--miot-dynamic-island-height) / 2);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width, height, border-radius;
+  backface-visibility: hidden;
+}
+
+.miot-dynamic-island.miot-di-state-collapsed:hover {
+  width: calc(var(--miot-dynamic-island-width) * 1.1);
+  height: calc(var(--miot-dynamic-island-height) * 1.05);
+}
+
+.miot-dynamic-island.miot-di-state-compact {
+  width: calc(var(--miot-iphone-width) * 0.52);
+  height: calc(var(--miot-iphone-width) * 0.13);
+  border-radius: calc(var(--miot-iphone-width) * 0.065);
+}
+
+.miot-dynamic-island.miot-di-state-expanded {
+  width: calc(var(--miot-iphone-width) * 0.88);
+  height: calc(var(--miot-iphone-width) * 0.23);
+  border-radius: calc(var(--miot-iphone-width) * 0.1);
+}
+
+.miot-dynamic-island::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.1) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(255,255,255,0.05) 100%
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Collapsed content */
+.miot-di-collapsed-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 15px;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.miot-dynamic-island.miot-di-state-expanded .miot-di-collapsed-content,
+.miot-dynamic-island.miot-di-state-compact .miot-di-collapsed-content {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.08s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.miot-di-camera {
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 35% 35%, #1a3a3a 0%, #050508 100%);
+  border-radius: 50%;
+  border: 2px solid #1a2a2a;
+  box-shadow:
+    inset 0 1px 2px rgba(0,0,0,0.8),
+    0 0 3px rgba(20, 184, 166, 0.3);
+}
+
+.miot-di-sensor {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #0a1a1a 0%, #000005 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(6, 182, 212, 0.2);
+}
+
+/* Compact content - IoT Status */
+.miot-di-compact-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 8px 12px;
+  opacity: 0;
+  transform: scale(0.9);
+  transform-origin: center center;
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+  position: absolute;
+  pointer-events: none;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.miot-dynamic-island.miot-di-state-compact .miot-di-compact-content {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  transition:
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+
+.miot-dynamic-island.miot-di-state-expanded .miot-di-compact-content,
+.miot-dynamic-island.miot-di-state-collapsed .miot-di-compact-content {
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+  transition:
+    opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.miot-di-compact-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.miot-di-compact-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--miot-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miot-di-compact-icon svg {
+  width: 14px;
+  height: 14px;
+  color: white;
+}
+
+.miot-di-compact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.miot-di-compact-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+}
+
+.miot-di-compact-subtitle {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.2;
+}
+
+.miot-di-compact-right {
+  display: flex;
+  align-items: center;
+}
+
+.miot-di-compact-temp {
+  font-size: 16px;
+  font-weight: 600;
+  color: #14b8a6;
+}
+
+/* Expanded content - IoT Status */
+.miot-di-expanded-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 14px 18px;
+  opacity: 0;
+  transform: scale(0.9);
+  transform-origin: center center;
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+  position: absolute;
+  pointer-events: none;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+.miot-dynamic-island.miot-di-state-expanded .miot-di-expanded-content {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  transition:
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+
+.miot-dynamic-island.miot-di-state-compact .miot-di-expanded-content,
+.miot-dynamic-island.miot-di-state-collapsed .miot-di-expanded-content {
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+  transition:
+    opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.miot-di-status-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.miot-di-status-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--miot-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miot-di-status-icon svg {
+  width: 18px;
+  height: 18px;
+  color: white;
+}
+
+.miot-di-status-info {
+  color: white;
+}
+
+.miot-di-status-info h4 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+  letter-spacing: -0.3px;
+}
+
+.miot-di-status-info p {
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+  margin: 0;
+}
+
+.miot-di-status-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.miot-di-sensor-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.miot-di-sensor-badge span {
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+}
+
+.miot-di-sensor-badge small {
+  font-size: 7px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+/* ==================== STATUS BAR ==================== */
+.miot-status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--miot-iphone-width) * 0.14);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: calc(var(--miot-iphone-width) * 0.044) calc(var(--miot-iphone-width) * 0.07) 0;
+  color: white;
+  font-size: calc(var(--miot-iphone-width) * 0.04);
+  font-weight: 600;
+  z-index: 50;
+}
+
+.miot-status-left {
+  display: flex;
+  align-items: center;
+}
+
+.miot-status-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.miot-signal-bars {
+  display: flex;
+  gap: 1.5px;
+  align-items: flex-end;
+  height: 11px;
+}
+
+.miot-signal-bars span {
+  width: 3px;
+  background: white;
+  border-radius: 1px;
+}
+
+.miot-signal-bars span:nth-child(1) { height: 25%; }
+.miot-signal-bars span:nth-child(2) { height: 50%; }
+.miot-signal-bars span:nth-child(3) { height: 75%; }
+.miot-signal-bars span:nth-child(4) { height: 100%; }
+
+.miot-wifi-icon {
+  margin-left: 3px;
+}
+
+.miot-wifi-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.miot-battery {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.miot-battery-body {
+  width: 22px;
+  height: 11px;
+  border: 1.5px solid white;
+  border-radius: 3px;
+  padding: 1.5px;
+  position: relative;
+}
+
+.miot-battery-body::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 5px;
+  background: white;
+  border-radius: 0 1px 1px 0;
+}
+
+.miot-battery-level {
+  height: 100%;
+  width: 80%;
+  background: var(--miot-gradient);
+  border-radius: 1px;
+}
+
+/* ==================== HOME SCREEN ==================== */
+.miot-home-screen {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.miot-home-screen.miot-hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+
+/* Time Widget */
+.miot-time-widget {
+  position: absolute;
+  top: calc(var(--miot-iphone-height) * 0.17);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  z-index: 10;
+}
+
+.miot-time {
+  font-size: calc(var(--miot-iphone-width) * 0.21);
+  font-weight: 200;
+  letter-spacing: -2px;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+}
+
+.miot-date {
+  font-size: calc(var(--miot-iphone-width) * 0.045);
+  font-weight: 500;
+  opacity: 0.9;
+  margin-top: 6px;
+}
+
+/* Widgets Container */
+.miot-widgets-container {
+  position: absolute;
+  bottom: calc(var(--miot-iphone-height) * 0.27);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: calc(var(--miot-iphone-width) * 0.035);
+  z-index: 10;
+  width: calc(var(--miot-iphone-width) - calc(var(--miot-iphone-width) * 0.08));
+  max-width: 360px;
+}
+
+.miot-widget {
+  flex: 1;
+  min-width: 0;
+  aspect-ratio: 1;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: calc(var(--miot-iphone-width) * 0.07);
+  padding: calc(var(--miot-iphone-width) * 0.035);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.miot-widget-hover:hover {
+  transform: scale(1.03);
+  background: rgba(255,255,255,0.22);
+}
+
+.miot-widget-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: calc(var(--miot-iphone-width) * 0.032);
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 6px;
+}
+
+.miot-widget-icon {
+  width: calc(var(--miot-iphone-width) * 0.06);
+  height: calc(var(--miot-iphone-width) * 0.06);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miot-widget-icon svg {
+  width: calc(var(--miot-iphone-width) * 0.04);
+  height: calc(var(--miot-iphone-width) * 0.04);
+  color: #14b8a6;
+}
+
+/* Sensor Widget Content */
+.miot-sensor-widget-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.miot-sensor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.miot-sensor-row-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.miot-sensor-row-left svg {
+  width: 12px;
+  height: 12px;
+}
+
+.miot-sensor-row span {
+  font-size: calc(var(--miot-iphone-width) * 0.028);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.miot-sensor-row strong {
+  font-size: calc(var(--miot-iphone-width) * 0.032);
+  font-weight: 600;
+}
+
+/* Devices Widget Content */
+.miot-devices-widget-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.miot-device-count {
+  font-size: calc(var(--miot-iphone-width) * 0.08);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.miot-device-count span {
+  font-size: calc(var(--miot-iphone-width) * 0.03);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.miot-device-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.miot-device-mini {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.miot-device-mini.miot-active {
+  background: var(--miot-gradient);
+}
+
+.miot-device-mini.miot-inactive {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.miot-device-mini svg {
+  width: calc(var(--miot-iphone-width) * 0.03);
+  height: calc(var(--miot-iphone-width) * 0.03);
+  color: white;
+}
+
+/* ==================== DOCK ==================== */
+.miot-dock {
+  position: absolute;
+  bottom: calc(var(--miot-iphone-height) * 0.05);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: calc(var(--miot-iphone-width) * 0.05);
+  padding: calc(var(--miot-iphone-width) * 0.035) calc(var(--miot-iphone-width) * 0.06);
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  border-radius: calc(var(--miot-iphone-width) * 0.085);
+  border: 1px solid rgba(255,255,255,0.12);
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+.miot-dock-icon {
+  width: calc(var(--miot-iphone-width) * 0.15);
+  height: calc(var(--miot-iphone-width) * 0.15);
+  border-radius: calc(var(--miot-iphone-width) * 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--miot-iphone-width) * 0.07);
+  color: white;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.miot-dock-hover:hover {
+  transform: scale(1.1) translateY(-8px);
+}
+
+.miot-dock-hover:active {
+  transform: scale(0.95);
+}
+
+/* Close Icon */
+.miot-close-icon {
+  background: linear-gradient(135deg, #ff3b30, #ff6b6b);
+  padding: 8px;
+  position: relative;
+}
+
+.miot-close-icon .miot-close-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.miot-close-tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff3b30, #ff6b6b);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(255, 59, 48, 0.5);
+  animation: miot-tooltipBounce 2s ease-in-out infinite;
+  z-index: 1000;
+}
+
+.miot-close-tooltip::before {
+  content: '\1F446';
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  animation: miot-fingerPoint 1s ease-in-out infinite;
+}
+
+.miot-close-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: #ff6b6b;
+}
+
+.miot-close-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--miot-iphone-width) * 0.05);
+  background: rgba(255, 59, 48, 0.4);
+  animation: miot-closePulseRing 1.5s ease-out infinite;
+  z-index: -1;
+}
+
+.miot-close-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--miot-iphone-width) * 0.065);
+  background: rgba(255, 59, 48, 0.2);
+  animation: miot-closePulseRing 1.5s ease-out infinite 0.3s;
+  z-index: -2;
+}
+
+@keyframes miot-closePulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Contact Icon */
+.miot-contact-icon {
+  background: linear-gradient(135deg, #007AFF, #5AC8FA);
+  padding: 8px;
+  position: relative;
+}
+
+.miot-contact-tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #007AFF, #5AC8FA);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(0, 122, 255, 0.5);
+  animation: miot-tooltipBounce 2s ease-in-out infinite;
+  z-index: 1000;
+}
+
+.miot-contact-tooltip::before {
+  content: '\1F446';
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  animation: miot-fingerPoint 1s ease-in-out infinite;
+}
+
+.miot-contact-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: #5AC8FA;
+}
+
+.miot-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* Call Icon */
+.miot-call-icon {
+  background: linear-gradient(135deg, #34C759, #30D158);
+  padding: 8px;
+}
+
+/* App Icon - Teal gradient */
+.miot-app-icon {
+  background: var(--miot-gradient);
+  position: relative;
+}
+
+.miot-app-tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--miot-gradient);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(20, 184, 166, 0.5);
+  animation: miot-tooltipBounce 2s ease-in-out infinite;
+  z-index: 1000;
+}
+
+.miot-app-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--miot-primary-dark);
+}
+
+@keyframes miot-tooltipBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+@keyframes miot-fingerPoint {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(5px); }
+}
+
+.miot-app-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--miot-iphone-width) * 0.05);
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.4), rgba(6, 182, 212, 0.4));
+  animation: miot-pulseRing 1.5s ease-out infinite;
+  z-index: -1;
+}
+
+.miot-app-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: calc(var(--miot-iphone-width) * 0.065);
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(6, 182, 212, 0.2));
+  animation: miot-pulseRing 1.5s ease-out infinite 0.3s;
+  z-index: -2;
+}
+
+@keyframes miot-pulseRing {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Home Indicator */
+.miot-home-indicator {
+  position: absolute;
+  bottom: calc(var(--miot-iphone-width) * 0.025);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--miot-iphone-width) * 0.37);
+  height: calc(var(--miot-iphone-width) * 0.013);
+  background: rgba(255,255,255,0.6);
+  border-radius: 3px;
+  z-index: 100;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.miot-home-indicator:hover {
+  background: rgba(255,255,255,0.9);
+  width: calc(var(--miot-iphone-width) * 0.4);
+}
+
+/* ==================== APP ==================== */
+.miot-app {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #0a0a0f 0%, #0f0f1a 100%);
+  border-radius: calc(var(--miot-border-radius) - var(--miot-bezel));
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform-style: flat;
+  isolation: isolate;
+  overscroll-behavior: contain;
+}
+
+.miot-app.miot-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* App Content */
+.miot-app-content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 0;
+  max-height: 100%;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+/* ==================== IoT APP STYLES ==================== */
+.miot-iot-app {
+  height: 100%;
+  background: #0a0a0f;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* IoT Header - Fixed at top */
+.miot-iot-header {
+  padding: calc(var(--miot-iphone-width) * 0.15) calc(var(--miot-iphone-width) * 0.04) calc(var(--miot-iphone-width) * 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 50;
+  background: rgba(10, 10, 15, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.miot-iot-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.miot-iot-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.miot-iot-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--miot-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miot-iot-logo svg {
+  width: 16px;
+  height: 16px;
+  color: white;
+}
+
+.miot-iot-header-text h1 {
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.miot-iot-header-text p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  margin: 0;
+}
+
+.miot-iot-settings-btn {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  max-width: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  border-radius: 6px;
+  background: rgba(255, 59, 48, 0.25);
+  border: 1px solid rgba(255, 59, 48, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  flex-grow: 0;
+  margin-left: auto;
+  padding: 0;
+}
+
+.miot-iot-settings-btn:active {
+  background: rgba(255, 59, 48, 0.5);
+}
+
+.miot-iot-settings-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px;
+  min-height: 16px;
+  color: #ff5f57;
+  stroke-width: 3;
+}
+
+/* IoT Tabs */
+.miot-iot-tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.miot-iot-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.miot-iot-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.miot-iot-tab.miot-active {
+  background: rgba(20, 184, 166, 0.2);
+  color: #14b8a6;
+}
+
+.miot-iot-tab svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* IoT Content - Scrollable */
+.miot-iot-content {
+  padding: 14px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.miot-iot-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Quick Stats */
+.miot-quick-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.miot-stat-card {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.miot-stat-card.miot-highlight {
+  background: rgba(20, 184, 166, 0.2);
+}
+
+.miot-stat-card svg {
+  width: 14px;
+  height: 14px;
+  margin: 0 auto 4px;
+}
+
+.miot-stat-card p {
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.miot-stat-card span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 9px;
+}
+
+/* Section Title */
+.miot-section-title {
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+/* Device Grid */
+.miot-device-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.miot-device-card {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.miot-device-card.miot-on {
+  background: rgba(20, 184, 166, 0.2);
+  border-color: rgba(20, 184, 166, 0.5);
+}
+
+.miot-device-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.miot-device-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miot-device-card.miot-on .miot-device-icon {
+  background: #14b8a6;
+}
+
+.miot-device-card:not(.miot-on) .miot-device-icon {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.miot-device-icon svg {
+  width: 14px;
+  height: 14px;
+  color: white;
+}
+
+.miot-device-card:not(.miot-on) .miot-device-icon svg {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Toggle Switch */
+.miot-toggle {
+  width: 38px;
+  height: 22px;
+  border-radius: 11px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  padding: 0;
+}
+
+.miot-toggle.miot-on {
+  background: #14b8a6;
+}
+
+.miot-toggle:not(.miot-on) {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.miot-toggle-knob {
+  position: absolute;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  transition: left 0.2s;
+}
+
+.miot-toggle.miot-on .miot-toggle-knob {
+  left: 18px;
+}
+
+.miot-toggle:not(.miot-on) .miot-toggle-knob {
+  left: 2px;
+}
+
+.miot-device-name {
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.miot-device-room {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 9px;
+  margin: 0;
+}
+
+/* Circular Gauges */
+.miot-gauges-row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.miot-gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.miot-gauge-circle {
+  position: relative;
+  width: 70px;
+  height: 70px;
+}
+
+.miot-gauge-circle svg {
+  transform: rotate(-90deg);
+  width: 70px;
+  height: 70px;
+}
+
+.miot-gauge-circle svg circle {
+  cx: 35;
+  cy: 35;
+  r: 31;
+}
+
+.miot-gauge-bg {
+  stroke: rgba(255, 255, 255, 0.1);
+}
+
+.miot-gauge-fill {
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+.miot-gauge-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.miot-gauge-center svg {
+  width: 12px;
+  height: 12px;
+  margin-bottom: 2px;
+}
+
+.miot-gauge-center span {
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.miot-gauge-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+/* Live Data */
+.miot-live-data {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.miot-live-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.miot-live-item-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.miot-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #14b8a6;
+  animation: miot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes miot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.miot-live-item span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+}
+
+.miot-live-item strong {
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Energy Chart */
+.miot-energy-chart {
+  height: 70px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.miot-chart-bar-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.miot-chart-bar {
+  width: 100%;
+  background: var(--miot-gradient);
+  border-radius: 3px 3px 0 0;
+}
+
+.miot-chart-label {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 7px;
+  margin-top: 3px;
+}
+
+/* Alert Summary */
+.miot-alert-summary {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.miot-alert-box {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.miot-alert-box.miot-warning {
+  background: rgba(245, 158, 11, 0.2);
+}
+
+.miot-alert-box.miot-success {
+  background: rgba(20, 184, 166, 0.2);
+}
+
+.miot-alert-box.miot-info {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.miot-alert-box svg {
+  width: 14px;
+  height: 14px;
+  margin: 0 auto 4px;
+}
+
+.miot-alert-box.miot-warning svg { color: #f59e0b; }
+.miot-alert-box.miot-success svg { color: #14b8a6; }
+.miot-alert-box.miot-info svg { color: #3b82f6; }
+
+.miot-alert-box p {
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.miot-alert-box span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 9px;
+}
+
+/* Alert List */
+.miot-alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.miot-alert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.miot-alert-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.miot-alert-icon.miot-warning { background: rgba(245, 158, 11, 0.2); }
+.miot-alert-icon.miot-success { background: rgba(20, 184, 166, 0.2); }
+.miot-alert-icon.miot-info { background: rgba(59, 130, 246, 0.2); }
+
+.miot-alert-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.miot-alert-icon.miot-warning svg { color: #f59e0b; }
+.miot-alert-icon.miot-success svg { color: #14b8a6; }
+.miot-alert-icon.miot-info svg { color: #3b82f6; }
+
+.miot-alert-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.miot-alert-text p {
+  color: white;
+  font-size: 10px;
+  margin: 0 0 2px;
+}
+
+.miot-alert-text span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 9px;
+}
+
+/* CTA Button */
+.miot-cta-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  background: var(--miot-gradient);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.miot-cta-btn:hover {
+  opacity: 0.9;
+}
+
+.miot-cta-btn:active {
+  transform: scale(0.98);
+}

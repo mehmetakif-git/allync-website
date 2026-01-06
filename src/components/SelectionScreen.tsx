@@ -1,8 +1,11 @@
 import React from 'react';
-import { Zap, Code } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { TextRevealCard, TextRevealCardTitle, TextRevealCardDescription } from './ui/TextRevealCard';
 import { CometCard } from './ui/CometCard';
+
+// Category Icons
+import aiIcon from '../assets/Icon/ai.png';
+import digitalIcon from '../assets/Icon/digital.png';
 
 interface SelectionScreenProps {
   language: 'tr' | 'en';
@@ -64,8 +67,8 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-transparent rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-500">
-                  <Zap className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-500">
+                  <img src={aiIcon} alt="Allync AI" className="w-full h-full object-contain" />
                 </div>
 
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300 whitespace-nowrap">
@@ -88,8 +91,8 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-green-600/20 to-transparent rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-cyan-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-500">
-                  <Code className="w-10 h-10 md:w-12 md:h-12 text-white" />
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-500">
+                  <img src={digitalIcon} alt="Allync Digital" className="w-full h-full object-contain" />
                 </div>
 
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap">

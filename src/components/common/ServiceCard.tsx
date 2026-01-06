@@ -34,9 +34,12 @@ import { MobileCorporateDemo } from '../ui/MobileCorporateDemo';
 import { DesktopMobileAppDemo } from '../ui/DesktopMobileAppDemo';
 import { MobileMobileAppDemo } from '../ui/MobileMobileAppDemo';
 import { DesktopIoTDemo } from '../ui/DesktopIoTDemo';
+import { MobileIoTDemo } from '../ui/MobileIoTDemo';
 import { DesktopCloudDemo } from '../ui/DesktopCloudDemo';
+import { MobileCloudDemo } from '../ui/MobileCloudDemo';
 import { DesktopMaintenanceDemo } from '../ui/DesktopMaintenanceDemo';
 import DesktopDigitalMarketingDemo from '../ui/DesktopDigitalMarketingDemo';
+import { MobileDigitalMarketingDemo } from '../ui/MobileDigitalMarketingDemo';
 import { getDemoThumbnail } from '../../assets/demo-thumbnails';
 
 interface Service {
@@ -1191,6 +1194,19 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               />
             )}
 
+            {/* Mobile Version - Full iPhone experience */}
+            {!isDesktop && (
+              <MobileDigitalMarketingDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
           </>
         )}
       </AnimatePresence>
@@ -1213,6 +1229,19 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
               />
             )}
 
+            {/* Mobile Version - Full iPhone experience */}
+            {!isDesktop && (
+              <MobileIoTDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  setIsDemoModalOpen(false);
+                }}
+              />
+            )}
           </>
         )}
       </AnimatePresence>
@@ -1237,74 +1266,16 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
 
             {/* Mobile Version - Full iPhone experience */}
             {!isDesktop && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="fixed inset-0 z-[99999] flex items-center justify-center p-2 md:p-4"
-                onClick={() => setIsDemoModalOpen(false)}
-              >
-                {/* Backdrop - visual only */}
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
-
-                {/* Close button */}
-                <motion.button
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  onClick={() => setIsDemoModalOpen(false)}
-                  className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[100001]"
-                >
-                  <X className="w-6 h-6 text-white" />
-                </motion.button>
-
-                {/* Modal Content */}
-                <motion.div
-                  ref={demoModalRef}
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                  className="relative z-[100000] flex flex-col items-center pointer-events-none"
-                >
-                  {/* Title */}
-                  <motion.h3
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-white text-xl md:text-2xl font-bold mb-4 text-center pointer-events-auto"
-                  >
-                    {language === 'tr' ? 'Cloud Console Dashboard' : 'Cloud Console Dashboard'}
-                  </motion.h3>
-
-                  {/* iPhone Mockup with Cloud Demo */}
-                  <div className="pointer-events-auto" onClick={(e) => e.stopPropagation()}>
-                    <MobileIPhoneMockup
-                      themeColor={service.glowColor?.replace('0.5)', '1)') || '#6366F1'}
-                      hideNotch={false}
-                    >
-                      <CloudDemo
-                        language={language}
-                        onContactClick={() => {
-                          setIsDemoModalOpen(false);
-                          onContactClick();
-                        }}
-                      />
-                    </MobileIPhoneMockup>
-                  </div>
-
-                  {/* Bottom hint */}
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.5 }}
-                    transition={{ delay: 0.5 }}
-                    className="mt-4 text-gray-500 text-sm text-center pointer-events-auto"
-                  >
-                    {language === 'tr' ? 'Sunucuları yönetin ve deployment durumunu görün' : 'Manage servers and view deployment status'}
-                  </motion.p>
-                </motion.div>
-              </motion.div>
+              <MobileCloudDemo
+                language={language}
+                onContactClick={() => {
+                  setIsDemoModalOpen(false);
+                  onContactClick();
+                }}
+                onClose={() => {
+                  setIsDemoModalOpen(false);
+                }}
+              />
             )}
           </>
         )}
