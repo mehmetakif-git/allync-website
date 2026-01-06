@@ -289,11 +289,38 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     if (isMobile) return;
 
+    let isPulsing = false;
+    let fadeOutTimerId: number | null = null;
+
     const triggerPulse = () => {
+      if (isPulsing) return;
+      isPulsing = true;
+      wrap.classList.remove('idle-pulse-out');
       wrap.classList.add('idle-pulse');
+
+      // Remove pulse class after animation completes
       setTimeout(() => {
-        wrap.classList.remove('idle-pulse');
+        if (wrap.classList.contains('idle-pulse')) {
+          wrap.classList.remove('idle-pulse');
+        }
+        isPulsing = false;
       }, ANIMATION_CONFIG.PULSE_DURATION_MS);
+    };
+
+    const smoothFadeOut = () => {
+      // If currently pulsing, do a smooth fade out
+      if (wrap.classList.contains('idle-pulse')) {
+        wrap.classList.remove('idle-pulse');
+        wrap.classList.add('idle-pulse-out');
+
+        // Remove fade-out class after transition
+        if (fadeOutTimerId) window.clearTimeout(fadeOutTimerId);
+        fadeOutTimerId = window.setTimeout(() => {
+          wrap.classList.remove('idle-pulse-out');
+          fadeOutTimerId = null;
+        }, 400); // Match CSS transition duration
+      }
+      isPulsing = false;
     };
 
     const startPulseSequence = () => {
@@ -324,8 +351,8 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
         pulseIntervalRef.current = null;
       }
 
-      // Remove pulse class if active
-      wrap.classList.remove('idle-pulse');
+      // Smooth fade out if currently pulsing
+      smoothFadeOut();
 
       // Start new idle timer
       idleTimerRef.current = window.setTimeout(() => {
@@ -348,6 +375,7 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
       });
       if (idleTimerRef.current) window.clearTimeout(idleTimerRef.current);
       if (pulseIntervalRef.current) window.clearInterval(pulseIntervalRef.current);
+      if (fadeOutTimerId) window.clearTimeout(fadeOutTimerId);
     };
   }, [idlePulseOrder]);
 
