@@ -67,8 +67,8 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-transparent rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-500">
-                  <img src={aiIcon} alt="Allync AI" className="w-full h-full object-contain" />
+                <div className="icon-container ai-icon w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 mx-auto transition-all duration-500 group-hover:scale-110">
+                  <img src={aiIcon} alt="Allync AI" className="w-full h-full object-contain transition-all duration-500" />
                 </div>
 
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300 whitespace-nowrap">
@@ -91,8 +91,8 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-green-600/20 to-transparent rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-500">
-                  <img src={digitalIcon} alt="Allync Digital" className="w-full h-full object-contain" />
+                <div className="icon-container digital-icon w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center mb-6 mx-auto transition-all duration-500 group-hover:scale-110">
+                  <img src={digitalIcon} alt="Allync Digital" className="w-full h-full object-contain transition-all duration-500" />
                 </div>
 
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap">
@@ -131,6 +131,33 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
           }
         }
 
+        @keyframes icon-float {
+          0%, 100% {
+            transform: translateY(0) scale(1.1);
+          }
+          50% {
+            transform: translateY(-8px) scale(1.1);
+          }
+        }
+
+        @keyframes icon-pulse {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+          }
+          50% {
+            box-shadow: 0 0 30px 10px rgba(168, 85, 247, 0.2);
+          }
+        }
+
+        @keyframes icon-pulse-cyan {
+          0%, 100% {
+            box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4);
+          }
+          50% {
+            box-shadow: 0 0 30px 10px rgba(34, 211, 238, 0.2);
+          }
+        }
+
         .animate-fade-in-up {
           animation: fade-in-up 0.8s ease-out;
         }
@@ -138,6 +165,46 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
         .animate-scale-in {
           animation: scale-in 0.6s ease-out;
           animation-fill-mode: both;
+        }
+
+        .icon-container {
+          position: relative;
+          border-radius: 1rem;
+        }
+
+        .icon-container::before {
+          content: '';
+          position: absolute;
+          inset: -4px;
+          border-radius: 1.25rem;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+        }
+
+        .ai-icon::before {
+          background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(59, 130, 246, 0.5));
+          filter: blur(15px);
+        }
+
+        .digital-icon::before {
+          background: linear-gradient(135deg, rgba(34, 211, 238, 0.5), rgba(34, 197, 94, 0.5));
+          filter: blur(15px);
+        }
+
+        .group:hover .icon-container::before {
+          opacity: 1;
+        }
+
+        .group:hover .ai-icon {
+          animation: icon-float 2s ease-in-out infinite, icon-pulse 2s ease-in-out infinite;
+        }
+
+        .group:hover .digital-icon {
+          animation: icon-float 2s ease-in-out infinite, icon-pulse-cyan 2s ease-in-out infinite;
+        }
+
+        .group:hover .icon-container img {
+          filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
         }
       `}</style>
     </div>
