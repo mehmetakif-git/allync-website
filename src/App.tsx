@@ -5,12 +5,12 @@ import { LoadingScreen } from './components/LoadingScreen';
 import { Navigation } from './components/Navigation';
 import { SelectionScreen } from './components/SelectionScreen';
 import { HelmetManager } from './components/HelmetManager';
-import FloatingLines from './components/ui/FloatingLines';
-import Lanyard from './components/Lanyard';
 import { InactivityWarning } from './components/InactivityWarning';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 
-// Lazy load heavy components - only loaded when user navigates to them
+// Lazy load heavy components - Three.js and solutions pages
+const FloatingLines = React.lazy(() => import('./components/ui/FloatingLines'));
+const Lanyard = React.lazy(() => import('./components/Lanyard'));
 const AllyncAISolutions = React.lazy(() => import('./components/AllyncAISolutions').then(m => ({ default: m.AllyncAISolutions })));
 const DigitalSolutions = React.lazy(() => import('./components/DigitalSolutions').then(m => ({ default: m.DigitalSolutions })));
 
@@ -191,7 +191,9 @@ function App() {
           exit={{ y: '-100vh', opacity: 0 }}
           transition={{ type: 'spring', stiffness: 50, damping: 15 }}
         >
-          <Lanyard onDismiss={handleLanyardDismiss} scrollJolt={scrollJolt} />
+          <Suspense fallback={null}>
+            <Lanyard onDismiss={handleLanyardDismiss} scrollJolt={scrollJolt} />
+          </Suspense>
         </motion.div>
       )}
     </AnimatePresence>
@@ -200,30 +202,32 @@ function App() {
   return (
     <HelmetProvider>
         <div className={`min-h-screen bg-black app-loaded ${animationsEnabled ? 'animations-enabled' : 'animations-disabled'}`}>
-          {/* FloatingLines - Always visible including during loading */}
-          {!isMobile ? (
-            <FloatingLines
-              enabledWaves={['top', 'middle', 'bottom']}
-              lineCount={5}
-              lineDistance={5}
-              bendRadius={5.0}
-              bendStrength={-0.5}
-              interactive={viewMode !== 'loading'}
-              parallax={false}
-              mixBlendMode="normal"
-            />
-          ) : (
-            <FloatingLines
-              enabledWaves={['bottom']}
-              lineCount={2}
-              lineDistance={8}
-              animationSpeed={0.5}
-              interactive={false}
-              parallax={false}
-              mixBlendMode="normal"
-              pixelRatio={1}
-            />
-          )}
+          {/* FloatingLines - Lazy loaded Three.js component */}
+          <Suspense fallback={null}>
+            {!isMobile ? (
+              <FloatingLines
+                enabledWaves={['top', 'middle', 'bottom']}
+                lineCount={5}
+                lineDistance={5}
+                bendRadius={5.0}
+                bendStrength={-0.5}
+                interactive={viewMode !== 'loading'}
+                parallax={false}
+                mixBlendMode="normal"
+              />
+            ) : (
+              <FloatingLines
+                enabledWaves={['bottom']}
+                lineCount={2}
+                lineDistance={8}
+                animationSpeed={0.5}
+                interactive={false}
+                parallax={false}
+                mixBlendMode="normal"
+                pixelRatio={1}
+              />
+            )}
+          </Suspense>
 
           {/* Loading Screen */}
           {viewMode === 'loading' && (
