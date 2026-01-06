@@ -267,6 +267,55 @@
   }
 }
 
+/* Idle Pulse Animation */
+@keyframes holo-idle-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0 var(--pulse-color),
+      0 4px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px 8px var(--pulse-color),
+      0 4px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--pulse-color);
+  }
+}
+
+@keyframes holo-idle-glow {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.holo-card-wrapper.idle-pulse .holo-card {
+  animation: holo-idle-pulse 2.5s ease-in-out;
+  border: 1px solid transparent;
+}
+
+.holo-card-wrapper.idle-pulse .holo-idle-glow {
+  animation: holo-idle-glow 2.5s ease-in-out;
+}
+
+.holo-idle-glow {
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  border-radius: calc(var(--card-radius) + 2px);
+  background: radial-gradient(
+    ellipse at center,
+    var(--pulse-color) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(15px);
+}
+
 /* Mobile - Disable tilt effect completely */
 @media (max-width: 768px) {
   .holo-card-wrapper {

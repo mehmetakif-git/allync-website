@@ -7,13 +7,17 @@ interface HologramCardProps {
   className?: string;
   onClick?: () => void;
   iconUrl?: string;
+  idlePulseOrder?: number; // 0 = first to pulse, 1 = second to pulse
 }
 
 const ANIMATION_CONFIG = {
   INITIAL_DURATION: 1200,
   INITIAL_X_OFFSET: 70,
   INITIAL_Y_OFFSET: 60,
-  ENTER_TRANSITION_MS: 180
+  ENTER_TRANSITION_MS: 180,
+  IDLE_TIMEOUT_MS: 12000, // 12 seconds before pulse starts
+  PULSE_INTERVAL_MS: 5000, // 5 seconds between pulses
+  PULSE_DURATION_MS: 2500 // Duration of single pulse animation
 } as const;
 
 const clamp = (v: number, min = 0, max = 100): number => Math.min(Math.max(v, min), max);
@@ -26,12 +30,16 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
   theme,
   className = '',
   onClick,
-  iconUrl
+  iconUrl,
+  idlePulseOrder = 0
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
   const enterTimerRef = useRef<number | null>(null);
   const leaveRafRef = useRef<number | null>(null);
+  const idleTimerRef = useRef<number | null>(null);
+  const pulseIntervalRef = useRef<number | null>(null);
+  const lastActivityRef = useRef<number>(Date.now());
 
   const themeColors = useMemo(() => {
     if (theme === 'ai') {
@@ -43,7 +51,8 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
         sunpillar3: 'hsl(240, 100%, 69%)',
         sunpillar4: 'hsl(220, 100%, 76%)',
         sunpillar5: 'hsl(200, 100%, 74%)',
-        sunpillar6: 'hsl(290, 100%, 73%)'
+        sunpillar6: 'hsl(290, 100%, 73%)',
+        pulseColor: 'rgba(168, 85, 247, 0.4)'
       };
     }
     return {
@@ -54,7 +63,8 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
       sunpillar3: 'hsl(130, 100%, 69%)',
       sunpillar4: 'hsl(180, 100%, 76%)',
       sunpillar5: 'hsl(200, 100%, 74%)',
-      sunpillar6: 'hsl(160, 100%, 73%)'
+      sunpillar6: 'hsl(160, 100%, 73%)',
+      pulseColor: 'rgba(34, 211, 238, 0.4)'
     };
   }, [theme]);
 
@@ -265,10 +275,81 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
         '--sunpillar-clr-4': themeColors.sunpillar4,
         '--sunpillar-clr-5': themeColors.sunpillar5,
         '--sunpillar-clr-6': themeColors.sunpillar6,
-        '--icon': iconUrl ? `url(${iconUrl})` : 'none'
+        '--icon': iconUrl ? `url(${iconUrl})` : 'none',
+        '--pulse-color': themeColors.pulseColor
       }) as React.CSSProperties,
     [themeColors, iconUrl]
   );
+
+  // Idle pulse effect
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) return;
+
+    const triggerPulse = () => {
+      wrap.classList.add('idle-pulse');
+      setTimeout(() => {
+        wrap.classList.remove('idle-pulse');
+      }, ANIMATION_CONFIG.PULSE_DURATION_MS);
+    };
+
+    const startPulseSequence = () => {
+      // Calculate delay based on order (0 = immediate, 1 = after half interval)
+      const initialDelay = idlePulseOrder * (ANIMATION_CONFIG.PULSE_INTERVAL_MS / 2);
+
+      // First pulse after initial delay
+      idleTimerRef.current = window.setTimeout(() => {
+        triggerPulse();
+
+        // Then pulse at regular intervals
+        pulseIntervalRef.current = window.setInterval(() => {
+          triggerPulse();
+        }, ANIMATION_CONFIG.PULSE_INTERVAL_MS);
+      }, initialDelay);
+    };
+
+    const resetIdleTimer = () => {
+      lastActivityRef.current = Date.now();
+
+      // Clear existing timers
+      if (idleTimerRef.current) {
+        window.clearTimeout(idleTimerRef.current);
+        idleTimerRef.current = null;
+      }
+      if (pulseIntervalRef.current) {
+        window.clearInterval(pulseIntervalRef.current);
+        pulseIntervalRef.current = null;
+      }
+
+      // Remove pulse class if active
+      wrap.classList.remove('idle-pulse');
+
+      // Start new idle timer
+      idleTimerRef.current = window.setTimeout(() => {
+        startPulseSequence();
+      }, ANIMATION_CONFIG.IDLE_TIMEOUT_MS);
+    };
+
+    // Listen to global mouse/touch activity
+    const activityEvents = ['mousemove', 'mousedown', 'touchstart', 'keydown', 'scroll'];
+    activityEvents.forEach(event => {
+      window.addEventListener(event, resetIdleTimer, { passive: true });
+    });
+
+    // Start initial idle timer
+    resetIdleTimer();
+
+    return () => {
+      activityEvents.forEach(event => {
+        window.removeEventListener(event, resetIdleTimer);
+      });
+      if (idleTimerRef.current) window.clearTimeout(idleTimerRef.current);
+      if (pulseIntervalRef.current) window.clearInterval(pulseIntervalRef.current);
+    };
+  }, [idlePulseOrder]);
 
   return (
     <div
@@ -285,6 +366,8 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
           </filter>
         </defs>
       </svg>
+      {/* Idle pulse glow effect */}
+      <div className="holo-idle-glow" />
       <div ref={shellRef} className="holo-card-shell" onClick={onClick}>
         <div className="holo-card">
           <div className="holo-inside">

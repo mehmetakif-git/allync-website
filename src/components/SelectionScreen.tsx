@@ -85,7 +85,7 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
 
           {/* Desktop: HologramCard */}
           <div className="hidden md:block animate-scale-in" style={{ animationDelay: '0.2s' }}>
-            <HologramCard theme="ai" onClick={() => onSelectView('ai-view')} iconUrl={aiIcon}>
+            <HologramCard theme="ai" onClick={() => onSelectView('ai-view')} iconUrl={aiIcon} idlePulseOrder={0}>
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 whitespace-nowrap">
                 {t.aiPillarTitle}
               </h2>
@@ -121,7 +121,7 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
 
           {/* Desktop: HologramCard */}
           <div className="hidden md:block animate-scale-in" style={{ animationDelay: '0.4s' }}>
-            <HologramCard theme="digital" onClick={() => onSelectView('digital-view')} iconUrl={digitalIcon}>
+            <HologramCard theme="digital" onClick={() => onSelectView('digital-view')} iconUrl={digitalIcon} idlePulseOrder={1}>
               <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 whitespace-nowrap">
                 {t.digitalPillarTitle}
               </h2>
