@@ -1,5 +1,7 @@
 # Allync - AI & Digital Business Solutions
 
+> For comprehensive information including case studies, pricing, certifications, and detailed service descriptions, see the full version: https://www.allyncai.com/llms-full.txt
+
 > Allync (AllyncAI) provides AI-powered business automation and digital transformation solutions for companies in Turkey, Qatar, and globally.
 
 ## Company Overview
@@ -155,4 +157,15 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 - Dijital Pazarlama Trendleri 2026: https://www.allyncai.com/blog/dijital-pazarlama-2026.html
 
 ---
-For more detailed information, see: /llms-full.txt
+
+## Full Documentation
+
+For comprehensive information including:
+- Case studies with real results
+- Pricing ranges
+- Partnerships & certifications
+- Detailed technical stack
+- Comparison tables
+- Demo videos
+
+**See full version:** https://www.allyncai.com/llms-full.txt
