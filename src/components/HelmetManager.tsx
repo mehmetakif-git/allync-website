@@ -31,14 +31,11 @@ export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSe
     return baseTitles[language][activeSection] || baseTitles[language].hero;
   };
 
-  const canonicalUrl = 'https://www.allyncai.com/';
-
-  // Only update dynamic elements, not meta description (handled in index.html)
+  // Only update dynamic elements, not meta description or canonical (handled in index.html)
   return (
     <Helmet>
       <html lang={language} />
       <title>{getSectionTitle()}</title>
-      <link rel="canonical" href={canonicalUrl} />
       <meta property="og:locale" content={language === 'tr' ? 'tr_TR' : 'en_US'} />
     </Helmet>
   );
