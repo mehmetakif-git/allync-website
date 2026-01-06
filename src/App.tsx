@@ -21,9 +21,12 @@ function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [showLanyard, setShowLanyard] = useState(false);
   const [scrollJolt, setScrollJolt] = useState(0);
+  const [clickJolt, setClickJolt] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
   const [warningCountdown, setWarningCountdown] = useState(10);
+  const [lanyardSnapped, setLanyardSnapped] = useState(false);
+  const [snapMessage, setSnapMessage] = useState('');
 
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'tr' ? 'en' : 'tr');
@@ -102,6 +105,20 @@ function App() {
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
 
+  // Click anywhere to shake lanyard and show hint when it's visible
+  useEffect(() => {
+    if (!showLanyard) return;
+
+    const handleClick = () => {
+      // Trigger click jolt for all clicks - shows hint bubble and shakes lanyard
+      const joltValue = Date.now();
+      setClickJolt(joltValue);
+    };
+
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
+  }, [showLanyard]);
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -130,7 +147,7 @@ function App() {
     };
   }, [viewMode]);
 
-  // Effect to show warning at 80 seconds and Lanyard after 90 seconds of inactivity
+  // Effect to show warning at 50 seconds and Lanyard after 60 seconds of inactivity
   useEffect(() => {
     if (isMobile) return; // Don't run inactivity timer on mobile
 
@@ -144,7 +161,7 @@ function App() {
       if (!showLanyard) { // Don't set a new timer if lanyard is already trying to show or is shown
           inactivityTimer = setTimeout(() => {
               setShowWarning(true);
-          }, 80000);
+          }, 50000); // 50 seconds, then 10 second countdown = 60 seconds total
       }
     };
 
@@ -179,24 +196,83 @@ function App() {
 
   const handleLanyardDismiss = () => {
     setShowLanyard(false);
+    // Reset snap state after exit animation completes
+    setTimeout(() => {
+      setLanyardSnapped(false);
+      setSnapMessage('');
+    }, 1000);
+  };
+
+  const handleLanyardSnap = (message: string) => {
+    setLanyardSnapped(true);
+    setSnapMessage(message);
+    // Dismiss lanyard immediately - it will fall down due to snap animation
+    setTimeout(() => {
+      setShowLanyard(false);
+    }, 300); // Short delay so user sees the snap effect
+    // Clear snap message after it's been visible for a while
+    setTimeout(() => {
+      setSnapMessage('');
+      setLanyardSnapped(false);
+    }, 2500);
   };
 
   const renderLanyard = () => (
-    <AnimatePresence>
-      {showLanyard && (
-        <motion.div
-          className="fixed inset-0 z-50 pointer-events-none"
-          initial={{ y: '-100vh', opacity: 0 }}
-          animate={{ y: '0vh', opacity: 1 }}
-          exit={{ y: '-100vh', opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 50, damping: 15 }}
-        >
-          <Suspense fallback={null}>
-            <Lanyard onDismiss={handleLanyardDismiss} scrollJolt={scrollJolt} />
-          </Suspense>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <>
+      <AnimatePresence>
+        {showLanyard && (
+          <motion.div
+            className="fixed inset-0 z-50 pointer-events-none"
+            initial={{ y: '-100vh', opacity: 0 }}
+            animate={{ y: '0vh', opacity: 1 }}
+            exit={{
+              y: lanyardSnapped ? '100vh' : '-100vh', // Fall DOWN when snapped, go UP otherwise
+              opacity: 0
+            }}
+            transition={{
+              type: lanyardSnapped ? 'tween' : 'spring',
+              duration: lanyardSnapped ? 0.8 : undefined,
+              ease: lanyardSnapped ? 'easeIn' : undefined,
+              stiffness: lanyardSnapped ? undefined : 50,
+              damping: lanyardSnapped ? undefined : 15
+            }}
+          >
+            <Suspense fallback={null}>
+              <Lanyard
+                onDismiss={handleLanyardDismiss}
+                scrollJolt={scrollJolt}
+                clickJolt={clickJolt}
+                onSnap={handleLanyardSnap}
+                language={language}
+              />
+            </Suspense>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Snap Message - Stays visible independently of lanyard exit */}
+      <AnimatePresence>
+        {snapMessage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none"
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 50 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              className="bg-gradient-to-br from-red-600 to-red-500 text-white px-8 py-6 rounded-2xl shadow-2xl"
+            >
+              <p className="text-2xl md:text-3xl font-bold text-center">{snapMessage}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 
   return (
@@ -281,7 +357,7 @@ function App() {
           {!isMobile && (
             <>
               <AnimatePresence>
-                {showWarning && <InactivityWarning countdown={warningCountdown} />}
+                {showWarning && <InactivityWarning countdown={warningCountdown} language={language} />}
               </AnimatePresence>
               {renderLanyard()}
             </>

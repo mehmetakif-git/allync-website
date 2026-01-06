@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 interface InactivityWarningProps {
   countdown: number;
+  language?: 'tr' | 'en';
 }
 
-const messages = [
+const messagesTr = [
   'Bir anomali tespit edildi...',
   'Farklı bir cisim yaklaşıyor...',
   'Allync-AI geliyor...',
@@ -13,10 +14,21 @@ const messages = [
   'Sistem yanıt veriyor...'
 ];
 
-// Select one random message when the component is first created.
-const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+const messagesEn = [
+  'An anomaly detected...',
+  'A different object approaching...',
+  'Allync-AI is coming...',
+  'Are you ready?',
+  'System responding...'
+];
 
-export const InactivityWarning: React.FC<InactivityWarningProps> = ({ countdown }) => {
+export const InactivityWarning: React.FC<InactivityWarningProps> = ({ countdown, language = 'tr' }) => {
+  const messages = language === 'tr' ? messagesTr : messagesEn;
+
+  // Select one random message when the component is first mounted
+  const randomMessage = useMemo(() => {
+    return messages[Math.floor(Math.random() * messages.length)];
+  }, [language]);
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -34,7 +46,11 @@ export const InactivityWarning: React.FC<InactivityWarningProps> = ({ countdown 
           />
           <div>
             <p className="text-white font-semibold">{randomMessage}</p>
-            <p className="text-red-400 text-sm">Sistemle temas kuruluyor: {countdown}</p>
+            <p className="text-red-400 text-sm">
+              {language === 'tr'
+                ? `Sistemle temas kuruluyor: ${countdown}`
+                : `Establishing contact: ${countdown}`}
+            </p>
           </div>
         </div>
       </div>
