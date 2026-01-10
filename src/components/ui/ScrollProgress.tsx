@@ -3,14 +3,16 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 
 interface ScrollProgressProps {
   showMilestones?: boolean;
-  viewMode: 'ai-view' | 'digital-view';
+  viewMode: string;
   language: 'tr' | 'en';
+  visible?: boolean;
 }
 
 export const ScrollProgress: React.FC<ScrollProgressProps> = ({
   showMilestones = true,
   viewMode,
-  language
+  language,
+  visible = true
 }) => {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -64,6 +66,11 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
   const progressGradient = viewMode === 'ai-view'
     ? 'linear-gradient(to right, #8F43EE, #2389D6, #0DA2AD)'
     : 'linear-gradient(to right, #0C9FAD, #13AC63, #2588D9)';
+
+  if (!visible) return null;
+
+  // Only render for solution views
+  if (viewMode !== 'ai-view' && viewMode !== 'digital-view') return null;
 
   return (
     <div className="fixed top-0 left-0 right-0 z-[100] pointer-events-none">

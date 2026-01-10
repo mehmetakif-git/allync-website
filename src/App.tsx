@@ -8,11 +8,13 @@ import { HelmetManager } from './components/HelmetManager';
 import { InactivityWarning } from './components/InactivityWarning';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 
-// Lazy load heavy components - Three.js and solutions pages
+// Lazy load heavy components - Three.js only
 const FloatingLines = React.lazy(() => import('./components/ui/FloatingLines'));
 const Lanyard = React.lazy(() => import('./components/Lanyard'));
-const AllyncAISolutions = React.lazy(() => import('./components/AllyncAISolutions').then(m => ({ default: m.AllyncAISolutions })));
-const DigitalSolutions = React.lazy(() => import('./components/DigitalSolutions').then(m => ({ default: m.DigitalSolutions })));
+
+// Direct imports for solution pages (no lazy loading for smoother transitions)
+import { AllyncAISolutions } from './components/AllyncAISolutions';
+import { DigitalSolutions } from './components/DigitalSolutions';
 
 function App() {
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
@@ -66,8 +68,8 @@ function App() {
   };
 
   const handleSelectView = (view: 'ai-view' | 'digital-view') => {
+    window.scrollTo(0, 0);
     setViewMode(view);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToSelection = () => {
@@ -129,20 +131,15 @@ function App() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Prevent scroll flash during ALL view transitions
+  // Lock scroll only on selection screen
   useEffect(() => {
-    // Lock body scroll during transition
-    document.body.style.overflow = 'hidden';
-
-    const timer = setTimeout(() => {
-      // Only unlock if not on selection screen
-      if (viewMode !== 'selection') {
-        document.body.style.overflow = '';
-      }
-    }, 600); // Match animation duration
+    if (viewMode === 'selection') {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
 
     return () => {
-      clearTimeout(timer);
       document.body.style.overflow = '';
     };
   }, [viewMode]);
@@ -313,49 +310,86 @@ function App() {
           )}
 
           <HelmetManager language={language} activeSection={activeSection} />
-          <Navigation
-            language={language}
-            onLanguageToggle={toggleLanguage}
-            viewMode={viewMode}
-            onBackToSelection={viewMode !== 'selection' ? handleBackToSelection : undefined}
-          />
-          {(viewMode === 'ai-view' || viewMode === 'digital-view') && (
-            <ScrollProgress
-              showMilestones={!isMobile}
-              viewMode={viewMode}
-              language={language}
-            />
-          )}
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={viewMode}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="relative z-10"
-            >
-              {viewMode === 'selection' && (
-                <SelectionScreen
+          <AnimatePresence>
+            {(viewMode === 'ai-view' || viewMode === 'digital-view') && (
+              <motion.div
+                key="navigation"
+                initial={{ y: '-100%', opacity: 0 }}
+                animate={{ y: '0%', opacity: 1 }}
+                exit={{ y: '-100%', opacity: 0 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.4, 0, 0.2, 1],
+                  delay: 0.4
+                }}
+              >
+                <Navigation
                   language={language}
-                  onSelectView={handleSelectView}
                   onLanguageToggle={toggleLanguage}
+                  viewMode={viewMode}
+                  onBackToSelection={handleBackToSelection}
                 />
-              )}
-              <Suspense fallback={
-                <div className="flex items-center justify-center min-h-screen">
-                  <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
-                </div>
-              }>
-                {viewMode === 'ai-view' && (
-                  <AllyncAISolutions language={language} />
-                )}
-                {viewMode === 'digital-view' && (
-                  <DigitalSolutions language={language} />
-                )}
-              </Suspense>
-            </motion.div>
+              </motion.div>
+            )}
           </AnimatePresence>
+          <ScrollProgress
+            showMilestones={!isMobile}
+            viewMode={viewMode}
+            language={language}
+            visible={viewMode === 'ai-view' || viewMode === 'digital-view'}
+          />
+          <div className="relative z-10">
+            <AnimatePresence mode="wait">
+              {viewMode === 'selection' && (
+                <motion.div
+                  key="selection"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98, y: -20 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.4, 0, 0.2, 1]
+                  }}
+                >
+                  <SelectionScreen
+                    language={language}
+                    onSelectView={handleSelectView}
+                    onLanguageToggle={toggleLanguage}
+                  />
+                </motion.div>
+              )}
+              {viewMode === 'ai-view' && (
+                <motion.div
+                  key="ai-view"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.4, 0, 0.2, 1],
+                    delay: 0.1
+                  }}
+                >
+                  <AllyncAISolutions language={language} />
+                </motion.div>
+              )}
+              {viewMode === 'digital-view' && (
+                <motion.div
+                  key="digital-view"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.4, 0, 0.2, 1],
+                    delay: 0.1
+                  }}
+                >
+                  <DigitalSolutions language={language} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           {!isMobile && (
             <>
               <AnimatePresence>

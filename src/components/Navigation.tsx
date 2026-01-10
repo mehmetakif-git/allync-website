@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronUp, Phone, ArrowLeft } from 'lucide-react';
+import { Menu, X, ChevronUp, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { translations } from '../utils/translations';
 import logoNavbar from '../assets/logo-navbar.svg';
 
@@ -14,10 +15,16 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
   const t = translations[language];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const [isVisible, setIsVisible] = useState(true);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  // Mark as ready after initial mount animation
+  useEffect(() => {
+    const timer = setTimeout(() => setIsReady(true), 600);
+    return () => clearTimeout(timer);
+  }, []);
 
   const navItems = [
     { id: 'hero', label: language === 'tr' ? 'Ana Sayfa' : 'Home' },
@@ -48,15 +55,16 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
             }
           }
 
-          // Update scroll direction and visibility
-          if (currentScrollY > lastScrollY) {
+          // Update scroll direction - also show navbar when near top
+          if (currentScrollY < 100) {
+            setIsScrollingUp(true); // Always show when near top
+          } else if (currentScrollY > lastScrollY) {
             setIsScrollingUp(false);
           } else {
             setIsScrollingUp(true);
           }
 
           setLastScrollY(currentScrollY);
-          setIsVisible(currentScrollY < 100 || currentScrollY < lastScrollY);
           setShowBackToTop(currentScrollY > 300);
 
           ticking = false;
@@ -88,26 +96,28 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
     });
   };
 
-  if (!isVisible) return null;
-
-  if (viewMode === 'selection' || viewMode === 'loading') return null;
-
   return (
     <>
       {/* Navigation Bar */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrollingUp ? 'translate-y-0' : '-translate-y-full'
-      } ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-      style={{
-        paddingTop: 'max(1rem, env(safe-area-inset-top))',
-        background: 'rgba(255, 255, 255, 0.05)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-        willChange: 'transform',
-        transform: 'translate3d(0, 0, 0)'
-      }}>
+      <motion.nav
+        initial={false}
+        animate={{
+          y: isReady && !isScrollingUp ? '-100%' : '0%',
+          opacity: isReady && !isScrollingUp ? 0 : 1
+        }}
+        transition={{
+          duration: 0.4,
+          ease: [0.4, 0, 0.2, 1]
+        }}
+        className="fixed top-0 left-0 right-0 z-50"
+        style={{
+          paddingTop: 'max(1rem, env(safe-area-inset-top))',
+          background: 'rgba(255, 255, 255, 0.05)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+          boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)'
+        }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -214,7 +224,7 @@ export const Navigation: React.FC<NavigationProps> = ({ language, onLanguageTogg
             </div>
           </div>
         )}
-      </nav>
+      </motion.nav>
 
       {/* Back to Top Button */}
       {showBackToTop && (
