@@ -290,6 +290,7 @@ function App() {
                 interactive={viewMode !== 'loading'}
                 parallax={false}
                 mixBlendMode="normal"
+                linesGradient={['#213448', '#547792', '#94B4C1', '#EAE0CF']}
               />
             ) : (
               <FloatingLines
@@ -301,6 +302,7 @@ function App() {
                 parallax={false}
                 mixBlendMode="normal"
                 pixelRatio={1}
+                linesGradient={['#213448', '#547792', '#94B4C1', '#EAE0CF']}
               />
             )}
           </Suspense>

@@ -104,7 +104,7 @@ export const DigitalSolutions: React.FC<DigitalSolutionsProps> = ({ language }) 
       pageTitle="Allync Digital"
       pageSubtitle={t.digitalSolutionSubtitle}
       flipWords={flipWords}
-      ctaButtonGradient="from-cyan-600 to-green-600 hover:from-cyan-700 hover:to-green-700 hover:shadow-cyan-500/50"
+      ctaButtonGradient="from-[#213448] to-[#94B4C1] hover:from-[#547792] hover:to-[#EAE0CF] hover:shadow-[#547792]/50"
     />
   );
 };

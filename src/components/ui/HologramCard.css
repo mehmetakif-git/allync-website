@@ -10,15 +10,15 @@
   --rotate-y: 0deg;
   --background-x: 50%;
   --background-y: 50%;
-  --behind-glow-color: rgba(168, 85, 247, 0.5);
+  --behind-glow-color: rgba(148, 180, 193, 0.5);
   --behind-glow-size: 50%;
-  --inner-gradient: linear-gradient(145deg, rgba(96, 73, 110, 0.6) 0%, rgba(168, 85, 247, 0.3) 100%);
-  --sunpillar-clr-1: hsl(280, 100%, 73%);
-  --sunpillar-clr-2: hsl(260, 100%, 69%);
-  --sunpillar-clr-3: hsl(240, 100%, 69%);
-  --sunpillar-clr-4: hsl(220, 100%, 76%);
-  --sunpillar-clr-5: hsl(200, 100%, 74%);
-  --sunpillar-clr-6: hsl(290, 100%, 73%);
+  --inner-gradient: linear-gradient(145deg, rgba(84, 119, 146, 0.6) 0%, rgba(148, 180, 193, 0.3) 100%);
+  --sunpillar-clr-1: hsl(200, 30%, 55%);
+  --sunpillar-clr-2: hsl(195, 25%, 65%);
+  --sunpillar-clr-3: hsl(210, 35%, 45%);
+  --sunpillar-clr-4: hsl(35, 40%, 85%);
+  --sunpillar-clr-5: hsl(190, 28%, 60%);
+  --sunpillar-clr-6: hsl(205, 32%, 50%);
   --card-radius: 24px;
   --icon: none;
 
@@ -47,7 +47,10 @@
     calc((var(--pointer-from-top) * 24px) - 12px) 24px -8px;
   transition: transform 0.8s ease;
   transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-  background: rgba(10, 10, 20, 0.8);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   backface-visibility: hidden;
   overflow: hidden;
 }
@@ -69,7 +72,7 @@
 
 .holo-inside {
   position: relative;
-  background: linear-gradient(180deg, rgba(30, 30, 50, 0.95) 0%, rgba(15, 15, 30, 0.98) 100%);
+  background: transparent;
   transform: none;
 }
 
@@ -97,12 +100,12 @@
     ),
     repeating-linear-gradient(
       var(--angle),
-      #0e152e 0%,
-      hsl(180, 30%, 40%) 3.8%,
-      hsl(180, 40%, 45%) 4.5%,
-      hsl(180, 30%, 40%) 5.2%,
-      #0e152e 10%,
-      #0e152e 12%
+      #213448 0%,
+      hsl(200, 30%, 50%) 3.8%,
+      hsl(195, 25%, 55%) 4.5%,
+      hsl(200, 30%, 50%) 5.2%,
+      #213448 10%,
+      #213448 12%
     ),
     radial-gradient(
       farthest-corner circle at var(--pointer-x) var(--pointer-y),
@@ -203,10 +206,10 @@
   pointer-events: none;
   background: radial-gradient(
     circle at var(--pointer-x) var(--pointer-y),
-    rgba(255, 255, 255, 0.28) 0%,
-    rgba(255, 255, 255, 0.18) 12%,
-    rgba(255, 255, 255, 0.08) 30%,
-    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 12%,
+    rgba(255, 255, 255, 0.03) 30%,
+    rgba(255, 255, 255, 0.01) 50%,
     transparent 65%
   );
   opacity: 0;

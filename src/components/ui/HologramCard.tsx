@@ -42,29 +42,17 @@ const HologramCardComponent: React.FC<HologramCardProps> = ({
   const lastActivityRef = useRef<number>(Date.now());
 
   const themeColors = useMemo(() => {
-    if (theme === 'ai') {
-      return {
-        glowColor: 'rgba(168, 85, 247, 0.5)',
-        gradient: 'linear-gradient(145deg, rgba(96, 73, 110, 0.6) 0%, rgba(168, 85, 247, 0.3) 100%)',
-        sunpillar1: 'hsl(280, 100%, 73%)',
-        sunpillar2: 'hsl(260, 100%, 69%)',
-        sunpillar3: 'hsl(240, 100%, 69%)',
-        sunpillar4: 'hsl(220, 100%, 76%)',
-        sunpillar5: 'hsl(200, 100%, 74%)',
-        sunpillar6: 'hsl(290, 100%, 73%)',
-        pulseColor: 'rgba(168, 85, 247, 0.4)'
-      };
-    }
+    // New color palette: #213448, #547792, #94B4C1, #EAE0CF
     return {
-      glowColor: 'rgba(34, 211, 238, 0.5)',
-      gradient: 'linear-gradient(145deg, rgba(13, 74, 74, 0.6) 0%, rgba(34, 211, 238, 0.3) 100%)',
-      sunpillar1: 'hsl(170, 100%, 73%)',
-      sunpillar2: 'hsl(150, 100%, 69%)',
-      sunpillar3: 'hsl(130, 100%, 69%)',
-      sunpillar4: 'hsl(180, 100%, 76%)',
-      sunpillar5: 'hsl(200, 100%, 74%)',
-      sunpillar6: 'hsl(160, 100%, 73%)',
-      pulseColor: 'rgba(34, 211, 238, 0.4)'
+      glowColor: 'rgba(148, 180, 193, 0.5)', // #94B4C1
+      gradient: 'linear-gradient(145deg, rgba(84, 119, 146, 0.6) 0%, rgba(148, 180, 193, 0.3) 100%)',
+      sunpillar1: 'hsl(200, 30%, 55%)', // Based on #547792
+      sunpillar2: 'hsl(195, 25%, 65%)', // Based on #94B4C1
+      sunpillar3: 'hsl(210, 35%, 45%)', // Based on #213448
+      sunpillar4: 'hsl(35, 40%, 85%)',  // Based on #EAE0CF
+      sunpillar5: 'hsl(190, 28%, 60%)', // Mix
+      sunpillar6: 'hsl(205, 32%, 50%)', // Mix
+      pulseColor: 'rgba(148, 180, 193, 0.4)' // #94B4C1
     };
   }, [theme]);
 

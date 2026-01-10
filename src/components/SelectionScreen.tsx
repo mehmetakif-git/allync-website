@@ -64,15 +64,15 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
             <CometCard className="w-full max-w-sm mx-auto">
               <button
                 onClick={() => onSelectView('ai-view')}
-                className="group relative bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 animate-scale-in w-full min-h-[220px]"
+                className="group relative bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#94B4C1]/20 animate-scale-in w-full min-h-[220px]"
                 style={{ animationDelay: '0.2s' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#547792]/20 via-[#94B4C1]/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
                   <div className="icon-container ai-icon w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                     <img src={aiIcon} alt="Allync AI" className="w-full h-full object-contain" />
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300 whitespace-nowrap">
+                  <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-[#94B4C1] transition-colors duration-300 whitespace-nowrap">
                     {t.aiPillarTitle}
                   </h2>
                   <p className="text-lg text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
@@ -100,15 +100,15 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
             <CometCard className="w-full max-w-sm mx-auto">
               <button
                 onClick={() => onSelectView('digital-view')}
-                className="group relative bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 animate-scale-in w-full min-h-[220px]"
+                className="group relative bg-white/5 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/10 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-[#94B4C1]/20 animate-scale-in w-full min-h-[220px]"
                 style={{ animationDelay: '0.4s' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/20 via-green-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#547792]/20 via-[#94B4C1]/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
                   <div className="icon-container digital-icon w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
                     <img src={digitalIcon} alt="Allync Digital" className="w-full h-full object-contain" />
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-300 transition-colors duration-300 whitespace-nowrap">
+                  <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-[#94B4C1] transition-colors duration-300 whitespace-nowrap">
                     {t.digitalPillarTitle}
                   </h2>
                   <p className="text-lg text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
@@ -167,19 +167,19 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
 
         @keyframes icon-pulse {
           0%, 100% {
-            box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+            box-shadow: 0 0 0 0 rgba(148, 180, 193, 0.4);
           }
           50% {
-            box-shadow: 0 0 30px 10px rgba(168, 85, 247, 0.2);
+            box-shadow: 0 0 30px 10px rgba(148, 180, 193, 0.2);
           }
         }
 
         @keyframes icon-pulse-cyan {
           0%, 100% {
-            box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4);
+            box-shadow: 0 0 0 0 rgba(148, 180, 193, 0.4);
           }
           50% {
-            box-shadow: 0 0 30px 10px rgba(34, 211, 238, 0.2);
+            box-shadow: 0 0 30px 10px rgba(148, 180, 193, 0.2);
           }
         }
 
@@ -207,12 +207,12 @@ export const SelectionScreen: React.FC<SelectionScreenProps> = ({ language, onSe
         }
 
         .ai-icon::before {
-          background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(59, 130, 246, 0.5));
+          background: linear-gradient(135deg, rgba(84, 119, 146, 0.5), rgba(148, 180, 193, 0.5));
           filter: blur(15px);
         }
 
         .digital-icon::before {
-          background: linear-gradient(135deg, rgba(34, 211, 238, 0.5), rgba(34, 197, 94, 0.5));
+          background: linear-gradient(135deg, rgba(84, 119, 146, 0.5), rgba(148, 180, 193, 0.5));
           filter: blur(15px);
         }
 

@@ -173,7 +173,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       pageTitle="Allync AI"
       pageSubtitle={t.aiSolutionSubtitle}
       flipWords={flipWords}
-      ctaButtonGradient="from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 hover:shadow-purple-500/50"
+      ctaButtonGradient="from-[#213448] to-[#94B4C1] hover:from-[#547792] hover:to-[#EAE0CF] hover:shadow-[#547792]/50"
     />
   );
 };
