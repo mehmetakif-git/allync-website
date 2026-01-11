@@ -1,1 +1,9 @@
+# Static files - serve directly
+/blog/*  /blog/:splat  200
+/audio/*  /audio/:splat  200
+/videos/*  /videos/:splat  200
+/images/*  /images/:splat  200
+/email-signature/*  /email-signature/:splat  200
+
+# SPA fallback for React Router
 /*    /index.html   200
