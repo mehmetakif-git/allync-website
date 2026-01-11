@@ -15,6 +15,7 @@ Allync is a technology company specializing in AI-powered customer service autom
 ## AI Solutions
 
 ### WhatsApp AI Assistants
+URL: https://www.allyncai.com/ai/whatsapp
 Intelligent chatbots for 24/7 automated customer service via WhatsApp.
 - Instant response to customer inquiries
 - Appointment booking and scheduling
@@ -22,14 +23,33 @@ Intelligent chatbots for 24/7 automated customer service via WhatsApp.
 - Sales process automation
 - Multi-language support (Turkish, English, Arabic)
 
-### Custom AI Chatbots
-Tailored conversational AI solutions for specific business needs.
-- Custom-trained models for your industry
-- CRM integration
-- Automated lead generation
-- Customer segmentation
+### Instagram AI Automation
+URL: https://www.allyncai.com/ai/instagram
+Automated Instagram DM responses and engagement.
+- Auto-reply to direct messages
+- Story mention responses
+- Comment automation
+- Lead generation from Instagram
+- 24/7 customer engagement
+
+### Text-to-Video AI
+URL: https://www.allyncai.com/ai/text-to-video
+AI-powered video generation from text prompts.
+- Script to video conversion
+- Marketing video creation
+- Social media content
+- Product demos
+
+### Text-to-Image AI
+URL: https://www.allyncai.com/ai/text-to-image
+Generate images from text descriptions.
+- Marketing visuals
+- Product mockups
+- Social media graphics
+- Custom illustrations
 
 ### Voice AI & Cloning
+URL: https://www.allyncai.com/ai/voice-cloning
 Advanced voice synthesis and cloning technology.
 - Brand voice digitization
 - Automated voice response systems
@@ -37,72 +57,111 @@ Advanced voice synthesis and cloning technology.
 - IVR systems
 
 ### Document AI
+URL: https://www.allyncai.com/ai/document-ai
 Intelligent document processing and analysis.
 - Automatic data extraction from PDF, Word, Excel
 - Invoice processing
 - Contract analysis
 - Document classification
 
+### Image-to-Video AI
+URL: https://www.allyncai.com/ai/image-to-video
+Transform static images into dynamic videos.
+- Product animations
+- Social media content
+- Marketing materials
+
+### Video-to-Video AI
+URL: https://www.allyncai.com/ai/video-to-video
+Advanced video transformation and editing.
+- Style transfer
+- Video enhancement
+- Batch processing
+
 ### Data Analysis AI
+URL: https://www.allyncai.com/ai/data-analysis
 AI-powered business intelligence and analytics.
 - Sales forecasting
 - Customer behavior analysis
 - Trend detection
 - Automated reporting
 
+### Custom AI Solutions
+URL: https://www.allyncai.com/ai/custom-ai
+Tailored AI solutions for specific business needs.
+- Custom-trained models for your industry
+- CRM integration
+- Automated lead generation
+- Customer segmentation
+
 ## Digital Solutions
 
-### Web Development
-Modern, fast, SEO-optimized websites.
-- React, Next.js, modern technologies
-- Responsive design
-- E-commerce integration
-- Payment systems
-- Admin panels
+### Custom SaaS Panels
+URL: https://www.allyncai.com/digital/saas-panels
+Custom management panels, dashboards, and cloud-based software solutions.
+- Custom admin dashboards
+- Role-based access control
+- API integrations
+- Real-time data sync
+- Mobile-responsive design
+- Automated backups and security
+- Live Demo: https://demodashboard.allyncai.com/login
 
-### Mobile App Development
-iOS and Android native and cross-platform applications.
-- React Native, Flutter
-- App Store & Google Play publishing
-- Push notifications
-- Offline support
-
-### E-commerce Solutions
+### E-commerce Websites
+URL: https://www.allyncai.com/digital/ecommerce
 Online sales platforms and store setup.
 - Payment integrations (iyzico, PayTR, Stripe)
 - Inventory management
 - Shipping integration
 - Automated invoicing
 
+### Corporate Websites
+URL: https://www.allyncai.com/digital/corporate
+Modern, fast, SEO-optimized websites.
+- React, Next.js, modern technologies
+- Responsive design
+- CMS integration
+- High performance and security
+
+### Mobile App Development
+URL: https://www.allyncai.com/digital/mobile-app
+iOS and Android native and cross-platform applications.
+- React Native, Flutter
+- App Store & Google Play publishing
+- Push notifications
+- Offline support
+
 ### Digital Marketing
+URL: https://www.allyncai.com/digital/digital-marketing
 SEO, Google Ads, and social media advertising.
 - Content marketing
 - Email marketing
 - Conversion optimization
 - Analytics and reporting
 
+### IoT Solutions
+URL: https://www.allyncai.com/digital/iot
+Internet of Things integration and smart device management.
+- Sensor data collection
+- Industrial IoT
+- Smart building solutions
+- Automation systems
+
 ### Cloud Solutions
+URL: https://www.allyncai.com/digital/cloud
 AWS, Google Cloud, and Azure infrastructure services.
 - Server setup
 - Backup and security
 - Cloud migration
 - Performance optimization
 
-### Custom SaaS Development
-We build custom SaaS (Software as a Service) products for businesses.
-- Cloud-based, scalable platforms
-- Multi-tenant architecture
-- Subscription billing integration
-- API-first design
-- White-label solutions
-- Full product development lifecycle
-
-### IoT Solutions
-Internet of Things integration and smart device management.
-- Sensor data collection
-- Industrial IoT
-- Smart building solutions
-- Automation systems
+### Maintenance & Support
+URL: https://www.allyncai.com/digital/maintenance
+Ongoing maintenance and technical support.
+- Proactive system monitoring
+- Regular security updates
+- 24/7 technical support
+- Performance optimization
 
 ## Industry Solutions
 

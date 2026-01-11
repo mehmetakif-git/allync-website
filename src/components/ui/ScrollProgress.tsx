@@ -29,20 +29,23 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
       tr: ['WA Otomasyon', 'IG Otomasyon', 'Text→Video', 'Text→Image', 'Voice AI', 'Doc AI', 'Image→Video', 'Video→Video', 'Data AI', 'Custom AI'],
       en: ['WA Automation', 'IG Automation', 'Text→Video', 'Text→Image', 'Voice AI', 'Doc AI', 'Image→Video', 'Video→Video', 'Data AI', 'Custom AI']
     },
+    slugs: ['whatsapp', 'instagram', 'text-to-video', 'text-to-image', 'voice-cloning', 'document-ai', 'image-to-video', 'video-to-video', 'data-analysis', 'custom-ai'],
     positions: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
   };
 
   const digitalMilestones = {
-    colors: ['#13AC63', '#2588D9', '#C938A5', '#E84520', '#0C9FAD', '#3D65EE', '#4F5867'],
+    colors: ['#547792', '#13AC63', '#2588D9', '#C938A5', '#E84520', '#0C9FAD', '#3D65EE', '#4F5867'],
     labels: {
-      tr: ['E-Ticaret', 'Kurumsal', 'Mobil App', 'Dijital Paz.', 'IoT', 'Bulut', 'Bakım'],
-      en: ['E-Commerce', 'Corporate', 'Mobile App', 'Digital Mkt', 'IoT', 'Cloud', 'Support']
+      tr: ['SaaS', 'E-Ticaret', 'Kurumsal', 'Mobil App', 'Dijital Paz.', 'IoT', 'Bulut', 'Bakım'],
+      en: ['SaaS', 'E-Commerce', 'Corporate', 'Mobile App', 'Digital Mkt', 'IoT', 'Cloud', 'Support']
     },
-    positions: [0, 0.17, 0.33, 0.5, 0.67, 0.83, 0.99]
+    slugs: ['saas-panels', 'ecommerce', 'corporate', 'mobile-app', 'digital-marketing', 'iot', 'cloud', 'maintenance'],
+    positions: [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875]
   };
 
   const config = viewMode === 'ai-view' ? aiMilestones : digitalMilestones;
   const labels = config.labels[language];
+  const slugs = config.slugs;
 
   useEffect(() => {
     const updateSection = () => {
@@ -88,9 +91,15 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({
             <button
               key={index}
               onClick={() => {
-                const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const targetScroll = position * totalHeight;
-                window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+                const serviceElement = document.getElementById(slugs[index]);
+                if (serviceElement) {
+                  serviceElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                  // Fallback to percentage-based scrolling
+                  const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+                  const targetScroll = position * totalHeight;
+                  window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+                }
               }}
               className={`group relative transition-all duration-300 ${
                 currentSection === index ? 'scale-110' : 'scale-100 opacity-50 hover:opacity-100'

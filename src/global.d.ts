@@ -3,6 +3,10 @@ export { };
 declare module '*.glb';
 declare module '*.png';
 declare module '*.mp3';
+declare module '*.json' {
+  const value: any;
+  export default value;
+}
 
 declare module 'meshline' {
   export const MeshLineGeometry: any;

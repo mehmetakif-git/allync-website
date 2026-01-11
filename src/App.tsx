@@ -8,6 +8,7 @@ import { SelectionScreen } from './components/SelectionScreen';
 import { HelmetManager } from './components/HelmetManager';
 import { InactivityWarning } from './components/InactivityWarning';
 import { ScrollProgress } from './components/ui/ScrollProgress';
+import { ScrollDownIndicator } from './components/ui/ScrollDownIndicator';
 
 // Lazy load heavy components - Three.js only
 const FloatingLines = React.lazy(() => import('./components/ui/FloatingLines'));
@@ -387,6 +388,9 @@ function AppContent() {
             language={language}
             visible={viewMode === 'ai-view' || viewMode === 'digital-view'}
           />
+          {(viewMode === 'ai-view' || viewMode === 'digital-view') && (
+            <ScrollDownIndicator language={language} delay={4000} />
+          )}
           <div className="relative z-10">
             <AnimatePresence mode="wait">
               {viewMode === 'selection' && (

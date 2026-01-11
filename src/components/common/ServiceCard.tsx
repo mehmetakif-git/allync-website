@@ -53,7 +53,7 @@ interface Service {
   glowColor?: string;
   audioSrc?: string;
   subtitles?: Array<{ start: number; text: string }>;
-  demoType?: 'whatsapp' | 'instagram' | 'text-to-video' | 'text-to-image' | 'voice-cloning' | 'document-ai' | 'image-to-video' | 'video-to-video' | 'data-analysis' | 'custom-ai' | 'ecommerce' | 'corporate' | 'mobile-app' | 'digital-marketing' | 'iot' | 'cloud' | 'maintenance';
+  demoType?: 'whatsapp' | 'instagram' | 'text-to-video' | 'text-to-image' | 'voice-cloning' | 'document-ai' | 'image-to-video' | 'video-to-video' | 'data-analysis' | 'custom-ai' | 'saas-panel' | 'ecommerce' | 'corporate' | 'mobile-app' | 'digital-marketing' | 'iot' | 'cloud' | 'maintenance';
 }
 
 interface ServiceCardProps {
@@ -534,7 +534,13 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
                 />
                 {/* Clickable overlay with centered content */}
                 <motion.button
-                  onClick={() => setIsDemoModalOpen(true)}
+                  onClick={() => {
+                    if (service.demoType === 'saas-panel') {
+                      window.open('https://demodashboard.allyncai.com/login', '_blank');
+                    } else {
+                      setIsDemoModalOpen(true);
+                    }
+                  }}
                   style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 10 }}
                   whileTap={{ scale: 0.98 }}
                 >

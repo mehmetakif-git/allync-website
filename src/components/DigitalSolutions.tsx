@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingCart, Monitor, Smartphone, Target, Wifi, Cloud, Wrench } from 'lucide-react';
+import { ShoppingCart, Monitor, Smartphone, Target, Wifi, Cloud, Wrench, LayoutDashboard } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { SolutionsPage, Service } from './SolutionsPage';
 
@@ -11,6 +11,18 @@ export const DigitalSolutions: React.FC<DigitalSolutionsProps> = ({ language }) 
   const t = translations[language];
 
   const services: Service[] = [
+    {
+      icon: LayoutDashboard,
+      title: t.saasPanels,
+      description: t.saasPanelsDesc,
+      benefits: t.saasPanelsBenefits,
+      gradient: 'from-[#213448] to-[#547792]',
+      glowColor: 'rgba(148, 180, 193, 0.5)',
+      extendedContent: 'Özel SaaS Panelleri ile işletmenize özel yönetim sistemleri geliştiriyoruz. Müşteri yönetimi, envanter takibi, randevu sistemi veya tamamen size özel bir çözüm - ihtiyacınız ne olursa olsun, bulut tabanlı ve ölçeklenebilir paneller tasarlıyoruz.\n\nÖzellikler:\n- Özel dashboard ve yönetim panelleri\n- Rol tabanlı yetkilendirme sistemi\n- API entegrasyonları\n- Gerçek zamanlı veri senkronizasyonu\n- Mobil uyumlu responsive tasarım\n- Otomatik yedekleme ve güvenlik\n\nİşletmenizi geleceğe taşıyın.',
+      galleryImages: ['Admin Dashboard', 'Analytics Panel', 'User Management'],
+      demoType: 'saas-panel',
+      slug: 'saas-panels',
+    },
     {
       icon: ShoppingCart,
       title: t.eCommerceWebsites,
@@ -98,6 +110,7 @@ export const DigitalSolutions: React.FC<DigitalSolutionsProps> = ({ language }) 
   ];
 
   const flipWords = [
+    language === 'tr' ? "SaaS Panelleri" : "SaaS Panels",
     language === 'tr' ? "Web Çözümleri" : "Web Solutions",
     language === 'tr' ? "Mobil Uygulamalar" : "Mobile Apps",
     language === 'tr' ? "Bulut Sistemleri" : "Cloud Systems",

@@ -267,6 +267,8 @@ export const translations = {
     // Digital Solutions
     digitalSolutionTitle: "Allync Digital Hizmetleri",
     digitalSolutionSubtitle: "Dijital varlığınızı güçlendiren kapsamlı web ve mobil çözümler",
+    saasPanels: "Özel SaaS Panelleri",
+    saasPanelsDesc: "İşletmenize özel yönetim panelleri, dashboard'lar ve bulut tabanlı yazılım çözümleri geliştiriyoruz",
     eCommerceWebsites: "E-Ticaret Websiteleri",
     eCommerceWebsitesDesc: "Ödeme entegrasyonu, envanter yönetimi ve analitik içeren tam özellikli online mağazalar",
     corporateWebsites: "Kurumsal Websiteler",
@@ -283,6 +285,7 @@ export const translations = {
     maintenanceSupportDesc: "Dijital varlıklarınızı sorunsuz çalışır durumda tutan sürekli bakım ve teknik destek",
 
     // Digital Service Benefits
+    saasPanelsBenefits: ["Özel yönetim panelleri ve dashboard'lar", "Bulut tabanlı ölçeklenebilir altyapı", "Gerçek zamanlı veri yönetimi ve raporlama"],
     eCommerceWebsitesBenefits: ["Ödeme entegrasyonu (Stripe, PayPal)", "Envanter ve sipariş yönetimi", "SEO optimize altyapı"],
     corporateWebsitesBenefits: ["Responsive ve modern tasarım", "CMS entegrasyonu", "Yüksek performans ve güvenlik"],
     mobileAppDevelopmentBenefits: ["Native iOS ve Android geliştirme", "Cross-platform çözümler", "App Store yayınlama desteği"],
@@ -558,6 +561,8 @@ export const translations = {
     // Digital Solutions
     digitalSolutionTitle: "Allync Digital Services",
     digitalSolutionSubtitle: "Comprehensive web and mobile solutions that power your digital presence",
+    saasPanels: "Custom SaaS Panels",
+    saasPanelsDesc: "We develop custom management panels, dashboards, and cloud-based software solutions tailored to your business",
     eCommerceWebsites: "E-Commerce Websites",
     eCommerceWebsitesDesc: "Full-featured online stores with payment integration, inventory management, and analytics",
     corporateWebsites: "Corporate Websites",
@@ -574,6 +579,7 @@ export const translations = {
     maintenanceSupportDesc: "Ongoing maintenance and technical support to keep your digital assets running smoothly",
 
     // Digital Service Benefits
+    saasPanelsBenefits: ["Custom management panels and dashboards", "Cloud-based scalable infrastructure", "Real-time data management and reporting"],
     eCommerceWebsitesBenefits: ["Payment integration (Stripe, PayPal)", "Inventory and order management", "SEO-optimized infrastructure"],
     corporateWebsitesBenefits: ["Responsive and modern design", "CMS integration", "High performance and security"],
     mobileAppDevelopmentBenefits: ["Native iOS and Android development", "Cross-platform solutions", "App Store publishing support"],

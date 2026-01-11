@@ -13,6 +13,7 @@ import dataAnalysisThumb from './data-analysis.webp';
 import customAiThumb from './custom-ai.webp';
 
 // Digital Solutions thumbnails
+import saasPanelThumb from './saas-panel.webp';
 import ecommerceThumb from './ecommerce.webp';
 import corporateThumb from './corporate.webp';
 import mobileAppThumb from './mobile-app.webp';
@@ -33,6 +34,7 @@ export const demoThumbnails: Record<string, string | null> = {
   'data-analysis': dataAnalysisThumb,
   'custom-ai': customAiThumb,
   // Digital Solutions thumbnails
+  'saas-panel': saasPanelThumb,
   'ecommerce': ecommerceThumb,
   'corporate': corporateThumb,
   'mobile-app': mobileAppThumb,
