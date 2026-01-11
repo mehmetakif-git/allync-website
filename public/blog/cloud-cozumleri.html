@@ -95,11 +95,11 @@
 
         header {
             padding: 20px 0;
-            border-bottom: 1px solid rgba(148, 180, 193, 0.2);
+            border-bottom: 1px solid rgba(148, 180, 193, 0.15);
             position: sticky;
             top: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(180deg, rgba(33, 52, 72, 0.8) 0%, rgba(33, 52, 72, 0.5) 100%);
+            backdrop-filter: blur(12px);
             z-index: 100;
         }
 
@@ -215,12 +215,13 @@
         .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(84, 119, 146, 0.3); }
 
         footer {
-            border-top: 1px solid rgba(148, 180, 193, 0.2);
+            border-top: 1px solid rgba(148, 180, 193, 0.15);
             padding: 40px 0;
             text-align: center;
             position: relative;
             z-index: 1;
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(0deg, rgba(33, 52, 72, 0.6) 0%, rgba(33, 52, 72, 0.3) 100%);
+            backdrop-filter: blur(12px);
         }
         .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
         .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
