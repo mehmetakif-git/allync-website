@@ -20,6 +20,7 @@ export interface Service {
   audioSrc?: string;
   subtitles?: Array<{ start: number; text: string }>;
   demoType?: 'whatsapp' | 'instagram' | 'text-to-video' | 'text-to-image' | 'voice-cloning' | 'document-ai' | 'image-to-video' | 'video-to-video' | 'data-analysis' | 'custom-ai' | 'ecommerce' | 'corporate' | 'mobile-app';
+  slug: string;
 }
 
 interface SolutionsPageProps {
@@ -83,7 +84,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({
 
           <div className="space-y-32">
             {services.map((service, index) => (
-              <div key={index} className="relative">
+              <div key={service.slug} id={service.slug} className="relative scroll-mt-32">
                 <ServiceCard
                   service={service}
                   language={language}

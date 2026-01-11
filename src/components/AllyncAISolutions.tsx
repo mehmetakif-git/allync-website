@@ -21,6 +21,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'WhatsApp Automation ile işletmeniz 7/24 müşterilerinize anında yanıt verebilir. Gelişmiş yapay zeka teknolojisi sayesinde müşteri sorgularını anlayıp, randevu oluşturabilir, sık sorulan soruları yanıtlayabilir ve müşteri memnuniyetini artırabilirsiniz.\n\nÖzellikler:\n- Otomatik müşteri hizmetleri\n- Randevu yönetim sistemi\n- Çoklu dil desteği\n- CRM entegrasyonu\n- Detaylı raporlama ve analitik\n\nBu hizmet ile işletmeniz operasyonel maliyetleri düşürürken müşteri memnuniyetini maksimize edebilir.',
       galleryImages: ['WhatsApp Chat', 'AI Response', 'Customer Support'],
       demoType: 'whatsapp',
+      slug: 'whatsapp',
       audioSrc: language === 'en' ? '/audio/en/english-whatsapp-automations.mp3' : undefined,
       subtitles: language === 'en' ? [
         { start: 0, text: "Imagine never missing" },
@@ -68,6 +69,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'Instagram Automation ile sosyal medya yönetiminizi otomatikleştirin. DM\'lere otomatik yanıt verin, yorumları yönetin ve potansiyel müşterileri yakalayın.\n\nÖzellikler:\n- Otomatik DM yanıtları\n- Yorum yönetimi\n- Hashtag analizi\n- Etkileşim raporları\n- Lead generation\n\nSosyal medya varlığınızı güçlendirin ve etkileşiminizi artırın.',
       galleryImages: ['Instagram Dashboard', 'Auto-Reply System', 'Engagement Analytics'],
       demoType: 'instagram',
+      slug: 'instagram',
     },
     {
       icon: Video,
@@ -79,6 +81,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'Text-to-Video AI ile metinlerinizi profesyonel videolara dönüştürün. Pazarlama içeriklerinizi, eğitim materyallerinizi veya sosyal medya gönderilerinizi birkaç dakika içinde video formatına çevirin.\n\nÖzellikler:\n- Otomatik video oluşturma\n- Çoklu format desteği (4K, HD)\n- Voiceover entegrasyonu\n- Özel template\'ler\n- Hızlı render\n\nİçerik üretiminizi hızlandırın ve profesyonel videolar oluşturun.',
       galleryImages: ['Video Editor Interface', 'Template Gallery', 'Export Options'],
       demoType: 'text-to-video',
+      slug: 'text-to-video',
     },
     {
       icon: ImageIcon,
@@ -90,6 +93,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'Text-to-Image AI ile hayal ettiğiniz görselleri oluşturun. Marketing materyalleri, sosyal medya içerikleri veya web tasarımı için benzersiz görseller üretin.\n\nÖzellikler:\n- Yüksek çözünürlüklü görsel üretimi\n- Çoklu stil seçenekleri\n- Ticari kullanım hakları\n- Toplu üretim\n- API entegrasyonu\n\nYaratıcılığınızı sınırsız hale getirin.',
       galleryImages: ['AI Image Generator', 'Style Options', 'Generated Gallery'],
       demoType: 'text-to-image',
+      slug: 'text-to-image',
     },
     {
       icon: Mic,
@@ -101,6 +105,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'Voice Cloning teknolojisi ile gerçekçi ses klonları oluşturun. Sesli asistanlar, reklam seslendirmeleri veya eğitim içerikleri için profesyonel ses üretimi.\n\nÖzellikler:\n- Gerçekçi ses klonlama\n- Çoklu dil ve aksan desteği\n- Emotion control\n- Hızlı üretim\n- Yüksek kalite\n\nSeslendirme projelerinizi bir üst seviyeye taşıyın.',
       galleryImages: ['Voice Studio', 'Cloning Interface', 'Audio Library'],
       demoType: 'voice-cloning',
+      slug: 'voice-cloning',
     },
     {
       icon: FileText,
@@ -112,6 +117,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'Document AI ile belgelerinizi otomatik olarak işleyin ve analiz edin. OCR, veri çıkarma ve akıllı kategorizasyon özellikleri ile iş süreçlerinizi hızlandırın.\n\nÖzellikler:\n- OCR ve metin tanıma\n- Otomatik veri çıkarma\n- Belge sınıflandırma\n- Doğrulama ve onay\n- Güvenli depolama\n\nDokümantasyon süreçlerinizi dijitalleştirin.',
       galleryImages: ['Document Scanner', 'Data Extraction', 'Classification System'],
       demoType: 'document-ai',
+      slug: 'document-ai',
     },
     {
       icon: Play,
@@ -123,6 +129,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'Image-to-Video AI ile statik görsellerinizi dinamik içeriğe dönüştürün. AI destekli animasyonlar ve efektler ile sosyal medya içeriklerinizi canlandırın.\n\nÖzellikler:\n- Otomatik animasyon\n- Transition efektleri\n- Music ve ses ekleme\n- Sosyal medya formatları\n- Toplu işlem\n\nGörsellerinize hayat verin.',
       galleryImages: ['Animation Studio', 'Effect Library', 'Preview Screen'],
       demoType: 'image-to-video',
+      slug: 'image-to-video',
     },
     {
       icon: Film,
@@ -134,6 +141,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'Video-to-Video AI ile videolarınızı dönüştürün. Stil transferi, yüz değiştirme ve gelişmiş düzenleme özellikleri ile videolarınızı yeniden oluşturun.\n\nÖzellikler:\n- AI video dönüşümü\n- Stil transferi\n- Kalite iyileştirme\n- Renklendir ve restorasy\n- Toplu düzenleme\n\nVideo üretim sürecinizi optimize edin.',
       galleryImages: ['Video Editor', 'Style Transfer', 'Enhancement Tools'],
       demoType: 'video-to-video',
+      slug: 'video-to-video',
     },
     {
       icon: BarChart3,
@@ -145,6 +153,7 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       extendedContent: 'Data Analysis AI ile büyük veri setlerinizi analiz edin ve değerli içgörüler elde edin. Tahmine dayalı analizler ve görselleştirme araçları ile iş kararlarınızı destekleyin.\n\nÖzellikler:\n- Büyük veri analizi\n- Tahmine dayalı modeller\n- Görselleştirme araçları\n- Otomatik raporlama\n- Real-time analytics\n\nVeriye dayalı kararlar alın.',
       galleryImages: ['Analytics Dashboard', 'Data Visualization', 'Report Generator'],
       demoType: 'data-analysis',
+      slug: 'data-analysis',
     },
     {
       icon: Sparkles,
@@ -155,7 +164,8 @@ export const AllyncAISolutions: React.FC<AllyncAISolutionsProps> = ({ language }
       glowColor: 'rgba(217, 70, 239, 0.5)',
       extendedContent: 'Custom AI Solutions ile işletmenize özel yapay zeka çözümleri geliştirin. İhtiyaçlarınıza göre özelleştirilmiş AI sistemleri ile rekabet avantajı elde edin.\n\nÖzellikler:\n- Tam özelleştirilebilir\n- İş süreçlerine entegrasyon\n- Özel model eğitimi\n- Dedicated destek\n- Scalable altyapı\n\nHayalinizdeki AI çözümünü gerçekleştirin.',
       galleryImages: ['Custom AI Platform', 'Integration Options', 'Training Dashboard'],
-      demoType: 'custom-ai'
+      demoType: 'custom-ai',
+      slug: 'custom-ai',
     }
   ];
 

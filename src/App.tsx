@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation, useParams } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
 import { LoadingScreen } from './components/LoadingScreen';
@@ -16,7 +17,11 @@ const Lanyard = React.lazy(() => import('./components/Lanyard'));
 import { AllyncAISolutions } from './components/AllyncAISolutions';
 import { DigitalSolutions } from './components/DigitalSolutions';
 
-function App() {
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { serviceSlug } = useParams<{ serviceSlug?: string }>();
+
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
   const [viewMode, setViewMode] = useState<'loading' | 'selection' | 'ai-view' | 'digital-view'>('loading');
   const [animationsEnabled, setAnimationsEnabled] = useState(false);
@@ -35,29 +40,36 @@ function App() {
   };
 
   const handleLoadingComplete = () => {
-    // Check if there's a hash in the URL for direct section linking (Google Ads etc.)
-    const hash = window.location.hash.replace('#', '');
-    const validSections = ['contact', 'iletisim', 'pricing', 'fiyat', 'features', 'packages', 'hero'];
+    const path = location.pathname;
 
-    if (hash && validSections.includes(hash)) {
-      // Map Turkish aliases to actual section IDs
-      const sectionMap: { [key: string]: string } = {
-        'iletisim': 'contact',
-        'fiyat': 'pricing'
-      };
-      const targetSection = sectionMap[hash] || hash;
-
-      // Skip selection, go directly to ai-view
+    // Determine view mode based on URL path
+    if (path.startsWith('/ai')) {
       setViewMode('ai-view');
       setTimeout(() => {
         setAnimationsEnabled(true);
-        // Scroll to target section after a brief delay
-        setTimeout(() => {
-          const section = document.getElementById(targetSection);
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 300);
+        // Scroll to service if slug provided
+        if (serviceSlug) {
+          setTimeout(() => {
+            const section = document.getElementById(serviceSlug);
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 500);
+        }
+      }, 500);
+    } else if (path.startsWith('/digital')) {
+      setViewMode('digital-view');
+      setTimeout(() => {
+        setAnimationsEnabled(true);
+        // Scroll to service if slug provided
+        if (serviceSlug) {
+          setTimeout(() => {
+            const section = document.getElementById(serviceSlug);
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 500);
+        }
       }, 500);
     } else {
       setViewMode('selection');
@@ -70,12 +82,14 @@ function App() {
   const handleSelectView = (view: 'ai-view' | 'digital-view') => {
     window.scrollTo(0, 0);
     setViewMode(view);
+    navigate(view === 'ai-view' ? '/ai' : '/digital');
   };
 
   const handleBackToSelection = () => {
     // Instant scroll to top before transition
     window.scrollTo(0, 0);
     setViewMode('selection');
+    navigate('/');
   };
 
   useEffect(() => {
@@ -130,6 +144,41 @@ function App() {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Sync viewMode with URL path (for browser back/forward navigation)
+  useEffect(() => {
+    if (viewMode === 'loading') return; // Don't sync during loading
+
+    const path = location.pathname;
+    if (path.startsWith('/ai') && viewMode !== 'ai-view') {
+      window.scrollTo(0, 0);
+      setViewMode('ai-view');
+      // Scroll to service if slug provided
+      if (serviceSlug) {
+        setTimeout(() => {
+          const section = document.getElementById(serviceSlug);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 500);
+      }
+    } else if (path.startsWith('/digital') && viewMode !== 'digital-view') {
+      window.scrollTo(0, 0);
+      setViewMode('digital-view');
+      // Scroll to service if slug provided
+      if (serviceSlug) {
+        setTimeout(() => {
+          const section = document.getElementById(serviceSlug);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 500);
+      }
+    } else if (path === '/' && viewMode !== 'selection') {
+      window.scrollTo(0, 0);
+      setViewMode('selection');
+    }
+  }, [location.pathname, serviceSlug]);
 
   // Lock scroll only on selection screen
   useEffect(() => {
@@ -400,6 +449,28 @@ function App() {
           )}
         </div>
     </HelmetProvider>
+  );
+}
+
+// Wrapper component with routes
+function AppWithRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<AppContent />} />
+      <Route path="/ai" element={<AppContent />} />
+      <Route path="/ai/:serviceSlug" element={<AppContent />} />
+      <Route path="/digital" element={<AppContent />} />
+      <Route path="/digital/:serviceSlug" element={<AppContent />} />
+    </Routes>
+  );
+}
+
+// Main App with BrowserRouter
+function App() {
+  return (
+    <BrowserRouter>
+      <AppWithRoutes />
+    </BrowserRouter>
   );
 }
 
