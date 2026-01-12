@@ -2,6 +2,9 @@
 /en     /    301
 /en/*   /    301
 
+# Redirect /contact to /digital/contact
+/contact    /digital/contact    301
+
 # Static files - serve directly
 /blog/*  /blog/:splat  200
 /audio/*  /audio/:splat  200
