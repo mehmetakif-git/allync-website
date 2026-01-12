@@ -77,6 +77,14 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
         setStatusMessage(language === 'tr' ? 'Mesajınız başarıyla gönderildi!' : 'Your message has been sent successfully!');
         handleSuccessConfetti();
         setFormData({ name: '', email: '', phone: '', business: '', message: '' });
+
+        // Google Ads Conversion Tracking
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'conversion_event_submit_lead_form', {
+            'event_callback': () => console.log('Google Ads conversion tracked'),
+            'event_timeout': 2000,
+          });
+        }
       } else {
         throw new Error(data.error || 'An error occurred');
       }
