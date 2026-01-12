@@ -1,3 +1,7 @@
+# Redirect old /en URL to homepage (404 fix for Google)
+/en     /    301
+/en/*   /    301
+
 # Static files - serve directly
 /blog/*  /blog/:splat  200
 /audio/*  /audio/:splat  200
