@@ -486,6 +486,18 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
 
 ### Blog Articles (Turkish & English)
 
+**Company Profile (Şirket Profili) Articles:**
+
+1. **Allync Kimdir? Şirket Profili, Hizmetler ve Misyon**
+   URL: https://www.allyncai.com/blog/allync-kimdir.html
+   Topic: Complete Turkish company profile - who is Allync, services, contact info
+   Language: Turkish
+
+2. **Who is Allync? Company Profile, Services & Mission**
+   URL: https://www.allyncai.com/blog/who-is-allync.html
+   Topic: Complete English company profile - who is Allync, services, contact info
+   Language: English
+
 **Turkish (Türkçe) Articles:**
 
 1. **AI Chatbot Nedir? Müşteri Hizmetlerinde Yapay Zeka**

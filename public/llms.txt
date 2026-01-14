@@ -209,6 +209,10 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 
 ## Blog Articles
 
+### Company Profile (Şirket Profili)
+- Allync Kimdir? (TR): https://www.allyncai.com/blog/allync-kimdir.html
+- Who is Allync? (EN): https://www.allyncai.com/blog/who-is-allync.html
+
 ### Turkish (Türkçe)
 - AI Chatbot Rehberi: https://www.allyncai.com/blog/ai-chatbot-rehberi.html
 - Siber Güvenlik Rehberi: https://www.allyncai.com/blog/siber-guvenlik-rehberi.html
