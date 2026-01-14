@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
 
 interface HelmetManagerProps {
   language: 'tr' | 'en';
@@ -6,6 +7,8 @@ interface HelmetManagerProps {
 }
 
 export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSection = 'hero' }) => {
+  const location = useLocation();
+
   const getSectionTitle = () => {
     const baseTitles: Record<string, Record<string, string>> = {
       tr: {
@@ -31,11 +34,21 @@ export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSe
     return baseTitles[language][activeSection] || baseTitles[language].hero;
   };
 
-  // Only update dynamic elements, not meta description or canonical (handled in index.html)
+  // Generate canonical URL based on current path
+  const getCanonicalUrl = () => {
+    const baseUrl = 'https://www.allyncai.com';
+    const path = location.pathname;
+    // Remove trailing slash except for root
+    const cleanPath = path === '/' ? '' : path.replace(/\/$/, '');
+    return `${baseUrl}${cleanPath}`;
+  };
+
   return (
     <Helmet>
       <html lang={language} />
       <title>{getSectionTitle()}</title>
+      <link rel="canonical" href={getCanonicalUrl()} />
+      <meta property="og:url" content={getCanonicalUrl()} />
       <meta property="og:locale" content={language === 'tr' ? 'tr_TR' : 'en_US'} />
     </Helmet>
   );
