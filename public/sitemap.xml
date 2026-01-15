@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.allyncai.com/</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -10,73 +12,73 @@
   <!-- AI Solutions -->
   <url>
     <loc>https://www.allyncai.com/ai</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/whatsapp</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/instagram</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/text-to-video</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/text-to-image</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/voice-cloning</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/document-ai</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/image-to-video</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/video-to-video</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/data-analysis</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/custom-ai</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/contact</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -84,220 +86,660 @@
   <!-- Digital Solutions -->
   <url>
     <loc>https://www.allyncai.com/digital</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/saas-panels</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/ecommerce</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/corporate</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/mobile-app</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/digital-marketing</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/iot</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/cloud</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/maintenance</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/contact</loc>
-    <lastmod>2026-01-11</lastmod>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Blog -->
+  <!-- Blog Index -->
   <url>
     <loc>https://www.allyncai.com/blog/</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/instagram-ai-otomasyonu.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/document-ai-rehberi.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/iot-cozumleri.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/cloud-cozumleri.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/whatsapp-ai-nedir.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/whatsapp-ai-assistant.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/saas-cozumleri.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/eticaret-basari.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/mobil-uygulama-rehberi.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/dijital-pazarlama-2026.html</loc>
-    <lastmod>2026-01-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
 
-  <!-- English Blog Articles -->
-  <url>
-    <loc>https://www.allyncai.com/blog/instagram-ai-automation.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/document-ai-guide.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/iot-solutions.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/cloud-solutions.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/saas-solutions.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/ecommerce-success.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/mobile-app-guide.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/digital-marketing-2026.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- New Blog Articles -->
-  <url>
-    <loc>https://www.allyncai.com/blog/ai-chatbot-rehberi.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/ai-chatbot-guide.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/siber-guvenlik-rehberi.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/blog/cybersecurity-guide.html</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Company Profile Blog Articles -->
+  <!-- Company Profile Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/allync-kimdir.html</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/allync-company.webp</image:loc>
+      <image:title>Allync Kimdir - Şirket Profili</image:title>
+      <image:caption>Allync AI ve dijital çözümler şirketi</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/who-is-allync.html</loc>
     <lastmod>2026-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/allync-company.webp</image:loc>
+      <image:title>Who is Allync - Company Profile</image:title>
+      <image:caption>Allync AI and digital solutions company</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Turkish Blog Articles -->
+  <url>
+    <loc>https://www.allyncai.com/blog/whatsapp-ai-nedir.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/whatsapp-ai.webp</image:loc>
+      <image:title>WhatsApp AI Asistanı</image:title>
+      <image:caption>Allync WhatsApp AI ile 7/24 müşteri hizmeti</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/instagram-ai-otomasyonu.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/instagram-ai.webp</image:loc>
+      <image:title>Instagram AI Otomasyonu</image:title>
+      <image:caption>Allync Instagram AI ile DM otomasyonu</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/document-ai-rehberi.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/document-ai.webp</image:loc>
+      <image:title>Document AI Rehberi</image:title>
+      <image:caption>Allync Document AI ile belge işleme</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/iot-cozumleri.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/iot.webp</image:loc>
+      <image:title>IoT Çözümleri</image:title>
+      <image:caption>Allync IoT ile akıllı işletme çözümleri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/cloud-cozumleri.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/cloud.webp</image:loc>
+      <image:title>Cloud Çözümleri</image:title>
+      <image:caption>Allync bulut teknolojileri rehberi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/saas-cozumleri.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/saas.webp</image:loc>
+      <image:title>SaaS Çözümleri</image:title>
+      <image:caption>Allync SaaS panel geliştirme</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/eticaret-basari.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/ecommerce.webp</image:loc>
+      <image:title>E-Ticaret Başarısı</image:title>
+      <image:caption>Allync e-ticaret çözümleri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/mobil-uygulama-rehberi.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/mobile-app.webp</image:loc>
+      <image:title>Mobil Uygulama Rehberi</image:title>
+      <image:caption>Allync mobil uygulama geliştirme</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/dijital-pazarlama-2026.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/digital-marketing.webp</image:loc>
+      <image:title>Dijital Pazarlama 2026</image:title>
+      <image:caption>Allync dijital pazarlama trendleri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/ai-chatbot-rehberi.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/ai-chatbot.webp</image:loc>
+      <image:title>AI Chatbot Rehberi</image:title>
+      <image:caption>Allync AI chatbot çözümleri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/siber-guvenlik-rehberi.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/cybersecurity.webp</image:loc>
+      <image:title>Siber Güvenlik Rehberi</image:title>
+      <image:caption>Allync siber güvenlik çözümleri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/text-to-video-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/text-to-video.webp</image:loc>
+      <image:title>Text-to-Video AI Rehberi</image:title>
+      <image:caption>Allync Text-to-Video AI ile metinden video oluşturma</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/text-to-image-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/text-to-image.webp</image:loc>
+      <image:title>Text-to-Image AI Rehberi</image:title>
+      <image:caption>Allync Text-to-Image AI ile metinden görsel oluşturma</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/voice-ai-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/voice-ai.webp</image:loc>
+      <image:title>Voice AI Rehberi</image:title>
+      <image:caption>Allync Voice AI ve ses klonlama teknolojileri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/image-to-video-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/image-to-video.webp</image:loc>
+      <image:title>Image-to-Video AI Rehberi</image:title>
+      <image:caption>Allync Image-to-Video AI ile görsellerden video oluşturma</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/video-to-video-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/video-to-video.webp</image:loc>
+      <image:title>Video-to-Video AI Rehberi</image:title>
+      <image:caption>Allync Video-to-Video AI ile video dönüştürme</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/veri-analizi-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/data-analysis.webp</image:loc>
+      <image:title>Veri Analizi AI Rehberi</image:title>
+      <image:caption>Allync Data Analysis AI ile iş zekası</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/kurumsal-web-sitesi-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/corporate-website.webp</image:loc>
+      <image:title>Kurumsal Web Sitesi Rehberi</image:title>
+      <image:caption>Allync kurumsal web sitesi geliştirme</image:caption>
+    </image:image>
+  </url>
+
+  <!-- English Blog Articles -->
+  <url>
+    <loc>https://www.allyncai.com/blog/whatsapp-ai-assistant.html</loc>
+    <lastmod>2026-01-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/whatsapp-ai.webp</image:loc>
+      <image:title>WhatsApp AI Assistant</image:title>
+      <image:caption>Allync WhatsApp AI for 24/7 customer service</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/instagram-ai-automation.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/instagram-ai.webp</image:loc>
+      <image:title>Instagram AI Automation</image:title>
+      <image:caption>Allync Instagram AI for DM automation</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/document-ai-guide.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/document-ai.webp</image:loc>
+      <image:title>Document AI Guide</image:title>
+      <image:caption>Allync Document AI for document processing</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/iot-solutions.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/iot.webp</image:loc>
+      <image:title>IoT Solutions</image:title>
+      <image:caption>Allync IoT for smart business solutions</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/cloud-solutions.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/cloud.webp</image:loc>
+      <image:title>Cloud Solutions</image:title>
+      <image:caption>Allync cloud technology guide</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/saas-solutions.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/saas.webp</image:loc>
+      <image:title>SaaS Solutions</image:title>
+      <image:caption>Allync SaaS panel development</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/ecommerce-success.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/ecommerce.webp</image:loc>
+      <image:title>E-Commerce Success</image:title>
+      <image:caption>Allync e-commerce solutions</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/mobile-app-guide.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/mobile-app.webp</image:loc>
+      <image:title>Mobile App Guide</image:title>
+      <image:caption>Allync mobile app development</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/digital-marketing-2026.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/digital-marketing.webp</image:loc>
+      <image:title>Digital Marketing 2026</image:title>
+      <image:caption>Allync digital marketing trends</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/ai-chatbot-guide.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/ai-chatbot.webp</image:loc>
+      <image:title>AI Chatbot Guide</image:title>
+      <image:caption>Allync AI chatbot solutions</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/cybersecurity-guide.html</loc>
+    <lastmod>2026-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/cybersecurity.webp</image:loc>
+      <image:title>Cybersecurity Guide</image:title>
+      <image:caption>Allync cybersecurity solutions</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/text-to-video-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/text-to-video.webp</image:loc>
+      <image:title>Text-to-Video AI Guide</image:title>
+      <image:caption>Allync Text-to-Video AI for video generation</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/text-to-image-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/text-to-image.webp</image:loc>
+      <image:title>Text-to-Image AI Guide</image:title>
+      <image:caption>Allync Text-to-Image AI for image generation</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/voice-ai-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/voice-ai.webp</image:loc>
+      <image:title>Voice AI Guide</image:title>
+      <image:caption>Allync Voice AI and cloning technology</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/image-to-video-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/image-to-video.webp</image:loc>
+      <image:title>Image-to-Video AI Guide</image:title>
+      <image:caption>Allync Image-to-Video AI for video creation</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/video-to-video-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/video-to-video.webp</image:loc>
+      <image:title>Video-to-Video AI Guide</image:title>
+      <image:caption>Allync Video-to-Video AI for video transformation</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/data-analysis-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/data-analysis.webp</image:loc>
+      <image:title>Data Analysis AI Guide</image:title>
+      <image:caption>Allync Data Analysis AI for business intelligence</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/corporate-website-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/corporate-website.webp</image:loc>
+      <image:title>Corporate Website Guide</image:title>
+      <image:caption>Allync corporate website development</image:caption>
+    </image:image>
+  </url>
+
+  <!-- CRM Integration Blogs -->
+  <url>
+    <loc>https://www.allyncai.com/blog/crm-entegrasyonu-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/crm-integration.webp</image:loc>
+      <image:title>CRM Entegrasyonu Rehberi</image:title>
+      <image:caption>Allync CRM entegrasyonu ile müşteri ilişkileri yönetimi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/crm-integration-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/crm-integration.webp</image:loc>
+      <image:title>CRM Integration Guide</image:title>
+      <image:caption>Allync CRM integration for customer relationship management</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Business Process Automation Blogs -->
+  <url>
+    <loc>https://www.allyncai.com/blog/is-surecleri-otomasyonu.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/business-automation.webp</image:loc>
+      <image:title>İş Süreçleri Otomasyonu</image:title>
+      <image:caption>Allync iş süreçleri otomasyonu çözümleri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/business-process-automation.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/business-automation.webp</image:loc>
+      <image:title>Business Process Automation</image:title>
+      <image:caption>Allync business process automation solutions</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Customer Experience Blogs -->
+  <url>
+    <loc>https://www.allyncai.com/blog/musteri-deneyimi-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/customer-experience.webp</image:loc>
+      <image:title>Müşteri Deneyimi Rehberi</image:title>
+      <image:caption>Allync müşteri deneyimi (CX) yönetimi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/customer-experience-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/customer-experience.webp</image:loc>
+      <image:title>Customer Experience Guide</image:title>
+      <image:caption>Allync customer experience (CX) management</image:caption>
+    </image:image>
+  </url>
+
+  <!-- API Integration Blogs -->
+  <url>
+    <loc>https://www.allyncai.com/blog/api-entegrasyonu-rehberi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/api-integration.webp</image:loc>
+      <image:title>API Entegrasyonu Rehberi</image:title>
+      <image:caption>Allync API entegrasyonu ile sistem bağlantıları</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/api-integration-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/api-integration.webp</image:loc>
+      <image:title>API Integration Guide</image:title>
+      <image:caption>Allync API integration for system connections</image:caption>
+    </image:image>
+  </url>
+
+  <!-- AI Consulting Blogs -->
+  <url>
+    <loc>https://www.allyncai.com/blog/yapay-zeka-danismanligi.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/ai-consulting.webp</image:loc>
+      <image:title>Yapay Zeka Danışmanlığı</image:title>
+      <image:caption>Allync yapay zeka danışmanlığı ve AI çözümleri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/ai-consulting-guide.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/ai-consulting.webp</image:loc>
+      <image:title>AI Consulting Guide</image:title>
+      <image:caption>Allync AI consulting and artificial intelligence solutions</image:caption>
+    </image:image>
+  </url>
+
+  <!-- SaaS Management Dashboard Blogs -->
+  <url>
+    <loc>https://www.allyncai.com/blog/saas-yonetim-paneli.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/saas-dashboard.webp</image:loc>
+      <image:title>SaaS Yönetim Paneli</image:title>
+      <image:caption>Allync SaaS yönetim paneli - 8 sektör, 12 modül</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/saas-management-dashboard.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/saas-dashboard.webp</image:loc>
+      <image:title>SaaS Management Dashboard</image:title>
+      <image:caption>Allync SaaS management dashboard - 8 sectors, 12 modules</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Demo Dashboard Application -->
+  <url>
+    <loc>https://demodashboard.allyncai.com/</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- LLMs.txt Files -->
+  <url>
+    <loc>https://www.allyncai.com/llms.txt</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/llms-full.txt</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

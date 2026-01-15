@@ -544,6 +544,34 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
     URL: https://www.allyncai.com/blog/dijital-pazarlama-2026.html
     Topic: Digital marketing trends
 
+12. **Text-to-Video AI: Metinden Video Oluşturma Rehberi**
+    URL: https://www.allyncai.com/blog/text-to-video-rehberi.html
+    Topic: AI-powered video generation from text
+
+13. **Text-to-Image AI: Metinden Görsel Oluşturma Rehberi**
+    URL: https://www.allyncai.com/blog/text-to-image-rehberi.html
+    Topic: AI-powered image generation from text
+
+14. **Voice AI ve Ses Klonlama: İşletmeler İçin Kapsamlı Rehber**
+    URL: https://www.allyncai.com/blog/voice-ai-rehberi.html
+    Topic: Voice AI and cloning for businesses
+
+15. **Image-to-Video AI: Görsellerden Video Oluşturma Rehberi**
+    URL: https://www.allyncai.com/blog/image-to-video-rehberi.html
+    Topic: Transform images into videos with AI
+
+16. **Video-to-Video AI: Video Dönüştürme ve İyileştirme Rehberi**
+    URL: https://www.allyncai.com/blog/video-to-video-rehberi.html
+    Topic: Video transformation and enhancement with AI
+
+17. **Veri Analizi AI: İş Zekası ve Tahminleme Rehberi**
+    URL: https://www.allyncai.com/blog/veri-analizi-rehberi.html
+    Topic: AI-powered data analysis and business intelligence
+
+18. **Kurumsal Web Sitesi Rehberi: Modern ve SEO Uyumlu Tasarım**
+    URL: https://www.allyncai.com/blog/kurumsal-web-sitesi-rehberi.html
+    Topic: Corporate website development guide
+
 **English Articles:**
 
 1. **AI Chatbot Guide: Transform Your Customer Service**
@@ -589,6 +617,96 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
 11. **2026 Digital Marketing Trends and Strategies**
     URL: https://www.allyncai.com/blog/digital-marketing-2026.html
     Topic: Digital marketing trends
+
+12. **Text-to-Video AI: Complete Video Generation Guide**
+    URL: https://www.allyncai.com/blog/text-to-video-guide.html
+    Topic: AI-powered video generation from text
+
+13. **Text-to-Image AI: Complete Image Generation Guide**
+    URL: https://www.allyncai.com/blog/text-to-image-guide.html
+    Topic: AI-powered image generation from text
+
+14. **Voice AI & Cloning: Complete Business Guide**
+    URL: https://www.allyncai.com/blog/voice-ai-guide.html
+    Topic: Voice AI and cloning for businesses
+
+15. **Image-to-Video AI: Transform Images into Videos**
+    URL: https://www.allyncai.com/blog/image-to-video-guide.html
+    Topic: Transform images into videos with AI
+
+16. **Video-to-Video AI: Transform and Enhance Videos**
+    URL: https://www.allyncai.com/blog/video-to-video-guide.html
+    Topic: Video transformation and enhancement with AI
+
+17. **Data Analysis AI: Business Intelligence & Forecasting Guide**
+    URL: https://www.allyncai.com/blog/data-analysis-guide.html
+    Topic: AI-powered data analysis and business intelligence
+
+18. **Corporate Website Guide: Modern & SEO-Optimized Design**
+    URL: https://www.allyncai.com/blog/corporate-website-guide.html
+    Topic: Corporate website development guide
+
+19. **CRM Entegrasyonu Rehberi: Müşteri İlişkileri Yönetimi**
+    URL: https://www.allyncai.com/blog/crm-entegrasyonu-rehberi.html
+    Topic: CRM integration guide - Salesforce, HubSpot, Zoho integrations
+    Language: Turkish
+
+20. **CRM Integration Guide: Customer Relationship Management**
+    URL: https://www.allyncai.com/blog/crm-integration-guide.html
+    Topic: CRM integration guide - Salesforce, HubSpot, Zoho integrations
+    Language: English
+
+21. **İş Süreçleri Otomasyonu: Verimlilik ve Maliyet Tasarrufu**
+    URL: https://www.allyncai.com/blog/is-surecleri-otomasyonu.html
+    Topic: Business process automation - RPA, workflow automation
+    Language: Turkish
+
+22. **Business Process Automation: Efficiency & Cost Savings**
+    URL: https://www.allyncai.com/blog/business-process-automation.html
+    Topic: Business process automation - RPA, workflow automation
+    Language: English
+
+23. **Müşteri Deneyimi (CX) Rehberi: Memnuniyetten Sadakate**
+    URL: https://www.allyncai.com/blog/musteri-deneyimi-rehberi.html
+    Topic: Customer experience management - CX strategies, omnichannel
+    Language: Turkish
+
+24. **Customer Experience (CX) Guide: From Satisfaction to Loyalty**
+    URL: https://www.allyncai.com/blog/customer-experience-guide.html
+    Topic: Customer experience management - CX strategies, omnichannel
+    Language: English
+
+25. **API Entegrasyonu Rehberi: Sistemleri Birbirine Bağlama**
+    URL: https://www.allyncai.com/blog/api-entegrasyonu-rehberi.html
+    Topic: API integration guide - REST API, GraphQL, webhooks
+    Language: Turkish
+
+26. **API Integration Guide: Connect Your Systems Seamlessly**
+    URL: https://www.allyncai.com/blog/api-integration-guide.html
+    Topic: API integration guide - REST API, GraphQL, webhooks
+    Language: English
+
+27. **Yapay Zeka Danışmanlığı: AI Stratejisi ve Uygulama**
+    URL: https://www.allyncai.com/blog/yapay-zeka-danismanligi.html
+    Topic: AI consulting - ML, NLP, computer vision, AI strategy
+    Language: Turkish
+
+28. **AI Consulting Guide: Strategy and Implementation**
+    URL: https://www.allyncai.com/blog/ai-consulting-guide.html
+    Topic: AI consulting - ML, NLP, computer vision, AI strategy
+    Language: English
+
+29. **SaaS Yönetim Paneli: 8 Sektör, 12 Modül, 160+ Sayfa**
+    URL: https://www.allyncai.com/blog/saas-yonetim-paneli.html
+    Topic: Allync SaaS management dashboard - multi-sector solution with 8 sectors (Gym, Manpower, Real Estate, Advertising, Events, Beauty, Laundry, Hardware), 12 common modules, role-based access control
+    Demo: https://demodashboard.allyncai.com/ (demo@allync.com / demo123)
+    Language: Turkish
+
+30. **SaaS Management Dashboard: 8 Sectors, 12 Modules, 160+ Pages**
+    URL: https://www.allyncai.com/blog/saas-management-dashboard.html
+    Topic: Allync SaaS management dashboard - multi-sector solution with 8 sectors (Gym, Manpower, Real Estate, Advertising, Events, Beauty, Laundry, Hardware), 12 common modules, role-based access control
+    Demo: https://demodashboard.allyncai.com/ (demo@allync.com / demo123)
+    Language: English
 
 ---
 

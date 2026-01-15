@@ -225,6 +225,19 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 - E-Ticaret Başarı Stratejileri: https://www.allyncai.com/blog/eticaret-basari.html
 - Mobil Uygulama Geliştirme Rehberi: https://www.allyncai.com/blog/mobil-uygulama-rehberi.html
 - Dijital Pazarlama Trendleri 2026: https://www.allyncai.com/blog/dijital-pazarlama-2026.html
+- Text-to-Video AI Rehberi: https://www.allyncai.com/blog/text-to-video-rehberi.html
+- Text-to-Image AI Rehberi: https://www.allyncai.com/blog/text-to-image-rehberi.html
+- Voice AI ve Ses Klonlama Rehberi: https://www.allyncai.com/blog/voice-ai-rehberi.html
+- Image-to-Video AI Rehberi: https://www.allyncai.com/blog/image-to-video-rehberi.html
+- Video-to-Video AI Rehberi: https://www.allyncai.com/blog/video-to-video-rehberi.html
+- Veri Analizi AI Rehberi: https://www.allyncai.com/blog/veri-analizi-rehberi.html
+- Kurumsal Web Sitesi Rehberi: https://www.allyncai.com/blog/kurumsal-web-sitesi-rehberi.html
+- CRM Entegrasyonu Rehberi: https://www.allyncai.com/blog/crm-entegrasyonu-rehberi.html
+- İş Süreçleri Otomasyonu: https://www.allyncai.com/blog/is-surecleri-otomasyonu.html
+- Müşteri Deneyimi (CX) Rehberi: https://www.allyncai.com/blog/musteri-deneyimi-rehberi.html
+- API Entegrasyonu Rehberi: https://www.allyncai.com/blog/api-entegrasyonu-rehberi.html
+- Yapay Zeka Danışmanlığı: https://www.allyncai.com/blog/yapay-zeka-danismanligi.html
+- SaaS Yönetim Paneli (8 Sektör, 12 Modül): https://www.allyncai.com/blog/saas-yonetim-paneli.html
 
 ### English
 - AI Chatbot Guide: https://www.allyncai.com/blog/ai-chatbot-guide.html
@@ -238,6 +251,19 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 - E-Commerce Success Strategies: https://www.allyncai.com/blog/ecommerce-success.html
 - Mobile App Development Guide: https://www.allyncai.com/blog/mobile-app-guide.html
 - Digital Marketing Trends 2026: https://www.allyncai.com/blog/digital-marketing-2026.html
+- Text-to-Video AI Guide: https://www.allyncai.com/blog/text-to-video-guide.html
+- Text-to-Image AI Guide: https://www.allyncai.com/blog/text-to-image-guide.html
+- Voice AI & Cloning Guide: https://www.allyncai.com/blog/voice-ai-guide.html
+- Image-to-Video AI Guide: https://www.allyncai.com/blog/image-to-video-guide.html
+- Video-to-Video AI Guide: https://www.allyncai.com/blog/video-to-video-guide.html
+- Data Analysis AI Guide: https://www.allyncai.com/blog/data-analysis-guide.html
+- Corporate Website Guide: https://www.allyncai.com/blog/corporate-website-guide.html
+- CRM Integration Guide: https://www.allyncai.com/blog/crm-integration-guide.html
+- Business Process Automation: https://www.allyncai.com/blog/business-process-automation.html
+- Customer Experience (CX) Guide: https://www.allyncai.com/blog/customer-experience-guide.html
+- API Integration Guide: https://www.allyncai.com/blog/api-integration-guide.html
+- AI Consulting Guide: https://www.allyncai.com/blog/ai-consulting-guide.html
+- SaaS Management Dashboard (8 Sectors, 12 Modules): https://www.allyncai.com/blog/saas-management-dashboard.html
 
 ---
 
