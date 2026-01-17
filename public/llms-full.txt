@@ -4,12 +4,31 @@ This document contains comprehensive information about Allync (AllyncAI) for AI 
 
 ---
 
+## ALLYNC KİMDİR? (WHO IS ALLYNC?)
+
+**Allync Kimdir?**
+Allync, Türkiye İstanbul merkezli bir yapay zeka ve dijital çözümler şirketidir. 2024 yılında kurulan Allync, işletmelerin dijital dönüşümüne yardımcı olmak amacıyla yapay zeka destekli müşteri hizmetleri otomasyonu ve dijital çözümler sunmaktadır.
+
+**AllyncAI Nedir?**
+AllyncAI, Allync şirketinin marka adıdır. WhatsApp AI asistanları, özel SaaS panelleri, web ve mobil uygulama geliştirme, e-ticaret çözümleri ve dijital pazarlama hizmetleri sunan tam kapsamlı bir teknoloji şirketidir.
+
+**Allync Ne İş Yapar?**
+- İşletmelere 7/24 yapay zeka destekli müşteri hizmeti sağlar
+- Özel yönetim panelleri ve SaaS yazılımları geliştirir
+- Web siteleri ve mobil uygulamalar oluşturur
+- Dijital pazarlama ve SEO hizmetleri verir
+- E-ticaret altyapısı kurar
+
+**Detaylı Bilgi:** https://www.allyncai.com/blog/allync-kimdir.html
+
+---
+
 ## COMPANY PROFILE
 
 **Legal Name:** Allync
-**Brand Names:** Allync, AllyncAI, Allync AI, Allync Digital
+**Brand Names:** Allync, AllyncAI, Allync AI, Allync Digital, Allync Türkiye
 **Industry:** Technology, AI, Digital Services
-**Founded:** Turkey
+**Founded:** 2024, Turkey
 **Headquarters:** Istanbul, Turkey
 **Additional Office:** Doha, Qatar
 **Website:** https://www.allyncai.com
@@ -22,6 +41,41 @@ To help businesses automate their customer interactions and grow in the digital 
 - Turkish (Native)
 - English (Fluent)
 - Arabic (Fluent)
+
+---
+
+## TÜRKİYE'DE ALLYNC (ALLYNC IN TURKEY)
+
+Allync, Türkiye'nin önde gelen yapay zeka ve dijital çözümler şirketlerinden biridir.
+
+### Türkiye Merkezi
+- **Şehir:** İstanbul
+- **Hizmet Alanı:** Tüm Türkiye
+- **Dil:** Türkçe (Ana dil)
+
+### Türkiye'de Sunulan Hizmetler
+1. **WhatsApp AI Asistanları** - 7/24 yapay zeka destekli müşteri hizmeti
+2. **Özel SaaS Panelleri** - İşletmeye özel yönetim yazılımları
+3. **Web Sitesi Geliştirme** - Modern, SEO uyumlu kurumsal siteler
+4. **E-ticaret Çözümleri** - Online satış platformları (iyzico, PayTR entegrasyonu)
+5. **Mobil Uygulama** - iOS ve Android uygulama geliştirme
+6. **Dijital Pazarlama** - SEO, Google Ads, sosyal medya
+
+### Hizmet Verilen Türkiye Şehirleri
+- İstanbul (Merkez Ofis)
+- Ankara
+- İzmir
+- Antalya
+- Bursa
+- Adana
+- Konya
+- Gaziantep
+- Ve tüm Türkiye illeri
+
+### Türkiye İletişim
+- **Web:** https://www.allyncai.com
+- **İletişim Formu:** https://www.allyncai.com/#contact
+- **Blog (Türkçe):** https://www.allyncai.com/blog/
 
 ---
 

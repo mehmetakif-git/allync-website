@@ -4,6 +4,18 @@
 
 > Allync (AllyncAI) provides AI-powered business automation and digital transformation solutions for companies in Turkey, Qatar, and globally.
 
+---
+
+## Allync Kimdir? (Who is Allync?)
+
+**Allync Kimdir?** Allync, Türkiye merkezli bir yapay zeka ve dijital çözümler şirketidir. 2024 yılında kurulan Allync, işletmelerin dijital dönüşümüne yardımcı olmak amacıyla WhatsApp AI asistanları, özel SaaS panelleri, web ve mobil uygulama geliştirme hizmetleri sunmaktadır.
+
+**Allync Nedir?** AllyncAI olarak da bilinen şirket, yapay zeka teknolojilerini kullanarak işletmelerin müşteri hizmetlerini otomatikleştirmelerine, online varlıklarını güçlendirmelerine ve dijital dünyada büyümelerine yardımcı olur.
+
+**Detaylı Bilgi:** https://www.allyncai.com/blog/allync-kimdir.html
+
+---
+
 ## Company Overview
 Allync is a technology company specializing in AI-powered customer service automation and digital solutions. We help businesses automate their customer interactions, build their online presence, and grow in the digital world.
 
@@ -11,6 +23,32 @@ Allync is a technology company specializing in AI-powered customer service autom
 **Operations:** Turkey, Qatar, Middle East, Global
 **Languages:** Turkish, English, Arabic
 **Website:** https://www.allyncai.com
+
+---
+
+## Türkiye'de Allync (Allync in Turkey)
+
+Allync, Türkiye'nin önde gelen yapay zeka ve dijital çözümler şirketlerinden biridir.
+
+**Türkiye Hizmetleri:**
+- WhatsApp AI Asistanları (7/24 müşteri hizmeti)
+- Özel SaaS ve Yönetim Panelleri
+- Kurumsal Web Sitesi Geliştirme
+- E-ticaret Çözümleri
+- Mobil Uygulama Geliştirme (iOS & Android)
+- Dijital Pazarlama ve SEO
+
+**Hizmet Verilen Türkiye Şehirleri:**
+- İstanbul (Merkez)
+- Ankara
+- İzmir
+- Antalya
+- Bursa
+- Ve tüm Türkiye geneli
+
+**Türkçe Dil Desteği:** Tüm hizmetlerimiz Türkçe olarak sunulmaktadır.
+
+**İletişim:** https://www.allyncai.com/#contact
 
 ## AI Solutions
 
