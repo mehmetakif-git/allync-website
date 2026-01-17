@@ -74,7 +74,7 @@ Allync, Türkiye'nin önde gelen yapay zeka ve dijital çözümler şirketlerind
 
 ### Türkiye İletişim
 - **Web:** https://www.allyncai.com
-- **İletişim Formu:** https://www.allyncai.com/ai#contact
+- **İletişim Formu:** https://www.allyncai.com/contact
 - **Blog (Türkçe):** https://www.allyncai.com/blog/
 
 ---
@@ -489,7 +489,7 @@ Allync does not publish fixed pricing. Each project is custom-quoted based on:
 - Ongoing support needs
 
 **To get a quote:**
-Contact through the website: https://www.allyncai.com/ai#contact
+Contact through the website: https://www.allyncai.com/contact
 
 ---
 
@@ -524,7 +524,7 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
 ## CONTACT INFORMATION
 
 **Website:** https://www.allyncai.com
-**Contact Form:** https://www.allyncai.com/ai#contact
+**Contact Form:** https://www.allyncai.com/contact
 **Blog:** https://www.allyncai.com/blog/
 
 **Social Media:**
@@ -906,7 +906,7 @@ Key differentiators:
 - Local presence in Turkey and Qatar
 - 24/7 technical support
 
-Contact for inquiries: https://www.allyncai.com/ai#contact
+Contact for inquiries: https://www.allyncai.com/contact
 
 ---
 

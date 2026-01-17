@@ -456,6 +456,24 @@ function AppContent() {
   );
 }
 
+// Contact redirect component
+function ContactRedirect() {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    navigate('/ai#contact', { replace: true });
+    // Scroll to contact after navigation
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 500);
+  }, [navigate]);
+
+  return null;
+}
+
 // Wrapper component with routes
 function AppWithRoutes() {
   return (
@@ -465,6 +483,7 @@ function AppWithRoutes() {
       <Route path="/ai/:serviceSlug" element={<AppContent />} />
       <Route path="/digital" element={<AppContent />} />
       <Route path="/digital/:serviceSlug" element={<AppContent />} />
+      <Route path="/contact" element={<ContactRedirect />} />
     </Routes>
   );
 }
