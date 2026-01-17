@@ -48,7 +48,7 @@ Allync, Türkiye'nin önde gelen yapay zeka ve dijital çözümler şirketlerind
 
 **Türkçe Dil Desteği:** Tüm hizmetlerimiz Türkçe olarak sunulmaktadır.
 
-**İletişim:** https://www.allyncai.com/#contact
+**İletişim:** https://www.allyncai.com/ai#contact
 
 ## AI Solutions
 
@@ -226,7 +226,7 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 ## Contact
 
 - **Website:** https://www.allyncai.com
-- **Contact Form:** https://www.allyncai.com/#contact
+- **Contact Form:** https://www.allyncai.com/ai#contact
 
 ## Social Media
 
