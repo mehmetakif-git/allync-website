@@ -4,7 +4,7 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.allyncai.com/</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,73 +12,73 @@
   <!-- AI Solutions -->
   <url>
     <loc>https://www.allyncai.com/ai</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/whatsapp</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/instagram</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/text-to-video</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/text-to-image</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/voice-cloning</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/document-ai</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/image-to-video</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/video-to-video</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/data-analysis</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/custom-ai</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/ai/contact</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -86,61 +86,61 @@
   <!-- Digital Solutions -->
   <url>
     <loc>https://www.allyncai.com/digital</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/saas-panels</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/ecommerce</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/corporate</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/mobile-app</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/digital-marketing</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/iot</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/cloud</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/maintenance</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/digital/contact</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -148,7 +148,7 @@
   <!-- Blog Index -->
   <url>
     <loc>https://www.allyncai.com/blog/</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -301,7 +301,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/text-to-video-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -312,7 +312,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/text-to-image-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -323,7 +323,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/voice-ai-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -334,7 +334,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/image-to-video-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -345,7 +345,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/video-to-video-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -356,7 +356,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/veri-analizi-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -367,7 +367,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/kurumsal-web-sitesi-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -501,7 +501,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/text-to-video-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -512,7 +512,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/text-to-image-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -523,7 +523,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/voice-ai-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -534,7 +534,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/image-to-video-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -545,7 +545,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/video-to-video-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -556,7 +556,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/data-analysis-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -567,7 +567,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/corporate-website-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -580,7 +580,7 @@
   <!-- CRM Integration Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/crm-entegrasyonu-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -591,7 +591,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/crm-integration-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -604,7 +604,7 @@
   <!-- Business Process Automation Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/is-surecleri-otomasyonu.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -615,7 +615,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/business-process-automation.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -628,7 +628,7 @@
   <!-- Customer Experience Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/musteri-deneyimi-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -639,7 +639,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/customer-experience-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -652,7 +652,7 @@
   <!-- API Integration Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/api-entegrasyonu-rehberi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -663,7 +663,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/api-integration-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -676,7 +676,7 @@
   <!-- AI Consulting Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/yapay-zeka-danismanligi.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -687,7 +687,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/ai-consulting-guide.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -700,7 +700,7 @@
   <!-- SaaS Management Dashboard Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/saas-yonetim-paneli.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -711,7 +711,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/saas-management-dashboard.html</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -721,24 +721,24 @@
     </image:image>
   </url>
 
-  <!-- Demo Dashboard Application -->
+  <!-- Contact Page -->
   <url>
-    <loc>https://demodashboard.allyncai.com/</loc>
-    <lastmod>2026-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.allyncai.com/contact</loc>
+    <lastmod>2026-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- LLMs.txt Files -->
   <url>
     <loc>https://www.allyncai.com/llms.txt</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/llms-full.txt</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
