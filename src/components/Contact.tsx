@@ -62,7 +62,7 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
     console.log('Errors:', errors);
 
     try {
-      const response = await fetch('/.netlify/functions/send-email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
