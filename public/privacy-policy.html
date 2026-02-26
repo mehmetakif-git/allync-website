@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Allync AI</title>
+    <meta name="description" content="Allync AI Privacy Policy - Learn how we collect, use, and protect your data including WhatsApp Business API and AI chatbot interactions.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.allyncai.com/privacy-policy.html">
+
+    <meta property="og:title" content="Privacy Policy | Allync AI">
+    <meta property="og:description" content="Learn how Allync AI collects, uses, and protects your personal data.">
+    <meta property="og:url" content="https://www.allyncai.com/privacy-policy.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Allync">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --color-primary: #213448; --color-secondary: #547792; --color-accent: #94B4C1; --color-highlight: #EAE0CF; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #000; color: #fff; line-height: 1.8; min-height: 100vh; position: relative; overflow-x: hidden; }
+        .gradient-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(33, 52, 72, 0.4) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 80% 30%, rgba(84, 119, 146, 0.3) 0%, transparent 50%), radial-gradient(ellipse 70% 50% at 50% 80%, rgba(148, 180, 193, 0.2) 0%, transparent 50%); }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+        header { padding: 20px 0; border-bottom: 1px solid rgba(148, 180, 193, 0.15); position: sticky; top: 0; background: linear-gradient(180deg, rgba(33, 52, 72, 0.6) 0%, rgba(33, 52, 72, 0.3) 100%); backdrop-filter: blur(12px); z-index: 100; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 24px; font-weight: 700; text-decoration: none; background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--color-accent); }
+
+        .breadcrumb { padding: 20px 0; font-size: 14px; color: rgba(255,255,255,0.5); }
+        .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--color-accent); }
+
+        .content { padding: 40px 0 80px; }
+        .page-header { margin-bottom: 40px; }
+        .page-tag { display: inline-block; padding: 6px 16px; background: rgba(84, 119, 146, 0.2); color: var(--color-accent); border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+        h1 { font-size: 38px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; background: linear-gradient(135deg, #fff, var(--color-accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .last-updated { color: rgba(255,255,255,0.5); font-size: 14px; }
+
+        .policy-content { font-size: 17px; color: rgba(255,255,255,0.85); }
+        .policy-content p { margin-bottom: 20px; }
+        .policy-content h2 { font-size: 26px; font-weight: 600; margin: 48px 0 16px; color: #fff; }
+        .policy-content h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px; color: #fff; }
+        .policy-content ul, .policy-content ol { margin: 16px 0 20px 24px; }
+        .policy-content li { margin-bottom: 10px; }
+        .policy-content strong { color: #fff; }
+        .policy-content a { color: var(--color-accent); text-decoration: none; }
+        .policy-content a:hover { text-decoration: underline; }
+
+        .highlight-box { background: linear-gradient(135deg, rgba(33, 52, 72, 0.3), rgba(84, 119, 146, 0.2)); border: 1px solid rgba(148, 180, 193, 0.3); border-radius: 12px; padding: 24px; margin: 28px 0; }
+        .highlight-box h4 { color: var(--color-accent); margin-bottom: 10px; font-size: 18px; }
+
+        .contact-box { background: linear-gradient(135deg, rgba(33, 52, 72, 0.4), rgba(84, 119, 146, 0.3)); border: 1px solid rgba(148, 180, 193, 0.3); border-radius: 16px; padding: 32px; text-align: center; margin: 48px 0; }
+        .contact-box h3 { font-size: 22px; margin-bottom: 12px; }
+        .contact-box p { color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+        .contact-box a { color: var(--color-accent); }
+
+        footer { border-top: 1px solid rgba(148, 180, 193, 0.15); padding: 40px 0; text-align: center; background: linear-gradient(0deg, rgba(33, 52, 72, 0.6) 0%, rgba(33, 52, 72, 0.3) 100%); position: relative; z-index: 1; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
+        .footer-links a:hover { color: var(--color-accent); }
+        .copyright { color: rgba(255,255,255,0.4); font-size: 14px; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 28px; }
+            .policy-content { font-size: 16px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="https://www.allyncai.com" class="logo">Allync</a>
+            <nav class="nav-links">
+                <a href="https://www.allyncai.com">Home</a>
+                <a href="/blog/">Blog</a>
+                <a href="https://www.allyncai.com/contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav class="breadcrumb">
+            <a href="https://www.allyncai.com">Home</a> &rsaquo;
+            Privacy Policy
+        </nav>
+
+        <div class="content">
+            <div class="page-header">
+                <span class="page-tag">Legal</span>
+                <h1>Privacy Policy</h1>
+                <p class="last-updated">Last updated: February 26, 2026</p>
+            </div>
+
+            <div class="policy-content">
+
+                <h2>1. Introduction</h2>
+                <p>Allync AI ("Allync", "we", "us", or "our") is committed to protecting your privacy and personal data. This Privacy Policy explains how we collect, use, store, and protect information when you interact with our website (<a href="https://www.allyncai.com">www.allyncai.com</a>), our WhatsApp Business services, AI-powered chatbot, and other digital services.</p>
+                <p>By using our services, you agree to the collection and use of information in accordance with this policy. We comply with the General Data Protection Regulation (GDPR), Turkey's Personal Data Protection Law (KVKK - Law No. 6698), and applicable data protection laws in Qatar.</p>
+
+                <div class="highlight-box">
+                    <h4>Data Controller</h4>
+                    <p><strong>Allync AI (AllyncAI)</strong><br>
+                    Email: <a href="mailto:info@allyncai.com">info@allyncai.com</a><br>
+                    Website: <a href="https://www.allyncai.com">www.allyncai.com</a><br>
+                    Turkey: +90 533 494 04 16<br>
+                    Qatar: +974 5107 9565</p>
+                </div>
+
+                <h2>2. Information We Collect</h2>
+
+                <h3>2.1 Information You Provide</h3>
+                <ul>
+                    <li><strong>Contact form submissions:</strong> Name, email address, phone number, business type, and your message</li>
+                    <li><strong>WhatsApp messages:</strong> Messages you send to our WhatsApp Business number, including text, images, and documents</li>
+                    <li><strong>Account information:</strong> Business name, contact details, and service preferences when you sign up for our services</li>
+                </ul>
+
+                <h3>2.2 Information Collected Automatically</h3>
+                <ul>
+                    <li><strong>Device information:</strong> Browser type, operating system, screen resolution</li>
+                    <li><strong>Usage data:</strong> Pages visited, time spent, click patterns (via Google Analytics)</li>
+                    <li><strong>IP address:</strong> For security and approximate geolocation</li>
+                    <li><strong>Cookies:</strong> Essential, analytics, and functional cookies (see Section 7)</li>
+                </ul>
+
+                <h3>2.3 Information from Third Parties</h3>
+                <ul>
+                    <li><strong>WhatsApp/Meta:</strong> Your WhatsApp profile name and phone number when you initiate a conversation with our business account</li>
+                    <li><strong>Google Analytics:</strong> Aggregated website usage statistics</li>
+                </ul>
+
+                <h2>3. How We Use Your Information</h2>
+                <p>We use your personal data for the following purposes:</p>
+                <ul>
+                    <li><strong>Service delivery:</strong> To respond to your inquiries and provide our AI solutions</li>
+                    <li><strong>WhatsApp communication:</strong> To answer your questions about Allync services via our AI-powered assistant</li>
+                    <li><strong>Customer support:</strong> To assist you with technical issues and account management</li>
+                    <li><strong>Service improvement:</strong> To analyze usage patterns and improve our offerings</li>
+                    <li><strong>Marketing:</strong> To send relevant updates about our services (with your consent)</li>
+                    <li><strong>Legal compliance:</strong> To comply with applicable laws and regulations</li>
+                </ul>
+
+                <h2>4. WhatsApp Business Integration</h2>
+                <p>We use the <strong>WhatsApp Business API</strong> (provided by Meta Platforms, Inc.) to communicate with our customers. When you message our WhatsApp Business number:</p>
+
+                <div class="highlight-box">
+                    <h4>WhatsApp Data Processing</h4>
+                    <ul>
+                        <li>Your <strong>phone number</strong> and <strong>WhatsApp profile name</strong> are shared with us by Meta</li>
+                        <li>Your <strong>messages</strong> are processed to provide relevant responses about Allync services</li>
+                        <li>Messages are transmitted using WhatsApp's <strong>end-to-end encryption</strong></li>
+                        <li>We do not share your WhatsApp data with third parties for marketing purposes</li>
+                        <li>Conversation history may be retained for <strong>service improvement</strong> and <strong>quality assurance</strong></li>
+                    </ul>
+                </div>
+
+                <p>Meta's own privacy practices apply to WhatsApp as a platform. Please review <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">WhatsApp's Privacy Policy</a> for details on how Meta processes your data.</p>
+
+                <h2>5. AI-Powered Chatbot</h2>
+                <p>Our WhatsApp assistant uses <strong>artificial intelligence</strong> to provide automated responses about Allync's services, pricing, and solutions.</p>
+
+                <h3>5.1 How the AI Chatbot Works</h3>
+                <ul>
+                    <li>Your messages are processed by our AI system to understand your intent and provide relevant answers</li>
+                    <li>The AI is trained exclusively on <strong>Allync company information</strong> (services, pricing, features, industry solutions)</li>
+                    <li>The AI does <strong>not</strong> have access to your personal accounts, financial data, or sensitive personal information</li>
+                    <li>Complex inquiries are escalated to <strong>human representatives</strong></li>
+                </ul>
+
+                <h3>5.2 AI Data Handling</h3>
+                <ul>
+                    <li>Messages processed by the AI are used solely for <strong>generating responses</strong> and <strong>improving service quality</strong></li>
+                    <li>We do <strong>not</strong> use your conversations to train general-purpose AI models</li>
+                    <li>AI-processed data is subject to the same security measures as all other personal data</li>
+                    <li>You may request deletion of your conversation history at any time</li>
+                </ul>
+
+                <h2>6. Data Storage and Security</h2>
+                <p>We implement appropriate technical and organizational measures to protect your personal data:</p>
+                <ul>
+                    <li><strong>Encryption:</strong> All data transmitted between your device and our servers is encrypted using TLS/SSL</li>
+                    <li><strong>Access control:</strong> Personal data access is restricted to authorized personnel only</li>
+                    <li><strong>Secure infrastructure:</strong> Our services are hosted on enterprise-grade cloud infrastructure</li>
+                    <li><strong>Regular audits:</strong> We conduct periodic security assessments</li>
+                    <li><strong>Incident response:</strong> We have procedures in place to handle data breaches promptly</li>
+                </ul>
+
+                <h3>6.1 Data Location</h3>
+                <p>Your data may be stored and processed in Turkey, Qatar, and/or the European Economic Area (EEA). When data is transferred outside the EEA, we ensure appropriate safeguards are in place in accordance with GDPR requirements.</p>
+
+                <h2>7. Cookies</h2>
+                <p>Our website uses the following types of cookies:</p>
+                <ul>
+                    <li><strong>Essential cookies:</strong> Required for website functionality (session management, security)</li>
+                    <li><strong>Analytics cookies:</strong> Google Analytics (G-2N3BHRNGFJ) to understand website usage patterns</li>
+                    <li><strong>Functional cookies:</strong> To remember your language preference and settings</li>
+                </ul>
+                <p>You can manage cookie preferences through your browser settings. Disabling certain cookies may affect website functionality.</p>
+
+                <h2>8. Your Rights</h2>
+                <p>Under GDPR and KVKK, you have the following rights regarding your personal data:</p>
+                <ul>
+                    <li><strong>Right to access:</strong> Request a copy of the personal data we hold about you</li>
+                    <li><strong>Right to rectification:</strong> Request correction of inaccurate personal data</li>
+                    <li><strong>Right to erasure:</strong> Request deletion of your personal data ("right to be forgotten")</li>
+                    <li><strong>Right to restrict processing:</strong> Request limitation of how we process your data</li>
+                    <li><strong>Right to data portability:</strong> Receive your data in a structured, machine-readable format</li>
+                    <li><strong>Right to object:</strong> Object to processing of your data for certain purposes</li>
+                    <li><strong>Right to withdraw consent:</strong> Withdraw previously given consent at any time</li>
+                </ul>
+                <p>To exercise any of these rights, please contact us at <a href="mailto:info@allyncai.com">info@allyncai.com</a>. We will respond to your request within 30 days.</p>
+
+                <h2>9. Data Retention</h2>
+                <ul>
+                    <li><strong>Contact form data:</strong> Retained for 2 years or until you request deletion</li>
+                    <li><strong>WhatsApp conversations:</strong> Retained for 1 year for service quality purposes</li>
+                    <li><strong>Analytics data:</strong> Retained for 26 months (Google Analytics default)</li>
+                    <li><strong>Account data:</strong> Retained for the duration of our business relationship plus 5 years</li>
+                </ul>
+
+                <h2>10. Third-Party Services</h2>
+                <p>We use the following third-party services that may process your data:</p>
+                <ul>
+                    <li><strong>Meta (WhatsApp Business API):</strong> Messaging platform - <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Google Analytics:</strong> Website analytics - <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Google Workspace:</strong> Email services - <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                    <li><strong>Vercel:</strong> Website hosting - <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+                </ul>
+
+                <h2>11. Children's Privacy</h2>
+                <p>Our services are not directed to individuals under the age of 16. We do not knowingly collect personal data from children. If you believe we have collected data from a child, please contact us immediately.</p>
+
+                <h2>12. Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically.</p>
+
+                <div class="contact-box">
+                    <h3>Contact Us</h3>
+                    <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+                    <p><strong>Email:</strong> <a href="mailto:info@allyncai.com">info@allyncai.com</a></p>
+                    <p><strong>Turkey:</strong> <a href="tel:+905334940416">+90 533 494 04 16</a></p>
+                    <p><strong>Qatar:</strong> <a href="tel:+97451079565">+974 5107 9565</a></p>
+                    <p><strong>Website:</strong> <a href="https://www.allyncai.com">www.allyncai.com</a></p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://www.allyncai.com">Home</a>
+                <a href="/blog/">Blog</a>
+                <a href="https://www.allyncai.com/contact">Contact</a>
+                <a href="https://x.com/allync_ai">Twitter</a>
+                <a href="https://www.instagram.com/allyncai">Instagram</a>
+            </div>
+            <p class="copyright">&copy; 2026 Allync AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2N3BHRNGFJ"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-2N3BHRNGFJ');</script>
+</body>
+</html>

@@ -4,7 +4,8 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" }
+    { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy.html" }
   ],
   "redirects": [
     { "source": "/en", "destination": "/", "permanent": true },
