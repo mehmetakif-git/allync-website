@@ -7,6 +7,7 @@ import { Navigation } from './components/Navigation';
 import { SelectionScreen } from './components/SelectionScreen';
 import { HelmetManager } from './components/HelmetManager';
 import { InactivityWarning } from './components/InactivityWarning';
+import { NotFound } from './components/NotFound';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { ScrollDownIndicator } from './components/ui/ScrollDownIndicator';
 
@@ -484,6 +485,7 @@ function AppWithRoutes() {
       <Route path="/digital" element={<AppContent />} />
       <Route path="/digital/:serviceSlug" element={<AppContent />} />
       <Route path="/contact" element={<ContactRedirect />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
