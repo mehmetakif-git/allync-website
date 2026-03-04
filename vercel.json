@@ -5,7 +5,8 @@
   "framework": "vite",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/privacy-policy", "destination": "/privacy-policy.html" }
+    { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
+    { "source": "/((?!blog|api|assets|privacy-policy).*)", "destination": "/index.html" }
   ],
   "redirects": [
     { "source": "/en", "destination": "/", "permanent": true },
