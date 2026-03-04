@@ -12,18 +12,37 @@ export const ScrollDownIndicator: React.FC<ScrollDownIndicatorProps> = ({
   delay = 3000,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [reachedBottom, setReachedBottom] = useState(false);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
     const startTimer = () => {
       clearTimeout(timer);
-      timer = setTimeout(() => {
-        setIsVisible(true);
-      }, delay);
+      if (!reachedBottom) {
+        timer = setTimeout(() => {
+          setIsVisible(true);
+        }, delay);
+      }
     };
 
     const handleScroll = () => {
+      // Check if user reached contact/footer section
+      const contactSection = document.getElementById('contact');
+      const footer = document.querySelector('footer');
+      const scrollBottom = window.scrollY + window.innerHeight;
+
+      if (contactSection && scrollBottom >= contactSection.offsetTop) {
+        setReachedBottom(true);
+        setIsVisible(false);
+        return;
+      }
+      if (footer && scrollBottom >= footer.offsetTop) {
+        setReachedBottom(true);
+        setIsVisible(false);
+        return;
+      }
+
       setIsVisible(false);
       startTimer();
     };
@@ -31,14 +50,13 @@ export const ScrollDownIndicator: React.FC<ScrollDownIndicatorProps> = ({
     // Start initial timer
     startTimer();
 
-    // Only hide on scroll, not on mouse/touch/keyboard
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [delay]);
+  }, [delay, reachedBottom]);
 
   const handleClick = () => {
     window.scrollTo({

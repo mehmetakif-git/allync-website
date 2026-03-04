@@ -341,8 +341,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
     if (expandedIndex !== null || isDemoModalOpen) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = '';
     }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [expandedIndex, isDemoModalOpen]);
 
   const handleThumbnailClick = (idx: number) => {
