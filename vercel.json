@@ -9,6 +9,12 @@
     { "source": "/((?!blog|api|assets|privacy-policy).*)", "destination": "/index.html" }
   ],
   "redirects": [
+    {
+      "source": "/:path((?!.well-known).*)",
+      "has": [{ "type": "host", "value": "allyncai.com" }],
+      "destination": "https://www.allyncai.com/:path",
+      "permanent": true
+    },
     { "source": "/en", "destination": "/", "permanent": true },
     { "source": "/en/:path*", "destination": "/", "permanent": true },
     { "source": "/contact", "destination": "/digital/contact", "permanent": true },
