@@ -3,6 +3,7 @@ import { Video as LucideIcon, X, ChevronLeft, ChevronRight, Play, Pause } from '
 import { motion, AnimatePresence } from 'framer-motion';
 import { GlowingEffect } from '../ui/GlowingEffect';
 import { useOutsideClick } from '../../hooks/use-outside-click';
+import { lockScroll, unlockScroll } from '../../utils/scrollLock';
 import { ServiceDetailModal } from '../ServiceDetailModal';
 import logoSvg from '../../assets/logo.svg';
 import { CloudDemo } from '../ui/CloudDemo';
@@ -339,13 +340,9 @@ export const ServiceCard: React.FC<ServiceCardProps> = memo(({
 
   useEffect(() => {
     if (expandedIndex !== null || isDemoModalOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+      lockScroll();
+      return () => unlockScroll();
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [expandedIndex, isDemoModalOpen]);
 
   const handleThumbnailClick = (idx: number) => {

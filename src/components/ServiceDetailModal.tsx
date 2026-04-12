@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { useOutsideClick } from '../hooks/use-outside-click';
+import { lockScroll, unlockScroll } from '../utils/scrollLock';
 
 interface ServiceDetailModalProps {
   isOpen: boolean;
@@ -36,14 +37,9 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+      lockScroll();
+      return () => unlockScroll();
     }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [isOpen]);
 
   useEffect(() => {

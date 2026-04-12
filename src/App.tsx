@@ -8,7 +8,9 @@ import { SelectionScreen } from './components/SelectionScreen';
 import { HelmetManager } from './components/HelmetManager';
 import { InactivityWarning } from './components/InactivityWarning';
 import { NotFound } from './components/NotFound';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { ScrollProgress } from './components/ui/ScrollProgress';
+import { lockScroll, unlockScroll, resetScrollLock } from './utils/scrollLock';
 import { ScrollDownIndicator } from './components/ui/ScrollDownIndicator';
 
 // Lazy load heavy components - Three.js only
@@ -123,6 +125,22 @@ function AppContent() {
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
 
+  // DEBUG: Monitor scroll state
+  useEffect(() => {
+    if (!import.meta.env.DEV) return;
+
+    const debugWheel = (e: WheelEvent) => {
+      const target = e.target as HTMLElement;
+      console.log(
+        `%c[SCROLL DEBUG] wheel fired | deltaY: ${e.deltaY} | scrollY: ${window.scrollY} | scrollHeight: ${document.body.scrollHeight} | viewportHeight: ${window.innerHeight} | target: ${target.tagName}.${target.className?.toString().slice(0, 50)} | body.overflow: "${document.body.style.overflow}" | body.position: "${document.body.style.position}" | html.overflow: "${document.documentElement.style.overflow}" | computedOverflow: "${getComputedStyle(document.body).overflow}"`,
+        'color: #ffaa00;'
+      );
+    };
+
+    window.addEventListener('wheel', debugWheel, { passive: true });
+    return () => window.removeEventListener('wheel', debugWheel);
+  }, []);
+
   // Click anywhere to shake lanyard and show hint when it's visible
   useEffect(() => {
     if (!showLanyard) return;
@@ -185,14 +203,12 @@ function AppContent() {
   // Lock scroll only on selection screen
   useEffect(() => {
     if (viewMode === 'selection') {
-      document.body.style.overflow = 'hidden';
+      lockScroll();
+      return () => unlockScroll();
     } else {
-      document.body.style.overflow = '';
+      // Force reset on navigation - clears any stuck scroll locks
+      resetScrollLock();
     }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [viewMode]);
 
   // Effect to show warning at 50 seconds and Lanyard after 60 seconds of inactivity
@@ -485,6 +501,7 @@ function AppWithRoutes() {
       <Route path="/digital" element={<AppContent />} />
       <Route path="/digital/:serviceSlug" element={<AppContent />} />
       <Route path="/contact" element={<ContactRedirect />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

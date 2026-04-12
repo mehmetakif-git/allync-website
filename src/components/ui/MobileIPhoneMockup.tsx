@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './MobileIPhoneMockup.css';
+import { lockScroll, unlockScroll } from '../../utils/scrollLock';
 
 interface MobileIPhoneMockupProps {
   children: React.ReactNode;
@@ -8,10 +9,8 @@ interface MobileIPhoneMockupProps {
 export const MobileIPhoneMockup: React.FC<MobileIPhoneMockupProps> = ({ children }) => {
   // Disable body scroll when mounted
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = '';
-    };
+    lockScroll();
+    return () => unlockScroll();
   }, []);
 
   return (

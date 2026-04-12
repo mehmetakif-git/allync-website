@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
+import { lockScroll, unlockScroll } from '../utils/scrollLock';
 
 interface LegalModalsProps {
   language: 'tr' | 'en';
@@ -17,14 +18,14 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
 
     if (activeModal) {
       document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+      lockScroll();
     }
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      if (activeModal) {
+        unlockScroll();
+      }
     };
   }, [activeModal]);
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Volume2 } from 'lucide-react';
+import { lockScroll, unlockScroll } from '../utils/scrollLock';
 
 // Arayüzler ve SoundWaveVisualizer component'i aynı kalıyor...
 interface Service {
@@ -79,13 +80,13 @@ export const ListeningModal: React.FC<ListeningModalProps> = ({ service, onClose
   }, [onClose]);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    lockScroll();
     // İçeriğin, ana animasyon bittikten sonra gelmesini sağlıyoruz
     const timer = setTimeout(() => {
       setShowContent(true);
     }, 500); // Animasyon süresine göre ayarlandı
     return () => {
-      document.body.style.overflow = 'auto';
+      unlockScroll();
       clearTimeout(timer);
     };
   }, []);
