@@ -318,6 +318,171 @@
 }
 </script>
 
+<!-- BreadcrumbList Schema - Shows breadcrumbs in Google search results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Ana Sayfa",
+      "item": "https://www.allyncai.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "AI Çözümleri",
+      "item": "https://www.allyncai.com/ai"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Dijital Çözümler",
+      "item": "https://www.allyncai.com/digital"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Blog",
+      "item": "https://www.allyncai.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Gizlilik Politikası",
+      "item": "https://www.allyncai.com/privacy"
+    }
+  ]
+}
+</script>
+
+<!-- SiteNavigationElement Schema - Helps Google generate Sitelinks -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://www.allyncai.com/#ai-solutions",
+      "name": "AI Çözümleri",
+      "description": "WhatsApp AI, Instagram AI, Text-to-Video, Voice AI ve özel yapay zeka çözümleri",
+      "url": "https://www.allyncai.com/ai"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://www.allyncai.com/#whatsapp-ai",
+      "name": "WhatsApp AI Asistanları",
+      "description": "7/24 WhatsApp üzerinden yapay zeka destekli müşteri hizmeti",
+      "url": "https://www.allyncai.com/ai/whatsapp"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://www.allyncai.com/#instagram-ai",
+      "name": "Instagram AI",
+      "description": "Instagram DM ve yorum otomasyonu",
+      "url": "https://www.allyncai.com/ai/instagram"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://www.allyncai.com/#digital-solutions",
+      "name": "Dijital Çözümler",
+      "description": "Web geliştirme, mobil uygulama, SaaS panelleri, e-ticaret",
+      "url": "https://www.allyncai.com/digital"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://www.allyncai.com/#saas-panels",
+      "name": "Özel SaaS Panelleri",
+      "description": "İşletmeye özel yönetim panelleri ve dashboard'lar",
+      "url": "https://www.allyncai.com/digital/saas-panels"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://www.allyncai.com/#corporate",
+      "name": "Kurumsal Web Sitesi",
+      "description": "Modern, SEO uyumlu kurumsal web geliştirme",
+      "url": "https://www.allyncai.com/digital/corporate"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://www.allyncai.com/#mobile-app",
+      "name": "Mobil Uygulama",
+      "description": "iOS ve Android mobil uygulama geliştirme",
+      "url": "https://www.allyncai.com/digital/mobile-app"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://www.allyncai.com/#blog",
+      "name": "Blog",
+      "description": "AI, dijital dönüşüm ve iş otomasyonu hakkında güncel makaleler",
+      "url": "https://www.allyncai.com/blog/"
+    }
+  ]
+}
+</script>
+
+<!-- Speakable Schema - Voice search optimization (Google Assistant, Alexa) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Allync - WhatsApp AI Asistanları ve Dijital Çözümler",
+  "url": "https://www.allyncai.com/",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "xpath": [
+      "/html/head/title",
+      "/html/head/meta[@name='description']/@content"
+    ],
+    "cssSelector": ["h1", "h2", ".hero-description", ".service-description"]
+  },
+  "inLanguage": ["tr-TR", "en-US"]
+}
+</script>
+
+<!-- ProfessionalService Schema - Enhanced LocalBusiness type for service industry -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "ALLYNC",
+  "alternateName": "Allyncai",
+  "image": "https://www.allyncai.com/allyncai-og-future-is-now-holographic-hero.jpg",
+  "url": "https://www.allyncai.com",
+  "telephone": "+90-536-247-7824",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1",
+    "addressLocality": "Inegol",
+    "addressRegion": "Bursa",
+    "postalCode": "16400",
+    "addressCountry": "TR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.0806,
+    "longitude": 29.5108
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "sameAs": [
+    "https://x.com/allync_ai",
+    "https://www.instagram.com/allyncai",
+    "https://www.linkedin.com/company/allyncai",
+    "https://www.youtube.com/@allyncai"
+  ]
+}
+</script>
+
 <!-- LLMs.txt for AI discoverability -->
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Information" />
 <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Information" />
