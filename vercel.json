@@ -10,15 +10,15 @@
   ],
   "redirects": [
     {
-      "source": "/:path((?!.well-known).*)",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "allyncai.com" }],
-      "destination": "https://www.allyncai.com/:path",
-      "permanent": true
+      "destination": "https://www.allyncai.com/$1",
+      "statusCode": 308
     },
-    { "source": "/en", "destination": "/", "permanent": true },
-    { "source": "/en/:path*", "destination": "/", "permanent": true },
-    { "source": "/contact", "destination": "/digital/contact", "permanent": true },
-    { "source": "/blog", "destination": "/blog/", "permanent": true }
+    { "source": "/en", "destination": "/", "statusCode": 308 },
+    { "source": "/en/:path*", "destination": "/", "statusCode": 308 },
+    { "source": "/contact", "destination": "/digital/contact", "statusCode": 308 },
+    { "source": "/blog", "destination": "/blog/", "statusCode": 308 }
   ],
   "headers": [
     {
