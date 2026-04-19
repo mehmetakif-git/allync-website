@@ -24,10 +24,13 @@
 
 | Bilgi | Detay |
 |-------|-------|
-| **Şirket Adı** | Allync AI Integration Systems |
-| **Marka** | Allync |
+| **Yasal İsim** | ALLYNC |
+| **Tescilli Marka** | Allyncai (Allyncai, ALLYNC'in tescilli markasıdır) |
+| **Marka Varyantları** | Allyncai, Allync, ALLYNC, Allync-Ai, AllyncAI |
+| **Şirket Tescil No** | 8950466196 |
 | **Slogan** | "Beyond Human Automation" |
-| **Operasyon Merkezi** | Katar |
+| **Merkez Adresi** | Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye |
+| **Operasyon Merkezi** | Doha, Katar |
 | **Hizmet Alanı** | Dünya Geneli |
 | **İş Modeli** | B2B SaaS (Abonelik Tabanlı) |
 
@@ -611,6 +614,15 @@ Bot: "Harika! 14:00 randevunuz onaylandı.
 
 ## İletişim Bilgileri
 
+### Şirket Tescil Bilgileri
+
+| Kanal | Bilgi |
+|-------|-------|
+| **Yasal İsim** | ALLYNC |
+| **Tescilli Marka** | Allyncai, ALLYNC'in tescilli markasıdır |
+| **Şirket Tescil No** | 8950466196 |
+| **Merkez Adresi** | Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye |
+
 ### İletişim Kanalları
 
 | Kanal | Bilgi |
@@ -618,18 +630,19 @@ Bot: "Harika! 14:00 randevunuz onaylandı.
 | **Telefon (Katar)** | +974 5107 9565 |
 | **Telefon (Türkiye)** | +90 536 247 7824 |
 | **Email** | info@allyncai.com |
-| **Website** | allync.tech |
+| **Website** | allyncai.com |
 
 ### Sosyal Medya
 
-- Facebook
-- X (Twitter)
-- Instagram
-- LinkedIn
+- X (Twitter) - @allync_ai
+- Instagram - @allyncai
+- LinkedIn - allyncai
+- YouTube - @allyncai
 
-### Operasyon Merkezi
+### Ofisler
 
-**Lokasyon:** Katar
+**Türkiye Merkez:** İnegöl, Bursa
+**Operasyon Merkezi:** Doha, Katar
 **Hizmet Alanı:** Dünya Geneli
 **Veri Barındırma:** Müşterinin bulunduğu ülkede yerel sunucular
 

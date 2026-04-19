@@ -185,6 +185,9 @@ export const translations = {
     secondaryPhone: "+90 536 247 7824",
     complianceTitle: "Güvenlik ve Uyumluluk",
     certifications: "Sertifikalarımız",
+    registeredBrand: "Allyncai, ALLYNC'in tescilli markasıdır",
+    companyAddress: "Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye",
+    companyRegistrationNo: "Şirket Tescil No: 8950466196",
 
     // Packages Section
     packagesTitle: "Paket Seçenekleri",
@@ -480,6 +483,9 @@ export const translations = {
     secondaryPhone: "+90 536 247 7824",
     complianceTitle: "Security and Compliance",
     certifications: "Our Certifications",
+    registeredBrand: "Allyncai is a registered brand of ALLYNC",
+    companyAddress: "Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye",
+    companyRegistrationNo: "Company Registration No: 8950466196",
 
     // Packages Section
     packagesTitle: "Package Options",

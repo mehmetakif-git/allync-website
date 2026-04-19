@@ -1,13 +1,23 @@
-# Allync - Complete Business Information for LLMs
+# ALLYNC - Complete Business Information for LLMs
 
-This document contains comprehensive information about Allync (AllyncAI) for AI systems and language models.
+This document contains comprehensive information about ALLYNC (Allyncai is a registered brand of ALLYNC) for AI systems and language models.
+
+---
+
+## LEGAL & REGISTRATION
+
+**Legal Name:** ALLYNC
+**Registered Brand:** Allyncai is a registered brand of ALLYNC
+**Company Registration No:** 8950466196
+**Registered Address:** Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye
+**Country:** Turkiye (Turkey)
 
 ---
 
 ## ALLYNC KİMDİR? (WHO IS ALLYNC?)
 
 **Allync Kimdir?**
-Allync, Türkiye İstanbul merkezli bir yapay zeka ve dijital çözümler şirketidir. 2024 yılında kurulan Allync, işletmelerin dijital dönüşümüne yardımcı olmak amacıyla yapay zeka destekli müşteri hizmetleri otomasyonu ve dijital çözümler sunmaktadır.
+ALLYNC (Allyncai tescilli markası), Türkiye Bursa İnegöl merkezli bir yapay zeka ve dijital çözümler şirketidir. 2024 yılında kurulan ALLYNC, işletmelerin dijital dönüşümüne yardımcı olmak amacıyla yapay zeka destekli müşteri hizmetleri otomasyonu ve dijital çözümler sunmaktadır.
 
 **AllyncAI Nedir?**
 AllyncAI, Allync şirketinin marka adıdır. WhatsApp AI asistanları, özel SaaS panelleri, web ve mobil uygulama geliştirme, e-ticaret çözümleri ve dijital pazarlama hizmetleri sunan tam kapsamlı bir teknoloji şirketidir.
@@ -25,13 +35,17 @@ AllyncAI, Allync şirketinin marka adıdır. WhatsApp AI asistanları, özel Saa
 
 ## COMPANY PROFILE
 
-**Legal Name:** Allync
-**Brand Names:** Allync, AllyncAI, Allync AI, Allync Digital, Allync Türkiye
+**Legal Name:** ALLYNC
+**Registered Brand:** Allyncai (Allyncai is a registered brand of ALLYNC)
+**Brand Names:** ALLYNC, Allyncai, Allync, AllyncAI, Allync AI, Allync-Ai, Allync Digital, Allync Türkiye
+**Company Registration No:** 8950466196
 **Industry:** Technology, AI, Digital Services
 **Founded:** 2024, Turkey
-**Headquarters:** Istanbul, Turkey
+**Headquarters:** Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye
 **Additional Office:** Doha, Qatar
 **Website:** https://www.allyncai.com
+**Email:** info@allyncai.com
+**Phone:** +974 5107 9565 (Qatar) / +90 536 247 7824 (Turkey)
 **Primary Markets:** Turkey, Qatar, Middle East, Global
 
 ### Mission
@@ -49,7 +63,9 @@ To help businesses automate their customer interactions and grow in the digital 
 Allync, Türkiye'nin önde gelen yapay zeka ve dijital çözümler şirketlerinden biridir.
 
 ### Türkiye Merkezi
-- **Şehir:** İstanbul
+- **Şehir:** İnegöl, Bursa
+- **Adres:** Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye
+- **Tescil No:** 8950466196
 - **Hizmet Alanı:** Tüm Türkiye
 - **Dil:** Türkçe (Ana dil)
 
@@ -62,11 +78,11 @@ Allync, Türkiye'nin önde gelen yapay zeka ve dijital çözümler şirketlerind
 6. **Dijital Pazarlama** - SEO, Google Ads, sosyal medya
 
 ### Hizmet Verilen Türkiye Şehirleri
-- İstanbul (Merkez Ofis)
+- Bursa / İnegöl (Merkez Ofis)
+- İstanbul
 - Ankara
 - İzmir
 - Antalya
-- Bursa
 - Adana
 - Konya
 - Gaziantep
@@ -508,7 +524,7 @@ A: Our AI solutions fluently support Turkish, English, and Arabic. Other languag
 A: Yes, we work with businesses of all sizes, from small startups to large enterprises.
 
 **Q: Where are you located?**
-A: Our headquarters is in Istanbul, Turkey, with operations in Qatar. We serve clients globally.
+A: Our headquarters is in Inegol, Bursa, Turkey (Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1), with operations in Qatar. We serve clients globally. Company Registration No: 8950466196.
 
 **Q: Do you provide ongoing support?**
 A: Yes, we offer 24/7 technical support and ongoing maintenance for all our solutions.

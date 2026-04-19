@@ -100,14 +100,16 @@ export const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 space-y-2">
-            <p><span className="text-gray-300 font-medium">Şirket:</span> Allync (AllyncAI)</p>
-            <p><span className="text-gray-300 font-medium">Merkez:</span> İstanbul, Türkiye</p>
+            <p><span className="text-gray-300 font-medium">Şirket:</span> ALLYNC</p>
+            <p><span className="text-gray-300 font-medium">Marka:</span> Allyncai, ALLYNC'in tescilli markasıdır</p>
+            <p><span className="text-gray-300 font-medium">Şirket Tescil No:</span> 8950466196</p>
+            <p><span className="text-gray-300 font-medium">Merkez:</span> Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye</p>
             <p><span className="text-gray-300 font-medium">Ek Ofis:</span> Doha, Katar</p>
             <p><span className="text-gray-300 font-medium">E-posta:</span> info@allyncai.com</p>
             <p><span className="text-gray-300 font-medium">Telefon:</span> +974 5107 9565 / +90 536 247 7824</p>
             <p><span className="text-gray-300 font-medium">Web:</span> allyncai.com</p>
           </div>
-          <p className="mt-3">Allync, Genel Veri Koruma Yönetmeliği (GDPR), Türk Kişisel Verilerin Korunması Kanunu (KVKK - 6698 sayılı Kanun) ve Katar Kişisel Verilerin Gizliliğini Koruma Kanunu (2016 tarihli 13 sayılı Kanun) uyarınca Hizmetlerimiz aracılığıyla işlenen kişisel veriler için Veri Sorumlusu olarak hareket etmektedir.</p>
+          <p className="mt-3">ALLYNC (Allyncai), Genel Veri Koruma Yönetmeliği (GDPR), Türk Kişisel Verilerin Korunması Kanunu (KVKK - 6698 sayılı Kanun) ve Katar Kişisel Verilerin Gizliliğini Koruma Kanunu (2016 tarihli 13 sayılı Kanun) uyarınca Hizmetlerimiz aracılığıyla işlenen kişisel veriler için Veri Sorumlusu olarak hareket etmektedir.</p>
         </>
       )
     },
@@ -466,11 +468,12 @@ export const PrivacyPolicy: React.FC = () => {
         <>
           <p>Bu Gizlilik Politikası veya kişisel verilerinizle ilgili sorularınız, endişeleriniz veya talepleriniz için:</p>
           <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 space-y-3 mt-3">
-            <p className="text-gray-300 font-medium">Allync (AllyncAI)</p>
+            <p className="text-gray-300 font-medium">ALLYNC</p>
+            <p className="text-gray-500 text-xs">Allyncai, ALLYNC'in tescilli markasıdır · Şirket Tescil No: 8950466196</p>
             <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-[#94B4C1]" /><span>info@allyncai.com</span></div>
             <div className="flex items-center gap-2"><Phone className="w-4 h-4 text-[#94B4C1]" /><span>+974 5107 9565 / +90 536 247 7824</span></div>
             <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-[#94B4C1]" /><span>allyncai.com/contact</span></div>
-            <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[#94B4C1]" /><span>İstanbul, Türkiye</span></div>
+            <div className="flex items-start gap-2"><MapPin className="w-4 h-4 text-[#94B4C1] mt-0.5 flex-shrink-0" /><span>Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye</span></div>
           </div>
           <SubHeading>Veri Koruma Görevlisi</SubHeading>
           <p>E-posta: info@allyncai.com | Konu: "Veri Koruma Sorgusu"</p>
@@ -497,14 +500,16 @@ export const PrivacyPolicy: React.FC = () => {
       content: (
         <>
           <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 space-y-2">
-            <p><span className="text-gray-300 font-medium">Company:</span> Allync (AllyncAI)</p>
-            <p><span className="text-gray-300 font-medium">Headquarters:</span> Istanbul, Turkey</p>
+            <p><span className="text-gray-300 font-medium">Company:</span> ALLYNC</p>
+            <p><span className="text-gray-300 font-medium">Brand:</span> Allyncai is a registered brand of ALLYNC</p>
+            <p><span className="text-gray-300 font-medium">Company Registration No:</span> 8950466196</p>
+            <p><span className="text-gray-300 font-medium">Headquarters:</span> Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye</p>
             <p><span className="text-gray-300 font-medium">Additional Office:</span> Doha, Qatar</p>
             <p><span className="text-gray-300 font-medium">Email:</span> info@allyncai.com</p>
             <p><span className="text-gray-300 font-medium">Phone:</span> +974 5107 9565 / +90 536 247 7824</p>
             <p><span className="text-gray-300 font-medium">Website:</span> allyncai.com</p>
           </div>
-          <p className="mt-3">Allync acts as the Data Controller for personal data processed through our Services in accordance with the General Data Protection Regulation (GDPR), Turkish Personal Data Protection Law (KVKK - Law No. 6698), and Qatar Personal Data Privacy Protection Law (Law No. 13 of 2016).</p>
+          <p className="mt-3">ALLYNC (Allyncai) acts as the Data Controller for personal data processed through our Services in accordance with the General Data Protection Regulation (GDPR), Turkish Personal Data Protection Law (KVKK - Law No. 6698), and Qatar Personal Data Privacy Protection Law (Law No. 13 of 2016).</p>
         </>
       )
     },
@@ -862,11 +867,12 @@ export const PrivacyPolicy: React.FC = () => {
         <>
           <p>For any questions, concerns, or requests regarding this Privacy Policy or your personal data:</p>
           <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 space-y-3 mt-3">
-            <p className="text-gray-300 font-medium">Allync (AllyncAI)</p>
+            <p className="text-gray-300 font-medium">ALLYNC</p>
+            <p className="text-gray-500 text-xs">Allyncai is a registered brand of ALLYNC · Company Registration No: 8950466196</p>
             <div className="flex items-center gap-2"><Mail className="w-4 h-4 text-[#94B4C1]" /><span>info@allyncai.com</span></div>
             <div className="flex items-center gap-2"><Phone className="w-4 h-4 text-[#94B4C1]" /><span>+974 5107 9565 / +90 536 247 7824</span></div>
             <div className="flex items-center gap-2"><Globe className="w-4 h-4 text-[#94B4C1]" /><span>allyncai.com/contact</span></div>
-            <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-[#94B4C1]" /><span>Istanbul, Turkey</span></div>
+            <div className="flex items-start gap-2"><MapPin className="w-4 h-4 text-[#94B4C1] mt-0.5 flex-shrink-0" /><span>Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye</span></div>
           </div>
           <SubHeading>Data Protection Officer</SubHeading>
           <p>Email: info@allyncai.com | Subject: "Data Protection Inquiry"</p>
@@ -990,9 +996,12 @@ export const PrivacyPolicy: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <p className="text-gray-500 text-xs sm:text-sm mt-6">
-                Copyright 2024-2026 Allync (AllyncAI). {language === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reserved.'}
-              </p>
+              <div className="mt-8 text-gray-500 text-xs sm:text-sm space-y-1.5">
+                <p>{language === 'tr' ? 'Allyncai, ALLYNC\'in tescilli markasıdır' : 'Allyncai is a registered brand of ALLYNC'}</p>
+                <p>{language === 'tr' ? 'Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye' : 'Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye'}</p>
+                <p>{language === 'tr' ? 'Şirket Tescil No:' : 'Company Registration No:'} 8950466196</p>
+                <p className="pt-3">Copyright 2024-2026 ALLYNC. {language === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reserved.'}</p>
+              </div>
             </motion.div>
           </div>
         </div>

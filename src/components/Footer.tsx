@@ -135,9 +135,18 @@ export const Footer: React.FC<FooterProps> = ({ language }) => {
             </div>
           </div>
 
+          {/* Company Legal Info */}
+          <div className="mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-white/10">
+            <div className="flex flex-col gap-1.5 text-xs sm:text-sm text-gray-500 text-center sm:text-left">
+              <p>{t.registeredBrand}</p>
+              <p>{t.companyAddress}</p>
+              <p>{t.companyRegistrationNo}</p>
+            </div>
+          </div>
+
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0">
             <p className="text-gray-400 text-xs sm:text-sm">
-              © 2026 Allync. {t.allRightsReserved}
+              © 2026 ALLYNC. {t.allRightsReserved}
             </p>
             <LegalModals language={language} />
           </div>

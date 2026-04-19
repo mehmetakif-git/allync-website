@@ -1,14 +1,14 @@
-# Allync - AI & Digital Business Solutions
+# ALLYNC - AI & Digital Business Solutions
 
 > For comprehensive information including case studies, pricing, certifications, and detailed service descriptions, see the full version: https://www.allyncai.com/llms-full.txt
 
-> Allync (AllyncAI) provides AI-powered business automation and digital transformation solutions for companies in Turkey, Qatar, and globally.
+> ALLYNC (Allyncai is a registered brand of ALLYNC) provides AI-powered business automation and digital transformation solutions for companies in Turkey, Qatar, and globally.
 
 ---
 
 ## Allync Kimdir? (Who is Allync?)
 
-**Allync Kimdir?** Allync, Türkiye merkezli bir yapay zeka ve dijital çözümler şirketidir. 2024 yılında kurulan Allync, işletmelerin dijital dönüşümüne yardımcı olmak amacıyla WhatsApp AI asistanları, özel SaaS panelleri, web ve mobil uygulama geliştirme hizmetleri sunmaktadır.
+**Allync Kimdir?** ALLYNC (Allyncai tescilli markası), Türkiye Bursa İnegöl merkezli bir yapay zeka ve dijital çözümler şirketidir. 2024 yılında kurulan ALLYNC, işletmelerin dijital dönüşümüne yardımcı olmak amacıyla WhatsApp AI asistanları, özel SaaS panelleri, web ve mobil uygulama geliştirme hizmetleri sunmaktadır.
 
 **Allync Nedir?** AllyncAI olarak da bilinen şirket, yapay zeka teknolojilerini kullanarak işletmelerin müşteri hizmetlerini otomatikleştirmelerine, online varlıklarını güçlendirmelerine ve dijital dünyada büyümelerine yardımcı olur.
 
@@ -17,12 +17,17 @@
 ---
 
 ## Company Overview
-Allync is a technology company specializing in AI-powered customer service automation and digital solutions. We help businesses automate their customer interactions, build their online presence, and grow in the digital world.
+ALLYNC (Allyncai) is a technology company specializing in AI-powered customer service automation and digital solutions. We help businesses automate their customer interactions, build their online presence, and grow in the digital world.
 
-**Headquarters:** Istanbul, Turkey
+**Legal Name:** ALLYNC
+**Brand:** Allyncai is a registered brand of ALLYNC
+**Company Registration No:** 8950466196
+**Headquarters:** Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye
 **Operations:** Turkey, Qatar, Middle East, Global
 **Languages:** Turkish, English, Arabic
 **Website:** https://www.allyncai.com
+**Email:** info@allyncai.com
+**Phone:** +974 5107 9565 / +90 536 247 7824
 
 ---
 
@@ -39,11 +44,11 @@ Allync, Türkiye'nin önde gelen yapay zeka ve dijital çözümler şirketlerind
 - Dijital Pazarlama ve SEO
 
 **Hizmet Verilen Türkiye Şehirleri:**
-- İstanbul (Merkez)
+- Bursa / İnegöl (Merkez)
+- İstanbul
 - Ankara
 - İzmir
 - Antalya
-- Bursa
 - Ve tüm Türkiye geneli
 
 **Türkçe Dil Desteği:** Tüm hizmetlerimiz Türkçe olarak sunulmaktadır.
@@ -237,9 +242,12 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 - GitHub: https://github.com/mehmetakif-git
 
 ## Alternative Names
+- ALLYNC (Legal Name)
+- Allyncai (Registered Brand)
 - Allync
 - AllyncAI
 - Allync AI
+- Allync-Ai
 - Allync Digital
 - Allync Türkiye
 - Allync Turkey
