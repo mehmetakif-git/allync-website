@@ -1,15 +1,50 @@
-# Robots.txt for Allync
+# Robots.txt for Allync (Allyncai is a registered brand of ALLYNC)
 # https://www.allyncai.com
+# Company Registration No: 8950466196
 
+# Default rules for all bots
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /*?ref=
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+
+# Sitemap location
 Sitemap: https://www.allyncai.com/sitemap.xml
 
-# AI Crawlers - Explicitly allowed
+# Search Engine Bots - Optimized crawling
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# AI Crawlers - Explicitly allowed for better LLM discoverability
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: Google-Extended
@@ -21,7 +56,13 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
@@ -32,6 +73,28 @@ Allow: /
 
 User-agent: Cohere-ai
 Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Block aggressive SEO crawlers that don't add value
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+User-agent: DotBot
+Disallow: /
 
 # LLMs.txt - AI-readable site information
 # See: https://www.allyncai.com/llms.txt
