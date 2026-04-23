@@ -12,7 +12,8 @@
     { "source": "/digital", "destination": "/index.html" },
     { "source": "/digital/:path*", "destination": "/index.html" },
     { "source": "/contact", "destination": "/index.html" },
-    { "source": "/privacy", "destination": "/index.html" }
+    { "source": "/privacy", "destination": "/index.html" },
+    { "source": "/:path((?!blog|api|assets|favicon|robots|sitemap|llms|allyncai-og|apple-touch|site\\.webmanifest|.*\\.(js|css|png|jpg|jpeg|webp|svg|ico|xml|txt|json|woff2|woff|ttf|mp4|webm|glb)$).*)", "destination": "/index.html" }
   ],
   "redirects": [
     {
