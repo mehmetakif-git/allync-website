@@ -3,10 +3,10 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist",
   "framework": "vite",
-  "cleanUrls": true,
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
+    { "source": "/blog/:slug([a-z0-9-]+)", "destination": "/blog/:slug.html" },
     { "source": "/ai", "destination": "/index.html" },
     { "source": "/ai/:path*", "destination": "/index.html" },
     { "source": "/digital", "destination": "/index.html" },
@@ -21,6 +21,7 @@
       "destination": "https://www.allyncai.com/$1",
       "statusCode": 308
     },
+    { "source": "/blog/:slug([a-z0-9-]+).html", "destination": "/blog/:slug", "statusCode": 308 },
     { "source": "/en", "destination": "/", "statusCode": 308 },
     { "source": "/en/:path*", "destination": "/", "statusCode": 308 },
     { "source": "/contact", "destination": "/digital/contact", "statusCode": 308 },
