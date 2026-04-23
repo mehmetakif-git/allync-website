@@ -16,33 +16,252 @@ const OG_IMAGES = {
   about: '/allyncai-og-success-story-1000-businesses.jpg',
 };
 
+// Per-route unique metadata for SEO (prevents duplicate content)
+const ROUTE_META: Record<string, { tr: { title: string; description: string }; en: { title: string; description: string } }> = {
+  '/': {
+    tr: {
+      title: 'Allync - WhatsApp AI Asistanları & Özel SaaS Çözümleri | AllyncAI',
+      description: 'Allync - WhatsApp AI asistanları ile 7/24 müşteri hizmeti. İşletmenize özel SaaS ve yönetim panelleri, web geliştirme, mobil uygulamalar.',
+    },
+    en: {
+      title: 'Allync - WhatsApp AI Assistants & Custom SaaS Solutions | AllyncAI',
+      description: 'Allync - 24/7 customer service with WhatsApp AI assistants. Custom SaaS and management panels for your business.',
+    },
+  },
+  '/ai': {
+    tr: {
+      title: 'AI Çözümleri | Yapay Zeka Otomasyonu - Allync',
+      description: 'WhatsApp AI, Instagram AI, Text-to-Video, Voice AI ve özel yapay zeka çözümleri. İşletmenizi AI ile dönüştürün.',
+    },
+    en: {
+      title: 'AI Solutions | Artificial Intelligence Automation - Allync',
+      description: 'WhatsApp AI, Instagram AI, Text-to-Video, Voice AI and custom AI solutions. Transform your business with AI.',
+    },
+  },
+  '/ai/whatsapp': {
+    tr: {
+      title: 'WhatsApp AI Asistanı | 7/24 Müşteri Hizmeti - Allync',
+      description: 'WhatsApp Business API ile entegre AI asistanı. 7/24 otomatik müşteri hizmeti, randevu, sipariş yönetimi. 48 saatte kurulum.',
+    },
+    en: {
+      title: 'WhatsApp AI Assistant | 24/7 Customer Service - Allync',
+      description: 'AI assistant integrated with WhatsApp Business API. 24/7 automated customer service, appointments, order management. 48-hour setup.',
+    },
+  },
+  '/ai/instagram': {
+    tr: {
+      title: 'Instagram AI Otomasyonu | DM & Yorum Otomasyonu - Allync',
+      description: 'Instagram DM\'leri, hikaye mention\'ları ve yorumları AI ile otomatik yanıtlayın. Instagram üzerinden lead generation.',
+    },
+    en: {
+      title: 'Instagram AI Automation | DM & Comment Automation - Allync',
+      description: 'Auto-respond Instagram DMs, story mentions and comments with AI. Generate leads directly through Instagram.',
+    },
+  },
+  '/ai/text-to-video': {
+    tr: {
+      title: 'Text-to-Video AI | Metinden Video Üretimi - Allync',
+      description: 'AI ile metinden otomatik video üretimi. Pazarlama videoları, sosyal medya içerikleri, ürün demoları saniyeler içinde.',
+    },
+    en: {
+      title: 'Text-to-Video AI | Generate Videos from Text - Allync',
+      description: 'AI-powered video generation from text prompts. Marketing videos, social media content, product demos in seconds.',
+    },
+  },
+  '/ai/text-to-image': {
+    tr: {
+      title: 'Text-to-Image AI | Metinden Görsel Üretimi - Allync',
+      description: 'AI ile metinden özel görseller üretin. Pazarlama görselleri, ürün mockup\'ları, sosyal medya grafiklerini saniyeler içinde oluşturun.',
+    },
+    en: {
+      title: 'Text-to-Image AI | Generate Images from Text - Allync',
+      description: 'Create custom images from text with AI. Marketing visuals, product mockups, social media graphics in seconds.',
+    },
+  },
+  '/ai/voice-cloning': {
+    tr: {
+      title: 'Voice AI & Ses Klonlama | Sesli Asistan - Allync',
+      description: 'Gelişmiş ses sentezi ve ses klonlama teknolojisi. Marka sesi dijitalleştirme, otomatik sesli yanıt sistemleri, IVR çözümleri.',
+    },
+    en: {
+      title: 'Voice AI & Cloning | Voice Assistant - Allync',
+      description: 'Advanced voice synthesis and cloning technology. Brand voice digitization, automated voice response, IVR systems.',
+    },
+  },
+  '/ai/document-ai': {
+    tr: {
+      title: 'Document AI | Belge İşleme & Analiz - Allync',
+      description: 'PDF, Word, Excel belgelerinden otomatik veri çıkarma. Fatura işleme, sözleşme analizi, doküman sınıflandırma.',
+    },
+    en: {
+      title: 'Document AI | Document Processing & Analysis - Allync',
+      description: 'Automatic data extraction from PDF, Word, Excel. Invoice processing, contract analysis, document classification.',
+    },
+  },
+  '/ai/image-to-video': {
+    tr: {
+      title: 'Image-to-Video AI | Görselden Video - Allync',
+      description: 'Statik görselleri AI ile dinamik videolara dönüştürün. Ürün animasyonları, sosyal medya içerikleri, pazarlama materyalleri.',
+    },
+    en: {
+      title: 'Image-to-Video AI | Convert Images to Videos - Allync',
+      description: 'Transform static images into dynamic videos with AI. Product animations, social media content, marketing materials.',
+    },
+  },
+  '/ai/video-to-video': {
+    tr: {
+      title: 'Video-to-Video AI | Video Dönüştürme - Allync',
+      description: 'Gelişmiş video dönüşüm ve düzenleme. Stil transferi, video iyileştirme, toplu işleme.',
+    },
+    en: {
+      title: 'Video-to-Video AI | Video Transformation - Allync',
+      description: 'Advanced video transformation and editing. Style transfer, video enhancement, batch processing.',
+    },
+  },
+  '/ai/data-analysis': {
+    tr: {
+      title: 'Data Analysis AI | Veri Analizi & BI - Allync',
+      description: 'AI destekli iş zekası ve analitik. Satış tahmini, müşteri davranış analizi, trend tespiti, otomatik raporlama.',
+    },
+    en: {
+      title: 'Data Analysis AI | Business Intelligence - Allync',
+      description: 'AI-powered business intelligence and analytics. Sales forecasting, customer behavior analysis, trend detection, automated reporting.',
+    },
+  },
+  '/ai/custom-ai': {
+    tr: {
+      title: 'Custom AI | Özel AI Çözümleri - Allync',
+      description: 'İşletmenize özel yapay zeka çözümleri. Sektöre özel eğitilmiş modeller, CRM entegrasyonu, otomatik lead generation.',
+    },
+    en: {
+      title: 'Custom AI | Tailored AI Solutions - Allync',
+      description: 'Custom-trained AI solutions for your business. Industry-specific models, CRM integration, automated lead generation.',
+    },
+  },
+  '/ai/contact': {
+    tr: {
+      title: 'AI Çözümleri İletişim | Ücretsiz Danışmanlık - Allync',
+      description: 'AI çözümleri için ücretsiz danışmanlık alın. WhatsApp AI, Instagram AI ve özel yapay zeka projeleri için iletişime geçin.',
+    },
+    en: {
+      title: 'AI Solutions Contact | Free Consultation - Allync',
+      description: 'Get free consultation for AI solutions. Contact us for WhatsApp AI, Instagram AI and custom AI projects.',
+    },
+  },
+  '/digital': {
+    tr: {
+      title: 'Dijital Çözümler | Web, Mobil, SaaS - Allync',
+      description: 'Kurumsal web geliştirme, mobil uygulama, özel SaaS panelleri, e-ticaret çözümleri, IoT ve bulut altyapı hizmetleri.',
+    },
+    en: {
+      title: 'Digital Solutions | Web, Mobile, SaaS - Allync',
+      description: 'Corporate web development, mobile apps, custom SaaS panels, e-commerce solutions, IoT and cloud infrastructure services.',
+    },
+  },
+  '/digital/saas-panels': {
+    tr: {
+      title: 'Özel SaaS Panelleri | Yönetim Dashboard - Allync',
+      description: 'İşletmenize özel yönetim panelleri ve bulut tabanlı yazılım çözümleri. Rol tabanlı erişim, API entegrasyonu, real-time veri.',
+    },
+    en: {
+      title: 'Custom SaaS Panels | Management Dashboards - Allync',
+      description: 'Custom management panels and cloud-based software solutions. Role-based access, API integrations, real-time data sync.',
+    },
+  },
+  '/digital/ecommerce': {
+    tr: {
+      title: 'E-ticaret Çözümleri | Online Satış Platformu - Allync',
+      description: 'Online satış platformları ve mağaza kurulumu. iyzico, PayTR, Stripe ödeme entegrasyonu, stok yönetimi, kargo entegrasyonu.',
+    },
+    en: {
+      title: 'E-commerce Solutions | Online Sales Platform - Allync',
+      description: 'Online sales platforms and store setup. Payment integrations (iyzico, PayTR, Stripe), inventory management, shipping.',
+    },
+  },
+  '/digital/corporate': {
+    tr: {
+      title: 'Kurumsal Web Sitesi Geliştirme - Allync',
+      description: 'Modern, hızlı ve SEO uyumlu kurumsal web siteleri. React, Next.js teknolojileri, responsive tasarım, CMS entegrasyonu.',
+    },
+    en: {
+      title: 'Corporate Website Development - Allync',
+      description: 'Modern, fast, SEO-optimized corporate websites. React, Next.js technologies, responsive design, CMS integration.',
+    },
+  },
+  '/digital/mobile-app': {
+    tr: {
+      title: 'Mobil Uygulama Geliştirme | iOS & Android - Allync',
+      description: 'iOS ve Android native ve cross-platform uygulamalar. React Native, Flutter. App Store & Google Play yayın.',
+    },
+    en: {
+      title: 'Mobile App Development | iOS & Android - Allync',
+      description: 'iOS and Android native and cross-platform applications. React Native, Flutter. App Store & Google Play publishing.',
+    },
+  },
+  '/digital/digital-marketing': {
+    tr: {
+      title: 'Dijital Pazarlama | SEO, Google Ads - Allync',
+      description: 'SEO, Google Ads ve sosyal medya reklamcılığı. İçerik pazarlama, e-posta pazarlama, dönüşüm optimizasyonu.',
+    },
+    en: {
+      title: 'Digital Marketing | SEO, Google Ads - Allync',
+      description: 'SEO, Google Ads, and social media advertising. Content marketing, email marketing, conversion optimization.',
+    },
+  },
+  '/digital/iot': {
+    tr: {
+      title: 'IoT Çözümleri | Nesnelerin İnterneti - Allync',
+      description: 'IoT entegrasyonu ve akıllı cihaz yönetimi. Sensör veri toplama, endüstriyel IoT, akıllı bina çözümleri.',
+    },
+    en: {
+      title: 'IoT Solutions | Internet of Things - Allync',
+      description: 'IoT integration and smart device management. Sensor data collection, industrial IoT, smart building solutions.',
+    },
+  },
+  '/digital/cloud': {
+    tr: {
+      title: 'Bulut Çözümleri | AWS, Google Cloud, Azure - Allync',
+      description: 'AWS, Google Cloud ve Azure altyapı hizmetleri. Sunucu kurulumu, yedekleme ve güvenlik, bulut göçü.',
+    },
+    en: {
+      title: 'Cloud Solutions | AWS, Google Cloud, Azure - Allync',
+      description: 'AWS, Google Cloud, and Azure infrastructure services. Server setup, backup and security, cloud migration.',
+    },
+  },
+  '/digital/maintenance': {
+    tr: {
+      title: 'Bakım & Destek | Teknik Destek 7/24 - Allync',
+      description: 'Sürekli bakım ve teknik destek. Proaktif sistem izleme, düzenli güvenlik güncellemeleri, 7/24 teknik destek.',
+    },
+    en: {
+      title: 'Maintenance & Support | 24/7 Technical Support - Allync',
+      description: 'Ongoing maintenance and technical support. Proactive system monitoring, regular security updates, 24/7 technical support.',
+    },
+  },
+  '/digital/contact': {
+    tr: {
+      title: 'Dijital Çözümler İletişim | Ücretsiz Teklif - Allync',
+      description: 'Dijital çözümler için ücretsiz teklif alın. Web, mobil, SaaS ve e-ticaret projeleri için bizimle iletişime geçin.',
+    },
+    en: {
+      title: 'Digital Solutions Contact | Free Quote - Allync',
+      description: 'Get a free quote for digital solutions. Contact us for web, mobile, SaaS and e-commerce projects.',
+    },
+  },
+  '/privacy': {
+    tr: {
+      title: 'Gizlilik Politikası | KVKK & GDPR Uyumlu - Allync',
+      description: 'Allync gizlilik politikası. Kişisel verilerinizin nasıl toplandığı, işlendiği ve korunduğu hakkında kapsamlı bilgi. KVKK, GDPR ve Katar PDPPL uyumlu.',
+    },
+    en: {
+      title: 'Privacy Policy | GDPR & KVKK Compliant - Allync',
+      description: 'Allync privacy policy. Comprehensive information about how your personal data is collected, processed and protected. GDPR, KVKK and Qatar PDPPL compliant.',
+    },
+  },
+};
+
 export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSection = 'hero' }) => {
   const location = useLocation();
-
-  const getSectionTitle = () => {
-    const baseTitles: Record<string, Record<string, string>> = {
-      tr: {
-        hero: 'Allync - WhatsApp AI Asistanları & Özel SaaS Çözümleri | AllyncAI',
-        features: 'Allync | Özellikler',
-        pricing: 'Allync | Fiyatlandırma',
-        contact: 'Allync | İletişim',
-        packages: 'Allync | Paketler',
-        'chat-demo': 'Allync | Demo',
-        'industry-examples': 'Allync | Sektörler'
-      },
-      en: {
-        hero: 'Allync - WhatsApp AI Assistants & Custom SaaS Solutions | AllyncAI',
-        features: 'Allync | Features',
-        pricing: 'Allync | Pricing',
-        contact: 'Allync | Contact Us',
-        packages: 'Allync | Packages',
-        'chat-demo': 'Allync | Demo',
-        'industry-examples': 'Allync | Industries'
-      }
-    };
-
-    return baseTitles[language][activeSection] || baseTitles[language].hero;
-  };
 
   // Generate canonical URL based on current path
   const getCanonicalUrl = () => {
@@ -51,6 +270,61 @@ export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSe
     // Remove trailing slash except for root
     const cleanPath = path === '/' ? '' : path.replace(/\/$/, '');
     return `${baseUrl}${cleanPath}`;
+  };
+
+  // Get route-specific metadata (prevents duplicate content across routes)
+  const getRouteMeta = () => {
+    const path = location.pathname;
+
+    // Exact match first
+    if (ROUTE_META[path]) {
+      return ROUTE_META[path][language];
+    }
+
+    // Match base route (e.g., /ai/whatsapp/something falls back to /ai/whatsapp)
+    const pathSegments = path.split('/').filter(Boolean);
+    while (pathSegments.length > 0) {
+      const testPath = '/' + pathSegments.join('/');
+      if (ROUTE_META[testPath]) {
+        return ROUTE_META[testPath][language];
+      }
+      pathSegments.pop();
+    }
+
+    // Default to homepage meta
+    return ROUTE_META['/'][language];
+  };
+
+  // Legacy: section-based title override for homepage scroll sections
+  const getSectionTitle = () => {
+    const path = location.pathname;
+    const routeMeta = getRouteMeta();
+
+    // Only apply section-based titles on homepage
+    if (path !== '/' || !activeSection || activeSection === 'hero') {
+      return routeMeta.title;
+    }
+
+    const sectionTitles: Record<string, Record<string, string>> = {
+      tr: {
+        features: 'Özellikler | Allync',
+        pricing: 'Fiyatlandırma | Allync',
+        contact: 'İletişim | Allync',
+        packages: 'Paketler | Allync',
+        'chat-demo': 'Demo | Allync',
+        'industry-examples': 'Sektörler | Allync',
+      },
+      en: {
+        features: 'Features | Allync',
+        pricing: 'Pricing | Allync',
+        contact: 'Contact | Allync',
+        packages: 'Packages | Allync',
+        'chat-demo': 'Demo | Allync',
+        'industry-examples': 'Industries | Allync',
+      },
+    };
+
+    return sectionTitles[language][activeSection] || routeMeta.title;
   };
 
   // Get OG image based on current route
@@ -64,44 +338,35 @@ export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSe
       return `${baseUrl}${OG_IMAGES.ai}`;
     } else if (path.startsWith('/digital')) {
       return `${baseUrl}${OG_IMAGES.digital}`;
-    } else if (path === '/contact') {
+    } else if (path === '/contact' || path === '/privacy') {
       return `${baseUrl}${OG_IMAGES.contact}`;
     }
 
     return `${baseUrl}${OG_IMAGES.default}`;
   };
 
-  // Get description based on route and language
-  const getDescription = () => {
-    const path = location.pathname;
-
-    if (path.startsWith('/ai')) {
-      return language === 'tr'
-        ? 'Allync AI çözümleri ile işletmenizi geleceğe taşıyın. WhatsApp AI asistanları, chatbotlar ve yapay zeka otomasyonu.'
-        : 'Transform your business with Allync AI solutions. WhatsApp AI assistants, chatbots and AI automation.';
-    } else if (path.startsWith('/digital')) {
-      return language === 'tr'
-        ? 'Allync dijital çözümleri: Özel SaaS panelleri, web sitesi, mobil uygulama ve e-ticaret geliştirme.'
-        : 'Allync digital solutions: Custom SaaS panels, websites, mobile apps and e-commerce development.';
-    }
-
-    return language === 'tr'
-      ? 'Allync - WhatsApp AI asistanları ile 7/24 müşteri hizmeti. İşletmenize özel SaaS ve yönetim panelleri.'
-      : 'Allync - 24/7 customer service with WhatsApp AI assistants. Custom SaaS and management panels for your business.';
-  };
+  const routeMeta = getRouteMeta();
+  const title = getSectionTitle();
+  const description = routeMeta.description;
+  const canonical = getCanonicalUrl();
+  const ogImage = getOgImage();
 
   return (
     <Helmet>
       <html lang={language} />
-      <title>{getSectionTitle()}</title>
-      <meta name="description" content={getDescription()} />
-      <link rel="canonical" href={getCanonicalUrl()} />
-      <meta property="og:url" content={getCanonicalUrl()} />
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={canonical} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={canonical} />
       <meta property="og:locale" content={language === 'tr' ? 'tr_TR' : 'en_US'} />
-      <meta property="og:image" content={getOgImage()} />
+      <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta name="twitter:image" content={getOgImage()} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
     </Helmet>
   );
 };
