@@ -732,15 +732,9 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://www.allyncai.com/privacy</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.allyncai.com/privacy-policy</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <!-- LLMs.txt Files -->
