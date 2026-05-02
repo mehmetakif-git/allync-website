@@ -859,6 +859,48 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
     Topic: Voice AI (Whisper STT, TTS, voice replies), call center automation, IVR, multilingual support
     Language: English
 
+**SEO-Driven Articles for Search Console Queries (Published 2026-05-02):**
+
+43. **Ticari IoT Çözümleri: İşletmeler için Endüstriyel IoT Rehberi 2026**
+    URL: https://www.allyncai.com/blog/ticari-iot-cozumleri
+    Topic: Endüstriyel IoT, ticari IoT çözümleri, kestirimci bakım, varlık takibi, akıllı bina, IoT bağlantı seçenekleri (LTE-M, NB-IoT, LoRaWAN, 5G), IoT platformları
+    Language: Turkish
+
+44. **Commercial IoT Solutions for Business: Industrial IoT Guide 2026**
+    URL: https://www.allyncai.com/blog/commercial-iot-solutions
+    Topic: Commercial IoT vs consumer IoT, predictive maintenance, asset tracking, smart building, IoT connectivity (LTE-M, NB-IoT, LoRaWAN, 5G), IoT platforms
+    Language: English
+
+45. **İnegöl Yazılım Şirketleri 2026: Bursa İnegöl Yazılım Rehberi**
+    URL: https://www.allyncai.com/blog/inegol-yazilim-sirketleri
+    Topic: İnegöl/Bursa yazılım şirketleri, yerel yazılım hizmetleri, mobilya/otomotiv sektör çözümleri, KVKK uyumlu AI - LOCAL SEO
+    Language: Turkish
+
+46. **Bursa Software Development Companies: Inegol Tech Hub Guide**
+    URL: https://www.allyncai.com/blog/bursa-software-development
+    Topic: Bursa/Inegol software development, local Turkish tech hub, custom software, AI, SaaS development services - LOCAL SEO
+    Language: English
+
+47. **Ev Hizmetleri için WhatsApp AI: Tesisat, Temizlik, Tamir Otomasyonu**
+    URL: https://www.allyncai.com/blog/ev-hizmetleri-whatsapp-ai
+    Topic: Ev hizmeti işletmeleri (tesisat, temizlik, elektrik, klima, çilingir) için WhatsApp AI: konum bazlı yönlendirme, randevu, hatırlatma, durum güncellemesi
+    Language: Turkish
+
+48. **AI WhatsApp for Home Services: Plumbing, Cleaning, Repair Automation**
+    URL: https://www.allyncai.com/blog/ai-whatsapp-for-home-services
+    Topic: WhatsApp AI for home-service businesses (plumbing, cleaning, electrical, HVAC, locksmith): location-based routing, scheduling, reminders, progress updates
+    Language: English
+
+49. **WhatsApp ile Müşteri Yolculuğu: Yapay Zeka Destekli Komple Çözüm**
+    URL: https://www.allyncai.com/blog/whatsapp-musteri-yolculugu-ai
+    Topic: Uçtan uca AI müşteri yolculuğu - WhatsApp üzerinde keşif, sorgu, yönlendirme, randevu, hatırlatma, hizmet teslimi, geri bildirim, yeniden etkileşim
+    Language: Turkish
+
+50. **AI Customer Journey on WhatsApp: Complete End-to-End Solution**
+    URL: https://www.allyncai.com/blog/ai-customer-journey-whatsapp
+    Topic: End-to-end AI customer journey on WhatsApp - discovery, inquiry, routing, scheduling, reminders, service delivery, feedback, re-engagement
+    Language: English
+
 ---
 
 ## TECHNICAL INFORMATION

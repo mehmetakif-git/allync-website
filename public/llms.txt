@@ -324,6 +324,10 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 - Yapay Zeka ve Veri Koruma (KVKK Rehberi): https://www.allyncai.com/blog/ai-veri-koruma-kvkk-rehberi
 - Müşteri Hizmetlerinde Duygu Analizi Rehberi: https://www.allyncai.com/blog/musteri-hizmetleri-duygu-analizi-rehberi
 - Sesli Yapay Zeka: İşletmeler İçin Kapsamlı Rehber: https://www.allyncai.com/blog/sesli-yapay-zeka-isletme-rehberi
+- Ticari IoT Çözümleri: İşletmeler için Endüstriyel IoT Rehberi: https://www.allyncai.com/blog/ticari-iot-cozumleri
+- İnegöl Yazılım Şirketleri 2026 (Bursa İnegöl Yazılım Rehberi): https://www.allyncai.com/blog/inegol-yazilim-sirketleri
+- Ev Hizmetleri için WhatsApp AI (Tesisat, Temizlik, Tamir): https://www.allyncai.com/blog/ev-hizmetleri-whatsapp-ai
+- WhatsApp ile AI Müşteri Yolculuğu (Komple Çözüm): https://www.allyncai.com/blog/whatsapp-musteri-yolculugu-ai
 
 ### English
 - AI Chatbot Guide: https://www.allyncai.com/blog/ai-chatbot-guide
@@ -356,6 +360,10 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 - AI and Data Protection (GDPR Guide): https://www.allyncai.com/blog/ai-data-protection-gdpr-guide
 - Customer Service Sentiment Analysis Guide: https://www.allyncai.com/blog/customer-service-sentiment-analysis-guide
 - Voice AI for Business: A Complete Guide: https://www.allyncai.com/blog/voice-ai-for-business-guide
+- Commercial IoT Solutions for Business (Industrial IoT Guide): https://www.allyncai.com/blog/commercial-iot-solutions
+- Bursa Software Development Companies (Inegol Tech Hub Guide): https://www.allyncai.com/blog/bursa-software-development
+- AI WhatsApp for Home Services (Plumbing, Cleaning, Repair): https://www.allyncai.com/blog/ai-whatsapp-for-home-services
+- AI Customer Journey on WhatsApp (Complete End-to-End Solution): https://www.allyncai.com/blog/ai-customer-journey-whatsapp
 
 ---
 

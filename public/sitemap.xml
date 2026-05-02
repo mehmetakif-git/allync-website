@@ -334,7 +334,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/image-to-video-rehberi</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -356,7 +356,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/veri-analizi-rehberi</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -534,7 +534,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/image-to-video-guide</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -556,7 +556,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/data-analysis-guide</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -580,7 +580,7 @@
   <!-- CRM Integration Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/crm-entegrasyonu-rehberi</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -591,7 +591,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/crm-integration-guide</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -604,7 +604,7 @@
   <!-- Business Process Automation Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/is-surecleri-otomasyonu</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -615,7 +615,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/business-process-automation</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -628,7 +628,7 @@
   <!-- Customer Experience Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/musteri-deneyimi-rehberi</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -639,7 +639,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/customer-experience-guide</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -652,7 +652,7 @@
   <!-- API Integration Blogs -->
   <url>
     <loc>https://www.allyncai.com/blog/api-entegrasyonu-rehberi</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -663,7 +663,7 @@
   </url>
   <url>
     <loc>https://www.allyncai.com/blog/api-integration-guide</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -862,6 +862,102 @@
       <image:loc>https://www.allyncai.com/assets/blog/voice-ai-business.webp</image:loc>
       <image:title>Voice AI for Business Guide</image:title>
       <image:caption>Voice AI guide for businesses</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Commercial IoT Solutions Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/ticari-iot-cozumleri</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/commercial-iot.webp</image:loc>
+      <image:title>Ticari IoT Çözümleri</image:title>
+      <image:caption>İşletmeler için endüstriyel IoT çözümleri</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/commercial-iot-solutions</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/commercial-iot.webp</image:loc>
+      <image:title>Commercial IoT Solutions</image:title>
+      <image:caption>Commercial and industrial IoT solutions for business</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Inegol / Bursa Software Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/inegol-yazilim-sirketleri</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/inegol-software.webp</image:loc>
+      <image:title>İnegöl Yazılım Şirketleri</image:title>
+      <image:caption>İnegöl ve Bursa yazılım şirketleri rehberi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/bursa-software-development</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/inegol-software.webp</image:loc>
+      <image:title>Bursa Software Development</image:title>
+      <image:caption>Bursa and Inegol software development companies</image:caption>
+    </image:image>
+  </url>
+
+  <!-- AI WhatsApp Home Services Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/ev-hizmetleri-whatsapp-ai</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/whatsapp-home-services.webp</image:loc>
+      <image:title>Ev Hizmetleri için WhatsApp AI</image:title>
+      <image:caption>Tesisat, temizlik, tamir için WhatsApp AI otomasyonu</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/ai-whatsapp-for-home-services</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/whatsapp-home-services.webp</image:loc>
+      <image:title>AI WhatsApp for Home Services</image:title>
+      <image:caption>Plumbing, cleaning, repair WhatsApp AI automation</image:caption>
+    </image:image>
+  </url>
+
+  <!-- AI Customer Journey on WhatsApp Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/whatsapp-musteri-yolculugu-ai</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/whatsapp-customer-journey.webp</image:loc>
+      <image:title>WhatsApp ile AI Müşteri Yolculuğu</image:title>
+      <image:caption>WhatsApp üzerinde komple müşteri yolculuğu otomasyonu</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/ai-customer-journey-whatsapp</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/whatsapp-customer-journey.webp</image:loc>
+      <image:title>AI Customer Journey on WhatsApp</image:title>
+      <image:caption>End-to-end AI customer journey automation on WhatsApp</image:caption>
     </image:image>
   </url>
 
