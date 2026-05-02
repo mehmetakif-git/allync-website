@@ -16,6 +16,18 @@
   ],
   "redirects": [
     {
+      "source": "/en",
+      "has": [{ "type": "host", "value": "allyncai.com" }],
+      "destination": "https://www.allyncai.com/",
+      "statusCode": 308
+    },
+    {
+      "source": "/en/:path*",
+      "has": [{ "type": "host", "value": "allyncai.com" }],
+      "destination": "https://www.allyncai.com/",
+      "statusCode": 308
+    },
+    {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "allyncai.com" }],
       "destination": "https://www.allyncai.com/$1",

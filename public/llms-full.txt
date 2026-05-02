@@ -11,6 +11,7 @@ This document contains comprehensive information about ALLYNC (Allyncai is a reg
 **Company Registration No:** 8950466196
 **Registered Address:** Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye
 **Country:** Turkiye (Turkey)
+**Meta Status:** Verified Tech Provider for WhatsApp Business and Instagram Business (officially authorized by Meta Platforms, Inc. to facilitate business onboarding through Meta's official Embedded Signup and Instagram OAuth flows)
 
 ---
 
@@ -29,7 +30,7 @@ AllyncAI, Allync şirketinin marka adıdır. WhatsApp AI asistanları, özel Saa
 - Dijital pazarlama ve SEO hizmetleri verir
 - E-ticaret altyapısı kurar
 
-**Detaylı Bilgi:** https://www.allyncai.com/blog/allync-kimdir.html
+**Detaylı Bilgi:** https://www.allyncai.com/blog/allync-kimdir
 
 ---
 
@@ -101,7 +102,7 @@ Allync, Türkiye'nin önde gelen yapay zeka ve dijital çözümler şirketlerind
 **URL:** https://www.allyncai.com/ai/whatsapp
 
 **What it is:**
-An AI-powered chatbot that runs on WhatsApp Business API, providing 24/7 automated customer service for businesses.
+An AI-powered chatbot that runs on WhatsApp Business API, providing 24/7 automated customer service for businesses. ALLYNC is authorized by Meta Platforms, Inc. as a Verified Tech Provider and onboards businesses through Meta's official WhatsApp Embedded Signup flow.
 
 **Key Features:**
 - Instant responses to customer inquiries
@@ -121,25 +122,43 @@ An AI-powered chatbot that runs on WhatsApp Business API, providing 24/7 automat
 - Education: Enrollment questions, course information
 
 **Technical Details:**
-- WhatsApp Business API integration
-- Custom AI model training
+- WhatsApp Business API integration via Meta's Embedded Signup
+- Custom AI model training (Anthropic Claude)
 - CRM integration available
 - Analytics dashboard
 - Multi-agent support
+- Meta-pre-approved templates for proactive sends (compliant with Meta's 24h customer service window)
+- Marketing opt-out (STOP) records maintained per Meta WhatsApp policy
 
 ### 2. INSTAGRAM AI AUTOMATION
 **URL:** https://www.allyncai.com/ai/instagram
 
 **What it is:**
-Automated Instagram DM responses and engagement system for businesses.
+Automated Instagram DM responses and comment engagement for Instagram Business accounts. Connected via Meta's official Instagram OAuth flow.
 
 **Key Features:**
-- Auto-reply to direct messages
-- Story mention responses
-- Comment automation
+- Auto-reply to direct messages (DMs initiated by end users)
+- Top-level comment responses on business posts
 - Lead generation from Instagram
 - 24/7 customer engagement
 - Multi-language support
+
+**Permissions Requested (minimum scope):**
+- instagram_business_basic (account identity)
+- instagram_business_manage_messages (replying to DMs)
+- instagram_business_manage_comments (reading and replying to comments)
+
+**What We Do NOT Do:**
+- We do NOT collect follower lists, story viewers, likes, or explore/search history
+- We do NOT process replies to other users' comments (only top-level comments under business posts)
+- We do NOT send proactive (user-uninitiated) DMs
+- We do NOT share Instagram messages with third parties for advertising
+
+**Technical Safeguards:**
+- Webhook events verified using Meta's x-hub-signature-256 HMAC signature
+- WhatsApp and Instagram run as fully isolated, separate Meta apps
+- Comment-reply rate limited to one AI reply per (end user, post) per 24 hours
+- 60-day refreshable long-lived access tokens (rotated automatically)
 
 **Use Cases:**
 - Influencer accounts
@@ -559,223 +578,285 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
 **Company Profile (Şirket Profili) Articles:**
 
 1. **Allync Kimdir? Şirket Profili, Hizmetler ve Misyon**
-   URL: https://www.allyncai.com/blog/allync-kimdir.html
+   URL: https://www.allyncai.com/blog/allync-kimdir
    Topic: Complete Turkish company profile - who is Allync, services, contact info
    Language: Turkish
 
 2. **Who is Allync? Company Profile, Services & Mission**
-   URL: https://www.allyncai.com/blog/who-is-allync.html
+   URL: https://www.allyncai.com/blog/who-is-allync
    Topic: Complete English company profile - who is Allync, services, contact info
    Language: English
 
 **Turkish (Türkçe) Articles:**
 
 1. **AI Chatbot Nedir? Müşteri Hizmetlerinde Yapay Zeka**
-   URL: https://www.allyncai.com/blog/ai-chatbot-rehberi.html
+   URL: https://www.allyncai.com/blog/ai-chatbot-rehberi
    Topic: AI chatbot guide for customer service
 
 2. **İşletmeler İçin Siber Güvenlik Rehberi 2026**
-   URL: https://www.allyncai.com/blog/siber-guvenlik-rehberi.html
+   URL: https://www.allyncai.com/blog/siber-guvenlik-rehberi
    Topic: Cybersecurity guide for businesses
 
 3. **Instagram AI ile Müşteri Etkileşimini Artırın**
-   URL: https://www.allyncai.com/blog/instagram-ai-otomasyonu.html
+   URL: https://www.allyncai.com/blog/instagram-ai-otomasyonu
    Topic: Instagram AI automation for customer engagement
 
 4. **Document AI: Belge İşlemede Devrim**
-   URL: https://www.allyncai.com/blog/document-ai-rehberi.html
+   URL: https://www.allyncai.com/blog/document-ai-rehberi
    Topic: Document AI for invoice and contract processing
 
 5. **IoT Çözümleri: İşletmenizi Akıllılaştırın**
-   URL: https://www.allyncai.com/blog/iot-cozumleri.html
+   URL: https://www.allyncai.com/blog/iot-cozumleri
    Topic: IoT solutions for smart business
 
 6. **Cloud Çözümleri: Bulut Teknolojileri Rehberi**
-   URL: https://www.allyncai.com/blog/cloud-cozumleri.html
+   URL: https://www.allyncai.com/blog/cloud-cozumleri
    Topic: Cloud solutions guide (AWS, Azure, GCP)
 
 7. **WhatsApp AI Asistanı Nedir?**
-   URL: https://www.allyncai.com/blog/whatsapp-ai-nedir.html
+   URL: https://www.allyncai.com/blog/whatsapp-ai-nedir
    Topic: Introduction to WhatsApp AI assistants
 
 8. **SaaS Nedir? Bulut Tabanlı Yazılım Çözümleri**
-   URL: https://www.allyncai.com/blog/saas-cozumleri.html
+   URL: https://www.allyncai.com/blog/saas-cozumleri
    Topic: Introduction to Software as a Service
 
 9. **E-Ticaret Başarısı İçin 10 Kritik Strateji**
-   URL: https://www.allyncai.com/blog/eticaret-basari.html
+   URL: https://www.allyncai.com/blog/eticaret-basari
    Topic: E-commerce success strategies
 
 10. **Mobil Uygulama Geliştirme Rehberi 2026**
-    URL: https://www.allyncai.com/blog/mobil-uygulama-rehberi.html
+    URL: https://www.allyncai.com/blog/mobil-uygulama-rehberi
     Topic: Mobile app development guide
 
 11. **2026 Dijital Pazarlama Trendleri**
-    URL: https://www.allyncai.com/blog/dijital-pazarlama-2026.html
+    URL: https://www.allyncai.com/blog/dijital-pazarlama-2026
     Topic: Digital marketing trends
 
 12. **Text-to-Video AI: Metinden Video Oluşturma Rehberi**
-    URL: https://www.allyncai.com/blog/text-to-video-rehberi.html
+    URL: https://www.allyncai.com/blog/text-to-video-rehberi
     Topic: AI-powered video generation from text
 
 13. **Text-to-Image AI: Metinden Görsel Oluşturma Rehberi**
-    URL: https://www.allyncai.com/blog/text-to-image-rehberi.html
+    URL: https://www.allyncai.com/blog/text-to-image-rehberi
     Topic: AI-powered image generation from text
 
 14. **Voice AI ve Ses Klonlama: İşletmeler İçin Kapsamlı Rehber**
-    URL: https://www.allyncai.com/blog/voice-ai-rehberi.html
+    URL: https://www.allyncai.com/blog/voice-ai-rehberi
     Topic: Voice AI and cloning for businesses
 
 15. **Image-to-Video AI: Görsellerden Video Oluşturma Rehberi**
-    URL: https://www.allyncai.com/blog/image-to-video-rehberi.html
+    URL: https://www.allyncai.com/blog/image-to-video-rehberi
     Topic: Transform images into videos with AI
 
 16. **Video-to-Video AI: Video Dönüştürme ve İyileştirme Rehberi**
-    URL: https://www.allyncai.com/blog/video-to-video-rehberi.html
+    URL: https://www.allyncai.com/blog/video-to-video-rehberi
     Topic: Video transformation and enhancement with AI
 
 17. **Veri Analizi AI: İş Zekası ve Tahminleme Rehberi**
-    URL: https://www.allyncai.com/blog/veri-analizi-rehberi.html
+    URL: https://www.allyncai.com/blog/veri-analizi-rehberi
     Topic: AI-powered data analysis and business intelligence
 
 18. **Kurumsal Web Sitesi Rehberi: Modern ve SEO Uyumlu Tasarım**
-    URL: https://www.allyncai.com/blog/kurumsal-web-sitesi-rehberi.html
+    URL: https://www.allyncai.com/blog/kurumsal-web-sitesi-rehberi
     Topic: Corporate website development guide
 
 **English Articles:**
 
 1. **AI Chatbot Guide: Transform Your Customer Service**
-   URL: https://www.allyncai.com/blog/ai-chatbot-guide.html
+   URL: https://www.allyncai.com/blog/ai-chatbot-guide
    Topic: AI chatbot guide for customer service
 
 2. **Cybersecurity Guide for Businesses 2026**
-   URL: https://www.allyncai.com/blog/cybersecurity-guide.html
+   URL: https://www.allyncai.com/blog/cybersecurity-guide
    Topic: Cybersecurity guide for businesses
 
 3. **Instagram AI Automation: Complete Business Guide**
-   URL: https://www.allyncai.com/blog/instagram-ai-automation.html
+   URL: https://www.allyncai.com/blog/instagram-ai-automation
    Topic: Instagram AI automation for customer engagement
 
 4. **Document AI: Complete Business Guide**
-   URL: https://www.allyncai.com/blog/document-ai-guide.html
+   URL: https://www.allyncai.com/blog/document-ai-guide
    Topic: Document AI for invoice and contract processing
 
 5. **IoT Solutions: Smart Business Transformation**
-   URL: https://www.allyncai.com/blog/iot-solutions.html
+   URL: https://www.allyncai.com/blog/iot-solutions
    Topic: IoT solutions for smart business
 
 6. **Cloud Solutions Guide 2026**
-   URL: https://www.allyncai.com/blog/cloud-solutions.html
+   URL: https://www.allyncai.com/blog/cloud-solutions
    Topic: Cloud solutions guide (AWS, Azure, GCP)
 
 7. **How WhatsApp AI Assistants Transform Customer Service**
-   URL: https://www.allyncai.com/blog/whatsapp-ai-assistant.html
+   URL: https://www.allyncai.com/blog/whatsapp-ai-assistant
    Topic: Benefits and implementation of WhatsApp AI
 
 8. **What is SaaS? Cloud-Based Software Solutions**
-   URL: https://www.allyncai.com/blog/saas-solutions.html
+   URL: https://www.allyncai.com/blog/saas-solutions
    Topic: Introduction to Software as a Service
 
 9. **10 Critical Strategies for E-Commerce Success**
-   URL: https://www.allyncai.com/blog/ecommerce-success.html
+   URL: https://www.allyncai.com/blog/ecommerce-success
    Topic: E-commerce success strategies
 
 10. **Mobile App Development Guide for Businesses 2026**
-    URL: https://www.allyncai.com/blog/mobile-app-guide.html
+    URL: https://www.allyncai.com/blog/mobile-app-guide
     Topic: Mobile app development guide
 
 11. **2026 Digital Marketing Trends and Strategies**
-    URL: https://www.allyncai.com/blog/digital-marketing-2026.html
+    URL: https://www.allyncai.com/blog/digital-marketing-2026
     Topic: Digital marketing trends
 
 12. **Text-to-Video AI: Complete Video Generation Guide**
-    URL: https://www.allyncai.com/blog/text-to-video-guide.html
+    URL: https://www.allyncai.com/blog/text-to-video-guide
     Topic: AI-powered video generation from text
 
 13. **Text-to-Image AI: Complete Image Generation Guide**
-    URL: https://www.allyncai.com/blog/text-to-image-guide.html
+    URL: https://www.allyncai.com/blog/text-to-image-guide
     Topic: AI-powered image generation from text
 
 14. **Voice AI & Cloning: Complete Business Guide**
-    URL: https://www.allyncai.com/blog/voice-ai-guide.html
+    URL: https://www.allyncai.com/blog/voice-ai-guide
     Topic: Voice AI and cloning for businesses
 
 15. **Image-to-Video AI: Transform Images into Videos**
-    URL: https://www.allyncai.com/blog/image-to-video-guide.html
+    URL: https://www.allyncai.com/blog/image-to-video-guide
     Topic: Transform images into videos with AI
 
 16. **Video-to-Video AI: Transform and Enhance Videos**
-    URL: https://www.allyncai.com/blog/video-to-video-guide.html
+    URL: https://www.allyncai.com/blog/video-to-video-guide
     Topic: Video transformation and enhancement with AI
 
 17. **Data Analysis AI: Business Intelligence & Forecasting Guide**
-    URL: https://www.allyncai.com/blog/data-analysis-guide.html
+    URL: https://www.allyncai.com/blog/data-analysis-guide
     Topic: AI-powered data analysis and business intelligence
 
 18. **Corporate Website Guide: Modern & SEO-Optimized Design**
-    URL: https://www.allyncai.com/blog/corporate-website-guide.html
+    URL: https://www.allyncai.com/blog/corporate-website-guide
     Topic: Corporate website development guide
 
 19. **CRM Entegrasyonu Rehberi: Müşteri İlişkileri Yönetimi**
-    URL: https://www.allyncai.com/blog/crm-entegrasyonu-rehberi.html
+    URL: https://www.allyncai.com/blog/crm-entegrasyonu-rehberi
     Topic: CRM integration guide - Salesforce, HubSpot, Zoho integrations
     Language: Turkish
 
 20. **CRM Integration Guide: Customer Relationship Management**
-    URL: https://www.allyncai.com/blog/crm-integration-guide.html
+    URL: https://www.allyncai.com/blog/crm-integration-guide
     Topic: CRM integration guide - Salesforce, HubSpot, Zoho integrations
     Language: English
 
 21. **İş Süreçleri Otomasyonu: Verimlilik ve Maliyet Tasarrufu**
-    URL: https://www.allyncai.com/blog/is-surecleri-otomasyonu.html
+    URL: https://www.allyncai.com/blog/is-surecleri-otomasyonu
     Topic: Business process automation - RPA, workflow automation
     Language: Turkish
 
 22. **Business Process Automation: Efficiency & Cost Savings**
-    URL: https://www.allyncai.com/blog/business-process-automation.html
+    URL: https://www.allyncai.com/blog/business-process-automation
     Topic: Business process automation - RPA, workflow automation
     Language: English
 
 23. **Müşteri Deneyimi (CX) Rehberi: Memnuniyetten Sadakate**
-    URL: https://www.allyncai.com/blog/musteri-deneyimi-rehberi.html
+    URL: https://www.allyncai.com/blog/musteri-deneyimi-rehberi
     Topic: Customer experience management - CX strategies, omnichannel
     Language: Turkish
 
 24. **Customer Experience (CX) Guide: From Satisfaction to Loyalty**
-    URL: https://www.allyncai.com/blog/customer-experience-guide.html
+    URL: https://www.allyncai.com/blog/customer-experience-guide
     Topic: Customer experience management - CX strategies, omnichannel
     Language: English
 
 25. **API Entegrasyonu Rehberi: Sistemleri Birbirine Bağlama**
-    URL: https://www.allyncai.com/blog/api-entegrasyonu-rehberi.html
+    URL: https://www.allyncai.com/blog/api-entegrasyonu-rehberi
     Topic: API integration guide - REST API, GraphQL, webhooks
     Language: Turkish
 
 26. **API Integration Guide: Connect Your Systems Seamlessly**
-    URL: https://www.allyncai.com/blog/api-integration-guide.html
+    URL: https://www.allyncai.com/blog/api-integration-guide
     Topic: API integration guide - REST API, GraphQL, webhooks
     Language: English
 
 27. **Yapay Zeka Danışmanlığı: AI Stratejisi ve Uygulama**
-    URL: https://www.allyncai.com/blog/yapay-zeka-danismanligi.html
+    URL: https://www.allyncai.com/blog/yapay-zeka-danismanligi
     Topic: AI consulting - ML, NLP, computer vision, AI strategy
     Language: Turkish
 
 28. **AI Consulting Guide: Strategy and Implementation**
-    URL: https://www.allyncai.com/blog/ai-consulting-guide.html
+    URL: https://www.allyncai.com/blog/ai-consulting-guide
     Topic: AI consulting - ML, NLP, computer vision, AI strategy
     Language: English
 
 29. **SaaS Yönetim Paneli: 8 Sektör, 12 Modül, 160+ Sayfa**
-    URL: https://www.allyncai.com/blog/saas-yonetim-paneli.html
+    URL: https://www.allyncai.com/blog/saas-yonetim-paneli
     Topic: Allync SaaS management dashboard - multi-sector solution with 8 sectors (Gym, Manpower, Real Estate, Advertising, Events, Beauty, Laundry, Hardware), 12 common modules, role-based access control
     Demo: https://demodashboard.allyncai.com/ (demo@allync.com / demo123)
     Language: Turkish
 
 30. **SaaS Management Dashboard: 8 Sectors, 12 Modules, 160+ Pages**
-    URL: https://www.allyncai.com/blog/saas-management-dashboard.html
+    URL: https://www.allyncai.com/blog/saas-management-dashboard
     Topic: Allync SaaS management dashboard - multi-sector solution with 8 sectors (Gym, Manpower, Real Estate, Advertising, Events, Beauty, Laundry, Hardware), 12 common modules, role-based access control
     Demo: https://demodashboard.allyncai.com/ (demo@allync.com / demo123)
+    Language: English
+
+**Meta Compliance & AI Privacy Articles (Published 2026-05-02):**
+
+31. **Meta Verified Tech Provider Nedir? ALLYNC'in Resmi Statüsü**
+    URL: https://www.allyncai.com/blog/meta-verified-tech-provider-nedir
+    Topic: Meta Verified Tech Provider statüsü, Embedded Signup, Türk işletmelerine sağladığı avantajlar
+    Language: Turkish
+
+32. **What is Meta Verified Tech Provider? ALLYNC's Official Status**
+    URL: https://www.allyncai.com/blog/what-is-meta-verified-tech-provider
+    Topic: Meta Verified Tech Provider status, Embedded Signup, benefits for Middle East / Turkish businesses
+    Language: English
+
+33. **WhatsApp Business API Uyumluluk Rehberi 2026**
+    URL: https://www.allyncai.com/blog/whatsapp-business-api-uyumluluk-rehberi
+    Topic: 24 saat müşteri hizmetleri penceresi, Meta onaylı şablonlar, STOP/opt-out, Meta WhatsApp politikası
+    Language: Turkish
+
+34. **WhatsApp Business API Compliance Guide 2026**
+    URL: https://www.allyncai.com/blog/whatsapp-business-api-compliance-guide
+    Topic: 24-hour customer service window, Meta-approved templates, STOP/opt-out, Meta WhatsApp policy
+    Language: English
+
+35. **Instagram Business AI: En İyi Uygulamalar 2026**
+    URL: https://www.allyncai.com/blog/instagram-business-ai-en-iyi-uygulamalar
+    Topic: Instagram DM otomasyonu, yorum yanıtlama, Meta izin scope'ları, webhook HMAC, ne yap/ne yapma
+    Language: Turkish
+
+36. **Instagram Business AI Best Practices 2026**
+    URL: https://www.allyncai.com/blog/instagram-business-ai-best-practices
+    Topic: Instagram DM automation, comment replies, Meta permission scopes, webhook HMAC, do's and don'ts
+    Language: English
+
+37. **Yapay Zeka ve Veri Koruma: KVKK Uyumluluk Rehberi**
+    URL: https://www.allyncai.com/blog/ai-veri-koruma-kvkk-rehberi
+    Topic: KVKK ile uyumlu AI kullanımı, AI sağlayıcı seçimi, DPA, audit log, veri minimizasyonu
+    Language: Turkish
+
+38. **AI and Data Protection: GDPR Compliance Guide**
+    URL: https://www.allyncai.com/blog/ai-data-protection-gdpr-guide
+    Topic: GDPR-compliant AI usage, AI provider selection, DPAs, audit logs, data minimization
+    Language: English
+
+39. **Müşteri Hizmetlerinde Duygu Analizi Rehberi**
+    URL: https://www.allyncai.com/blog/musteri-hizmetleri-duygu-analizi-rehberi
+    Topic: AI ile duygu analizi, niyet tespiti, konu etiketleme, SLA önceliklendirmesi, eskalasyon
+    Language: Turkish
+
+40. **Customer Service Sentiment Analysis Guide**
+    URL: https://www.allyncai.com/blog/customer-service-sentiment-analysis-guide
+    Topic: AI-powered sentiment analysis, intent detection, topic tagging, SLA prioritization, escalation
+    Language: English
+
+41. **Sesli Yapay Zeka: İşletmeler İçin Kapsamlı Rehber**
+    URL: https://www.allyncai.com/blog/sesli-yapay-zeka-isletme-rehberi
+    Topic: Voice AI (Whisper STT, TTS, sesli yanıt), call center otomasyonu, IVR, çok dilli destek
+    Language: Turkish
+
+42. **Voice AI for Business: A Complete Guide**
+    URL: https://www.allyncai.com/blog/voice-ai-for-business-guide
+    Topic: Voice AI (Whisper STT, TTS, voice replies), call center automation, IVR, multilingual support
     Language: English
 
 ---
@@ -846,14 +927,78 @@ All projects include free consultation and detailed proposal.
 
 ---
 
+## PRIVACY & DATA PROTECTION
+
+ALLYNC operates under strict data-protection standards aligned with Meta requirements and applicable data-protection law. Full policy: https://www.allyncai.com/privacy
+
+### Compliance Frameworks
+- **GDPR** (General Data Protection Regulation, EU)
+- **KVKK** (Kisisel Verilerin Korunmasi Kanunu, Turkey)
+- **Qatar PDPPL** (Personal Data Privacy Protection Law)
+- **ISO 27001** (Information Security Management)
+- **SOC 2 Type II** (Service Organization Control)
+- **Meta Verified Tech Provider** (WhatsApp Business Policy + Instagram Platform Policy)
+
+### Key Data-Handling Principles
+- We do NOT sell personal data to third parties
+- We do NOT share data for third-party advertising
+- We do NOT use customer conversations (WhatsApp or Instagram) to train general AI models
+- We do NOT collect Instagram follower lists, story viewers, likes, or search history
+- We do NOT send proactive (user-uninitiated) DMs
+- Only minimum-scope Meta permissions are requested per integration
+- All proactive WhatsApp sends outside the 24h window use only Meta-pre-approved templates
+- Webhook events are verified with Meta's x-hub-signature-256 HMAC; invalid signatures rejected
+- WhatsApp and Instagram integrations run as fully isolated, separate Meta apps
+
+### AI Service Providers (transparency)
+- **Anthropic (Claude):** AI response generation and sentiment analysis. Enterprise DPA in place. Only message text is forwarded; profile pictures, phone numbers, and IGSIDs are not included in model calls. Anthropic does not use customer conversations to train its general models.
+- **OpenAI (Whisper, TTS):** Voice message transcription and voice replies. Activated only when a tenant enables this feature. Under OpenAI API terms, customer data is not used to train OpenAI's general models. Voice AI reply audio files are deleted within 24 hours of delivery.
+
+### Data We Process
+- WhatsApp Business API: phone number, profile name/picture, message content, message metadata, conversation history (active session)
+- Instagram Graph API: username, Instagram User ID, IGSID of message senders, DM content (text/images/voice notes/story replies/shared media), top-level comment text on business posts (capped at 4,000 characters)
+- Sentiment analysis output: sentiment label (positive/neutral/negative), score, summary, intent, topic tags, suggested action
+- Marketing opt-out (STOP) records: opt-out keyword and timestamp (required for Meta WhatsApp policy compliance)
+- Audit logs: every sensitive action (login, connection create/delete, data deletion request, role change) — default 90-day retention, tenant-configurable
+- Web push subscriptions: browser-generated endpoint and encryption keys (used only for in-panel notifications)
+- Developer API keys: stored only as cryptographically irreversible hashes; raw keys never retained
+
+### Data Retention (highlights)
+- WhatsApp messages: active session only
+- Instagram Direct Messages: active session only
+- Instagram comments: until deleted by business (capped at 4,000 chars)
+- Meta access tokens: until disconnect (60-day rotation)
+- Voice message transcripts: same as the conversation
+- Voice AI reply audio files: deleted within 24 hours of delivery
+- Sentiment analysis results: lifetime of the conversation
+- Audit logs: tenant-configurable (default at least 90 days)
+- Error monitoring events: 90 days
+
+### User Rights
+Under GDPR Article 15-22 and KVKK Madde 11, users may exercise: access, rectification, erasure, restriction of processing, objection, data portability, and withdrawal of consent. Deletion requests are processed within 30 days at info@allyncai.com. Meta's official Deauthorize and Data Deletion Request callbacks are implemented for both WhatsApp and Instagram integrations.
+
+### Security
+- Encryption in transit (TLS 1.3) and at rest (AES-256)
+- Multi-factor authentication for admin access
+- Regular penetration testing
+- 99.9% uptime SLA
+- SOC 2 Type II compliant infrastructure
+- Internal error monitoring (no third-party SaaS); telemetry payloads automatically scrub phone numbers, emails, tokens, and secrets
+
+---
+
 ## PARTNERSHIPS & CERTIFICATIONS
 
-- WhatsApp Business API Official Partner
+- **Meta Verified Tech Provider** for WhatsApp Business and Instagram Business
+- WhatsApp Business Policy compliant
+- Instagram Platform Policy compliant
 - AWS Partner
 - Google Cloud Partner
 - ISO 27001 Compliant
 - GDPR Compliant
-- SOC 2 Compliant
+- KVKK Compliant
+- Qatar PDPPL Compliant
+- SOC 2 Type II Compliant
 
 ---
 

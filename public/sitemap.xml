@@ -4,7 +4,7 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.allyncai.com/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -148,7 +148,7 @@
   <!-- Blog Index -->
   <url>
     <loc>https://www.allyncai.com/blog/</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -721,6 +721,150 @@
     </image:image>
   </url>
 
+  <!-- Meta Verified Tech Provider Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/meta-verified-tech-provider-nedir</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/meta-verified-tech-provider.webp</image:loc>
+      <image:title>Meta Verified Tech Provider Nedir</image:title>
+      <image:caption>ALLYNC Meta Verified Tech Provider statüsü</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/what-is-meta-verified-tech-provider</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/meta-verified-tech-provider.webp</image:loc>
+      <image:title>What is Meta Verified Tech Provider</image:title>
+      <image:caption>ALLYNC Meta Verified Tech Provider status</image:caption>
+    </image:image>
+  </url>
+
+  <!-- WhatsApp Business API Compliance Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/whatsapp-business-api-uyumluluk-rehberi</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/whatsapp-compliance.webp</image:loc>
+      <image:title>WhatsApp Business API Uyumluluk Rehberi</image:title>
+      <image:caption>WhatsApp Business API uyumluluk ve Meta politikası</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/whatsapp-business-api-compliance-guide</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/whatsapp-compliance.webp</image:loc>
+      <image:title>WhatsApp Business API Compliance Guide</image:title>
+      <image:caption>WhatsApp Business API compliance and Meta policy</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Instagram Business AI Best Practices Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/instagram-business-ai-en-iyi-uygulamalar</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/instagram-business-ai.webp</image:loc>
+      <image:title>Instagram Business AI En İyi Uygulamalar</image:title>
+      <image:caption>Instagram Business AI otomasyonu en iyi uygulamalar</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/instagram-business-ai-best-practices</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/instagram-business-ai.webp</image:loc>
+      <image:title>Instagram Business AI Best Practices</image:title>
+      <image:caption>Instagram Business AI automation best practices</image:caption>
+    </image:image>
+  </url>
+
+  <!-- AI Data Protection (KVKK / GDPR) Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/ai-veri-koruma-kvkk-rehberi</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/ai-data-protection.webp</image:loc>
+      <image:title>AI Veri Koruma KVKK Rehberi</image:title>
+      <image:caption>Yapay zeka ve KVKK uyumluluk rehberi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/ai-data-protection-gdpr-guide</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/ai-data-protection.webp</image:loc>
+      <image:title>AI Data Protection GDPR Guide</image:title>
+      <image:caption>AI and GDPR compliance guide</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Customer Service Sentiment Analysis Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/musteri-hizmetleri-duygu-analizi-rehberi</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/sentiment-analysis.webp</image:loc>
+      <image:title>Müşteri Hizmetleri Duygu Analizi Rehberi</image:title>
+      <image:caption>Müşteri hizmetlerinde yapay zeka ile duygu analizi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/customer-service-sentiment-analysis-guide</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/sentiment-analysis.webp</image:loc>
+      <image:title>Customer Service Sentiment Analysis Guide</image:title>
+      <image:caption>AI-powered sentiment analysis for customer service</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Voice AI for Business Blogs (2026-05-02) -->
+  <url>
+    <loc>https://www.allyncai.com/blog/sesli-yapay-zeka-isletme-rehberi</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/voice-ai.webp</image:loc>
+      <image:title>Sesli Yapay Zeka İşletme Rehberi</image:title>
+      <image:caption>İşletmeler için sesli yapay zeka rehberi</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.allyncai.com/blog/voice-ai-for-business-guide</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.allyncai.com/assets/blog/voice-ai.webp</image:loc>
+      <image:title>Voice AI for Business Guide</image:title>
+      <image:caption>Voice AI guide for businesses</image:caption>
+    </image:image>
+  </url>
+
   <!-- Contact Page -->
   <url>
     <loc>https://www.allyncai.com/contact</loc>
@@ -732,7 +876,7 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://www.allyncai.com/privacy</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -740,13 +884,13 @@
   <!-- LLMs.txt Files -->
   <url>
     <loc>https://www.allyncai.com/llms.txt</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.allyncai.com/llms-full.txt</loc>
-    <lastmod>2026-04-23</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
