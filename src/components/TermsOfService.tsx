@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import {
   ArrowLeft, FileText, BookOpen, Briefcase, UserCheck, Users, Ban,
   Copyright, Globe, RefreshCw, CreditCard, Shield, Cpu, AlertTriangle,
-  Scale, LogOut, Gavel, Edit3, Layers, Mail
+  Scale, LogOut, Gavel, Edit3, Layers, Mail, Monitor
 } from 'lucide-react';
 import logo from '../assets/logo.svg';
 
@@ -542,8 +542,78 @@ export const TermsOfService: React.FC = () => {
       )
     },
     {
+      icon: Monitor,
+      heading: '19. Ürün-Spesifik Şartlar: Allync Digital Signage',
+      content: (
+        <>
+          <p>Bu bölüm, Allync Digital Signage ürününe (signage.allyncai.com ve tenant alt-alanlarına) özgü ek hükümleri düzenler. Bu hükümler, yukarıdaki genel Şartlara <strong>ek olarak</strong> uygulanır; çakışma halinde Digital Signage hizmeti kapsamında bu bölüm öncelikli olarak uygulanır.</p>
+          <SubHeading>19.1 Hizmet Kapsamı</SubHeading>
+          <BulletList items={[
+            'Allync Digital Signage, Kullanıcının kendi cihazlarında (Android, Windows ve uyumlu web tarayıcıları) içerik göstermesini ve uzaktan yönetmesini sağlayan SaaS platformudur',
+            'ALLYNC yalnızca yazılım, API\'ler, bulut altyapısı ve yönetim panelini sağlar',
+            'Hizmet `signage.allyncai.com` ana domaininde ve her tenant için ayrılmış alt-alanlarda (`{tenant}.signage.allyncai.com`) sunulur',
+            'Süper-yönetici (Allync), tenant yöneticisi ve tenant kullanıcısı olmak üzere üç seviyeli rol-bazlı erişim modeli (RBAC) uygulanır'
+          ]} />
+          <SubHeading>19.2 Cihaz Donanımı (BYOD — Bring Your Own Device)</SubHeading>
+          <BulletList items={[
+            'ALLYNC donanım (TV, kiosk, monitör, set-top box, oynatıcı) satmaz, kiralamaz, garanti vermez veya tamir etmez',
+            'Cihazın satın alınması, kurulumu, güncellenmesi, fiziksel güvenliği, anti-vandalizm önlemleri, elektrik beslemesi ve internet bağlantısı tamamen Kullanıcının sorumluluğundadır',
+            'Cihaz arızası, kaybolması, çalınması veya hasar görmesi nedeniyle hizmet kullanılamazlığı, abonelik ücretlerinde iade veya orantı hakkı doğurmaz',
+            'Cihazların yerleştirildiği fiziksel mekânın (mağaza, vitrin, bekleme alanı, ofis lobisi vb.) yasal kullanım hakkını veya sahipliğini Kullanıcı taahhüt eder',
+            'Desteklenen platformlar: Android (APK), Windows ve modern web tarayıcılar; bunların dışındaki ortamlar için uyumluluk garanti edilmez'
+          ]} />
+          <SubHeading>19.3 İçerik Sorumluluğu ve Halka Açık Görüntüleme</SubHeading>
+          <BulletList items={[
+            'Ekranlarda görüntülenen tüm içerik (görsel, video, metin, müzik, animasyon) için telif hakkı, ticari marka, kişilik hakkı ve gizlilik hakkı uyumluluğu Kullanıcının sorumluluğundadır',
+            'Halka açık alanlarda (mağaza, AVM, restoran, hastane, otel, ofis lobisi, spor salonu, vb.) gösterilen içerik için yerel reklam mevzuatı, yaş kısıtlamaları, dil zorunlulukları ve sektörel düzenlemelere uyumdan Kullanıcı sorumludur',
+            'Bölüm 6 (Yasaklı Kullanım) hükümlerine ek olarak, Digital Signage üzerinde şunlar kesinlikle yasaktır: pornografi veya açık cinsel içerik, aşırı şiddet, ırkçı/ayrımcı/nefret içeren semboller, sahte sağlık iddiaları, lisanssız kumar veya bahis reklamı, doğrulanmamış mali tavsiye',
+            'ALLYNC içerik onay (moderation) iş akışı sunar (taslak → onay → yayın); ancak son yayın kararı ve içerik uygunluğu Kullanıcıya aittir',
+            'Müzik ve arka plan ses (background music) özelliği kullanıldığında, ilgili telif lisanslarının (örn. MESAM, MSG, PRS, ASCAP) edinilmesi Kullanıcı sorumluluğundadır'
+          ]} />
+          <SubHeading>19.4 Telemetri, Konum ve Dikkat Analitiği (Attention Analytics)</SubHeading>
+          <BulletList items={[
+            'Cihaz oynatıcıları, hizmet sürekliliği için ALLYNC sunucularına düzenli aralıklarla telemetri (heartbeat) gönderir: cihaz sağlık metrikleri (pil, depolama, CPU, ağ hızı), kayıtlı GPS konumu, tanılama ekran görüntüleri ve hata logları',
+            'Bu telemetri yalnızca lisans doğrulama, hizmet kalitesi ve sorun giderme için kullanılır',
+            '"Attention Analytics" özelliği etkinleştirildiğinde, ekran karşısındaki seyirci sayısı, dikkat süresi ve isteğe bağlı demografik tahminler (yaş aralığı, cinsiyet, duygu) cihaz üzerinde lokal olarak işlenir; ham görüntü veya video ALLYNC sunucularına asla gönderilmez',
+            'AB ve Birleşik Krallık\'ta GDPR Uyumlu Mod (`gdpr_compliance_mode`) etkinleştirildiğinde demografik analitik bastırılır; yalnızca anonim, toplu metrikler işlenir',
+            'Halka açık alanlarda "attention analytics" veya kameralı ölçüm kullanımının yerel veri koruma ve CCTV bildirim mevzuatına uyumlu olduğunu (örn. AB GDPR, Türkiye KVKK) garanti etmek Kullanıcının sorumluluğundadır',
+            'Kullanıcı, bu özelliği kullanması halinde son kullanıcılarına gerekli bildirim/ikaz tabelalarını sunmakla yükümlüdür'
+          ]} />
+          <SubHeading>19.5 Lisans, Plan Limitleri ve Aşım</SubHeading>
+          <BulletList items={[
+            'Hizmet, ekran adedi, depolama, AI tokenı, API çağrı sayısı, kullanıcı sayısı ve oynatma listesi gibi plan-bazlı limitlerle sunulur',
+            'Plan limitlerini aşan kullanım için ek ücret tahakkuk ettirilebilir veya bir üst plana yükseltme talep edilebilir',
+            'Aylık veya yıllık faturalandırma seçenekleri ve özel limit (custom_limits) yapılandırması mevcuttur',
+            'Lisans iptali veya ödeme gecikmesi nedeniyle hesabın askıya alınması durumunda cihazlardaki içerik gösterimi ALLYNC tarafından durdurulabilir',
+            'Kullanıcı, Hizmetin lisans doğrulama için telemetriye dayandığını ve uzun süreli internet kesintilerinin oynatımı etkileyebileceğini kabul eder'
+          ]} />
+          <SubHeading>19.6 Süper-Yönetici Müdahalesi ve Acil Durdurma</SubHeading>
+          <BulletList items={[
+            'ALLYNC süper-yöneticileri, platform genelinde acil müdahale yetkisine sahiptir: yasaklı içeriği zorla kaldırma, ekranları acil duruma alma, lisansı askıya alma veya hesabı zorla çıkış yaptırma',
+            'Bu yetki yalnızca açık politika ihlalleri, hukuka aykırılık şikâyetleri veya platform güvenliğini tehdit eden durumlarda kullanılır',
+            'Olağan koşullarda, müdahale öncesi Kullanıcıya yazılı bildirim yapılır; ciddi acil durumlarda bildirim sonradan iletilebilir'
+          ]} />
+          <SubHeading>19.7 Yapay Zeka Asistanı ve Üretken İçerik</SubHeading>
+          <BulletList items={[
+            'Digital Signage AI asistan özelliği; metin promptlarına göre tasarım, metin, görsel ve şablon üretebilir',
+            'Üretken içerik için Anthropic Claude ve Google Gemini API\'leri kullanılır; bu sağlayıcıların hizmet şartları geçerlidir',
+            'Üretilen içeriğin telif hakkı uygunluğu, doğruluğu ve halka açık görüntüleme uygunluğu kontrolü Kullanıcıya aittir',
+            'Bölüm 12 (Yapay Zeka Çıktıları) hükümleri Digital Signage AI çıktıları için de aynen geçerlidir',
+            'AI tokenı tüketimi plan limitlerinizden düşer; tüketilen tokenlar Bölüm 10.3 uyarınca iade edilmez'
+          ]} />
+          <SubHeading>19.8 Çoklu Kiracılık (Multi-Tenancy) ve Veri İzolasyonu</SubHeading>
+          <BulletList items={[
+            'Her tenant, satır seviyesinde güvenlik (Row Level Security) ile diğer tenantlardan izole edilmiş veri tabanı şemasına sahiptir',
+            'Tenant yöneticileri yalnızca kendi tenantlarındaki verilere erişebilir; tenantlar arası veri aktarımı varsayılan olarak yasaktır',
+            'Kullanıcı, kendi tenant kullanıcıları için izinleri (RBAC) doğru yapılandırmaktan sorumludur (admin / editor / viewer rolleri ve izin grupları)',
+            'Tenantın silinmesi durumunda tüm veriler Gizlilik Politikasında belirtilen saklama sürelerine göre silinir veya anonimleştirilir; ekstra bir geri yükleme garantisi verilmez'
+          ]} />
+        </>
+      )
+    },
+    {
       icon: Mail,
-      heading: '19. İletişim',
+      heading: '20. İletişim',
       content: (
         <>
           <p>Bu Şartlarla ilgili soru, talep ve bildirimleriniz için bizimle iletişime geçebilirsiniz:</p>
@@ -1015,8 +1085,78 @@ export const TermsOfService: React.FC = () => {
       )
     },
     {
+      icon: Monitor,
+      heading: '19. Product-Specific Terms: Allync Digital Signage',
+      content: (
+        <>
+          <p>This section sets out additional terms specific to the Allync Digital Signage product (signage.allyncai.com and tenant subdomains). These provisions apply <strong>in addition to</strong> the general Terms above; in case of any conflict, this section prevails for the Digital Signage Service.</p>
+          <SubHeading>19.1 Service Scope</SubHeading>
+          <BulletList items={[
+            'Allync Digital Signage is a SaaS platform that enables the User to display and remotely manage content on the User\'s own devices (Android, Windows and compatible web browsers)',
+            'ALLYNC provides software, APIs, cloud infrastructure and the management dashboard only',
+            'The Service is delivered at the main domain `signage.allyncai.com` and at per-tenant subdomains (`{tenant}.signage.allyncai.com`)',
+            'A three-tier role-based access control (RBAC) model is enforced: Super Administrator (Allync), Tenant Administrator and Tenant User'
+          ]} />
+          <SubHeading>19.2 Device Hardware (BYOD — Bring Your Own Device)</SubHeading>
+          <BulletList items={[
+            'ALLYNC does not sell, rent, warrant or repair hardware (TVs, kiosks, monitors, set-top boxes, players)',
+            'Procurement, installation, software updates, physical security, anti-tampering measures, electrical supply and internet connectivity for devices are entirely the User\'s responsibility',
+            'Service unavailability caused by device failure, loss, theft or damage does not entitle the User to any refund or pro-rata adjustment of subscription fees',
+            'The User represents that they have the legal right or ownership to operate devices in the physical premises (store, window display, waiting area, office lobby, etc.) where they are placed',
+            'Supported platforms: Android (APK), Windows and modern web browsers; compatibility with environments outside this list is not guaranteed'
+          ]} />
+          <SubHeading>19.3 Content Responsibility and Public Display</SubHeading>
+          <BulletList items={[
+            'The User is responsible for copyright, trademark, personality-right and privacy compliance of all content (images, video, text, music, animation) displayed on the screens',
+            'When content is displayed in public spaces (retail stores, malls, restaurants, hospitals, hotels, office lobbies, gyms, etc.), the User is responsible for compliance with local advertising regulations, age restrictions, language requirements and sector-specific rules',
+            'In addition to Section 6 (Prohibited Use), the following are strictly prohibited on Digital Signage: pornography or explicit sexual content, extreme violence, racist / discriminatory / hateful symbols, false health claims, unlicensed gambling or betting advertisements, unverified financial advice',
+            'ALLYNC provides a content moderation workflow (draft → approval → publish), but final publication and content fitness remain the User\'s responsibility',
+            'When the background-music feature is used, securing the appropriate music licenses (e.g. MESAM, MSG, PRS, ASCAP) is the User\'s responsibility'
+          ]} />
+          <SubHeading>19.4 Telemetry, Location and Attention Analytics</SubHeading>
+          <BulletList items={[
+            'Device players send periodic telemetry (heartbeat) to ALLYNC servers for service continuity: device health metrics (battery, storage, CPU, network speed), registered GPS location, diagnostic screenshots and error logs',
+            'This telemetry is used solely for license validation, service quality and troubleshooting',
+            'When the "Attention Analytics" feature is enabled, audience count, dwell time and optional demographic estimates (age range, gender, sentiment) are processed locally on the device; raw images or video are never transmitted to ALLYNC servers',
+            'In the EU and UK, when GDPR Compliance Mode (`gdpr_compliance_mode`) is enabled, demographic analytics are suppressed and only anonymized aggregate metrics are processed',
+            'It is the User\'s responsibility to ensure that the use of Attention Analytics or any camera-based measurement in public spaces complies with applicable data-protection and CCTV-notice regulations (e.g. EU GDPR, Türkiye KVKK)',
+            'When using such features, the User must display the appropriate notices / signage to inform end-viewers'
+          ]} />
+          <SubHeading>19.5 Licensing, Plan Limits and Overage</SubHeading>
+          <BulletList items={[
+            'The Service is provided with plan-based limits on number of screens, storage, AI tokens, API calls, users and playlists',
+            'Usage exceeding plan limits may incur overage charges or require an upgrade to a higher plan',
+            'Monthly or annual billing is available, and custom limits (custom_limits) may be configured for enterprise plans',
+            'In the event of license cancellation or suspension due to non-payment, ALLYNC may stop content playback on connected devices',
+            'The User acknowledges that the Service relies on telemetry for license validation and that prolonged internet outages on the device side may affect playback'
+          ]} />
+          <SubHeading>19.6 Super-Administrator Override and Emergency Stop</SubHeading>
+          <BulletList items={[
+            'ALLYNC Super Administrators have platform-wide intervention rights: forced removal of prohibited content, emergency screen blackout, license suspension, and forced sign-out of accounts',
+            'Such authority is exercised only in cases of clear policy violations, complaints of unlawful content or threats to platform security',
+            'Under normal circumstances, the User receives written notice before intervention; in serious emergencies, notice may be provided after the fact'
+          ]} />
+          <SubHeading>19.7 AI Assistant and Generative Content</SubHeading>
+          <BulletList items={[
+            'The Digital Signage AI Assistant feature can generate designs, text, images and templates from user prompts',
+            'Generative content uses Anthropic Claude and Google Gemini APIs; the terms of service of those providers apply',
+            'Verification of the copyright fitness, accuracy and public-display suitability of generated content is the User\'s responsibility',
+            'Section 12 (AI Output) applies in full to Digital Signage AI Output',
+            'AI token consumption is deducted from your plan limits; consumed tokens are non-refundable in accordance with Section 10.3'
+          ]} />
+          <SubHeading>19.8 Multi-Tenancy and Data Isolation</SubHeading>
+          <BulletList items={[
+            'Each tenant operates on a database schema isolated from other tenants via Row Level Security (RLS)',
+            'Tenant administrators may access only data within their own tenant; cross-tenant data sharing is disabled by default',
+            'The User is responsible for correctly configuring RBAC for their own tenant users (admin / editor / viewer roles and permission groups)',
+            'Upon tenant deletion, all data is deleted or anonymized in accordance with the retention schedule in our Privacy Policy; no separate restoration guarantee is provided'
+          ]} />
+        </>
+      )
+    },
+    {
       icon: Mail,
-      heading: '19. Contact',
+      heading: '20. Contact',
       content: (
         <>
           <p>Please contact us with any questions, requests or notices about these Terms:</p>
