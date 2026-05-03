@@ -258,6 +258,16 @@ const ROUTE_META: Record<string, { tr: { title: string; description: string }; e
       description: 'Allync privacy policy. Comprehensive information about how your personal data is collected, processed and protected. GDPR, KVKK and Qatar PDPPL compliant.',
     },
   },
+  '/terms': {
+    tr: {
+      title: 'Hizmet Şartları | Kullanım Koşulları ve Sorumluluklar - Allync',
+      description: 'Allync hizmet şartları. Allyncai platformunun kullanım koşulları, kullanıcı sorumlulukları, iade politikası, sorumluluk sınırlaması ve hukuki çerçeve.',
+    },
+    en: {
+      title: 'Terms of Service | Usage Terms & Responsibilities - Allync',
+      description: 'Allync terms of service. Comprehensive usage terms, user responsibilities, no-refund policy, liability limitations and legal framework for the Allyncai platform.',
+    },
+  },
 };
 
 export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSection = 'hero' }) => {

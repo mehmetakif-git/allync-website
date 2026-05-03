@@ -977,6 +977,14 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://www.allyncai.com/terms</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- LLMs.txt Files -->
   <url>
     <loc>https://www.allyncai.com/llms.txt</loc>
