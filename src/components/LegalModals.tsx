@@ -73,7 +73,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
       },
       {
         heading: '7. Veri Güvenliği',
-        text: 'Verileriniz ISO 27001 standartlarında, end-to-end şifreleme ile korunmaktadır. Düzenli güvenlik denetimleri yapılır ve yetkisiz erişime karşı teknik ve idari önlemler alınır.'
+        text: 'Verileriniz ISO 27001 kontrol çerçevesine uygun güvenlik uygulamaları ve uçtan uca şifreleme ile korunmaktadır. Düzenli güvenlik denetimleri yapılır ve yetkisiz erişime karşı teknik ve idari önlemler alınır.'
       },
       {
         heading: '8. Kullanıcı Hakları',
@@ -114,7 +114,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({ language }) => {
       },
       {
         heading: '7. Data Security',
-        text: 'Your data is protected with ISO 27001 standards and end-to-end encryption. Regular security audits are conducted and technical and administrative measures are taken against unauthorized access.'
+        text: 'Your data is protected with ISO 27001 control framework aligned security practices and end-to-end encryption. Regular security audits are conducted and technical and administrative measures are taken against unauthorized access.'
       },
       {
         heading: '8. User Rights',

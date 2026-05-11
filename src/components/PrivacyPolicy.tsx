@@ -369,14 +369,14 @@ export const PrivacyPolicy: React.FC = () => {
             'Tüm alt işlemcilerle veri işleme anlaşmaları',
             'Olay müdahale planı ve ihlal bildirim prosedürleri',
             'Düzenli güvenlik politikası incelemeleri',
-            'ISO 27001 uyumlu güvenlik yönetimi'
+            'ISO 27001 kontrol çerçevesine uygun güvenlik yönetimi'
           ]} />
           <SubHeading>Altyapı</SubHeading>
           <BulletList items={[
             'Kurumsal sınıf bulut altyapısında barındırma',
             'Coğrafi yedeklilik ile otomatik yedekleme',
             '%99.9 çalışma süresi SLA',
-            'SOC 2 Type II uyumlu altyapı'
+            'SOC 2 Type II kontrol çerçevesine uyumlu altyapı kontrolleri'
           ]} />
           <SubHeading>Denetim (Audit) Kayıtları</SubHeading>
           <p>Güvenlik, hesap verebilirlik ve mevzuat uyumluluğu (KVKK / GDPR) için her hassas eylem (giriş, bağlantı oluşturma/silme, veri silme talebi, yapay zeka ataması, izinli rol değişikliği vb.) denetim kaydına yazılır. Bu kayıtlar şunları içerir:</p>
@@ -547,8 +547,8 @@ export const PrivacyPolicy: React.FC = () => {
               { label: 'Meta Verified Tech Provider', desc: 'WhatsApp Business ve Instagram Business için Meta tarafından onaylı sağlayıcı' },
               { label: 'WhatsApp Business Policy', desc: 'WhatsApp Business API gereksinimleri ve mesajlaşma politikası' },
               { label: 'Instagram Platform Policy', desc: 'Instagram Graph API ve mesajlaşma kuralları' },
-              { label: 'ISO 27001', desc: 'Bilgi Güvenliği Yönetimi' },
-              { label: 'SOC 2', desc: 'Hizmet Organizasyonu Kontrolü' },
+              { label: 'ISO 27001 Aligned', desc: 'Bilgi Güvenliği Yönetimi kontrol çerçevesi uygulanmıştır' },
+              { label: 'SOC 2 Aligned', desc: 'Hizmet Organizasyonu Kontrolü çerçevesine uyumlu' },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2">
                 <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
@@ -870,14 +870,14 @@ export const PrivacyPolicy: React.FC = () => {
             'Data processing agreements with all subprocessors',
             'Incident response plan and breach notification procedures',
             'Regular security policy reviews',
-            'ISO 27001 aligned security management'
+            'ISO 27001 control framework aligned security management'
           ]} />
           <SubHeading>Infrastructure</SubHeading>
           <BulletList items={[
             'Hosted on enterprise-grade cloud infrastructure',
             'Automated backups with geographic redundancy',
             '99.9% uptime SLA',
-            'SOC 2 Type II compliant infrastructure'
+            'SOC 2 Type II control framework aligned infrastructure'
           ]} />
           <SubHeading>Audit Logs</SubHeading>
           <p>For security, accountability and regulatory compliance (KVKK / GDPR), every sensitive action (login, connection create/delete, data deletion request, AI assignment, permission/role change, etc.) is recorded in an audit log. Each entry includes:</p>
@@ -1047,8 +1047,8 @@ export const PrivacyPolicy: React.FC = () => {
               { label: 'Meta Verified Tech Provider', desc: 'Meta-approved provider for WhatsApp Business and Instagram Business' },
               { label: 'WhatsApp Business Policy', desc: 'WhatsApp Business API requirements and messaging policy' },
               { label: 'Instagram Platform Policy', desc: 'Instagram Graph API and messaging rules' },
-              { label: 'ISO 27001', desc: 'Information Security Management' },
-              { label: 'SOC 2', desc: 'Service Organization Control' },
+              { label: 'ISO 27001 Aligned', desc: 'Information Security Management control framework implemented' },
+              { label: 'SOC 2 Aligned', desc: 'Service Organization Control framework aligned' },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2">
                 <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" />
@@ -1191,7 +1191,7 @@ export const PrivacyPolicy: React.FC = () => {
               className="mt-12 sm:mt-16 text-center"
             >
               <div className="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 px-6 py-4 bg-white/[0.03] border border-white/[0.08] rounded-2xl">
-                {['Meta Verified Tech Provider', 'ISO 27001', 'GDPR', 'KVKK', 'SOC 2', 'Qatar PDPPL'].map((badge) => (
+                {['Meta Verified Tech Provider', 'ISO 27001 Aligned', 'GDPR', 'KVKK', 'SOC 2 Aligned', 'Qatar PDPPL'].map((badge) => (
                   <div key={badge} className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-[breathing_2s_ease-in-out_infinite]" />
                     <span className="text-gray-400 text-xs sm:text-sm">{badge}</span>

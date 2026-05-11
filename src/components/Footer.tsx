@@ -110,7 +110,7 @@ export const Footer: React.FC<FooterProps> = ({ language }) => {
                 <div className="flex items-center justify-center p-2 sm:p-3 bg-white/5 rounded-lg border border-white/10">
                   <div className="text-center">
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full mx-auto mb-1 sm:mb-2 animate-[breathing_2s_ease-in-out_infinite]"></div>
-                    <span className="text-gray-300 text-xs sm:text-sm font-medium">ISO 27001</span>
+                    <span className="text-gray-300 text-xs sm:text-sm font-medium">ISO 27001 Aligned</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-center p-2 sm:p-3 bg-white/5 rounded-lg border border-white/10">
@@ -122,7 +122,7 @@ export const Footer: React.FC<FooterProps> = ({ language }) => {
                 <div className="flex items-center justify-center p-2 sm:p-3 bg-white/5 rounded-lg border border-white/10">
                   <div className="text-center">
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full mx-auto mb-1 sm:mb-2 animate-[breathing_2s_ease-in-out_infinite]"></div>
-                    <span className="text-gray-300 text-xs sm:text-sm font-medium">SOC 2</span>
+                    <span className="text-gray-300 text-xs sm:text-sm font-medium">SOC 2 Aligned</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-center p-2 sm:p-3 bg-white/5 rounded-lg border border-white/10">

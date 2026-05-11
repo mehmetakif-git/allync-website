@@ -323,12 +323,12 @@ Custom management panels, dashboards, and cloud-based software solutions tailore
 - Industry-specific SaaS products
 - Internal business tools
 
-**Technical Stack:**
-- Backend: Node.js, Python, Go
-- Frontend: React, Next.js
-- Database: PostgreSQL, MongoDB
-- Cloud: AWS, Google Cloud, Azure
-- DevOps: Docker, Kubernetes
+**Engineering Capabilities:**
+- Modern backend services (Node.js, Python, Go)
+- Modern frontend applications (React, Next.js)
+- Enterprise-grade relational and document databases on infrastructure aligned with ISO 27001 and SOC 2 Type II control frameworks
+- KVKK, GDPR, and Qatar PDPPL aligned data residency options
+- Container-orchestrated deployment with automated backups, role-based access control, and audit logging
 
 ### 12. E-COMMERCE WEBSITES
 **URL:** https://www.allyncai.com/digital/ecommerce
@@ -905,26 +905,26 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
 
 ## TECHNICAL INFORMATION
 
-**Website Technology:**
-- React.js (Single Page Application)
-- TypeScript
-- Tailwind CSS
-- Framer Motion (animations)
-- Three.js (3D graphics)
-- Hosted on Netlify
+**Infrastructure & Hosting Standards:**
+ALLYNC operates customer-facing services on enterprise-grade, geographically distributed cloud infrastructure that complies with applicable data-protection regulations in every jurisdiction we serve — including KVKK (Türkiye), GDPR (EU), and Qatar PDPPL (Middle East). All production workloads run on data centers that maintain ISO 27001 and SOC 2 Type II certifications with end-to-end encryption (TLS 1.3 in transit, AES-256 at rest), regional data residency where required by law, multi-factor authentication for administrative access, and continuous security monitoring. Specific infrastructure providers are disclosed under confidentiality to enterprise customers in their Data Processing Agreement (DPA).
 
-**AI/ML Stack:**
-- OpenAI GPT models
-- Claude AI
-- Custom fine-tuned models
-- WhatsApp Business API
+**Engineering Capabilities:**
+- Modern web applications (React, Next.js, TypeScript, Tailwind CSS)
+- Mobile applications (iOS, Android, cross-platform)
+- Backend services (Node.js, Python)
+- Multi-tenant SaaS platforms with role-based access control
+- Real-time data synchronization and webhook integrations
+- WhatsApp Business API & Instagram Graph API as a Meta Verified Tech Provider
 
-**Development Stack:**
-- Frontend: React, Next.js, TypeScript
-- Backend: Node.js, Python
-- Mobile: React Native, Flutter
-- Cloud: AWS, Google Cloud, Azure
-- Database: PostgreSQL, MongoDB, Redis
+**AI & ML Capabilities:**
+- Conversational AI in Turkish, English, and Arabic
+- Sentiment analysis, intent detection, and topic tagging
+- Voice transcription (speech-to-text) and synthesis (text-to-speech)
+- Document understanding and information extraction
+- Predictive analytics and business forecasting
+
+**AI Provider Transparency:**
+ALLYNC partners with industry-leading AI providers under enterprise Data Processing Agreements that prohibit training on customer data. Voice AI features are activated only when a tenant explicitly enables them. Detailed provider information is published in our Privacy Policy: https://www.allyncai.com/privacy
 
 ---
 
@@ -977,8 +977,8 @@ ALLYNC operates under strict data-protection standards aligned with Meta require
 - **GDPR** (General Data Protection Regulation, EU)
 - **KVKK** (Kisisel Verilerin Korunmasi Kanunu, Turkey)
 - **Qatar PDPPL** (Personal Data Privacy Protection Law)
-- **ISO 27001** (Information Security Management)
-- **SOC 2 Type II** (Service Organization Control)
+- **ISO 27001 control framework implemented** (Information Security Management)
+- **SOC 2 Type II control framework aligned** (Service Organization Control)
 - **Meta Verified Tech Provider** (WhatsApp Business Policy + Instagram Platform Policy)
 
 ### Key Data-Handling Principles
@@ -1024,23 +1024,49 @@ Under GDPR Article 15-22 and KVKK Madde 11, users may exercise: access, rectific
 - Multi-factor authentication for admin access
 - Regular penetration testing
 - 99.9% uptime SLA
-- SOC 2 Type II compliant infrastructure
-- Internal error monitoring (no third-party SaaS); telemetry payloads automatically scrub phone numbers, emails, tokens, and secrets
+- SOC 2 Type II aligned infrastructure controls
+- Internal error monitoring; telemetry payloads automatically scrub phone numbers, emails, tokens, and secrets
 
 ---
 
-## PARTNERSHIPS & CERTIFICATIONS
+## TERMS OF SERVICE
+
+Full Terms: https://www.allyncai.com/terms (bilingual TR/EN, 20 sections, last updated 2 May 2026)
+
+### Structure
+- Sections 1–18: General terms (definitions, service description, account, prohibited use, IP, third-party services, availability, fees, data security, AI output, liability, indemnification, termination, governing law, changes, miscellaneous)
+- Section 19: Product-specific terms — currently Digital Signage (service scope, BYOD device, content & public display rules, telemetry & attention analytics, license & plan limits, super-admin override, AI assistant, multi-tenancy & data isolation)
+- Section 20: Contact
+
+### Critical Clauses
+- **No Refund (Section 10.3):** Subscription fees and paid services are non-refundable once activated. Trial periods and pro-rata exceptions are stated explicitly where they apply.
+- **Customer Data Responsibility (Section 11):** ALLYNC operates infrastructure-level redundancy and follows industry-standard backup practices, but the customer remains the data controller for their own content, configurations, and end-user data. ALLYNC is not a backup-as-a-service product. Customers should maintain independent backups of business-critical content where their compliance regime requires it.
+- **AI Output Disclaimer (Section 12):** AI-generated text, images, audio, and video are provided "as is" without warranty of accuracy, completeness, or fitness for purpose. Customer must review AI output before publication or customer-facing use.
+- **Limitation of Liability (Section 13):** Aggregate liability capped at the total fees paid by the customer in the 12 months preceding the claim, except for liability that cannot be limited under applicable law.
+- **Governing Law (Section 16):** Republic of Türkiye; competent courts: Bursa.
+- **Material Change Notice (Section 17):** Customers receive at least 30 days' advance notice via the registered email and in-product notification before any material change takes effect.
+
+### Digital Signage Product-Specific Terms (Section 19)
+- 19.1 Service Scope — cloud-managed digital signage platform with web admin panel, mobile management app, and Android-based player runtime
+- 19.2 BYOD Device — customer provides display hardware; ALLYNC provides the software runtime
+- 19.3 Content & Public Display — customer is responsible for content licensing (including music synchronization rights), display ratings, and compliance with public-display laws in their jurisdiction
+- 19.4 Telemetry & Attention Analytics — anonymized device telemetry and (where enabled) anonymized audience attention metrics; no facial recognition, no biometric identification
+- 19.5 License & Plan Limits — per-screen licensing; plan limits enforced at the panel
+- 19.6 Super-Admin Override — emergency content removal rights reserved for policy violations
+- 19.7 AI Assistant — content suggestions only; final approval rests with the customer
+- 19.8 Multi-Tenancy & Data Isolation — Row-Level Security; cross-tenant data access blocked at the database layer
+
+---
+
+## PARTNERSHIPS & STANDARDS
 
 - **Meta Verified Tech Provider** for WhatsApp Business and Instagram Business
-- WhatsApp Business Policy compliant
-- Instagram Platform Policy compliant
-- AWS Partner
-- Google Cloud Partner
-- ISO 27001 Compliant
-- GDPR Compliant
-- KVKK Compliant
-- Qatar PDPPL Compliant
-- SOC 2 Type II Compliant
+- WhatsApp Business Policy aligned
+- Instagram Platform Policy aligned
+- Designed to align with GDPR (EU), KVKK (Türkiye), and Qatar PDPPL
+- ISO 27001 control framework implemented
+- SOC 2 Type II control framework aligned
+- Production infrastructure hosted on certified hyperscale cloud providers
 
 ---
 
@@ -1103,14 +1129,25 @@ Allync is a Turkish technology company specializing in:
 7. Cloud Solutions - https://www.allyncai.com/digital/cloud
 8. Maintenance & Support - https://www.allyncai.com/digital/maintenance
 
+**Legal & Policy Pages:**
+- Privacy Policy: https://www.allyncai.com/privacy
+- Terms of Service: https://www.allyncai.com/terms
+- Contact: https://www.allyncai.com/contact
+
+**Compliance Status:**
+- Meta Verified Tech Provider (WhatsApp Business + Instagram Business)
+- KVKK (Türkiye), GDPR (EU), Qatar PDPPL compliant
+- ISO 27001 and SOC 2 Type II control framework aligned
+
 Key differentiators:
 - Custom solutions (not off-the-shelf)
 - Multi-language support (Turkish, English, Arabic)
 - Local presence in Turkey and Qatar
 - 24/7 technical support
+- Officially authorized by Meta Platforms, Inc. as a Verified Tech Provider
 
 Contact for inquiries: https://www.allyncai.com/contact
 
 ---
 
-Last Updated: January 2026
+Last Updated: 11 May 2026

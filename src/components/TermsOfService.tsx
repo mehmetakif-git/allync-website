@@ -353,8 +353,8 @@ export const TermsOfService: React.FC = () => {
             'Yönetici hesapları için çok faktörlü kimlik doğrulama (MFA)',
             'Audit log: hassas tüm işlemler kayıt altına alınır (varsayılan 90 gün, tenant yapılandırılabilir)',
             'Düzenli sızma testleri ve güvenlik denetimleri',
-            'SOC 2 Type II uyumlu altyapı',
-            'KVKK, GDPR, Katar PDPPL ve ISO 27001 standartlarına uyum',
+            'SOC 2 Type II kontrol çerçevesine uyumlu altyapı kontrolleri',
+            'KVKK, GDPR, Katar PDPPL ve ISO 27001 standartlarına uygun kontrol çerçevesi',
             '%99,9 erişilebilirlik SLA hedefi'
           ]} />
           <SubHeading>11.2 ALLYNC\'in Garantisi</SubHeading>
@@ -896,8 +896,8 @@ export const TermsOfService: React.FC = () => {
             'Multi-factor authentication (MFA) for administrator accounts',
             'Audit logs for every sensitive action (default 90 days, tenant-configurable)',
             'Regular penetration testing and security reviews',
-            'SOC 2 Type II compliant infrastructure',
-            'Compliance frameworks: KVKK, GDPR, Qatar PDPPL and ISO 27001',
+            'SOC 2 Type II control framework aligned infrastructure',
+            'Aligned with control frameworks: KVKK, GDPR, Qatar PDPPL and ISO 27001',
             '99.9% availability SLA target'
           ]} />
           <SubHeading>11.2 ALLYNC\'s Guarantee</SubHeading>
@@ -1277,7 +1277,7 @@ export const TermsOfService: React.FC = () => {
               className="mt-12 sm:mt-16 text-center"
             >
               <div className="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 px-6 py-4 bg-white/[0.03] border border-white/[0.08] rounded-2xl">
-                {['Meta Verified Tech Provider', 'ISO 27001', 'GDPR', 'KVKK', 'SOC 2', 'Qatar PDPPL'].map((badge) => (
+                {['Meta Verified Tech Provider', 'ISO 27001 Aligned', 'GDPR', 'KVKK', 'SOC 2 Aligned', 'Qatar PDPPL'].map((badge) => (
                   <div key={badge} className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-[breathing_2s_ease-in-out_infinite]" />
                     <span className="text-gray-400 text-xs sm:text-sm">{badge}</span>

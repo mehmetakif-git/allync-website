@@ -621,9 +621,9 @@ export const translations = {
     satisfaction: "Satisfaction",
     growth: "Growth",
     trustedBrands: "Trusted by leading brands:",
-    iso27001: "ISO 27001 Certified",
-    gdprCompliant: "GDPR Compliant",
-    soc2: "SOC 2 Type II",
+    iso27001: "ISO 27001 Aligned",
+    gdprCompliant: "GDPR Aligned",
+    soc2: "SOC 2 Aligned",
     slaGuarantee: "99.9% SLA Guarantee"
   }
 };
