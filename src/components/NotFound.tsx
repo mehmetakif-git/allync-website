@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { HelmetProvider } from 'react-helmet-async';
-import logo from '../assets/logo.svg';
 
 const FloatingLines = React.lazy(() => import('./ui/FloatingLines'));
 
@@ -69,7 +68,7 @@ export const NotFound: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mb-8"
           >
-            <img src={logo} alt="Allync" className="h-12 sm:h-16 mx-auto" />
+            <img src="/allync-social-media-logo.png" alt="Allync" className="h-12 sm:h-16 mx-auto" />
           </motion.div>
 
           {/* 404 Card */}

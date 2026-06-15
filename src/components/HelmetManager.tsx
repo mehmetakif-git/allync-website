@@ -6,14 +6,14 @@ interface HelmetManagerProps {
   activeSection?: string;
 }
 
-// OG Images configuration
+// OG Images configuration — single brand logo across all routes
 const OG_IMAGES = {
-  default: '/allyncai-og-future-is-now-holographic-hero.jpg',
-  ai: '/allyncai-og-innovation-lab-ai-powered.jpg',
-  digital: '/allyncai-og-3d-ecosystem-floating-island.jpg',
-  whatsapp: '/allyncai-og-dynamic-motion-always-on-24-7.jpg',
-  contact: '/allyncai-og-dynamic-motion-always-on-24-7.jpg',
-  about: '/allyncai-og-success-story-1000-businesses.jpg',
+  default: '/allync-social-media-logo.png',
+  ai: '/allync-social-media-logo.png',
+  digital: '/allync-social-media-logo.png',
+  whatsapp: '/allync-social-media-logo.png',
+  contact: '/allync-social-media-logo.png',
+  about: '/allync-social-media-logo.png',
 };
 
 // Per-route unique metadata for SEO (prevents duplicate content)
@@ -372,11 +372,13 @@ export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSe
       <meta property="og:url" content={canonical} />
       <meta property="og:locale" content={language === 'tr' ? 'tr_TR' : 'en_US'} />
       <meta property="og:image" content={ogImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image:width" content="1024" />
+      <meta property="og:image:height" content="1024" />
+      <meta property="og:image:alt" content="Allync Logo" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content="Allync Logo" />
     </Helmet>
   );
 };
