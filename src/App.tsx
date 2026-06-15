@@ -2,7 +2,6 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, useParams } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
-import { LoadingScreen } from './components/LoadingScreen';
 import { Navigation } from './components/Navigation';
 import { SelectionScreen } from './components/SelectionScreen';
 import { HelmetManager } from './components/HelmetManager';
@@ -28,7 +27,13 @@ function AppContent() {
   const { serviceSlug } = useParams<{ serviceSlug?: string }>();
 
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
-  const [viewMode, setViewMode] = useState<'loading' | 'selection' | 'ai-view' | 'digital-view'>('loading');
+  const [viewMode, setViewMode] = useState<'selection' | 'ai-view' | 'digital-view'>(() =>
+    location.pathname.startsWith('/ai')
+      ? 'ai-view'
+      : location.pathname.startsWith('/digital')
+        ? 'digital-view'
+        : 'selection'
+  );
   const [animationsEnabled, setAnimationsEnabled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [showLanyard, setShowLanyard] = useState(false);
@@ -44,45 +49,26 @@ function AppContent() {
     setLanguage(prev => prev === 'tr' ? 'en' : 'tr');
   };
 
-  const handleLoadingComplete = () => {
-    const path = location.pathname;
-
-    // Determine view mode based on URL path
-    if (path.startsWith('/ai')) {
-      setViewMode('ai-view');
-      setTimeout(() => {
-        setAnimationsEnabled(true);
-        // Scroll to service if slug provided
-        if (serviceSlug) {
-          setTimeout(() => {
-            const section = document.getElementById(serviceSlug);
-            if (section) {
-              section.scrollIntoView({ behavior: 'smooth' });
-            }
-          }, 500);
+  // No loading screen — the initial view is resolved synchronously from the URL.
+  // Enable animations shortly after first paint, and scroll to the requested
+  // service section if a slug is present.
+  useEffect(() => {
+    const animTimer = setTimeout(() => setAnimationsEnabled(true), 500);
+    let scrollTimer: ReturnType<typeof setTimeout> | undefined;
+    if (serviceSlug && (viewMode === 'ai-view' || viewMode === 'digital-view')) {
+      scrollTimer = setTimeout(() => {
+        const section = document.getElementById(serviceSlug);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 500);
-    } else if (path.startsWith('/digital')) {
-      setViewMode('digital-view');
-      setTimeout(() => {
-        setAnimationsEnabled(true);
-        // Scroll to service if slug provided
-        if (serviceSlug) {
-          setTimeout(() => {
-            const section = document.getElementById(serviceSlug);
-            if (section) {
-              section.scrollIntoView({ behavior: 'smooth' });
-            }
-          }, 500);
-        }
-      }, 500);
-    } else {
-      setViewMode('selection');
-      setTimeout(() => {
-        setAnimationsEnabled(true);
-      }, 500);
+      }, 1000);
     }
-  };
+    return () => {
+      clearTimeout(animTimer);
+      if (scrollTimer) clearTimeout(scrollTimer);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSelectView = (view: 'ai-view' | 'digital-view') => {
     window.scrollTo(0, 0);
@@ -168,8 +154,6 @@ function AppContent() {
 
   // Sync viewMode with URL path (for browser back/forward navigation)
   useEffect(() => {
-    if (viewMode === 'loading') return; // Don't sync during loading
-
     const path = location.pathname;
     if (path.startsWith('/ai') && viewMode !== 'ai-view') {
       window.scrollTo(0, 0);
@@ -352,7 +336,7 @@ function AppContent() {
                 lineDistance={5}
                 bendRadius={5.0}
                 bendStrength={-0.5}
-                interactive={viewMode !== 'loading'}
+                interactive={true}
                 parallax={false}
                 mixBlendMode="normal"
                 linesGradient={['#213448', '#547792', '#94B4C1', '#EAE0CF']}
@@ -371,11 +355,6 @@ function AppContent() {
               />
             )}
           </Suspense>
-
-          {/* Loading Screen */}
-          {viewMode === 'loading' && (
-            <LoadingScreen onLoadingComplete={handleLoadingComplete} language={language} />
-          )}
 
           <HelmetManager language={language} activeSection={activeSection} />
           <AnimatePresence>
