@@ -1,7 +1,7 @@
 export const translations = {
   tr: {
     // Hero Section
-    heroSlogan: "İnsan Ötesi Otomasyon",
+    heroSlogan: "Akıllı İşin Yeni Dili",
     heroTitle: "İşinizi Yapay Zeka ile Dönüştürün",
     heroSubtitle: "Esnek abonelik paketleri ile işletmenize özel AI ve dijital çözümler. Hemen başlayın, dilediğiniz zaman ölçeklendirin.",
     getStarted: "Hemen Başlayın",
@@ -299,7 +299,7 @@ export const translations = {
   },
   en: {
     // Hero Section
-    heroSlogan: "Beyond Human Automation",
+    heroSlogan: "The New Language of Smart Business",
     heroTitle: "Transform Your Business with AI",
     heroSubtitle: "Flexible subscription packages with custom AI and digital solutions for your business. Start now, scale anytime.",
     getStarted: "Get Started",
