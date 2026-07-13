@@ -274,6 +274,7 @@ ALLYNC operates under strict data-protection standards. Full policy: https://www
 **AI Service Providers (transparency):**
 - Anthropic (Claude): AI response generation and sentiment analysis - enterprise DPA, no training on customer data
 - OpenAI (Whisper, TTS): Voice message transcription and voice replies - only when tenant enables this feature, no training on customer data
+- Google (Gemini): Generative AI content - under enterprise API terms, no training on customer data
 
 **User Rights (GDPR Article 15-22 / KVKK Madde 11):**
 - Access, rectification, erasure, restriction, objection, data portability, withdrawal of consent

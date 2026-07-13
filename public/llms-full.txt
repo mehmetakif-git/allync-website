@@ -1021,6 +1021,7 @@ ALLYNC operates under strict data-protection standards aligned with Meta require
 ### AI Service Providers (transparency)
 - **Anthropic (Claude):** AI response generation and sentiment analysis. Enterprise DPA in place. Only message text is forwarded; profile pictures, phone numbers, and IGSIDs are not included in model calls. Anthropic does not use customer conversations to train its general models.
 - **OpenAI (Whisper, TTS):** Voice message transcription and voice replies. Activated only when a tenant enables this feature. Under OpenAI API terms, customer data is not used to train OpenAI's general models. Voice AI reply audio files are deleted within 24 hours of delivery.
+- **Google (Gemini):** Generative AI content. Enterprise API terms in place; customer data is not used to train Google's general models.
 
 ### Data We Process
 - WhatsApp Business API: phone number, profile name/picture, message content, message metadata, conversation history (active session)

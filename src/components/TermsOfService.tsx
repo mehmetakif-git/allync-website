@@ -272,6 +272,7 @@ export const TermsOfService: React.FC = () => {
               ['Meta Platforms', 'WhatsApp Business API & Instagram Graph API', 'Meta Ticari Şartları, WhatsApp Business Politikası, Instagram Platform Politikası'],
               ['Anthropic (Claude)', 'AI yanıt üretimi ve duygu analizi', 'Anthropic Hizmet Şartları (kurumsal API anlaşması)'],
               ['OpenAI', 'Sesli mesaj transkripsiyonu (Whisper) ve sesli yanıt (TTS)', 'OpenAI API Hizmet Şartları'],
+              ['Google (Gemini)', 'Üretken AI içerik üretimi', 'Google API Hizmet Şartları'],
               ['Google', 'Calendar, Sheets, Drive entegrasyonları (yetkilendirildiğinde)', 'Google API Hizmet Şartları'],
               ['Bulut altyapı sağlayıcıları', 'Barındırma ve veritabanı', 'İlgili sağlayıcı şartları'],
               ['Ödeme işlemcileri', 'Faturalandırma ve tahsilat (PCI DSS uyumlu)', 'İlgili sağlayıcı şartları']
@@ -816,6 +817,7 @@ export const TermsOfService: React.FC = () => {
               ['Meta Platforms', 'WhatsApp Business API & Instagram Graph API', 'Meta Commercial Terms, WhatsApp Business Policy, Instagram Platform Policy'],
               ['Anthropic (Claude)', 'AI response generation and sentiment analysis', 'Anthropic Terms of Service (enterprise API agreement)'],
               ['OpenAI', 'Voice transcription (Whisper) and voice replies (TTS)', 'OpenAI API Terms of Service'],
+              ['Google (Gemini)', 'Generative AI content', 'Google API Terms of Service'],
               ['Google', 'Calendar, Sheets, Drive integrations (when authorized)', 'Google API Terms of Service'],
               ['Cloud infrastructure providers', 'Hosting and database', 'Applicable provider terms'],
               ['Payment processors', 'Billing and collection (PCI DSS compliant)', 'Applicable provider terms']
