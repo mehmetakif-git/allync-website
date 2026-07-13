@@ -106,6 +106,7 @@ export const PrivacyPolicy: React.FC = () => {
             <p><span className="text-gray-300 font-medium">Şirket:</span> ALLYNC</p>
             <p><span className="text-gray-300 font-medium">Marka:</span> Allyncai, ALLYNC'in tescilli markasıdır</p>
             <p><span className="text-gray-300 font-medium">Şirket Tescil No:</span> 8950466196</p>
+            <p><span className="text-gray-300 font-medium">D-U-N-S No:</span> 751168710</p>
             <p><span className="text-gray-300 font-medium">Merkez:</span> Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye</p>
             <p><span className="text-gray-300 font-medium">Ek Ofis:</span> Doha, Katar</p>
             <p><span className="text-gray-300 font-medium">E-posta:</span> info@allyncai.com</p>
@@ -547,7 +548,7 @@ export const PrivacyPolicy: React.FC = () => {
               { label: 'Meta Verified Tech Provider', desc: 'WhatsApp Business ve Instagram Business için Meta tarafından onaylı sağlayıcı' },
               { label: 'WhatsApp Business Policy', desc: 'WhatsApp Business API gereksinimleri ve mesajlaşma politikası' },
               { label: 'Instagram Platform Policy', desc: 'Instagram Graph API ve mesajlaşma kuralları' },
-              { label: 'ISO 27001 Aligned', desc: 'Bilgi Güvenliği Yönetimi kontrol çerçevesi uygulanmıştır' },
+              { label: 'ISO 27001 Aligned', desc: 'Bilgi Güvenliği Yönetimi kontrol çerçevesine uyumludur' },
               { label: 'SOC 2 Aligned', desc: 'Hizmet Organizasyonu Kontrolü çerçevesine uyumlu' },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2">
@@ -607,6 +608,7 @@ export const PrivacyPolicy: React.FC = () => {
             <p><span className="text-gray-300 font-medium">Company:</span> ALLYNC</p>
             <p><span className="text-gray-300 font-medium">Brand:</span> Allyncai is a registered brand of ALLYNC</p>
             <p><span className="text-gray-300 font-medium">Company Registration No:</span> 8950466196</p>
+            <p><span className="text-gray-300 font-medium">D-U-N-S No:</span> 751168710</p>
             <p><span className="text-gray-300 font-medium">Headquarters:</span> Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye</p>
             <p><span className="text-gray-300 font-medium">Additional Office:</span> Doha, Qatar</p>
             <p><span className="text-gray-300 font-medium">Email:</span> info@allyncai.com</p>
@@ -1047,7 +1049,7 @@ export const PrivacyPolicy: React.FC = () => {
               { label: 'Meta Verified Tech Provider', desc: 'Meta-approved provider for WhatsApp Business and Instagram Business' },
               { label: 'WhatsApp Business Policy', desc: 'WhatsApp Business API requirements and messaging policy' },
               { label: 'Instagram Platform Policy', desc: 'Instagram Graph API and messaging rules' },
-              { label: 'ISO 27001 Aligned', desc: 'Information Security Management control framework implemented' },
+              { label: 'ISO 27001 Aligned', desc: 'Information Security Management control framework aligned' },
               { label: 'SOC 2 Aligned', desc: 'Service Organization Control framework aligned' },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2">
@@ -1201,7 +1203,7 @@ export const PrivacyPolicy: React.FC = () => {
               <div className="mt-8 text-gray-500 text-xs sm:text-sm space-y-1.5">
                 <p>{language === 'tr' ? 'Allyncai, ALLYNC\'in tescilli markasıdır' : 'Allyncai is a registered brand of ALLYNC'}</p>
                 <p>{language === 'tr' ? 'Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye' : 'Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye'}</p>
-                <p>{language === 'tr' ? 'Şirket Tescil No:' : 'Company Registration No:'} 8950466196</p>
+                <p>{language === 'tr' ? 'Şirket Tescil No:' : 'Company Registration No:'} 8950466196 · DUNS: 751168710</p>
                 <p className="pt-3">Copyright 2024-2026 ALLYNC. {language === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reserved.'}</p>
               </div>
             </motion.div>

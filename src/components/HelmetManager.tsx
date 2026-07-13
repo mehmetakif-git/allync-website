@@ -20,22 +20,22 @@ const OG_IMAGES = {
 const ROUTE_META: Record<string, { tr: { title: string; description: string }; en: { title: string; description: string } }> = {
   '/': {
     tr: {
-      title: 'Allync - WhatsApp AI Asistanları & Özel SaaS Çözümleri | AllyncAI',
-      description: 'Allync - WhatsApp AI asistanları ile 7/24 müşteri hizmeti. İşletmenize özel SaaS ve yönetim panelleri, web geliştirme, mobil uygulamalar.',
+      title: 'Allync — AI İş Ekosistemi | WhatsApp AI, Dijital Signage, Allync+',
+      description: 'Allync — işletmeler için uçtan uca AI iş ekosistemi: Allync Hub omnichannel iletişim (WhatsApp/Instagram/Messenger), Dijital Signage ve Allync+ iş yönetim platformu. Akıllı İşin Yeni Dili.',
     },
     en: {
-      title: 'Allync - WhatsApp AI Assistants & Custom SaaS Solutions | AllyncAI',
-      description: 'Allync - 24/7 customer service with WhatsApp AI assistants. Custom SaaS and management panels for your business.',
+      title: 'Allync — AI Business Ecosystem | WhatsApp AI, Digital Signage, Allync+',
+      description: 'Allync — the end-to-end AI business ecosystem: Allync Hub omnichannel communication (WhatsApp/Instagram/Messenger), Digital Signage, and the Allync+ business management platform. The New Language of Smart Business.',
     },
   },
   '/ai': {
     tr: {
       title: 'AI Çözümleri | Yapay Zeka Otomasyonu - Allync',
-      description: 'WhatsApp AI, Instagram AI, Text-to-Video, Voice AI ve özel yapay zeka çözümleri. İşletmenizi AI ile dönüştürün.',
+      description: 'Allync Hub ile omnichannel müşteri iletişimi (WhatsApp, Instagram, Messenger) + Text-to-Video, Voice AI ve özel yapay zeka çözümleri. İşletmenizi AI ile dönüştürün.',
     },
     en: {
       title: 'AI Solutions | Artificial Intelligence Automation - Allync',
-      description: 'WhatsApp AI, Instagram AI, Text-to-Video, Voice AI and custom AI solutions. Transform your business with AI.',
+      description: 'Omnichannel customer communication with Allync Hub (WhatsApp, Instagram, Messenger) + Text-to-Video, Voice AI and custom AI solutions. Transform your business with AI.',
     },
   },
   '/ai/whatsapp': {
@@ -151,11 +151,11 @@ const ROUTE_META: Record<string, { tr: { title: string; description: string }; e
   '/digital': {
     tr: {
       title: 'Dijital Çözümler | Web, Mobil, SaaS - Allync',
-      description: 'Kurumsal web geliştirme, mobil uygulama, özel SaaS panelleri, e-ticaret çözümleri, IoT ve bulut altyapı hizmetleri.',
+      description: 'Kurumsal web geliştirme, mobil uygulama, özel SaaS panelleri, e-ticaret, IoT ve bulut hizmetleri. Ayrıca Allync Dijital Signage akıllı ekran platformu ve Allync+ iş yönetim platformu.',
     },
     en: {
       title: 'Digital Solutions | Web, Mobile, SaaS - Allync',
-      description: 'Corporate web development, mobile apps, custom SaaS panels, e-commerce solutions, IoT and cloud infrastructure services.',
+      description: 'Corporate web development, mobile apps, custom SaaS panels, e-commerce, IoT and cloud services. Plus Allync Digital Signage and the Allync+ business management platform.',
     },
   },
   '/digital/saas-panels': {

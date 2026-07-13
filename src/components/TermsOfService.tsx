@@ -622,6 +622,7 @@ export const TermsOfService: React.FC = () => {
             'Yasal Unvan: ALLYNC',
             'Tescilli Marka: Allyncai (ALLYNC\'in tescilli markasıdır)',
             'Şirket Tescil No: 8950466196',
+            'D-U-N-S No: 751168710',
             'Adres: Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye',
             'Meta Statüsü: Verified Tech Provider'
           ]} />
@@ -1165,6 +1166,7 @@ export const TermsOfService: React.FC = () => {
             'Legal Name: ALLYNC',
             'Registered Brand: Allyncai (a registered brand of ALLYNC)',
             'Company Registration No: 8950466196',
+            'D-U-N-S No: 751168710',
             'Address: Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Türkiye',
             'Meta Status: Verified Tech Provider'
           ]} />
@@ -1287,7 +1289,7 @@ export const TermsOfService: React.FC = () => {
               <div className="mt-8 text-gray-500 text-xs sm:text-sm space-y-1.5">
                 <p>{language === 'tr' ? 'Allyncai, ALLYNC\'in tescilli markasıdır' : 'Allyncai is a registered brand of ALLYNC'}</p>
                 <p>{language === 'tr' ? 'Yeni Mah. Sefer Sk. No:1 İç Kapı No:1 İnegöl/Bursa - Türkiye' : 'Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye'}</p>
-                <p>{language === 'tr' ? 'Şirket Tescil No:' : 'Company Registration No:'} 8950466196</p>
+                <p>{language === 'tr' ? 'Şirket Tescil No:' : 'Company Registration No:'} 8950466196 · DUNS: 751168710</p>
                 <p className="pt-3">Copyright 2024-2026 ALLYNC. {language === 'tr' ? 'Tüm hakları saklıdır.' : 'All rights reserved.'}</p>
               </div>
             </motion.div>

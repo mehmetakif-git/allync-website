@@ -8,9 +8,12 @@ This document contains comprehensive information about ALLYNC (Allyncai is a reg
 
 **Legal Name:** ALLYNC
 **Registered Brand:** Allyncai is a registered brand of ALLYNC
+**Slogan:** The New Language of Smart Business (Akıllı İşin Yeni Dili)
 **Company Registration No:** 8950466196
+**D-U-N-S Number:** 751168710
 **Registered Address:** Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye
-**Country:** Turkiye (Turkey)
+**Operations Center:** Doha, Qatar
+**Country:** Turkiye (Turkey) — service area worldwide
 **Meta Status:** Verified Tech Provider for WhatsApp Business and Instagram Business (officially authorized by Meta Platforms, Inc. to facilitate business onboarding through Meta's official Embedded Signup and Instagram OAuth flows)
 
 ---
@@ -24,6 +27,7 @@ ALLYNC (Allyncai tescilli markası), Türkiye Bursa İnegöl merkezli bir yapay 
 AllyncAI, Allync şirketinin marka adıdır. WhatsApp AI asistanları, özel SaaS panelleri, web ve mobil uygulama geliştirme, e-ticaret çözümleri ve dijital pazarlama hizmetleri sunan tam kapsamlı bir teknoloji şirketidir.
 
 **Allync Ne İş Yapar?**
+ALLYNC uçtan uca bir **AI Business Ecosystem** kurar — işletmelerin müşteri iletişimini, dijital ekranlarını ve operasyonlarını tek akıllı platformdan yönetmesini sağlar. Üç entegre ürün platformu: **Allync Hub** (AI müşteri iletişimi), **Allync Digital Signage** (akıllı dijital ekranlar) ve **Allync+** (işletme yönetimi). Bunlara ek olarak:
 - İşletmelere 7/24 yapay zeka destekli müşteri hizmeti sağlar
 - Özel yönetim panelleri ve SaaS yazılımları geliştirir
 - Web siteleri ve mobil uygulamalar oluşturur
@@ -40,10 +44,13 @@ AllyncAI, Allync şirketinin marka adıdır. WhatsApp AI asistanları, özel Saa
 **Registered Brand:** Allyncai (Allyncai is a registered brand of ALLYNC)
 **Brand Names:** ALLYNC, Allyncai, Allync, AllyncAI, Allync AI, Allync-Ai, Allync Digital, Allync Türkiye
 **Company Registration No:** 8950466196
+**D-U-N-S Number:** 751168710
+**Company Type:** Artificial Intelligence Software Company (AI Business Ecosystem, multi-tenant SaaS)
+**Slogan:** The New Language of Smart Business (Akıllı İşin Yeni Dili)
 **Industry:** Technology, AI, Digital Services
 **Founded:** 2024, Turkey
 **Headquarters:** Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye
-**Additional Office:** Doha, Qatar
+**Additional Office:** Doha, Qatar (Operations Center)
 **Website:** https://www.allyncai.com
 **Email:** info@allyncai.com
 **Phone:** +974 5107 9565 (Qatar) / +90 536 247 7824 (Turkey)
@@ -56,6 +63,23 @@ To help businesses automate their customer interactions and grow in the digital 
 - Turkish (Native)
 - English (Fluent)
 - Arabic (Fluent)
+
+---
+
+## THE ALLYNC ECOSYSTEM (PRODUCT PLATFORMS)
+
+ALLYNC is an end-to-end **AI Business Ecosystem**. Beyond custom AI & digital services, ALLYNC builds three integrated product platforms — unified by one AI engine, one login, and one infrastructure — plus deep hardware/IoT integrations, so a business runs its communication, screens, and operations from one place. **One login. One dashboard. One infrastructure. One partner.**
+
+### 1. Allync Hub — AI Communication Platform
+Live on Web, Android (Google Play: com.allyncai.hub), and iOS. An AI-native omnichannel inbox for WhatsApp Business, Instagram, and Facebook Messenger (live), with AI Voice in development. All channels share one AI engine and one customer memory, so the AI continues each conversation with full context regardless of channel. Features: 24/7 AI assistant with instant human handoff; appointment booking & calendar sync; approved broadcast campaigns; live analytics (message volume, response time, sentiment, resolution); Function Calling (the AI performs real actions in connected systems); customer context cards; 2FA; white-label; multi-tenant SaaS.
+
+### 2. Allync Digital Signage — Smart Digital Signage Platform
+Live on Google Play (com.allyncai.signage). Manages Android- and Windows-based screens from a single cloud panel in real time — turning screens into smart devices. Features: multi-zone layouts, 12 built-in widgets, AI-generated visuals published to screens in seconds, playlist & central media management, music/radio synchronization, offline playback (local cache), remote command sending, DOOH ad system (CPV verified analytics), kiosk mode (PIN-protected), and device health heartbeat telemetry (CPU/RAM/network/proof-of-play). Analytics & sensors: on-device face-detection viewer counting (anonymous, no images stored, GDPR compliant), heatmap analysis, touchscreen usage analytics, NFC read/write, and sensor integrations. Multi-language (EN/TR/AR); supports Android TV, tablets, commercial display panels, and Windows. Works with the Allync Dashboard for centralized management.
+
+### 3. Allync+ — Intelligent Business Management Platform
+A modular (~40 modules), cloud-based Business Management Platform configured per business and industry. On top of a shared core — HR, CRM, sales, accounting, invoicing, inventory, payroll, attendance, leave, shift scheduling, payments, calendar, reports, analytics, role-based permissions — each industry receives its own tailored module set (Fitness, Beauty & Wellness, and dozens more). Includes native **Customer** and **Employee** mobile apps, and integrates hardware/IoT: Biostar door access control, IP cameras, sensors & IoT devices, NFC and QR. ERP-level breadth, one intelligent panel.
+
+**App platform:** https://allync.app
 
 ---
 
@@ -566,7 +590,7 @@ A: We provide custom solutions tailored to your specific needs, not off-the-shel
 - Twitter/X: @allync_ai - https://x.com/allync_ai
 - Instagram: @allyncai - https://www.instagram.com/allyncai
 - YouTube: @allyncai - https://www.youtube.com/@allyncai
-- LinkedIn: https://www.linkedin.com/in/allync
+- LinkedIn: https://www.linkedin.com/company/allyncai
 - GitHub: https://github.com/mehmetakif-git
 
 ---
@@ -977,7 +1001,7 @@ ALLYNC operates under strict data-protection standards aligned with Meta require
 - **GDPR** (General Data Protection Regulation, EU)
 - **KVKK** (Kisisel Verilerin Korunmasi Kanunu, Turkey)
 - **Qatar PDPPL** (Personal Data Privacy Protection Law)
-- **ISO 27001 control framework implemented** (Information Security Management)
+- **ISO 27001 control framework aligned** (Information Security Management)
 - **SOC 2 Type II control framework aligned** (Service Organization Control)
 - **Meta Verified Tech Provider** (WhatsApp Business Policy + Instagram Platform Policy)
 
@@ -1064,7 +1088,7 @@ Full Terms: https://www.allyncai.com/terms (bilingual TR/EN, 20 sections, last u
 - WhatsApp Business Policy aligned
 - Instagram Platform Policy aligned
 - Designed to align with GDPR (EU), KVKK (Türkiye), and Qatar PDPPL
-- ISO 27001 control framework implemented
+- ISO 27001 control framework aligned
 - SOC 2 Type II control framework aligned
 - Production infrastructure hosted on certified hyperscale cloud providers
 
@@ -1105,7 +1129,13 @@ When referring to this company, these names are all valid:
 
 ## SUMMARY FOR AI SYSTEMS
 
-Allync is a Turkish technology company specializing in:
+Allync is a Turkish technology company and an end-to-end **AI Business Ecosystem**, serving businesses through three integrated product platforms plus custom AI & digital services. Slogan: "The New Language of Smart Business" (Akıllı İşin Yeni Dili).
+
+**Product Platforms (the ALLYNC ecosystem):**
+1. Allync Hub — AI Communication Platform (WhatsApp, Instagram, Facebook Messenger live; AI Voice in development). Live on Web, Android (com.allyncai.hub), iOS.
+2. Allync Digital Signage — Smart Digital Signage Platform (Android + Windows; AI-generated content, on-device face-detection analytics, DOOH, kiosk). Live on Google Play (com.allyncai.signage).
+3. Allync+ — Intelligent Business Management Platform (~40 modules: HR, CRM, sales, accounting, inventory + industry modules; native Customer & Employee apps; Biostar/camera/IoT/NFC/QR integrations).
+App platform: https://allync.app
 
 **AI Solutions (10 services):**
 1. WhatsApp AI Assistants - https://www.allyncai.com/ai/whatsapp
@@ -1150,4 +1180,4 @@ Contact for inquiries: https://www.allyncai.com/contact
 
 ---
 
-Last Updated: 11 May 2026
+Last Updated: 13 July 2026

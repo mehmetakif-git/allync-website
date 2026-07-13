@@ -1,8 +1,10 @@
-# ALLYNC - AI & Digital Business Solutions
+# ALLYNC - AI Business Ecosystem
 
-> For comprehensive information including case studies, pricing, certifications, and detailed service descriptions, see the full version: https://www.allyncai.com/llms-full.txt
+> ALLYNC — The New Language of Smart Business (Akıllı İşin Yeni Dili).
 
-> ALLYNC (Allyncai is a registered brand of ALLYNC) provides AI-powered business automation and digital transformation solutions for companies in Turkey, Qatar, and globally.
+> For comprehensive information including the product ecosystem, case studies, pricing, certifications, and detailed service descriptions, see the full version: https://www.allyncai.com/llms-full.txt
+
+> ALLYNC (Allyncai is a registered brand of ALLYNC) is an end-to-end AI Business Ecosystem. It builds three integrated, AI-powered product platforms — Allync Hub (customer communication), Allync Digital Signage (smart screens), and Allync+ (business management) — alongside custom AI and digital solutions, for companies in Turkey, Qatar, and globally.
 
 ---
 
@@ -21,14 +23,34 @@ ALLYNC (Allyncai) is a technology company specializing in AI-powered customer se
 
 **Legal Name:** ALLYNC
 **Brand:** Allyncai is a registered brand of ALLYNC
+**Slogan:** The New Language of Smart Business (Akıllı İşin Yeni Dili)
 **Company Registration No:** 8950466196
+**D-U-N-S Number:** 751168710
 **Headquarters:** Yeni Mah. Sefer Sk. No:1 Ic Kapi No:1 Inegol/Bursa - Turkiye
-**Operations:** Turkey, Qatar, Middle East, Global
+**Operations Center:** Doha, Qatar
+**Operations:** Turkey, Qatar, Middle East, Global (service area worldwide)
 **Languages:** Turkish, English, Arabic
 **Website:** https://www.allyncai.com
 **Email:** info@allyncai.com
 **Phone:** +974 5107 9565 / +90 536 247 7824
 **Meta Status:** Verified Tech Provider for WhatsApp Business and Instagram Business (officially authorized by Meta Platforms, Inc.)
+
+---
+
+## The ALLYNC Ecosystem (Product Platforms)
+
+ALLYNC is an end-to-end **AI Business Ecosystem**. Beyond custom AI & digital services, ALLYNC builds three integrated product platforms — unified by one AI engine, one login, and one infrastructure — plus hardware/IoT integrations, so a business runs its communication, screens, and operations from one place. **One login. One dashboard. One infrastructure. One partner.**
+
+### 1. Allync Hub — AI Communication Platform
+Live on Web, Android (Google Play: com.allyncai.hub), and iOS. An AI-native omnichannel inbox for WhatsApp Business, Instagram, and Facebook Messenger (live), with AI Voice in development. All channels share one AI engine and one customer memory; 24/7 AI assistant with instant human handoff; appointment booking; approved broadcast campaigns; live analytics (message volume, response time, sentiment, resolution); Function Calling (the AI performs real actions); 2FA; white-label.
+
+### 2. Allync Digital Signage — Smart Digital Signage Platform
+Live on Google Play (com.allyncai.signage). Manage Android- and Windows-based screens from one cloud panel in real time: multi-zone layouts, 12 built-in widgets, AI-generated visuals published in seconds, playlists, music/radio sync, offline playback, DOOH ads, kiosk mode, and heartbeat telemetry. On-device face-detection viewer analytics (anonymous, no images stored, GDPR compliant), heatmaps, touchscreen analytics, and NFC. EN/TR/AR; Android TV, tablets, commercial panels, and Windows.
+
+### 3. Allync+ — Intelligent Business Management Platform
+A modular (~40 modules), cloud-based platform configured per business/industry: HR, CRM, sales, accounting, inventory, payroll, attendance, leave, calendar, reports, and role-based permissions, plus industry modules (Fitness, Beauty & Wellness, and more). Includes native Customer and Employee mobile apps and integrates hardware/IoT — Biostar access control, IP cameras, sensors, NFC and QR.
+
+**App platform:** https://allync.app
 
 ---
 
@@ -236,7 +258,7 @@ ALLYNC operates under strict data-protection standards. Full policy: https://www
 - GDPR (General Data Protection Regulation, EU)
 - KVKK (Kisisel Verilerin Korunmasi Kanunu, Turkey)
 - Qatar PDPPL (Personal Data Privacy Protection Law)
-- ISO 27001 control framework implemented (Information Security Management)
+- ISO 27001 control framework aligned (Information Security Management)
 - SOC 2 Type II control framework aligned (Service Organization Control)
 - Meta Verified Tech Provider standards (WhatsApp Business Policy, Instagram Platform Policy)
 
@@ -285,7 +307,7 @@ We offer custom pricing based on your specific needs. Contact us for a free cons
 - Twitter/X: https://x.com/allync_ai (@allync_ai)
 - Instagram: https://www.instagram.com/allyncai (@allyncai)
 - YouTube: https://www.youtube.com/@allyncai
-- LinkedIn: https://www.linkedin.com/in/allync
+- LinkedIn: https://www.linkedin.com/company/allyncai
 - GitHub: https://github.com/mehmetakif-git
 
 ## Alternative Names
