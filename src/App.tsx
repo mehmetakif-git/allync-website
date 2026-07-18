@@ -9,6 +9,7 @@ import { InactivityWarning } from './components/InactivityWarning';
 import { NotFound } from './components/NotFound';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
+import { CompanyProfile } from './components/CompanyProfile';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { lockScroll, unlockScroll, resetScrollLock } from './utils/scrollLock';
 import { ScrollDownIndicator } from './components/ui/ScrollDownIndicator';
@@ -483,6 +484,7 @@ function AppWithRoutes() {
       <Route path="/contact" element={<ContactRedirect />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsOfService />} />
+      <Route path="/company-profile" element={<CompanyProfile />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

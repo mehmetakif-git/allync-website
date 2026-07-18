@@ -1,0 +1,384 @@
+/* ============================================================
+   ALLYNC — Company Profile (liquid-glass horizontal carousel)
+   All selectors scoped under .cprofile to avoid global leakage.
+   ============================================================ */
+.cprofile{
+  --navy:#213448; --navy-2:#162632; --navy-3:#0e1a24;
+  --steel:#547792; --ice:#94B4C1; --cream:#EAE0CF;
+  --hub:#5FC9C9; --signage:#94B4C1; --plus:#6FD49A;
+  --accent:var(--ice);
+  --txt:#EAE0CF; --txt-soft:#b9c7cf; --txt-dim:#8397a2;
+  --glass:rgba(255,255,255,.055);
+  --glass-2:rgba(255,255,255,.09);
+  --stroke:rgba(255,255,255,.14);
+  --hi:rgba(255,255,255,.28);
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --script:'Qwitcher Grypen','Snell Roundhand','Segoe Script','Brush Script MT',cursive;
+  --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+  --maxw:1180px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+
+  position:fixed;inset:0;z-index:0;overflow:hidden;
+  background:var(--navy-3);color:var(--txt);
+  font-family:var(--sans);font-size:clamp(15px,1.05vw,17px);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.cprofile *{box-sizing:border-box}
+.cprofile ::selection{background:var(--hub);color:#04141a}
+.cprofile a{color:inherit;text-decoration:none}
+
+/* ambient overlays (FloatingLines lives behind at z:0) */
+.cprofile .cp-vign{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(6,14,20,.62) 100%)}
+.cprofile .cp-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* minimal full-screen hairline frame + crisp corner ticks (content-safe container) */
+.cprofile{--safe:22px}
+.cprofile .cp-frame{position:fixed;inset:var(--safe);z-index:15;pointer-events:none;border-radius:3px;
+  border:1px solid rgba(234,224,207,.13)}
+.cprofile .cp-frame .corner{position:absolute;width:22px;height:22px;border:0 solid rgba(234,224,207,.6)}
+.cprofile .cp-frame .corner.tl{top:-1px;left:-1px;border-top-width:1.5px;border-left-width:1.5px}
+.cprofile .cp-frame .corner.tr{top:-1px;right:-1px;border-top-width:1.5px;border-right-width:1.5px}
+.cprofile .cp-frame .corner.bl{bottom:-1px;left:-1px;border-bottom-width:1.5px;border-left-width:1.5px}
+.cprofile .cp-frame .corner.br{bottom:-1px;right:-1px;border-bottom-width:1.5px;border-right-width:1.5px}
+@media (max-width:900px){.cprofile{--safe:12px}.cprofile .cp-frame .corner{width:15px;height:15px}}
+
+/* deck / carousel */
+.cprofile .deck{position:relative;z-index:2;display:flex;height:100vh;height:100dvh;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.cprofile .deck::-webkit-scrollbar{display:none}
+.cprofile .panel{flex:0 0 100vw;height:100vh;height:100dvh;scroll-snap-align:center;position:relative;
+  display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,72px);overflow:hidden}
+.cprofile .wrap{width:100%;max-width:var(--maxw);margin:0 auto}
+
+/* type */
+.cprofile .eyebrow{font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:600;
+  display:inline-flex;align-items:center;gap:.6em}
+.cprofile .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.7}
+.cprofile h1,.cprofile h2,.cprofile h3{margin:0;text-wrap:balance;font-weight:800;letter-spacing:-.02em;line-height:1.04}
+.cprofile .ptitle{font-size:clamp(2rem,4.6vw,3.5rem);margin:.5rem 0 .9rem}
+.cprofile .lead{font-size:clamp(1.02rem,1.5vw,1.28rem);color:var(--txt-soft);max-width:min(52ch,100%);line-height:1.55}
+.cprofile .kicker{color:var(--accent)}
+.cprofile strong{color:#fff;font-weight:700}
+.cprofile .mono{font-family:var(--mono);font-size:.86em;color:var(--ice)}
+
+/* glass primitives */
+.cprofile .glass{background:var(--glass);backdrop-filter:blur(22px) saturate(1.3);-webkit-backdrop-filter:blur(22px) saturate(1.3);
+  border:1px solid var(--stroke);border-radius:22px;
+  box-shadow:inset 0 1px 0 var(--hi),inset 0 -20px 40px rgba(0,0,0,.12),0 24px 60px -20px rgba(0,0,0,.55)}
+.cprofile .chip{display:inline-flex;align-items:center;gap:.5em;padding:.5em .9em;border-radius:999px;
+  background:var(--glass);border:1px solid var(--stroke);font-size:.82rem;color:var(--txt-soft);white-space:nowrap;
+  box-shadow:inset 0 1px 0 var(--hi)}
+.cprofile .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.cprofile .chips{display:flex;flex-wrap:wrap;gap:.55rem}
+
+/* layouts */
+.cprofile .wrap{min-width:0}
+.cprofile .split{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,56px);align-items:center}
+.cprofile .split>*{min-width:0}
+.cprofile .stack{min-width:0}
+.cprofile .stack>*+*{margin-top:1.1rem}
+
+/* cover */
+.cprofile .cover{text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.1rem}
+.cprofile .cover-logo{width:clamp(300px,46vw,600px);filter:drop-shadow(0 10px 46px rgba(95,201,201,.28))}
+.cprofile .slogan{font-family:var(--script);font-size:clamp(2.6rem,8vw,6rem);line-height:.8;color:var(--hub);
+  text-shadow:0 6px 40px rgba(95,201,201,.35);margin-top:-.1em}
+.cprofile .cover-sub{letter-spacing:.34em;text-transform:uppercase;font-size:clamp(.7rem,1.4vw,.92rem);color:var(--ice);opacity:.9}
+.cprofile .cover-chips{margin-top:.6rem}
+.cprofile .scrollcue{margin-top:1.2rem;display:inline-flex;align-items:center;gap:.6em;color:var(--txt-dim);font-size:.8rem;letter-spacing:.1em}
+.cprofile .scrollcue svg{animation:cp-nudge 1.6s var(--ease) infinite}
+@keyframes cp-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+
+/* pillars */
+.cprofile .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,26px);margin-top:2rem}
+.cprofile .pillar{padding:1.6rem 1.5rem;border-radius:24px;position:relative;overflow:hidden;isolation:isolate}
+.cprofile .pillar::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--c) 60%,transparent),transparent 55%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.cprofile .pillar .glow{position:absolute;width:180px;height:180px;border-radius:50%;background:var(--c);filter:blur(60px);opacity:.28;top:-60px;right:-40px;z-index:-1}
+.cprofile .pillar h3{font-size:1.28rem;margin:.9rem 0 .35rem;color:#fff}
+.cprofile .pillar p{color:var(--txt-soft);font-size:.95rem;margin:0}
+.cprofile .pillar .tag{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c);font-weight:700}
+.cprofile .picon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+  background:color-mix(in srgb,var(--c) 20%,transparent);border:1px solid color-mix(in srgb,var(--c) 45%,transparent)}
+.cprofile .picon svg{width:24px;height:24px;stroke:var(--c);fill:none;stroke-width:1.8}
+
+.cprofile .oneline{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;justify-content:center;
+  font-weight:700;font-size:clamp(1rem,1.8vw,1.5rem);color:#fff;letter-spacing:-.01em}
+.cprofile .oneline span{color:var(--txt-dim)}
+.cprofile .oneline b{color:var(--ice);font-weight:800}
+
+/* feature list */
+.cprofile .feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem 1.3rem;margin-top:.4rem}
+.cprofile .feat li{list-style:none;display:flex;gap:.6em;align-items:flex-start;color:var(--txt-soft);font-size:.93rem}
+.cprofile .feat li::before{content:"";flex:0 0 auto;width:16px;height:16px;margin-top:.15em;border-radius:5px;
+  background:color-mix(in srgb,var(--accent) 22%,transparent);border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235FC9C9' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");background-size:11px;background-repeat:no-repeat;background-position:center}
+.cprofile ul{margin:0;padding:0}
+
+/* ===== device mockups (realistic materials) ===== */
+.cprofile .device-stage{position:relative;display:flex;align-items:center;justify-content:center;min-height:clamp(320px,46vh,540px)}
+/* soft accent glow grounds the device (no bounce) */
+.cprofile .device-stage::before{content:"";position:absolute;top:52%;left:50%;transform:translate(-50%,-50%);
+  width:72%;height:64%;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 42%,transparent),transparent 68%);
+  filter:blur(58px);opacity:.5}
+.cprofile .iphone,.cprofile .macbook,.cprofile .signage{z-index:1}
+.cprofile .float{position:relative}
+/* metal edge ring shared by devices */
+.cprofile .edge{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.4),rgba(255,255,255,.03) 26%,rgba(0,0,0,.45) 68%,rgba(255,255,255,.16));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+
+/* ---------- iPhone 15 Pro (faithful to MobileIPhoneMockup titanium) ---------- */
+.cprofile .iphone{--w:clamp(214px,19vw,248px);position:relative;width:var(--w);height:calc(var(--w)*2.16);
+  border-radius:calc(var(--w)*0.135);padding:calc(var(--w)*0.028);
+  background:linear-gradient(150deg,#34373c 0%,#1b1d21 46%,#303338 76%,#1d1f23 100%);
+  box-shadow:0 48px 84px -30px rgba(0,0,0,.82),0 10px 26px -10px rgba(0,0,0,.6),inset 0 1.5px 0 rgba(255,255,255,.15),inset 0 0 0 1px rgba(0,0,0,.45)}
+.cprofile .iphone::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.4px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.05) 22%,rgba(0,0,0,.5) 60%,rgba(255,255,255,.3));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.cprofile .ip-btn{position:absolute;background:linear-gradient(90deg,#26282c,#3a3d42 50%,#25272b);border-radius:2px;z-index:1}
+.cprofile .ip-btn.sw{left:-2px;top:15.5%;width:2px;height:3%;border-radius:2px 0 0 2px}
+.cprofile .ip-btn.vu{left:-2.5px;top:21.5%;width:2.5px;height:6.4%;border-radius:2px 0 0 2px}
+.cprofile .ip-btn.vd{left:-2.5px;top:29.5%;width:2.5px;height:6.4%;border-radius:2px 0 0 2px}
+.cprofile .ip-btn.pw{right:-2.5px;top:24%;width:2.5px;height:9.5%;border-radius:0 2px 2px 0}
+.cprofile .iphone .scr{position:relative;width:100%;height:100%;border-radius:calc(var(--w)*0.106);overflow:hidden;
+  background:#0a1017;display:flex;flex-direction:column}
+.cprofile .iphone .island{position:absolute;top:calc(var(--w)*0.03);left:50%;transform:translateX(-50%);
+  width:calc(var(--w)*0.30);height:calc(var(--w)*0.086);background:#000;border-radius:99px;z-index:20;
+  display:flex;align-items:center;justify-content:flex-end;padding:0 calc(var(--w)*0.032);box-shadow:0 1px 3px rgba(0,0,0,.6)}
+.cprofile .iphone .island .cam{width:calc(var(--w)*0.038);height:calc(var(--w)*0.038);border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#2b4864,#04070b 72%);box-shadow:inset 0 0 2px #000,0 0 1px rgba(70,130,170,.5)}
+.cprofile .iphone .glare{position:absolute;inset:0;z-index:15;pointer-events:none;
+  background:linear-gradient(158deg,rgba(255,255,255,.08) 0%,transparent 28%)}
+.cprofile .iphone .home-ind{position:absolute;bottom:calc(var(--w)*0.018);left:50%;transform:translateX(-50%);width:calc(var(--w)*0.32);height:4px;border-radius:3px;background:rgba(255,255,255,.5);z-index:20}
+.cprofile .statusbar{display:flex;align-items:center;justify-content:space-between;padding:calc(var(--w)*0.1) calc(var(--w)*0.07) 5px;font-size:.52rem;font-weight:700;color:#eaf2f6}
+/* real screenshot fills the screen; island + home-indicator stay on top */
+.cprofile .iphone .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;display:block}
+.cprofile .iphone .shot-ph{position:absolute;inset:0;z-index:5;display:grid;place-items:center;text-align:center;
+  background:linear-gradient(150deg,#16323f,#0a1620);color:var(--txt-dim);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase}
+/* crossed / staggered two-phone composition */
+.cprofile .phone-duo{position:relative;display:flex;align-items:center;justify-content:center}
+.cprofile .phone-duo .iphone{--w:clamp(208px,18.6vw,256px)}
+.cprofile .phone-duo .dp-back{transform:rotate(-6deg);margin-top:-46px;z-index:1;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.cprofile .phone-duo .dp-front{transform:rotate(6deg);margin-left:-96px;margin-top:52px;z-index:3}
+/* keep screenshots crisp: promote to own GPU layer so rotation rasterises at device DPR */
+.cprofile .iphone .shot{transform:translateZ(0);backface-visibility:hidden}
+.cprofile .statusbar .sb-r{display:flex;align-items:center;gap:4px}
+.cprofile .statusbar .sig{width:13px;height:8px;background:
+  linear-gradient(90deg,#eaf2f6 0 2px,transparent 0 3px,#eaf2f6 0 5px,transparent 0 6px,#eaf2f6 0 8px,transparent 0 9px,#eaf2f6 0 11px);
+  -webkit-mask:linear-gradient(#000,#000);opacity:.9;clip-path:polygon(0 100%,2px 100%,2px 62%,5px 62%,5px 40%,8px 40%,8px 20%,11px 20%,11px 0,13px 0,13px 100%)}
+.cprofile .statusbar .bat{width:16px;height:8px;border:1px solid rgba(255,255,255,.6);border-radius:2px;position:relative;padding:1px}
+.cprofile .statusbar .bat::after{content:"";position:absolute;right:-2px;top:2px;width:1.5px;height:3px;background:rgba(255,255,255,.6);border-radius:0 1px 1px 0}
+.cprofile .statusbar .bat i{display:block;height:100%;width:78%;background:#eaf2f6;border-radius:1px}
+.cprofile .app-top{padding:6px 12px 9px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.06);
+  background:linear-gradient(180deg,rgba(95,201,201,.1),transparent)}
+.cprofile .av{width:29px;height:29px;border-radius:50%;background:linear-gradient(135deg,var(--hub),#237e7e);flex:0 0 auto;box-shadow:0 3px 10px rgba(95,201,201,.4)}
+.cprofile .app-top .nm{font-size:.7rem;font-weight:700;color:#fff}
+.cprofile .app-top .st{font-size:.55rem;color:var(--hub);display:flex;align-items:center;gap:4px}
+.cprofile .app-top .st::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--hub);box-shadow:0 0 8px var(--hub)}
+.cprofile .chan{margin-left:auto;display:flex;gap:5px}
+.cprofile .chan i{width:16px;height:16px;border-radius:5px;display:block;box-shadow:0 2px 5px rgba(0,0,0,.35)}
+.cprofile .chan .wa{background:#25D366}.cprofile .chan .ig{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)}.cprofile .chan .ms{background:linear-gradient(45deg,#0084FF,#00C6FF)}
+.cprofile .msgs{flex:1;padding:11px 11px 6px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.cprofile .b{max-width:80%;padding:7px 10px;border-radius:14px;font-size:.6rem;line-height:1.35;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.cprofile .b.in{align-self:flex-start;background:#20303b;border-bottom-left-radius:4px;color:#dfe9ee}
+.cprofile .b.ai{align-self:flex-end;background:linear-gradient(135deg,var(--hub),#2f8f8f);color:#04161a;border-bottom-right-radius:4px;font-weight:600}
+.cprofile .b .who{display:block;font-size:.48rem;opacity:.72;margin-bottom:2px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.cprofile .app-in{margin:0 10px 14px;padding:7px 8px 7px 12px;border-radius:99px;background:#1a2831;border:1px solid rgba(255,255,255,.08);font-size:.58rem;color:var(--txt-dim);display:flex;align-items:center;justify-content:space-between}
+.cprofile .app-in b{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--hub),#2f8f8f);display:grid;place-items:center;color:#04161a;font-size:.72rem}
+
+/* ---------- MacBook Pro ---------- */
+.cprofile .macbook{position:relative;width:clamp(360px,41vw,548px)}
+.cprofile .macbook .lid{position:relative;aspect-ratio:16/10.4;border-radius:16px;padding:2.5%;
+  background:linear-gradient(150deg,#3a3d42,#1b1d21 55%,#303338);
+  box-shadow:0 34px 70px -30px rgba(0,0,0,.72),inset 0 1px 1px rgba(255,255,255,.14)}
+.cprofile .macbook .lid::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.34),rgba(255,255,255,.03) 26%,rgba(0,0,0,.4) 70%,rgba(255,255,255,.14));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.cprofile .macbook .cam{position:absolute;top:1.2%;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#2a4258,#05080c);z-index:5}
+.cprofile .macbook .scr{position:relative;width:100%;height:100%;border-radius:6px;overflow:hidden;background:#0a121a}
+.cprofile .macbook .scr::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.07),transparent 34%)}
+.cprofile .macbook .base{position:relative;width:114%;left:-7%;height:13px;margin-top:-2px;
+  background:linear-gradient(180deg,#c3c8cf 0%,#9298a0 42%,#6f757c 100%);
+  border-radius:0 0 11px 11px;box-shadow:0 22px 30px -16px rgba(0,0,0,.65)}
+.cprofile .macbook .base::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:15%;height:7px;
+  background:linear-gradient(180deg,#7a808799,#c3c8cf00);border-radius:0 0 9px 9px}
+.cprofile .macbook .base::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(0,0,0,.28);border-radius:0 0 11px 11px}
+/* dashboard inside screen */
+.cprofile .dash{width:100%;height:100%;display:grid;grid-template-columns:27% 1fr;background:#0b141d}
+.cprofile .side{background:#0e1a24;border-right:1px solid rgba(255,255,255,.05);padding:9px 8px;display:flex;flex-direction:column;gap:5px}
+.cprofile .side .logo{font-size:.62rem;font-weight:800;color:#fff;letter-spacing:.04em;margin-bottom:4px}
+.cprofile .side .logo b{color:var(--plus)}
+.cprofile .mrow{font-size:.5rem;color:var(--txt-dim);display:flex;align-items:center;gap:5px;padding:4px 6px;border-radius:6px}
+.cprofile .mrow::before{content:"";width:9px;height:9px;border-radius:3px;background:rgba(255,255,255,.14)}
+.cprofile .mrow.on{background:color-mix(in srgb,var(--plus) 20%,transparent);color:#fff}
+.cprofile .mrow.on::before{background:var(--plus);box-shadow:0 0 8px var(--plus)}
+.cprofile .main{padding:10px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.cprofile .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.cprofile .kpi{background:#12212c;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:7px 8px}
+.cprofile .kpi .n{font-size:.74rem;font-weight:800;color:#fff}.cprofile .kpi .l{font-size:.42rem;color:var(--txt-dim);text-transform:uppercase;letter-spacing:.08em;margin-top:1px}
+.cprofile .kpi .l b{color:var(--plus)}
+.cprofile .chart{flex:1;background:#12212c;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:9px;display:flex;align-items:flex-end;gap:5px;min-height:70px}
+.cprofile .bar{flex:1;background:linear-gradient(180deg,var(--plus),#2f7a55);border-radius:3px 3px 0 0;min-height:8%;box-shadow:0 0 10px rgba(111,212,154,.25)}
+
+/* ---------- commercial display / signage ---------- */
+.cprofile .signage{position:relative;width:clamp(330px,37vw,500px)}
+.cprofile .signage .disp{position:relative;aspect-ratio:16/9;border-radius:12px;padding:1.5%;
+  background:linear-gradient(160deg,#26282c,#0f1012 58%,#1c1e22);
+  box-shadow:0 34px 70px -28px rgba(0,0,0,.75),inset 0 1px 1px rgba(255,255,255,.1)}
+.cprofile .signage .disp::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.28),rgba(255,255,255,.02) 30%,rgba(0,0,0,.4) 72%,rgba(255,255,255,.1));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.cprofile .signage .scr{position:relative;width:100%;height:100%;border-radius:5px;overflow:hidden}
+.cprofile .signage .scr::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.09),transparent 38%)}
+/* real signage content fills the screen edge-to-edge */
+.cprofile .signage .dev-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block;transform:translateZ(0);backface-visibility:hidden}
+.cprofile .signage .live-badge{position:absolute;top:10px;left:10px;z-index:3;font-size:.5rem;font-weight:700;letter-spacing:.14em;color:#fff;
+  background:rgba(0,0,0,.5);padding:3px 9px;border-radius:6px;display:flex;align-items:center;gap:5px;backdrop-filter:blur(4px)}
+.cprofile .signage .live-badge::before{content:"";width:5px;height:5px;border-radius:50%;background:#ff5a5a;box-shadow:0 0 8px #ff5a5a;animation:cp-blink 1.6s steps(1) infinite}
+.cprofile .zones{width:100%;height:100%;display:grid;grid-template-columns:1.9fr 1fr;grid-template-rows:1fr 1fr;gap:5px;background:#0a141b;padding:5px}
+.cprofile .zmain{grid-row:1/3;border-radius:6px;background:
+  radial-gradient(130% 120% at 18% 8%,rgba(111,212,154,.4),transparent 58%),
+  radial-gradient(120% 120% at 90% 100%,rgba(95,201,201,.28),transparent 60%),
+  linear-gradient(135deg,#16323f,#0a1620);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:11px}
+.cprofile .zmain .play{position:absolute;top:9px;left:9px;font-size:.5rem;letter-spacing:.14em;color:#fff;background:rgba(0,0,0,.4);padding:2px 8px;border-radius:6px;display:flex;align-items:center;gap:5px}
+.cprofile .zmain .play::before{content:"";width:5px;height:5px;border-radius:50%;background:#ff5a5a;box-shadow:0 0 8px #ff5a5a;animation:cp-blink 1.6s steps(1) infinite}
+@keyframes cp-blink{50%{opacity:.25}}
+.cprofile .zmain .cap{font-size:.64rem;font-weight:800;color:#fff;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.cprofile .zwidget{border-radius:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:8px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.cprofile .zwidget .lbl{font-size:.45rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ice);opacity:.85}
+.cprofile .zwidget .big{font-size:.92rem;font-weight:800;color:#fff}
+.cprofile .zwidget .sm{font-size:.5rem;color:var(--txt-dim)}
+.cprofile .signage .neck{width:8.5%;height:38px;margin:0 auto;position:relative;z-index:0;
+  background:linear-gradient(90deg,#141619,#3d4045 48%,#141619);border-radius:0 0 2px 2px}
+.cprofile .signage .foot{width:36%;height:13px;margin:-3px auto 0;position:relative;z-index:0;
+  background:linear-gradient(180deg,#3d4045,#151719);border-radius:50% / 100%;box-shadow:0 22px 28px -14px rgba(0,0,0,.78)}
+/* mini control phone (titanium) beside the display */
+.cprofile .ctrl-phone{position:absolute;right:-30px;bottom:6px;width:clamp(80px,8.6vw,106px);aspect-ratio:1/2.04;border-radius:17% / 8.2%;padding:3.2%;z-index:6;
+  background:linear-gradient(145deg,#4a4d52,#26282c 26%,#3c3f44 54%,#1e2024 82%,#41444a);
+  box-shadow:0 30px 52px -18px rgba(0,0,0,.78),inset 0 1px 1px rgba(255,255,255,.18)}
+.cprofile .ctrl-phone::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.45),rgba(255,255,255,.03) 26%,rgba(0,0,0,.5) 68%,rgba(255,255,255,.2));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.cprofile .ctrl-phone .cs{width:100%;height:100%;border-radius:13% / 6%;background:linear-gradient(180deg,#0a1219,#0c1922);padding:9px 8px;display:flex;flex-direction:column;gap:5px;overflow:hidden}
+.cprofile .ctrl-phone .ttl{font-size:.42rem;font-weight:700;color:var(--signage);letter-spacing:.08em;text-transform:uppercase}
+.cprofile .ctrl-phone .row{height:8px;border-radius:4px;background:rgba(255,255,255,.08)}
+.cprofile .ctrl-phone .row.a{background:color-mix(in srgb,var(--signage) 60%,transparent);width:74%}
+.cprofile .ctrl-phone .btn{margin-top:auto;height:15px;border-radius:7px;background:linear-gradient(90deg,var(--signage),#6fa6b8);box-shadow:0 0 10px rgba(148,180,193,.4)}
+
+/* journey */
+.cprofile .journey{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:2rem;counter-reset:j}
+.cprofile .jnode{position:relative;padding:1.3rem 1.1rem;border-radius:18px;text-align:left}
+.cprofile .jnode .num{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.1em}
+.cprofile .jnode h4{margin:.5rem 0 .3rem;font-size:1rem;color:#fff}
+.cprofile .jnode p{margin:0;font-size:.82rem;color:var(--txt-soft)}
+.cprofile .jnode .via{margin-top:.6rem;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.cprofile .jnode:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--txt-dim);font-size:1.1rem;z-index:5}
+
+/* badges grid */
+.cprofile .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:1.8rem}
+.cprofile .badge{padding:1.15rem 1.2rem;border-radius:18px}
+.cprofile .badge h4{margin:0 0 .3rem;font-size:.98rem;color:#fff;display:flex;align-items:center;gap:.5em}
+.cprofile .badge h4 .d{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.cprofile .badge p{margin:0;font-size:.82rem;color:var(--txt-soft)}
+
+/* tech */
+.cprofile .provs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:1.6rem}
+.cprofile .prov{padding:1.3rem;border-radius:18px;text-align:center}
+.cprofile .prov .pn{font-size:1.15rem;font-weight:800;color:#fff}
+.cprofile .prov .pr{font-size:.78rem;color:var(--txt-soft);margin-top:.3rem}
+.cprofile .stackline{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}
+
+/* why: scatter -> one */
+.cprofile .vs{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(20px,4vw,50px);align-items:center;margin-top:1.5rem}
+.cprofile .scatter{display:flex;flex-wrap:wrap;gap:.5rem;max-width:360px}
+.cprofile .scatter .chip{opacity:.55;filter:grayscale(.4)}
+.cprofile .vs .arrow{font-size:1.6rem;color:var(--txt-dim)}
+.cprofile .one{padding:2.2rem 1.6rem;border-radius:24px;text-align:center;position:relative;overflow:hidden}
+.cprofile .one .glow{position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 40%,rgba(95,201,201,.25),transparent 70%);z-index:-1}
+.cprofile .one .bm{font-size:2.4rem;font-weight:800;letter-spacing:.1em;background:linear-gradient(180deg,#fff,var(--ice));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cprofile .one .sub{font-size:.8rem;color:var(--txt-soft);margin-top:.4rem}
+
+/* contact */
+.cprofile .cgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-top:1.6rem}
+.cprofile .cbox{padding:1.5rem;border-radius:20px}
+.cprofile .cbox h4{margin:0 0 .8rem;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.cprofile .crow{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.9rem}
+.cprofile .crow:last-child{border-bottom:0}
+.cprofile .crow .k{color:var(--txt-dim)}.cprofile .crow .v{color:#fff;font-weight:600;text-align:right}
+.cprofile .socs{display:flex;gap:.6rem;margin-top:1rem}
+.cprofile .soc{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--glass);border:1px solid var(--stroke);font-size:.7rem;font-weight:800;color:var(--ice)}
+
+/* closing */
+.cprofile .closing{text-align:center}
+.cprofile .closing .big{font-size:clamp(1.8rem,4.5vw,3.4rem);font-weight:800;line-height:1.12;color:#fff;letter-spacing:-.02em}
+.cprofile .closing .big em{font-style:normal;color:var(--hub)}
+.cprofile .closing .sig{font-family:var(--script);font-size:clamp(2.4rem,6vw,4.4rem);color:var(--ice);margin-top:.4rem;line-height:.8}
+
+/* nav chrome */
+.cprofile .nav{position:fixed;z-index:20;left:50%;bottom:22px;transform:translateX(-50%);display:flex;align-items:center;gap:14px;
+  padding:9px 12px;border-radius:999px;background:rgba(14,26,36,.5);backdrop-filter:blur(20px);border:1px solid var(--stroke);
+  box-shadow:inset 0 1px 0 var(--hi),0 20px 50px -20px rgba(0,0,0,.7)}
+.cprofile .nbtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--stroke);background:var(--glass);color:var(--cream);
+  display:grid;place-items:center;cursor:pointer;transition:.25s var(--ease)}
+.cprofile .nbtn:hover{background:var(--glass-2);transform:scale(1.06)}
+.cprofile .nbtn:active{transform:scale(.95)}
+.cprofile .nbtn svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2.2}
+.cprofile .dots{display:flex;gap:7px;align-items:center}
+.cprofile .dot-i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22);cursor:pointer;transition:.3s var(--ease);border:0;padding:0}
+.cprofile .dot-i.on{width:26px;border-radius:5px;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.cprofile .counter{position:fixed;z-index:20;top:calc(var(--safe) + 22px);right:calc(var(--safe) + 24px);
+  font-family:var(--mono);font-size:.8rem;color:var(--txt-dim);letter-spacing:.14em}
+.cprofile .counter b{color:var(--cream)}
+.cprofile .topbar{position:fixed;z-index:20;top:calc(var(--safe) + 16px);left:calc(var(--safe) + 24px);display:flex;align-items:center;gap:12px}
+.cprofile .topbar .mark{width:38px;height:auto}
+.cprofile .home-link{display:inline-flex;align-items:center;gap:.45em;font-size:.76rem;letter-spacing:.06em;color:var(--txt-soft);
+  padding:.5em .9em;border-radius:999px;background:var(--glass);border:1px solid var(--stroke);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:.25s var(--ease)}
+.cprofile .home-link:hover{background:var(--glass-2);color:#fff}
+.cprofile .home-link svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2}
+/* language toggle lives in the nav bar */
+.cprofile .nav .divider{width:1px;height:20px;background:var(--stroke);margin:0 2px}
+.cprofile .nav .lang{font-size:.74rem;font-weight:700;letter-spacing:.08em;color:var(--cream);
+  padding:.5em .8em;border-radius:999px;border:1px solid var(--stroke);background:var(--glass);cursor:pointer;transition:.25s var(--ease)}
+.cprofile .nav .lang:hover{background:var(--glass-2)}
+
+.cprofile .fadein{opacity:0;transform:translateY(22px)}
+.cprofile .panel.active .fadein{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.cprofile .panel.active .fadein:nth-child(2){transition-delay:.08s}
+.cprofile .panel.active .fadein:nth-child(3){transition-delay:.16s}
+.cprofile .panel.active .fadein:nth-child(4){transition-delay:.24s}
+
+/* ===== MOBILE: vertical stacked carousel ===== */
+@media (max-width:900px){
+  .cprofile .deck{flex-direction:column;overflow-x:hidden;overflow-y:auto;height:100dvh;scroll-snap-type:y proximity}
+  .cprofile .panel{flex:0 0 auto;width:100%;min-height:100dvh;height:auto;scroll-snap-align:start;padding:92px 20px 104px}
+  .cprofile .split,.cprofile .cgrid,.cprofile .vs{grid-template-columns:1fr;gap:26px}
+  .cprofile .pillars,.cprofile .journey,.cprofile .bgrid,.cprofile .provs{grid-template-columns:1fr}
+  .cprofile .feat{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cprofile .split .stack{order:1}.cprofile .split .device-stage{order:2}
+  .cprofile .vs .arrow{transform:rotate(90deg)}
+  .cprofile .device-stage{min-height:auto;margin-top:.4rem}
+  .cprofile .jnode:not(:last-child)::after{content:"↓";right:50%;left:auto;top:auto;bottom:-15px;transform:translateX(50%)}
+  .cprofile .ctrl-phone{right:-6px;bottom:6px}
+  .cprofile .nav{bottom:16px;gap:7px;padding:7px 9px}
+  .cprofile .oneline{justify-content:flex-start}
+  .cprofile .provs,.cprofile .bgrid{gap:12px}
+}
+@media (max-width:480px){
+  .cprofile .feat{grid-template-columns:1fr}
+  .cprofile .cover-logo{width:80vw}
+  .cprofile .cover-chips{justify-content:center}
+  .cprofile .nav .dots{max-width:42vw;overflow-x:auto;scrollbar-width:none}
+  .cprofile .nav .dots::-webkit-scrollbar{display:none}
+  .cprofile .home-link span{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .cprofile *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  .cprofile .fadein{opacity:1;transform:none}
+}

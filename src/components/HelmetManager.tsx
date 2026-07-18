@@ -258,6 +258,16 @@ const ROUTE_META: Record<string, { tr: { title: string; description: string }; e
       description: 'Allync privacy policy. Comprehensive information about how your personal data is collected, processed and protected. GDPR, KVKK and Qatar PDPPL compliant.',
     },
   },
+  '/company-profile': {
+    tr: {
+      title: 'Şirket Profili | AI İş Ekosistemi - Allync',
+      description: 'ALLYNC şirket profili: iletişim, dijital ekranlar ve operasyonları tek AI destekli ekosistemde birleştiren Allync Hub, Digital Signage ve Allync+ platformları.',
+    },
+    en: {
+      title: 'Company Profile | AI Business Ecosystem - Allync',
+      description: 'ALLYNC company profile: Allync Hub, Digital Signage and Allync+ — communication, screens and operations unified in one AI-powered business ecosystem.',
+    },
+  },
   '/terms': {
     tr: {
       title: 'Hizmet Şartları | Kullanım Koşulları ve Sorumluluklar - Allync',
