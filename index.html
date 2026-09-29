@@ -6,7 +6,10 @@
     
     <!-- SEO Meta Tags -->
     <title>Allync — AI İş Ekosistemi | WhatsApp AI, Dijital Signage, Allync+</title>
-    <meta name="description" content="Allync — işletmeler için uçtan uca AI iş ekosistemi: Allync Hub omnichannel iletişim (WhatsApp/Instagram/Messenger), Dijital Signage ve Allync+ iş yönetim platformu. Akıllı İşin Yeni Dili." />
+    <!-- data-rh hands this tag to Helmet: raw HTML keeps it for crawlers that do
+         not run JS, and each route's own description REPLACES it after render.
+         Without it every route carried two descriptions, the homepage's first. -->
+    <meta name="description" data-rh="true" content="Allync — işletmeler için uçtan uca AI iş ekosistemi: Allync Hub omnichannel iletişim (WhatsApp/Instagram/Messenger), Dijital Signage ve Allync+ iş yönetim platformu. Akıllı İşin Yeni Dili." />
     <!-- Geo Targeting for Turkey -->
     <meta name="geo.region" content="TR" />
     <meta name="geo.region" content="TR-16" />
@@ -18,19 +21,17 @@
     <meta name="keywords" content="Allync, AllyncAI, Allync AI, Allync Türkiye, Allync Turkey, Allync Qatar, AI solutions, yapay zeka çözümleri, dijital dönüşüm, digital transformation, WhatsApp automation, WhatsApp otomasyon, WhatsApp AI asistanı, SaaS geliştirme, özel yazılım, yönetim paneli, müşteri hizmeti, business AI, chatbot, web development, web sitesi geliştirme, mobil uygulama, Turkey, Qatar, AI iş ekosistemi, AI business ecosystem, Allync Hub, Allync Digital Signage, Allync+, dijital tabela, digital signage, DOOH, iş yönetim platformu, business management platform, omnichannel, çok kanallı gelen kutusu, Facebook Messenger, Instagram AI" />
     <meta name="author" content="Allync" />
     <meta name="robots" content="index, follow" />
-    <!-- Static canonical fallback — React Helmet overrides per route -->
-    <link rel="canonical" href="https://www.allyncai.com/" />
+    <!-- NO static canonical or hreflang in this file. It is served for EVERY
+         SPA route, and react-helmet-async only replaces tags it owns (data-rh),
+         so a static canonical here became a SECOND canonical on every route,
+         pointing it at the homepage. Helmet injects exactly one per route
+         (HelmetManager, and each standalone page's own Helmet). -->
 
     <!-- Mobile Status Bar Theming -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="msapplication-navbutton-color" content="#000000" />
     <meta name="mobile-web-app-capable" content="yes" />
-    
-    <!-- Language Declaration - Single page with language toggle -->
-    <link rel="alternate" hreflang="x-default" href="https://www.allyncai.com/" />
-    <link rel="alternate" hreflang="tr" href="https://www.allyncai.com/" />
-    <link rel="alternate" hreflang="en" href="https://www.allyncai.com/" />
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Allync — AI İş Ekosistemi | WhatsApp AI, Dijital Signage, Allync+" />

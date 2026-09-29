@@ -311,12 +311,20 @@ export default function FloatingLines({
 
     // Safari scroll fix: preserveDrawingBuffer prevents context reset during scroll
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    const renderer = new WebGLRenderer({
-      antialias: !isSafari, // Disable antialiasing on Safari for better performance
-      alpha: false,
-      preserveDrawingBuffer: isSafari, // Prevents flickering on Safari scroll
-      powerPreference: isSafari ? 'low-power' : 'default'
-    });
+    // No WebGL (blocked GPU, privacy settings, a renderer without 3D): the lines are
+    // decoration, so draw nothing. Throwing here used to unmount the whole React
+    // tree (nothing above catches it) and leave the page blank.
+    let renderer: WebGLRenderer;
+    try {
+      renderer = new WebGLRenderer({
+        antialias: !isSafari, // Disable antialiasing on Safari for better performance
+        alpha: false,
+        preserveDrawingBuffer: isSafari, // Prevents flickering on Safari scroll
+        powerPreference: isSafari ? 'low-power' : 'default'
+      });
+    } catch {
+      return;
+    }
     renderer.setPixelRatio(pixelRatio ?? Math.min(window.devicePixelRatio || 1, 2));
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';

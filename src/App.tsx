@@ -14,8 +14,10 @@ import { PricingConfigurator } from './components/PricingConfigurator';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { lockScroll, unlockScroll, resetScrollLock } from './utils/scrollLock';
 import { ScrollDownIndicator } from './components/ui/ScrollDownIndicator';
+import { SilentBoundary } from './components/common/SilentBoundary';
 
-// Lazy load heavy components - Three.js only
+// Lazy load heavy components - Three.js only (each behind a SilentBoundary: a scene
+// that cannot get WebGL must not take the page, and its SEO tags, down with it)
 const FloatingLines = React.lazy(() => import('./components/ui/FloatingLines'));
 const Lanyard = React.lazy(() => import('./components/Lanyard'));
 
@@ -305,15 +307,17 @@ function AppContent() {
               damping: lanyardSnapped ? undefined : 15
             }}
           >
-            <Suspense fallback={null}>
-              <Lanyard
-                onDismiss={handleLanyardDismiss}
-                scrollJolt={scrollJolt}
-                clickJolt={clickJolt}
-                onSnap={handleLanyardSnap}
-                language={language}
-              />
-            </Suspense>
+            <SilentBoundary>
+              <Suspense fallback={null}>
+                <Lanyard
+                  onDismiss={handleLanyardDismiss}
+                  scrollJolt={scrollJolt}
+                  clickJolt={clickJolt}
+                  onSnap={handleLanyardSnap}
+                  language={language}
+                />
+              </Suspense>
+            </SilentBoundary>
           </motion.div>
         )}
       </AnimatePresence>
@@ -347,6 +351,7 @@ function AppContent() {
     <HelmetProvider>
         <div className={`min-h-screen bg-black app-loaded ${animationsEnabled ? 'animations-enabled' : 'animations-disabled'}`}>
           {/* FloatingLines - Lazy loaded Three.js component */}
+          <SilentBoundary>
           <Suspense fallback={null}>
             {!isMobile ? (
               <FloatingLines
@@ -374,6 +379,7 @@ function AppContent() {
               />
             )}
           </Suspense>
+          </SilentBoundary>
 
           <HelmetManager language={language} activeSection={activeSection} />
           <AnimatePresence>

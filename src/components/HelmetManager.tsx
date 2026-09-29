@@ -387,6 +387,11 @@ export const HelmetManager: React.FC<HelmetManagerProps> = ({ language, activeSe
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
+      {/* both languages live on the same URL (language toggle); these used to be
+          static in index.html, where they pointed every route at the homepage */}
+      <link rel="alternate" hrefLang="tr" href={canonical} />
+      <link rel="alternate" hrefLang="en" href={canonical} />
+      <link rel="alternate" hrefLang="x-default" href={canonical} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
