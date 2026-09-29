@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Send, Phone, Mail, Calendar } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { InputGlow, LabelGlow, LabelInputContainer, BottomGradient } from './ui/InputGlow';
 import GradientText from './ui/GradientText';
 import confetti from 'canvas-confetti';
+import { takeInquiry, type Inquiry } from './pricing/inquiry';
 
 interface ContactProps {
   language: 'tr' | 'en';
@@ -25,6 +27,31 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+
+  /* Arriving from /pricing: the configuration the buyer just built comes in as
+     a ready-to-send message. It is taken exactly once, the form scrolls into
+     view, and the cursor lands in the first field they still have to fill. */
+  const location = useLocation();
+  const [inquiry, setInquiry] = useState<Inquiry | null>(null);
+  useEffect(() => {
+    const inq = takeInquiry(location.state);
+    if (!inq) return;
+    setInquiry(inq);
+    setFormData((prev) => ({ ...prev, message: inq.message }));
+    setErrors((prev) => ({ ...prev, message: '' }));
+    const scroll = window.setTimeout(() => {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 650);
+    const focus = window.setTimeout(() => {
+      (document.getElementById('name') as HTMLInputElement | null)?.focus({ preventScroll: true });
+    }, 1400);
+    return () => {
+      window.clearTimeout(scroll);
+      window.clearTimeout(focus);
+    };
+    // taken once, on arrival
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
@@ -159,6 +186,14 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
           <div className="w-full bg-white/5 backdrop-blur-[6px] border border-white/10 rounded-2xl p-5 sm:p-6 lg:p-8 contact-form relative">
             <h3 className="text-2xl font-bold text-white mb-6">{t.getCustomDemo}</h3>
 
+            {inquiry && (
+              <div className="mb-6 rounded-xl border border-[#5FC9C9]/30 bg-[#5FC9C9]/10 px-4 py-3" role="status">
+                <p className="text-sm font-semibold text-[#5FC9C9]">{t.inquiryAdded}</p>
+                {inquiry.summary && <p className="text-sm text-gray-200 mt-1">{inquiry.summary}</p>}
+                <p className="text-xs text-gray-400 mt-1">{t.inquiryHint}</p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6 form-grid">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <LabelInputContainer>
@@ -240,7 +275,7 @@ export const Contact: React.FC<ContactProps> = ({ language }) => {
                   id="message"
                   name="message"
                   isTextarea
-                  rows={4}
+                  rows={inquiry ? 12 : 4}
                   required
                   value={formData.message}
                   onChange={handleChange}

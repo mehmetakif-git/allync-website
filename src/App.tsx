@@ -10,6 +10,7 @@ import { NotFound } from './components/NotFound';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
 import { CompanyProfile } from './components/CompanyProfile';
+import { PricingConfigurator } from './components/PricingConfigurator';
 import { ScrollProgress } from './components/ui/ScrollProgress';
 import { lockScroll, unlockScroll, resetScrollLock } from './utils/scrollLock';
 import { ScrollDownIndicator } from './components/ui/ScrollDownIndicator';
@@ -27,7 +28,18 @@ function AppContent() {
   const location = useLocation();
   const { serviceSlug } = useParams<{ serviceSlug?: string }>();
 
-  const [language, setLanguage] = useState<'tr' | 'en'>('tr');
+  /* The visitor's own language choice, remembered under `allync_language`
+     (the key CLAUDE.md specifies). /pricing writes it too, so a configuration
+     built in English lands on an English contact form. */
+  const [language, setLanguage] = useState<'tr' | 'en'>(() => {
+    try {
+      const saved = window.localStorage.getItem('allync_language');
+      if (saved === 'tr' || saved === 'en') return saved;
+    } catch {
+      /* private mode: fall back to the default */
+    }
+    return 'tr';
+  });
   const [viewMode, setViewMode] = useState<'selection' | 'ai-view' | 'digital-view'>(() =>
     location.pathname.startsWith('/ai')
       ? 'ai-view'
@@ -47,7 +59,13 @@ function AppContent() {
   const [snapMessage, setSnapMessage] = useState('');
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'tr' ? 'en' : 'tr');
+    const next = language === 'tr' ? 'en' : 'tr';
+    setLanguage(next);
+    try {
+      window.localStorage.setItem('allync_language', next);
+    } catch {
+      /* private mode: the choice lasts for this visit only */
+    }
   };
 
   // No loading screen — the initial view is resolved synchronously from the URL.
@@ -485,6 +503,7 @@ function AppWithRoutes() {
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsOfService />} />
       <Route path="/company-profile" element={<CompanyProfile />} />
+      <Route path="/pricing" element={<PricingConfigurator />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

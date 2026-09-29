@@ -268,6 +268,16 @@ const ROUTE_META: Record<string, { tr: { title: string; description: string }; e
       description: 'ALLYNC company profile: Allync Hub, Digital Signage and Allync+ — communication, screens and operations unified in one AI-powered business ecosystem.',
     },
   },
+  '/pricing': {
+    tr: {
+      title: 'Allync Hub Fiyatlandırma | Paketler ve Ek Modüller - Allync',
+      description: 'Allync Hub paketleri: Başlangıç, Pro, Premium ve Kurumsal. Aylık, 6 aylık (%10 indirim) ve yıllık (%20 indirim) ödeme. Tüm paketlerde ilk ay ücretsiz.',
+    },
+    en: {
+      title: 'Allync Hub Pricing | Plans and Add-on Modules - Allync',
+      description: 'Allync Hub plans: Starter, Pro, Premium and Enterprise. Monthly, 6-month (10% off) and yearly (20% off) billing. First month free on every plan.',
+    },
+  },
   '/terms': {
     tr: {
       title: 'Hizmet Şartları | Kullanım Koşulları ve Sorumluluklar - Allync',

@@ -540,7 +540,19 @@ Ongoing maintenance and technical support to keep your digital assets running sm
 
 ## PRICING MODEL
 
-Allync does not publish fixed pricing. Each project is custom-quoted based on:
+**Allync Hub — published plans:** https://www.allyncai.com/pricing
+
+Four plans, bilingual (Turkish/English), priced in USD or TRY:
+- Starter — $200/mo. 3 users, 1 WhatsApp number, 1 Instagram account, 3,000 Allync AI replies a month.
+- Pro (recommended) — $350/mo. 5 users, 2 WhatsApp numbers, 2 Instagram accounts, 10,000 Allync AI replies a month, campaigns, voice messages, one industry module set.
+- Premium — $450/mo. 10 users, 5 WhatsApp numbers, 3 Instagram accounts, 25,000 Allync AI replies a month, customer accounts, kiosk, REST API and webhooks.
+- Enterprise — custom quote. Your own brand, capacity by contract, full setup and training.
+
+Billing: monthly, every 6 months (10% off) or yearly (20% off). **The first month is free on every plan, including Enterprise.** Any module outside your plan is a flat USD 50 (TRY 2,250) a month. Extra users, numbers, reply capacity and one-time services are quoted by the Allync Team. Prices exclude tax.
+
+Two things buyers ask about, stated plainly: plan quotas count Allync AI replies only, so messages your own team writes are unlimited on every plan; and Allync charges only the plan fee, while Meta charges for approved WhatsApp template messages directly to the business's own Meta account, with replies inside 24 hours of a customer's message free.
+
+Allync Digital Signage, Allync+ and bespoke AI/digital projects are not published at a fixed price. Each is custom-quoted based on:
 - Project scope and complexity
 - Required features
 - Integration requirements

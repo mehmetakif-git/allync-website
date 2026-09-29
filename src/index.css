@@ -1770,7 +1770,10 @@ select option {
   
   /* Mobile-specific overflow and positioning fixes */
   body {
-    overflow-x: hidden;
+    /* NEVER `hidden` here: per spec overflow-x:hidden forces overflow-y to
+       `auto`, which turns <body> into its own scroll container and kills
+       vertical scrolling on mobile. `clip` clips without that side effect. */
+    overflow-x: clip;
   }
   
   .relative {

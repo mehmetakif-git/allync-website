@@ -296,7 +296,13 @@ Full Terms: https://www.allyncai.com/terms (bilingual TR/EN, 20 sections)
 
 ## Pricing
 
-We offer custom pricing based on your specific needs. Contact us for a free consultation and quote.
+- **Allync Hub pricing page:** https://www.allyncai.com/pricing
+
+Allync Hub has four published plans: Starter, Pro (recommended), Premium and Enterprise (custom quote). Billing is monthly, every 6 months (10% off) or yearly (20% off), in USD or TRY. **The first month is free on every plan.** Any module outside your plan is added at a flat USD 50 (TRY 2,250) a month; extra users, numbers and Allync AI reply capacity are quoted by the Allync Team. Prices exclude tax.
+
+Plan quotas count Allync AI replies only — messages written by your own team are unlimited on every plan. Allync charges only the plan fee; Meta charges for approved WhatsApp template messages directly to your business's own Meta account.
+
+Allync Digital Signage, Allync+ and custom AI/digital projects are quoted individually. Contact us for a free consultation and quote.
 
 ## Contact
 

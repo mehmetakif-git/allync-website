@@ -149,6 +149,8 @@ export const translations = {
     fitness: "Fitness",
     other: "Diğer",
     tellUsNeeds: "İhtiyaçlarınızı bize anlatın",
+    inquiryAdded: "Fiyatlandırmada oluşturduğunuz yapılandırma forma eklendi",
+    inquiryHint: "Adınızı, iletişim bilgilerinizi ve sektörünüzü ekleyip gönderin.",
     needsPlaceholder: "Mevcut zorluklarınızı ve AI asistanınızın hangi konularda yardımcı olmasını istediğinizi açıklayın...",
     getMyDemo: "Demom İçin İletişime Geç",
     whyChooseAI: "Neden AI Çözümlerimizi Seçmelisiniz?",
@@ -166,6 +168,7 @@ export const translations = {
     // Footer
     footerDesc: "7/24 çalışan akıllı WhatsApp AI asistanları ile işletmeleri dönüştürüyoruz.",
     services: "Hizmetler",
+    pricingLink: "Fiyatlandırma",
     whatsappAISetup: "WhatsApp AI Kurulumu",
     customTraining: "Özel Eğitim",
     databaseIntegration: "Veritabanı Entegrasyonu",
@@ -447,6 +450,8 @@ export const translations = {
     fitness: "Fitness",
     other: "Other",
     tellUsNeeds: "Tell us about your needs",
+    inquiryAdded: "The configuration you built on the pricing page is in the form",
+    inquiryHint: "Add your name, contact details and industry, then send.",
     needsPlaceholder: "Describe your current challenges and what you'd like your AI assistant to help with...",
     getMyDemo: "Get My Custom Demo",
     whyChooseAI: "Why Choose Our AI Solutions?",
@@ -464,6 +469,7 @@ export const translations = {
     // Footer
     footerDesc: "Transforming businesses with intelligent WhatsApp AI assistants that work 24/7.",
     services: "Services",
+    pricingLink: "Pricing",
     whatsappAISetup: "WhatsApp AI Setup",
     customTraining: "Custom Training",
     databaseIntegration: "Database Integration",

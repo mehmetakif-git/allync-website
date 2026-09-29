@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
 import { translations } from '../utils/translations';
 import { LegalModals } from './LegalModals';
@@ -50,6 +51,12 @@ export const Footer: React.FC<FooterProps> = ({ language }) => {
           <div>
             <h3 className="text-white font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{t.services}</h3>
             <ul className="space-y-2 sm:space-y-3 text-gray-400 text-xs sm:text-sm">
+              <li>
+                <Link to="/pricing" className="inline-flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors duration-300 font-medium">
+                  {t.pricingLink}
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#5FC9C9] shadow-[0_0_8px_rgba(95,201,201,0.8)]" />
+                </Link>
+              </li>
               <li><a href="#" className="hover:text-gray-300 transition-colors duration-300">{t.whatsappAISetup}</a></li>
               <li><a href="#" className="hover:text-gray-300 transition-colors duration-300">{t.customTraining}</a></li>
               <li><a href="#" className="hover:text-gray-300 transition-colors duration-300">{t.databaseIntegration}</a></li>
