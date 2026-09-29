@@ -316,7 +316,8 @@ export const TermsOfService: React.FC = () => {
         <>
           <SubHeading>10.1 Abonelik ve Proje Ücretleri</SubHeading>
           <BulletList items={[
-            'Aylık veya yıllık abonelik ücretleri, seçtiğiniz plana göre tahsil edilir',
+            'Abonelik ücretleri, seçtiğiniz plana ve ödeme dönemine (aylık, 6 aylık veya yıllık) göre tahsil edilir',
+            'Allync Hub paketlerinde, hangi ödeme dönemi seçilirse seçilsin ilk ay ücretsizdir; güncel paket fiyatları ve dönem indirimleri www.allyncai.com/pricing sayfasında yayımlanır',
             'Özel yazılım geliştirme projeleri ayrı bir teklifle ücretlendirilir; ödeme genellikle kilometre taşları üzerinden yapılır',
             'AI kullanım tabanlı ücretler (mesaj sayısı, transkripsiyon dakikası, LLM token vb.) kullanım miktarına göre faturalanır',
             'Tüm ücretler TL veya USD cinsinden, KDV veya yerel vergiler hariç fiyatlanır; ilgili vergiler ayrıca eklenir'
@@ -333,7 +334,7 @@ export const TermsOfService: React.FC = () => {
           </Notice>
           <BulletList items={[
             'Özel yazılım geliştirme: Kabul edilen kilometre taşı için ödenen tutar iade edilmez',
-            'Aylık / yıllık abonelikler: Erken iptal halinde kalan dönem için orantılı iade yapılmaz',
+            'Aylık, 6 aylık ve yıllık abonelikler: Erken iptal halinde kalan dönem için orantılı iade yapılmaz',
             'AI kullanım ücretleri: Tüketilen mesaj, token veya dakika için iade söz konusu değildir',
             'Eğitim, kurulum, danışmanlık ve özel hizmetler: Hizmetin tamamı veya bir kısmı sunulmuş ise iade edilmez',
             'Yalnızca yürürlükteki tüketici koruması mevzuatının emredici hükümleri (örn. KVKK\'nın belirli durumlarında) saklıdır'
@@ -861,7 +862,8 @@ export const TermsOfService: React.FC = () => {
         <>
           <SubHeading>10.1 Subscription and Project Fees</SubHeading>
           <BulletList items={[
-            'Monthly or annual subscription fees are charged in accordance with your selected plan',
+            'Subscription fees are charged in accordance with your selected plan and billing cycle (monthly, every 6 months or yearly)',
+            'On Allync Hub plans the first month is free, whichever billing cycle you choose; current plan prices and cycle discounts are published at www.allyncai.com/pricing',
             'Custom software development projects are quoted separately, with payment generally tied to delivery milestones',
             'Usage-based AI fees (number of messages, transcription minutes, LLM tokens, etc.) are billed according to actual consumption',
             'All fees are quoted in TRY or USD, exclusive of VAT or local taxes; applicable taxes are added on top'
@@ -878,7 +880,7 @@ export const TermsOfService: React.FC = () => {
           </Notice>
           <BulletList items={[
             'Custom software development: amounts paid for accepted milestones are non-refundable',
-            'Monthly / annual subscriptions: no pro-rated refund will be provided for early cancellation',
+            'Monthly, 6-month and annual subscriptions: no pro-rated refund will be provided for early cancellation',
             'AI usage fees: consumed messages, tokens or minutes are not refundable',
             'Training, setup, consultancy and bespoke services: not refundable once delivery (in whole or in part) has occurred',
             'Only the mandatory provisions of applicable consumer-protection law (e.g. certain KVKK situations) remain reserved'
@@ -1187,7 +1189,7 @@ export const TermsOfService: React.FC = () => {
 
   const title = language === 'tr' ? 'Hizmet Şartları' : 'Terms of Service';
   const subtitle = language === 'tr' ? 'Hizmetlerimizi kullanırken geçerli olan kurallar, sorumluluklar ve haklar' : 'Rules, responsibilities and rights that apply when using our Services';
-  const lastUpdated = language === 'tr' ? 'Son Güncelleme: 2 Mayıs 2026' : 'Last Updated: May 2, 2026';
+  const lastUpdated = language === 'tr' ? 'Son Güncelleme: 29 Eylül 2026' : 'Last Updated: September 29, 2026';
   const backHome = language === 'tr' ? 'Ana Sayfa' : 'Home';
 
   return (

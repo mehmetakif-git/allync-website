@@ -57,6 +57,7 @@ import {
 } from '../content/pricing';
 import { PRODUCTS } from '../content/catalog';
 import { resolve, stepsFor, type Step } from '../content/resolve';
+import { pricingJsonLd } from '../content/pricingSchema';
 import { lockScroll, unlockScroll } from '../utils/scrollLock';
 
 const CONTACT = '/digital/contact';
@@ -102,6 +103,9 @@ const Inner: React.FC = () => {
     [product, cfg.planId, cfg.scaleId, cfg.on, lang, cycle, currency],
   );
   const steps = useMemo(() => stepsFor(product, r), [product, r]);
+  /* the published prices as structured data — depends on the language only,
+     never on what the visitor has selected */
+  const jsonLd = useMemo(() => pricingJsonLd(lang), [lang]);
   const stepIndex = Math.max(0, steps.indexOf(cfg.step));
   const step: Step = steps[stepIndex] ?? 'product';
 
@@ -429,6 +433,7 @@ const Inner: React.FC = () => {
         <meta property="og:title" content={t.metaTitle} />
         <meta property="og:description" content={t.metaDesc} />
         <meta property="og:url" content="https://www.allyncai.com/pricing" />
+        <script type="application/ld+json">{jsonLd}</script>
       </Helmet>
 
       <div className="pxc-floor" aria-hidden="true">

@@ -18,6 +18,7 @@
      • the comparison table is 5 groups / 34 rows with no gaps
      • no AI, voice or infrastructure provider is named anywhere
      • nothing is ever NaN, and quoteOnly <=> total === null
+     • the /pricing JSON-LD carries exactly the catalogue's figures
 
    It already caught one real defect: a circular import between
    pricing.ts and products/hub.ts left MODULE_PRICE in its temporal
@@ -27,6 +28,7 @@
 import { CURRENCY_ORDER, CYCLE_ORDER, MODULE_PRICE, formatPrice, monthlyEquivalent, savingPercent, type Currency, type Cycle } from './pricing';
 import { PRODUCTS } from './catalog';
 import { resolve, stepsFor, type Selection } from './resolve';
+import { pricingJsonLd } from './pricingSchema';
 
 let fails = 0;
 const ok = (name: string, cond: boolean, extra?: unknown) => {
@@ -176,10 +178,10 @@ console.log('\n[11] comparison table: 5 groups, 34 rows, a cell for every plan')
 
 /* ---------- 12. text rules: no provider or infrastructure name anywhere ---------- */
 console.log('\n[12] text rules — no AI/voice provider, no infrastructure, no emoji');
+const BANNED = ['Claude', 'Anthropic', 'Gemini', 'OpenAI', 'GPT', 'ElevenLabs', 'Whisper', 'Supabase', 'Postgres', 'Redis', 'Docker', 'Coolify', 'Traefik', 'Vercel', 'Hostinger', 'Sentry', 'GlitchTip', 'super admin', 'Super Admin'];
 {
   const blob = JSON.stringify(PRODUCTS);
-  const banned = ['Claude', 'Anthropic', 'Gemini', 'OpenAI', 'GPT', 'ElevenLabs', 'Whisper', 'Supabase', 'Postgres', 'Redis', 'Docker', 'Coolify', 'Traefik', 'Vercel', 'Hostinger', 'Sentry', 'GlitchTip', 'super admin', 'Super Admin'];
-  const hits = banned.filter((w) => blob.toLowerCase().includes(w.toLowerCase()));
+  const hits = BANNED.filter((w) => blob.toLowerCase().includes(w.toLowerCase()));
   ok('no banned provider or infrastructure name', hits.length === 0, hits);
   // eslint-disable-next-line no-misleading-character-class
   const emoji = blob.match(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu);
@@ -233,6 +235,55 @@ console.log('\n[13] exhaustive sweep — no NaN, and quoteOnly <=> total === nul
   }
   ok('zero NaN / out-of-range across the full matrix', bad === 0, bad);
   ok('quoteOnly <=> total === null, everywhere', broken === 0, broken);
+}
+
+/* ---------- 14. the structured data is the catalogue, figure for figure ---------- */
+console.log('\n[14] /pricing JSON-LD — every figure is the catalogue figure');
+{
+  type LdSpec = { price: number; priceCurrency: string; referenceQuantity: { value: number; unitCode: string }; valueAddedTaxIncluded: boolean };
+  type LdOffer = { url: string; price: number; priceCurrency: string; seller: { '@id': string }; priceSpecification: LdSpec[] };
+  type LdAgg = { '@type': string; priceCurrency: string; lowPrice: number; highPrice: number; offerCount: number; offers: LdOffer[] };
+  type Ld = { '@type': string; name: string; offers: LdAgg[] };
+  const CYCLE_OF: Record<string, Cycle> = { '1MON': 'monthly', '6MON': 'sixMonth', '1ANN': 'yearly' };
+  const priced = hub.plans.filter((p) => !p.quoteOnly);
+  const planOf = (o: LdOffer) => hub.plans.find((p) => o.url.includes(`&t=${p.id}&`));
+
+  for (const lang of ['tr', 'en'] as const) {
+    const raw = pricingJsonLd(lang);
+    const ld = JSON.parse(raw) as Ld;
+    ok(`${lang}: one Product, Allync Hub`, ld['@type'] === 'Product' && ld.name === 'Allync Hub', [ld['@type'], ld.name]);
+    ok(`${lang}: no null, no NaN, no price as text, no .html`, !/null|NaN|"(price|lowPrice|highPrice)":"|\.html/.test(raw));
+    ok(`${lang}: no banned provider name`, BANNED.every((w) => !raw.toLowerCase().includes(w.toLowerCase())));
+    ok(`${lang}: one AggregateOffer per currency, in order`, ld.offers.map((a) => a.priceCurrency).join() === CURRENCY_ORDER.join());
+
+    let wrong = 0;
+    for (const agg of ld.offers) {
+      const cu = agg.priceCurrency as Currency;
+      const monthly = agg.offers.map((o) => o.price);
+      if (agg['@type'] !== 'AggregateOffer') wrong++;
+      if (agg.offers.map((o) => planOf(o)?.id).join() !== priced.map((p) => p.id).join()) wrong++; // Enterprise stays out
+      if (agg.offerCount !== agg.offers.length || agg.lowPrice !== Math.min(...monthly) || agg.highPrice !== Math.max(...monthly)) wrong++;
+      for (const o of agg.offers) {
+        const plan = planOf(o);
+        if (!plan || o.price !== plan.price[cu].monthly || o.priceCurrency !== cu) { wrong++; continue; }
+        if (o.seller['@id'] !== 'https://www.allyncai.com/#organization') wrong++;
+        const cycles = o.priceSpecification.map((s) => CYCLE_OF[`${s.referenceQuantity.value}${s.referenceQuantity.unitCode}`]);
+        if (cycles.join() !== CYCLE_ORDER.join()) wrong++;
+        o.priceSpecification.forEach((s, i) => {
+          if (s.price !== plan.price[cu][cycles[i]] || s.priceCurrency !== cu || s.valueAddedTaxIncluded !== false) wrong++;
+        });
+      }
+    }
+    ok(`${lang}: every offer, range and cycle price equals the catalogue`, wrong === 0, wrong);
+
+    const [usd, tl] = ld.offers;
+    const rateOk = usd.offers.every((o, i) =>
+      tl.offers[i].price === o.price * RATE &&
+      o.priceSpecification.every((s, j) => tl.offers[i].priceSpecification[j].price === s.price * RATE),
+    );
+    ok(`${lang}: 100 USD = 4,500 TL holds in the markup too`, rateOk && tl.lowPrice === usd.lowPrice * RATE && tl.highPrice === usd.highPrice * RATE);
+  }
+  ok('tr and en carry identical figures', pricingJsonLd('tr').replace(/"(name|description|url)":"[^"]*"/g, '') === pricingJsonLd('en').replace(/"(name|description|url)":"[^"]*"/g, ''));
 }
 
 console.log(fails === 0 ? '\nALL ASSERTIONS PASSED\n' : `\n${fails} ASSERTION(S) FAILED\n`);
